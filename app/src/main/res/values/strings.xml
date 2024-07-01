@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">WB Technoschool</string>
+    <string name="name_meeting">Developer meeting</string>
+    <string name="date_meeting">13.09.2024</string>
+    <string name="location_meeting">Москва</string>
+    <string name="state_meeting">Закончилась</string>
+    <string name="name_card_meeting">Designa</string>
+    <string name="current_users">10000 человек</string>
+</resources>
