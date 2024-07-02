@@ -27,6 +27,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.avatar.MyMainAvatar
 import com.example.wbtechnoschool.button.IconOutlinedButton
@@ -35,7 +36,7 @@ import com.example.wbtechnoschool.ui.theme.fontSFPro
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ScreenProfile() {
+fun ScreenProfile(navController: NavController) {
     Scaffold(
         modifier = Modifier
             .statusBarsPadding()
@@ -51,13 +52,12 @@ fun ScreenProfile() {
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = { /*TODO*/ }) {
+                    IconButton(onClick = {navController.navigate("icon_screen_profile")}, modifier = Modifier.offset(x = (-10).dp)) {
                         Icon(
                             painter = painterResource(id = R.drawable.arrow_back),
                             contentDescription = "вернуться",
                             modifier = Modifier
                                 .size(20.dp)
-                                .offset(x = -(15).dp)
                         )
                     }
                 },
@@ -135,8 +135,8 @@ fun ScreenProfile() {
     )
 }
 
-@Preview(showBackground = true)
-@Composable
-fun PrevScreenProfile() {
-    ScreenProfile()
-}
+//@Preview(showBackground = true)
+//@Composable
+//fun PrevScreenProfile() {
+//    ScreenProfile()
+//}

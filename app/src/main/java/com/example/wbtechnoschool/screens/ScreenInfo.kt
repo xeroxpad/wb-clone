@@ -40,7 +40,7 @@ import com.example.wbtechnoschool.ui.theme.fontSFPro
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ScreenInfo() {
+fun ScreenInfo(navController: NavController) {
 
     Scaffold(
         modifier = Modifier
@@ -71,7 +71,7 @@ fun ScreenInfo() {
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(8.dp))
-                        .clickable {},
+                        .clickable {navController.navigate("screen_profile")},
                     verticalAlignment = Alignment.CenterVertically
                 )
                 {
@@ -79,18 +79,18 @@ fun ScreenInfo() {
                         painter = painterResource(id = R.drawable.avatar_main),
                         contentDescription = "аватар профиль",
                         modifier = Modifier
-                            .size(50.dp)
+                            .size(60.dp)
                     )
                     Spacer(modifier = Modifier.width(20.dp))
                     Column(modifier = Modifier.weight(1.8f)) {
                         Text(
-                            text = "Иван Иванов",
+                            text = "Иван Смирнов",
                             fontSize = 18.sp,
                             fontFamily = fontSFPro,
                             fontWeight = FontWeight.W600,
                         )
                         Text(
-                            text = "+7 999 999-99-99",
+                            text = "+7 999 999-88-88",
                             fontSize = 14.sp,
                             fontFamily = fontSFPro,
                             fontWeight = FontWeight.W400,
@@ -107,23 +107,28 @@ fun ScreenInfo() {
                 ContainerToGo(
                     icon = R.drawable.meeting,
                     title = "Мои встречи",
+                    onClick = {navController.navigate("screen_my_meetings")}
                 )
                 Spacer(modifier = Modifier.height(20.dp))
                 ContainerToGo(
                     icon = R.drawable.icon_theme,
                     title = "Тема",
+                    onClick = {navController.navigate("screen_theme")}
                 )
                 ContainerToGo(
                     icon = R.drawable.icon_notifications,
                     title = "Уведомления",
+                    onClick = {navController.navigate("screen_notifications")}
                 )
                 ContainerToGo(
                     icon = R.drawable.icon_safety,
                     title = "Безопасность",
+                    onClick = {navController.navigate("screen_safety")}
                 )
                 ContainerToGo(
                     icon = R.drawable.icon_recources,
                     title = "Память и ресурсы",
+                    onClick = {navController.navigate("screen_resources")}
                 )
                 HorizontalDivider(
                     modifier = Modifier.padding(vertical = 10.dp),
@@ -132,10 +137,14 @@ fun ScreenInfo() {
                 ContainerToGo(
                     icon = R.drawable.icon_help,
                     title = "Помощь",
+                    onClick = {navController.navigate("screen_help")},
+                    sizeIcon = 34.dp,
+                    paddingIcon = 0.dp
                 )
                 ContainerToGo(
                     icon = R.drawable.icon_invite_friend,
                     title = "Пригласи друга",
+                    onClick = {navController.navigate("screen_invite_friend")}
                 )
             }
         }

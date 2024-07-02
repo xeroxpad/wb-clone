@@ -11,17 +11,17 @@ data class NavItem(
 object Element{
     val listOfNavItems = listOf(
         NavItem(
-            description = "",
+            description = "Встречи",
             icon = R.drawable.meeting,
             route = Screens.ScreenMeeting.name
         ),
         NavItem(
-            description = "",
+            description = "Сообщества",
             icon = R.drawable.community,
             route = Screens.ScreenCommunity.name
         ),
         NavItem(
-            description = "",
+            description = "Еще",
             icon = R.drawable.info,
             route = Screens.ScreenProfile.name
         )
