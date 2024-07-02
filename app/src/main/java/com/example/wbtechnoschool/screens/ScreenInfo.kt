@@ -138,7 +138,7 @@ fun ScreenInfo(navController: NavController) {
                     icon = R.drawable.icon_help,
                     title = "Помощь",
                     onClick = {navController.navigate("screen_help")},
-                    sizeIcon = 34.dp,
+                    sizeIcon = 33.dp,
                     paddingIcon = 0.dp
                 )
                 ContainerToGo(
