@@ -5,11 +5,6 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.wbtechnoschool.features.ContainerToGo
-import com.example.wbtechnoschool.screens.ActiveMeetings
-import com.example.wbtechnoschool.screens.AllMeetings
-import com.example.wbtechnoschool.screens.MyPastMeetings
-import com.example.wbtechnoschool.screens.MyPlannedMeetings
 import com.example.wbtechnoschool.screens.ScreenCommunity
 import com.example.wbtechnoschool.screens.ScreenHelp
 import com.example.wbtechnoschool.screens.ScreenInfo
@@ -29,47 +24,47 @@ fun NavHostContainer(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Screens.ScreenMeeting.name,
+        startDestination = Graph.screenMeeting,
         modifier = modifier
     ){
-        composable(route = Screens.ScreenMeeting.name) {
+        composable(Graph.screenMeeting) {
             ScreenMeeting()
         }
-        composable(route = Screens.ScreenCommunity.name) {
+        composable(Graph.screenCommunity) {
             ScreenCommunity()
         }
-        composable(route = Screens.ScreenProfile.name) {
+        composable(Graph.screenInfo) {
             ScreenInfo(navController)
         }
-        composable("screen_profile") {
+        composable(Graph.screenProfile) {
             ScreenProfile(navController)
         }
-        composable("icon_screen_profile") {
-            ScreenInfo(navController)
-        }
-        composable("screen_my_meetings") {
+        composable(Graph.screenMyMeetings) {
             ScreenMyMeetings(navController)
         }
-        composable("icon_screen_my_meetings") {
-            ScreenInfo(navController)
-        }
-        composable("screen_theme") {
+        composable(Graph.screenTheme) {
             ScreenTheme()
         }
-        composable("screen_notifications") {
+        composable(Graph.screenNotifications) {
             ScreenNotifications()
         }
-        composable("screen_safety") {
-            ScreenSafety()
+        composable(Graph.screenSafety) {
+            ScreenSafety(navController)
         }
-        composable("screen_resources") {
+        composable(Graph.screenResources) {
             ScreenResources()
         }
-        composable("screen_help") {
+        composable(Graph.screenHelp) {
             ScreenHelp()
         }
-        composable("screen_invite_friend") {
+        composable(Graph.inviteFriend) {
             ScreenInviteFriend()
         }
+//        composable(
+//            "profile/{avatarUri}",
+//            arguments = listOf(navArgument("avatarUri") { type = NavType.StringType })
+//        ) { backStackEntry ->
+//            ScreenProfile(backStackEntry.arguments?.getString("avatarUri"), navController)
+//        }
     }
 }

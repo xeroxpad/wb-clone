@@ -24,12 +24,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.GraphicsContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
+import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 
@@ -52,7 +54,7 @@ fun ScreenMyMeetings(navController: NavController) {
                 },
                 navigationIcon = {
                     IconButton(
-                        onClick = { navController.navigate("icon_screen_my_meetings") },
+                        onClick = { navController.popBackStack() },
                         modifier = Modifier.offset(x = -(10).dp)
                     ) {
                         Icon(

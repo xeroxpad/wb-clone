@@ -12,7 +12,6 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
-import androidx.navigation.compose.rememberNavController
 import com.example.wbtechnoschool.screens.ActiveMeetings
 import com.example.wbtechnoschool.screens.AllMeetings
 import com.example.wbtechnoschool.ui.theme.LightColorTheme

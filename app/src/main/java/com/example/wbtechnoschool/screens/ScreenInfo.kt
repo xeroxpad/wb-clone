@@ -13,6 +13,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.HorizontalDivider
@@ -31,10 +32,10 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import androidx.navigation.compose.rememberNavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.avatar.MyMainAvatar
 import com.example.wbtechnoschool.features.ContainerToGo
+import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 
@@ -71,26 +72,23 @@ fun ScreenInfo(navController: NavController) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(8.dp))
-                        .clickable {navController.navigate("screen_profile")},
+                        .clickable {navController.navigate(Graph.screenProfile)},
                     verticalAlignment = Alignment.CenterVertically
                 )
                 {
                     MyMainAvatar(
-                        painter = painterResource(id = R.drawable.avatar_main),
-                        contentDescription = "аватар профиль",
-                        modifier = Modifier
-                            .size(60.dp)
+                        painter = painterResource(id = R.drawable.avatars), contentDescription = "", modifier = Modifier.size(60.dp).clip((CircleShape))
                     )
                     Spacer(modifier = Modifier.width(20.dp))
                     Column(modifier = Modifier.weight(1.8f)) {
                         Text(
-                            text = "Иван Смирнов",
+                            text = "Михаил Никонов",
                             fontSize = 18.sp,
                             fontFamily = fontSFPro,
                             fontWeight = FontWeight.W600,
                         )
                         Text(
-                            text = "+7 999 999-88-88",
+                            text = "+7 999 999-99-99",
                             fontSize = 14.sp,
                             fontFamily = fontSFPro,
                             fontWeight = FontWeight.W400,
@@ -107,28 +105,28 @@ fun ScreenInfo(navController: NavController) {
                 ContainerToGo(
                     icon = R.drawable.meeting,
                     title = "Мои встречи",
-                    onClick = {navController.navigate("screen_my_meetings")}
+                    onClick = {navController.navigate(Graph.screenMyMeetings)}
                 )
                 Spacer(modifier = Modifier.height(20.dp))
                 ContainerToGo(
                     icon = R.drawable.icon_theme,
                     title = "Тема",
-                    onClick = {navController.navigate("screen_theme")}
+                    onClick = {navController.navigate(Graph.screenTheme)}
                 )
                 ContainerToGo(
                     icon = R.drawable.icon_notifications,
                     title = "Уведомления",
-                    onClick = {navController.navigate("screen_notifications")}
+                    onClick = {navController.navigate(Graph.screenNotifications)}
                 )
                 ContainerToGo(
                     icon = R.drawable.icon_safety,
                     title = "Безопасность",
-                    onClick = {navController.navigate("screen_safety")}
+                    onClick = {navController.navigate(Graph.screenSafety)}
                 )
                 ContainerToGo(
                     icon = R.drawable.icon_recources,
                     title = "Память и ресурсы",
-                    onClick = {navController.navigate("screen_resources")}
+                    onClick = {navController.navigate(Graph.screenResources)}
                 )
                 HorizontalDivider(
                     modifier = Modifier.padding(vertical = 10.dp),
@@ -137,14 +135,14 @@ fun ScreenInfo(navController: NavController) {
                 ContainerToGo(
                     icon = R.drawable.icon_help,
                     title = "Помощь",
-                    onClick = {navController.navigate("screen_help")},
+                    onClick = {navController.navigate(Graph.screenHelp)},
                     sizeIcon = 33.dp,
                     paddingIcon = 0.dp
                 )
                 ContainerToGo(
                     icon = R.drawable.icon_invite_friend,
                     title = "Пригласи друга",
-                    onClick = {navController.navigate("screen_invite_friend")}
+                    onClick = {navController.navigate(Graph.inviteFriend)}
                 )
             }
         }

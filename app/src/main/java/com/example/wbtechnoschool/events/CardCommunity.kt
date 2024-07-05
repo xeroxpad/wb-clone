@@ -1,6 +1,5 @@
 package com.example.wbtechnoschool.events
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -22,7 +21,6 @@ import androidx.compose.ui.unit.sp
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.avatar.MyPreviewAvatar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
-import com.example.wbtechnoschool.ui.theme.LightGrey
 import com.example.wbtechnoschool.ui.theme.SpaceGreyLight
 
 @Composable
