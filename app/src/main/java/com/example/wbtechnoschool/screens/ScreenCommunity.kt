@@ -19,13 +19,15 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.wbtechnoschool.events.CardCommunity
+import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.search.AppSearchBar
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ScreenCommunity() {
+fun ScreenCommunity(navController: NavController) {
     Scaffold(
         modifier = Modifier
             .statusBarsPadding()
@@ -60,7 +62,7 @@ fun ScreenCommunity() {
                     )
                 }
                 items(count = 18) {
-                    CardCommunity()
+                    CardCommunity(onClick = {navController.navigate(Graph.screenDetailsCommunity)})
                 }
             }
         }

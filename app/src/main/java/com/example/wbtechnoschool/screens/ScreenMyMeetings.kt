@@ -95,16 +95,10 @@ fun ScreenMyMeetings(navController: NavController) {
                     }
                 }
                 when (tabIndex) {
-                    0 -> MyPlannedMeetings()
-                    1 -> MyPastMeetings()
+                    0 -> MyPlannedMeetings(navController)
+                    1 -> MyPastMeetings(navController)
                 }
             }
         }
     )
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun PrevScreenMyMeetings() {
-//    ScreenMyMeetings()
-//}

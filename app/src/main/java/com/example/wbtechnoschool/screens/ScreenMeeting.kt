@@ -23,13 +23,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.features.SwitchRow
 import com.example.wbtechnoschool.search.AppSearchBar
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun ScreenMeeting() {
+fun ScreenMeeting(navController: NavController) {
     Scaffold(
         modifier = Modifier
             .statusBarsPadding()
@@ -71,7 +72,7 @@ fun ScreenMeeting() {
                         .wrapContentHeight()
                         .padding(bottom = 20.dp)
                 )
-                SwitchRow(listOf("ВСЕ ВСТРЕЧИ", "АКТИВНЫЕ"))
+                SwitchRow(listOf("ВСЕ ВСТРЕЧИ", "АКТИВНЫЕ"), navController)
             }
         },
     )

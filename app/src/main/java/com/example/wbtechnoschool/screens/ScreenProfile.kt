@@ -152,9 +152,3 @@ fun ScreenProfile(navController: NavController) {
         }
     )
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun PrevScreenProfile() {
-//    ScreenProfile()
-//}

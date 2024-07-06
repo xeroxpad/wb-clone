@@ -18,17 +18,19 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.avatar.MyPreviewAvatar
+import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.SpaceGreyLight
 
 @Composable
-fun CardCommunity() {
+fun CardCommunity(onClick: () -> Unit) {
     Card(
-        onClick = { /*TODO*/ }, modifier = Modifier
+        onClick = { onClick() }, modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 7.dp, start = 5.dp, bottom = 7.dp),
+            .padding( start = 5.dp),
         colors = CardDefaults.cardColors(Color.Transparent)
     ) {
         Row {
@@ -37,7 +39,6 @@ fun CardCommunity() {
                 contentDescription = "",
                 modifier = Modifier
                     .padding(end = 10.dp, bottom = 10.dp)
-                    .clickable { }
                     .size(56.dp)
             )
             Column {

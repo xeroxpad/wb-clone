@@ -28,7 +28,7 @@ import com.example.wbtechnoschool.ui.theme.fontSFPro
 
 
 @Composable
-fun TestRowAvatars() {
+fun RowAvatars() {
     val arrayImage = listOf(
         painterResource(id = R.drawable.avatars),
         painterResource(id = R.drawable.nature),

@@ -42,7 +42,6 @@ import com.example.wbtechnoschool.ui.theme.fontSFPro
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenInfo(navController: NavController) {
-
     Scaffold(
         modifier = Modifier
             .statusBarsPadding()

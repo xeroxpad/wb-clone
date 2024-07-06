@@ -14,6 +14,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
@@ -22,6 +23,7 @@ import androidx.navigation.navOptions
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.features.NoRippleInteractionSource
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
+import com.example.wbtechnoschool.ui.theme.fontSFPro
 import kotlinx.coroutines.selects.select
 
 @Composable
@@ -47,10 +49,10 @@ fun BottomNavBar(
                         currentRoute == Graph.screenResources ||
                         currentRoute == Graph.screenHelp ||
                         currentRoute == Graph.inviteFriend
-
+                Element.listOfNavItems.get(1) -> currentRoute == item.route ||
+                        currentRoute == Graph.screenDetailsCommunity
                 else -> currentRoute == item.route
             }
-
             val noRippleInteractionSource = remember { NoRippleInteractionSource() }
             BottomNavigationItem(
                 selected = isSelected,
@@ -67,7 +69,7 @@ fun BottomNavBar(
                 icon = {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         if (isSelected) {
-                            Text(text = item.description)
+                            Text(text = item.description, fontWeight = FontWeight.W600, fontFamily = fontSFPro, color = LightColorTheme.neutralActive)
                             Icon(
                                 painterResource(id = R.drawable.icon_point_selected),
                                 contentDescription = "выбранный элемент",

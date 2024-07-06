@@ -12,6 +12,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.wbtechnoschool.screens.ActiveMeetings
 import com.example.wbtechnoschool.screens.AllMeetings
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
@@ -20,6 +21,7 @@ import com.example.wbtechnoschool.ui.theme.fontSFPro
 @Composable
 fun SwitchRow(
     titleRow: List<String>,
+    navController: NavController
 ) {
     var tabIndex by remember { mutableStateOf(0) }
     TabRow(selectedTabIndex = tabIndex, modifier = Modifier.fillMaxWidth()) {
@@ -41,7 +43,7 @@ fun SwitchRow(
         }
     }
     when (tabIndex) {
-        0 -> AllMeetings()
-        1 -> ActiveMeetings()
+        0 -> AllMeetings(navController)
+        1 -> ActiveMeetings(navController)
     }
 }

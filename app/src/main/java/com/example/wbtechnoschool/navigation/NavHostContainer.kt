@@ -5,7 +5,9 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.wbtechnoschool.screens.ScreenDetailsCommunity
 import com.example.wbtechnoschool.screens.ScreenCommunity
+import com.example.wbtechnoschool.screens.ScreenDescriptionMeeting
 import com.example.wbtechnoschool.screens.ScreenHelp
 import com.example.wbtechnoschool.screens.ScreenInfo
 import com.example.wbtechnoschool.screens.ScreenInviteFriend
@@ -28,10 +30,10 @@ fun NavHostContainer(
         modifier = modifier
     ){
         composable(Graph.screenMeeting) {
-            ScreenMeeting()
+            ScreenMeeting(navController)
         }
         composable(Graph.screenCommunity) {
-            ScreenCommunity()
+            ScreenCommunity(navController)
         }
         composable(Graph.screenInfo) {
             ScreenInfo(navController)
@@ -60,11 +62,11 @@ fun NavHostContainer(
         composable(Graph.inviteFriend) {
             ScreenInviteFriend()
         }
-//        composable(
-//            "profile/{avatarUri}",
-//            arguments = listOf(navArgument("avatarUri") { type = NavType.StringType })
-//        ) { backStackEntry ->
-//            ScreenProfile(backStackEntry.arguments?.getString("avatarUri"), navController)
-//        }
+        composable(Graph.screenDetailsCommunity) {
+            ScreenDetailsCommunity(navController)
+        }
+        composable(Graph.screenDescriptionMeeting) {
+            ScreenDescriptionMeeting(navController)
+        }
     }
 }
