@@ -28,54 +28,6 @@ import com.example.wbtechnoschool.ui.theme.fontSFPro
 
 @Composable
 fun CardActiveMeetings(onClick: () -> Unit, meetings: Meetings) {
-//    Card(
-//        onClick = { onClick() }, colors = CardDefaults.cardColors(Color.Transparent)
-//    ) {
-//        Row(
-//            modifier = Modifier
-//                .fillMaxWidth()
-//                .padding(top = 7.dp)
-//        ) {
-//            MyPreviewAvatar(
-//                modifier = Modifier
-//                    .padding(start = 5.dp)
-//                    .size(48.dp),
-//                painter = painterResource(id = R.drawable.avatar_preview),
-//                contentDescription = null
-//            )
-//            Column(
-//                modifier = Modifier
-//                    .padding(horizontal = 15.dp)
-//            ) {
-//                val nameMeeting = stringResource(id = R.string.date_meeting)
-//                val locationMeeting = stringResource(id = R.string.location_meeting)
-//                val allTextMeeting = ("$nameMeeting - $locationMeeting")
-//                Text(
-//                    text = stringResource(id = R.string.name_meeting),
-//                    fontFamily = fontSFPro,
-//                    fontWeight = FontWeight.Bold,
-//                    fontSize = 14.sp,
-//                    color = LightColorTheme.neutralActive
-//                )
-//                Row(verticalAlignment = Alignment.CenterVertically) {
-//                    Text(
-//                        text = allTextMeeting,
-//                        fontFamily = fontSFPro,
-//                        fontWeight = FontWeight.Light,
-//                        fontSize = 12.sp,
-//                        color = LightColorTheme.neutralWeak
-//                    )
-//                }
-//                Row(modifier = Modifier.padding(bottom = 10.dp)) {
-//                    FilterChips(labelText = "Python")
-//                    FilterChips(labelText = "Junior")
-//                    FilterChips(labelText = "Moscow")
-//                }
-//            }
-//        }
-//        HorizontalDivider(color = SpaceGreyLight)
-//    }
-
     Card(
         onClick = { onClick() }, colors = CardDefaults.cardColors(Color.Transparent)
     ) {
