@@ -14,4 +14,5 @@ object Graph {
     const val inviteFriend = "screen_invite_friend"
     const val screenDetailsCommunity = "screen_details_community"
     const val screenDescriptionMeeting = "screen_description_meeting"
+    const val splashScreen = "splash_screen"
 }

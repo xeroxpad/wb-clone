@@ -26,7 +26,7 @@ import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.SpaceGreyLight
 
 @Composable
-fun CardCommunity(onClick: () -> Unit) {
+fun CardCommunity(onClick: () -> Unit, community: Community) {
     Card(
         onClick = { onClick() }, modifier = Modifier
             .fillMaxWidth()
@@ -35,7 +35,7 @@ fun CardCommunity(onClick: () -> Unit) {
     ) {
         Row {
             MyPreviewAvatar(
-                painter = painterResource(id = R.drawable.avatar_meeting),
+                painter = painterResource(id = community.icon),
                 contentDescription = "",
                 modifier = Modifier
                     .padding(end = 10.dp, bottom = 10.dp)
@@ -43,12 +43,12 @@ fun CardCommunity(onClick: () -> Unit) {
             )
             Column {
                 Text(
-                    text = stringResource(id = R.string.name_card_meeting),
+                    text = community.title,
                     fontWeight = FontWeight.Bold,
                     fontSize = 14.sp
                 )
                 Text(
-                    text = stringResource(id = R.string.current_users),
+                    text = community.countPersons,
                     fontWeight = FontWeight.Light,
                     fontSize = 12.sp,
                     color = LightColorTheme.neutralDisabled

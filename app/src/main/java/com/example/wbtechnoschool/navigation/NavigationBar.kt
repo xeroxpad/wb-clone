@@ -2,29 +2,29 @@ package com.example.wbtechnoschool.navigation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.BottomNavigation
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material.Icon
+import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.BlendMode.Companion.Screen
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import androidx.navigation.NavGraph.Companion.findStartDestination
+import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
-import androidx.navigation.navOptions
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.features.NoRippleInteractionSource
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
-import kotlinx.coroutines.selects.select
 
 @Composable
 fun BottomNavBar(
@@ -40,7 +40,7 @@ fun BottomNavBar(
         val currentRoute = navBackStackEntry?.destination?.route
         Element.listOfNavItems.forEach { item ->
             val isSelected = when (item) {
-                Element.listOfNavItems.get(2) -> currentRoute == item.route ||
+                Element.listOfNavItems[2] -> currentRoute == item.route ||
                         currentRoute == Graph.screenProfile ||
                         currentRoute == Graph.screenMyMeetings ||
                         currentRoute == Graph.screenTheme ||
@@ -49,8 +49,13 @@ fun BottomNavBar(
                         currentRoute == Graph.screenResources ||
                         currentRoute == Graph.screenHelp ||
                         currentRoute == Graph.inviteFriend
-                Element.listOfNavItems.get(1) -> currentRoute == item.route ||
+
+                Element.listOfNavItems[1] -> currentRoute == item.route ||
                         currentRoute == Graph.screenDetailsCommunity
+
+                Element.listOfNavItems[0] -> currentRoute == item.route ||
+                        currentRoute == Graph.screenDescriptionMeeting
+
                 else -> currentRoute == item.route
             }
             val noRippleInteractionSource = remember { NoRippleInteractionSource() }
@@ -69,7 +74,12 @@ fun BottomNavBar(
                 icon = {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         if (isSelected) {
-                            Text(text = item.description, fontWeight = FontWeight.W600, fontFamily = fontSFPro, color = LightColorTheme.neutralActive)
+                            Text(
+                                text = item.description,
+                                fontWeight = FontWeight.W600,
+                                fontFamily = fontSFPro,
+                                color = LightColorTheme.neutralActive
+                            )
                             Icon(
                                 painterResource(id = R.drawable.icon_point_selected),
                                 contentDescription = "выбранный элемент",
@@ -88,4 +98,7 @@ fun BottomNavBar(
         }
     }
 }
+
+
+
 

@@ -1,6 +1,5 @@
 package com.example.wbtechnoschool.events
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -15,23 +14,68 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.GraphicsContext
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.avatar.MyPreviewAvatar
 import com.example.wbtechnoschool.chips.FilterChips
-import com.example.wbtechnoschool.navigation.Graph
-import com.example.wbtechnoschool.ui.theme.Neutral
+import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.SpaceGreyLight
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 
 @Composable
-fun CardActiveMeetings(onClick: () -> Unit) {
+fun CardActiveMeetings(onClick: () -> Unit, meetings: Meetings) {
+//    Card(
+//        onClick = { onClick() }, colors = CardDefaults.cardColors(Color.Transparent)
+//    ) {
+//        Row(
+//            modifier = Modifier
+//                .fillMaxWidth()
+//                .padding(top = 7.dp)
+//        ) {
+//            MyPreviewAvatar(
+//                modifier = Modifier
+//                    .padding(start = 5.dp)
+//                    .size(48.dp),
+//                painter = painterResource(id = R.drawable.avatar_preview),
+//                contentDescription = null
+//            )
+//            Column(
+//                modifier = Modifier
+//                    .padding(horizontal = 15.dp)
+//            ) {
+//                val nameMeeting = stringResource(id = R.string.date_meeting)
+//                val locationMeeting = stringResource(id = R.string.location_meeting)
+//                val allTextMeeting = ("$nameMeeting - $locationMeeting")
+//                Text(
+//                    text = stringResource(id = R.string.name_meeting),
+//                    fontFamily = fontSFPro,
+//                    fontWeight = FontWeight.Bold,
+//                    fontSize = 14.sp,
+//                    color = LightColorTheme.neutralActive
+//                )
+//                Row(verticalAlignment = Alignment.CenterVertically) {
+//                    Text(
+//                        text = allTextMeeting,
+//                        fontFamily = fontSFPro,
+//                        fontWeight = FontWeight.Light,
+//                        fontSize = 12.sp,
+//                        color = LightColorTheme.neutralWeak
+//                    )
+//                }
+//                Row(modifier = Modifier.padding(bottom = 10.dp)) {
+//                    FilterChips(labelText = "Python")
+//                    FilterChips(labelText = "Junior")
+//                    FilterChips(labelText = "Moscow")
+//                }
+//            }
+//        }
+//        HorizontalDivider(color = SpaceGreyLight)
+//    }
+
     Card(
         onClick = { onClick() }, colors = CardDefaults.cardColors(Color.Transparent)
     ) {
@@ -43,48 +87,37 @@ fun CardActiveMeetings(onClick: () -> Unit) {
             MyPreviewAvatar(
                 modifier = Modifier
                     .padding(start = 5.dp)
-//                    .clickable {}
                     .size(48.dp),
-                painter = painterResource(id = R.drawable.avatar_preview),
+                painter = painterResource(id = meetings.icon),
                 contentDescription = null
             )
             Column(
                 modifier = Modifier
                     .padding(horizontal = 15.dp)
             ) {
+                val dateMeeting = stringResource(id = meetings.date)
+                val locationMeeting = stringResource(id = meetings.city)
+                val allTextMeeting = ("$dateMeeting - $locationMeeting")
                 Text(
-                    text = stringResource(id = R.string.name_meeting),
+                    text = meetings.title,
                     fontFamily = fontSFPro,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp
+                    fontSize = 14.sp,
+                    color = LightColorTheme.neutralActive
                 )
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        text = stringResource(id = R.string.date_meeting),
+                        text = allTextMeeting,
                         fontFamily = fontSFPro,
                         fontWeight = FontWeight.Light,
                         fontSize = 12.sp,
-                        color = Neutral
-                    )
-                    Text(
-                        text = "-",
-                        fontFamily = fontSFPro,
-                        fontWeight = FontWeight.Light,
-                        fontSize = 18.sp,
-                        color = Neutral
-                    )
-                    Text(
-                        text = stringResource(id = R.string.location_meeting),
-                        fontFamily = fontSFPro,
-                        fontWeight = FontWeight.Light,
-                        fontSize = 12.sp,
-                        color = Neutral
+                        color = LightColorTheme.neutralWeak
                     )
                 }
                 Row(modifier = Modifier.padding(bottom = 10.dp)) {
-                    FilterChips(labelText = "Python")
-                    FilterChips(labelText = "Junior")
-                    FilterChips(labelText = "Moscow")
+                    FilterChips(labelText = meetings.tagDevelopmentLanguage)
+                    FilterChips(labelText = meetings.tagGradeDeveloper)
+                    FilterChips(labelText = meetings.tagCityMeeting)
                 }
             }
         }
@@ -93,7 +126,7 @@ fun CardActiveMeetings(onClick: () -> Unit) {
 }
 
 @Composable
-fun CardCompletedMeetings() {
+fun CardCompletedMeetings(meetings: Meetings) {
     Card(
         onClick = { /*TODO*/ }, colors = CardDefaults.cardColors(Color.Transparent)
     ) {
@@ -105,21 +138,24 @@ fun CardCompletedMeetings() {
             MyPreviewAvatar(
                 modifier = Modifier
                     .padding(start = 5.dp)
-//                    .clickable {}
                     .size(48.dp),
-                painter = painterResource(id = R.drawable.avatar_preview),
+                painter = painterResource(id = meetings.icon),
                 contentDescription = null
             )
             Column(
                 modifier = Modifier
                     .padding(horizontal = 15.dp)
             ) {
+                val dateMeeting = stringResource(id = meetings.date)
+                val locationMeeting = stringResource(id = meetings.city)
+                val allTextMeeting = ("$dateMeeting - $locationMeeting")
                 Row() {
                     Text(
-                        text = stringResource(id = R.string.name_meeting),
+                        text = meetings.title,
                         fontFamily = fontSFPro,
                         fontWeight = FontWeight.Bold,
-                        fontSize = 14.sp
+                        fontSize = 14.sp,
+                        color = LightColorTheme.neutralActive
                     )
                     Spacer(modifier = Modifier.weight(1f))
                     Text(
@@ -127,36 +163,22 @@ fun CardCompletedMeetings() {
                         fontFamily = fontSFPro,
                         fontWeight = FontWeight.Light,
                         fontSize = 10.sp,
-                        color = Neutral
+                        color = LightColorTheme.neutralWeak
                     )
                 }
                 Row(verticalAlignment = Alignment.CenterVertically) {
                     Text(
-                        text = stringResource(id = R.string.date_meeting),
+                        text = allTextMeeting,
                         fontFamily = fontSFPro,
                         fontWeight = FontWeight.Light,
                         fontSize = 12.sp,
-                        color = Neutral
-                    )
-                    Text(
-                        text = "-",
-                        fontFamily = fontSFPro,
-                        fontWeight = FontWeight.Light,
-                        fontSize = 18.sp,
-                        color = Neutral
-                    )
-                    Text(
-                        text = stringResource(id = R.string.location_meeting),
-                        fontFamily = fontSFPro,
-                        fontWeight = FontWeight.Light,
-                        fontSize = 12.sp,
-                        color = Neutral
+                        color = LightColorTheme.neutralWeak
                     )
                 }
                 Row(modifier = Modifier.padding(bottom = 10.dp)) {
-                    FilterChips(labelText = "Python")
-                    FilterChips(labelText = "Junior")
-                    FilterChips(labelText = "Moscow")
+                    FilterChips(labelText = meetings.tagDevelopmentLanguage)
+                    FilterChips(labelText = meetings.tagGradeDeveloper)
+                    FilterChips(labelText = meetings.tagCityMeeting)
                 }
             }
         }

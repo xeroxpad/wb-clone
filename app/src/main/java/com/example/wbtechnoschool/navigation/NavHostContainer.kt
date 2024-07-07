@@ -18,6 +18,7 @@ import com.example.wbtechnoschool.screens.ScreenProfile
 import com.example.wbtechnoschool.screens.ScreenResources
 import com.example.wbtechnoschool.screens.ScreenSafety
 import com.example.wbtechnoschool.screens.ScreenTheme
+import com.example.wbtechnoschool.screens.SplashScreen
 
 @Composable
 fun NavHostContainer(
@@ -26,8 +27,7 @@ fun NavHostContainer(
 ) {
     NavHost(
         navController = navController,
-        startDestination = Graph.screenMeeting,
-        modifier = modifier
+        startDestination = Graph.splashScreen,
     ){
         composable(Graph.screenMeeting) {
             ScreenMeeting(navController)
@@ -67,6 +67,9 @@ fun NavHostContainer(
         }
         composable(Graph.screenDescriptionMeeting) {
             ScreenDescriptionMeeting(navController)
+        }
+        composable(Graph.splashScreen) {
+            SplashScreen{navController.navigate(Graph.screenMeeting) {popUpTo(Graph.splashScreen) {inclusive = true}}}
         }
     }
 }

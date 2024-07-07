@@ -37,6 +37,7 @@ import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.events.CardActiveMeetings
 import com.example.wbtechnoschool.events.CardCompletedMeetings
+import com.example.wbtechnoschool.events.Meetings
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
@@ -123,8 +124,29 @@ fun ScreenDetailsCommunity(navController: NavController) {
                     Spacer(modifier = Modifier.height(20.dp))
                 }
                 items(18) {
-                    CardActiveMeetings(onClick = {navController.navigate(Graph.screenDescriptionMeeting)})
-                    CardCompletedMeetings()
+                    CardActiveMeetings(
+                        onClick = { navController.navigate(Graph.screenDescriptionMeeting) },
+                        meetings = Meetings(
+                            icon = R.drawable.avatar_preview,
+                            title = "Developer meeting",
+                            date = R.string.date_meeting,
+                            city = R.string.location_meeting,
+                            tagDevelopmentLanguage = "Kotlin",
+                            tagGradeDeveloper = "Junior",
+                            tagCityMeeting = "Moscow",
+                        )
+                    )
+                    CardCompletedMeetings(
+                        meetings = Meetings(
+                            icon = R.drawable.avatar_preview,
+                            title = "Developer meeting",
+                            date = R.string.date_meeting,
+                            city = R.string.location_meeting,
+                            tagDevelopmentLanguage = "Kotlin",
+                            tagGradeDeveloper = "Junior",
+                            tagCityMeeting = "Moscow",
+                        )
+                    )
                 }
             }
         }
