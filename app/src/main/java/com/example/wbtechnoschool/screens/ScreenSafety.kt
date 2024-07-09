@@ -31,7 +31,5 @@ import com.example.wbtechnoschool.avatar.MyMainAvatar
 
 @Composable
 fun ScreenSafety(navController: NavHostController) {
-    Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(text = "Безопасность")
-    }
+    ScreenAuthorization()
 }

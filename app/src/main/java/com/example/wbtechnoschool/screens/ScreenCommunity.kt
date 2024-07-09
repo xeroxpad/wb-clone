@@ -63,7 +63,14 @@ fun ScreenCommunity(navController: NavController) {
                     )
                 }
                 items(count = 18) {
-                    CardCommunity(onClick = { navController.navigate(Graph.screenDetailsCommunity) }, community = Community(icon = R.drawable.avatar_meeting, title = "Designa", countPersons = "10 000 человек"))
+                    CardCommunity(
+                        onClick = { navController.navigate(Graph.screenDetailsCommunity) },
+                        community = Community(
+                            icon = R.drawable.avatar_meeting,
+                            title = "Designa",
+                            countPersons = "10 000 человек"
+                        )
+                    )
                 }
             }
         }

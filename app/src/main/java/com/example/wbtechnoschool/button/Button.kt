@@ -15,9 +15,12 @@ import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.LightGray
 import androidx.compose.ui.graphics.Color.Companion.White
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.example.wbtechnoschool.ui.theme.LightColorTheme
 
 @Composable
 fun AllButton(
@@ -72,6 +75,7 @@ fun StatusButton(
         colors = ButtonDefaults.buttonColors(
             containerColor = containerColor,
             contentColor = White,
+            disabledContainerColor = LightColorTheme.brandColorDefault.copy(alpha = 0.5f)
         ),
         enabled = enable,
     ) {
@@ -125,7 +129,7 @@ fun StatusTextButton(
         ),
         enabled = enable,
     ) {
-        Text(text = contentText)
+        Text(text = contentText, fontSize = 20.sp)
     }
 }
 
