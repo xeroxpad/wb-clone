@@ -16,6 +16,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import coil.compose.rememberAsyncImagePainter
@@ -23,7 +24,7 @@ import com.example.wbtechnoschool.R
 
 @Composable
 fun ShowImage(
-    image: Int
+    image: Int,
 ) {
     var showImage by remember { mutableStateOf(false) }
     Box(
@@ -41,10 +42,12 @@ fun ShowImage(
         )
         if (showImage) {
             Dialog(onDismissRequest = { showImage = false }) {
-                Box(modifier = Modifier
-                    .fillMaxSize()
-                    .pointerInput(Unit) { detectTapGestures(onTap = { showImage = false }) }
-                ) {
+                Box(
+                    modifier = Modifier
+                        .fillMaxSize()
+                        .pointerInput(Unit) { detectTapGestures(onTap = { showImage = false }) },
+
+                    ) {
                     Image(
                         painter = rememberAsyncImagePainter(model = R.drawable.map),
                         contentDescription = "карта",
@@ -54,7 +57,7 @@ fun ShowImage(
                                 detectTransformGestures { _, _, _, _ ->
                                     showImage = false
                                 }
-                            }
+                            },
                     )
                 }
             }

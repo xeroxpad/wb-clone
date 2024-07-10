@@ -170,9 +170,3 @@ fun ScreenAuthorization() {
         )
     }
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun PrevScreenAuthorization() {
-//    ScreenAuthorization()
-//}

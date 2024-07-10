@@ -1,12 +1,14 @@
 package com.example.wbtechnoschool.screens
 
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
@@ -46,22 +48,23 @@ fun ScreenCommunity(navController: NavController) {
                 colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent),
             )
         }, content = { innerPadding ->
+            Column(modifier = Modifier.fillMaxSize()) {
+                AppSearchBar(
+                    modifier = Modifier
+                        .padding(innerPadding)
+                        .fillMaxWidth()
+                        .height(36.dp)
+                )
+                Spacer(modifier = Modifier.height(40.dp))
+            }
             LazyColumn(
                 modifier = Modifier
                     .padding(innerPadding)
-                    .padding(top = 10.dp)
+                    .padding(top = 50.dp)
                     .navigationBarsPadding()
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally,
             ) {
-                item(1) {
-                    AppSearchBar(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .wrapContentHeight()
-                            .padding(bottom = 20.dp)
-                    )
-                }
                 items(count = 18) {
                     CardCommunity(
                         onClick = { navController.navigate(Graph.screenDetailsCommunity) },

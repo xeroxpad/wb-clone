@@ -1,7 +1,7 @@
 package com.example.wbtechnoschool.search
 
 import androidx.compose.foundation.interaction.MutableInteractionSource
-import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.material.icons.Icons
@@ -69,8 +69,11 @@ fun AppSearchBar(modifier: Modifier = Modifier) {
                     cursorColor = LightColorTheme.neutralActive,
                     focusedLeadingIconColor = LightColorTheme.neutralActive,
                     focusedTextColor = LightColorTheme.neutralActive,
+                    unfocusedContainerColor = LightColorTheme.neutralSecondaryBG,
+                    focusedContainerColor = LightColorTheme.neutralSecondaryBG,
                     ),
                 shape = RoundedCornerShape(8.dp),
+                contentPadding = PaddingValues(0.dp)
             )
         }
     )
