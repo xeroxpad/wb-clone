@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
@@ -50,14 +51,13 @@ fun ScreenDetailsCommunity(navController: NavController) {
     Scaffold(
         modifier = Modifier
             .statusBarsPadding()
-            .fillMaxSize()
-            .padding(start = 30.dp, end = 30.dp, bottom = 45.dp),
+            .fillMaxSize(),
         topBar = {
             TopAppBar(
                 title = {
                     Text(
                         text = "Designa",
-                        modifier = Modifier.offset(x = (-13).dp),
+
                         fontSize = 24.sp
                     )
                 },
@@ -65,7 +65,7 @@ fun ScreenDetailsCommunity(navController: NavController) {
                     IconButton(
                         onClick =
                         { navController.popBackStack() },
-                        modifier = Modifier.offset(x = (-10).dp)
+                        modifier = Modifier.padding(10.dp)
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.arrow_back),
@@ -82,6 +82,8 @@ fun ScreenDetailsCommunity(navController: NavController) {
             LazyColumn(
                 modifier = Modifier
                     .padding(innerPadding)
+                    .padding(start = 30.dp, end = 30.dp)
+                    .navigationBarsPadding()
                     .fillMaxSize()
                     .animateContentSize(animationSpec = tween(100))
                     .clickable(

@@ -8,13 +8,16 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.offset
+import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.systemBars
+import androidx.compose.foundation.layout.windowInsetsBottomHeight
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -39,10 +42,9 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.avatar.RowAvatars
-import com.example.wbtechnoschool.button.StatusButton
 import com.example.wbtechnoschool.chips.FilterChips
-import com.example.wbtechnoschool.events.Meetings
 import com.example.wbtechnoschool.features.ShowImage
+import com.example.wbtechnoschool.features.ToggleButton
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 import com.thedeanda.lorem.Lorem
@@ -51,17 +53,16 @@ import com.thedeanda.lorem.LoremIpsum
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenDescriptionMeeting(navController: NavController) {
+    var isGoing by remember { mutableStateOf(true) }
     Scaffold(
         modifier = Modifier
             .statusBarsPadding()
-            .fillMaxSize()
-            .padding(start = 30.dp, end = 30.dp, bottom = 65.dp),
+            .fillMaxSize(),
         topBar = {
             TopAppBar(
                 title = {
                     Text(
                         text = "Developer meeting",
-                        modifier = Modifier.offset(x = (-13).dp),
                         fontSize = 24.sp,
                         fontWeight = FontWeight.W600,
                         color = LightColorTheme.neutralActive
@@ -71,7 +72,7 @@ fun ScreenDescriptionMeeting(navController: NavController) {
                     IconButton(
                         onClick =
                         { navController.popBackStack() },
-                        modifier = Modifier.offset(x = (-17).dp)
+                        modifier = Modifier.padding(start = 10.dp)
                     ) {
                         Icon(
                             painter = painterResource(id = R.drawable.arrow_back),
@@ -81,13 +82,28 @@ fun ScreenDescriptionMeeting(navController: NavController) {
                         )
                     }
                 },
-                colors = TopAppBarDefaults.topAppBarColors(containerColor = Color.Transparent),
+                actions = {
+                    if (!isGoing) {
+                        Icon(
+                            painter = painterResource(id = R.drawable.icon_bird),
+                            contentDescription = "",
+                            tint = LightColorTheme.brandColorDefault,
+                            modifier = Modifier.padding(end = 30.dp)
+                        )
+                    }
+                },
+                colors = TopAppBarDefaults.topAppBarColors(
+                    containerColor =
+                    Color.Transparent
+                ),
             )
         }, content = { innerPadding ->
             Column(
                 modifier = Modifier
                     .fillMaxSize()
+                    .navigationBarsPadding()
                     .padding(innerPadding)
+                    .padding(start = 30.dp, end = 30.dp, bottom = 20.dp),
             ) {
                 var showMoreText by remember { mutableStateOf(false) }
                 LazyColumn(
@@ -155,16 +171,19 @@ fun ScreenDescriptionMeeting(navController: NavController) {
                         }
                         Spacer(modifier = Modifier.height(15.dp))
                         RowAvatars()
+                        Spacer(
+                            Modifier.windowInsetsBottomHeight(
+                                WindowInsets.systemBars
+                            )
+                        )
                     }
                 }
-                StatusButton(
-                    containerColor = LightColorTheme.brandColorDefault,
-                    enable = true,
-                    onClick = { /*TODO*/ },
-                    contentText = "Пойду на встречу!",
-                    modifier = Modifier
+                ToggleButton(
+                    isSelected = { selected ->
+                        isGoing = selected
+                    }, modifier = Modifier
                         .fillMaxWidth()
-                        .height(52.dp)
+                        .height(60.dp)
                 )
             }
         }
