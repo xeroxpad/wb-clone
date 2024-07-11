@@ -1,5 +1,6 @@
 package com.example.wbtechnoschool.events
 
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -38,7 +39,6 @@ fun CardActiveMeetings(onClick: () -> Unit, meetings: Meetings) {
         ) {
             MyPreviewAvatar(
                 modifier = Modifier
-                    .padding(start = 5.dp)
                     .size(48.dp),
                 painter = painterResource(id = meetings.icon),
                 contentDescription = null
@@ -89,14 +89,13 @@ fun CardCompletedMeetings(meetings: Meetings) {
         ) {
             MyPreviewAvatar(
                 modifier = Modifier
-                    .padding(start = 5.dp)
                     .size(48.dp),
                 painter = painterResource(id = meetings.icon),
                 contentDescription = null
             )
             Column(
                 modifier = Modifier
-                    .padding(horizontal = 15.dp)
+                    .padding(horizontal = 15.dp, vertical = 10.dp),
             ) {
                 val dateMeeting = stringResource(id = meetings.date)
                 val locationMeeting = stringResource(id = meetings.city)

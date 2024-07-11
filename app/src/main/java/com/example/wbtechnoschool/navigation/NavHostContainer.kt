@@ -5,9 +5,12 @@ import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import com.example.wbtechnoschool.screens.ScreenAuthorization
+import com.example.wbtechnoschool.screens.ScreenAuthorizationProfile
 import com.example.wbtechnoschool.screens.ScreenDetailsCommunity
 import com.example.wbtechnoschool.screens.ScreenCommunity
 import com.example.wbtechnoschool.screens.ScreenDescriptionMeeting
+import com.example.wbtechnoschool.screens.ScreenEntryCode
 import com.example.wbtechnoschool.screens.ScreenHelp
 import com.example.wbtechnoschool.screens.ScreenInfo
 import com.example.wbtechnoschool.screens.ScreenInviteFriend
@@ -54,10 +57,10 @@ fun NavHostContainer(
             ScreenSafety(navController)
         }
         composable(Graph.screenResources) {
-            ScreenResources()
+            ScreenResources(navController)
         }
         composable(Graph.screenHelp) {
-            ScreenHelp()
+            ScreenHelp(navController)
         }
         composable(Graph.inviteFriend) {
             ScreenInviteFriend()
@@ -69,7 +72,17 @@ fun NavHostContainer(
             ScreenDescriptionMeeting(navController)
         }
         composable(Graph.splashScreen) {
-            SplashScreen{navController.navigate(Graph.screenMeeting) {popUpTo(Graph.splashScreen) {inclusive = true}}}
+            SplashScreen{navController.navigate(Graph.screenAuthorization) {popUpTo(Graph.splashScreen) {inclusive = true}}}
         }
+        composable(Graph.screenAuthorization) {
+            ScreenAuthorization(navController)
+        }
+        composable(Graph.screenEntryCode) {
+            ScreenEntryCode(navController)
+        }
+        composable(Graph.screenAuthorizationProfile) {
+            ScreenAuthorizationProfile(navController)
+        }
+
     }
 }

@@ -14,27 +14,18 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.systemBars
 import androidx.compose.foundation.layout.windowInsetsBottomHeight
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -45,12 +36,12 @@ import com.example.wbtechnoschool.avatar.RowAvatars
 import com.example.wbtechnoschool.chips.FilterChips
 import com.example.wbtechnoschool.features.ShowImage
 import com.example.wbtechnoschool.features.ToggleButton
+import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 import com.thedeanda.lorem.Lorem
 import com.thedeanda.lorem.LoremIpsum
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun ScreenDescriptionMeeting(navController: NavController) {
     var isGoing by remember { mutableStateOf(true) }
@@ -59,43 +50,12 @@ fun ScreenDescriptionMeeting(navController: NavController) {
             .statusBarsPadding()
             .fillMaxSize(),
         topBar = {
-            TopAppBar(
-                title = {
-                    Text(
-                        text = "Developer meeting",
-                        fontSize = 24.sp,
-                        fontWeight = FontWeight.W600,
-                        color = LightColorTheme.neutralActive
-                    )
-                },
-                navigationIcon = {
-                    IconButton(
-                        onClick =
-                        { navController.popBackStack() },
-                        modifier = Modifier.padding(start = 10.dp)
-                    ) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.arrow_back),
-                            contentDescription = "вернуться",
-                            modifier = Modifier
-                                .size(20.dp)
-                        )
-                    }
-                },
-                actions = {
-                    if (!isGoing) {
-                        Icon(
-                            painter = painterResource(id = R.drawable.icon_bird),
-                            contentDescription = "",
-                            tint = LightColorTheme.brandColorDefault,
-                            modifier = Modifier.padding(end = 30.dp)
-                        )
-                    }
-                },
-                colors = TopAppBarDefaults.topAppBarColors(
-                    containerColor =
-                    Color.Transparent
-                ),
+            MainTopAppBar(
+                title = "Developer meeting",
+                iconBack = { navController.popBackStack() },
+                actions = { },
+                actionsIcon = if (!isGoing) R.drawable.icon_bird else null,
+                actionsTint = LightColorTheme.brandColorDefault
             )
         }, content = { innerPadding ->
             Column(
@@ -103,7 +63,7 @@ fun ScreenDescriptionMeeting(navController: NavController) {
                     .fillMaxSize()
                     .navigationBarsPadding()
                     .padding(innerPadding)
-                    .padding(start = 30.dp, end = 30.dp, bottom = 20.dp),
+                    .padding(start = 20.dp, end = 20.dp, bottom = 20.dp),
             ) {
                 var showMoreText by remember { mutableStateOf(false) }
                 LazyColumn(
@@ -117,30 +77,25 @@ fun ScreenDescriptionMeeting(navController: NavController) {
                     verticalArrangement = Arrangement.Top,
                 ) {
                     item(1) {
-                        Row {
+                        Row(
+                            modifier = Modifier
+                                .padding(top = 20.dp)
+                        ) {
+                            val dateMeeting = "13.09.2024"
+                            val locationMeeting = "Москва, ул. Громова, 4"
+                            val allTextMeeting = ("$dateMeeting - $locationMeeting")
                             Text(
-                                text = stringResource(id = R.string.date_meeting),
-                                fontFamily = fontSFPro,
-                                fontWeight = FontWeight.W600,
-                                fontSize = 14.sp,
-                                color = LightColorTheme.neutralWeak
-                            )
-                            Text(
-                                text = "-",
-                                fontFamily = fontSFPro,
-                                fontWeight = FontWeight.Light,
-                                fontSize = 18.sp,
-                                color = LightColorTheme.neutralWeak
-                            )
-                            Text(
-                                text = "Москва, ул. Громова, 4",
+                                text = allTextMeeting,
                                 fontFamily = fontSFPro,
                                 fontWeight = FontWeight.W600,
                                 fontSize = 14.sp,
                                 color = LightColorTheme.neutralWeak
                             )
                         }
-                        Row {
+                        Row(
+                            modifier = Modifier
+                                .padding(bottom = 5.dp)
+                        ) {
                             FilterChips(labelText = "Kotlin")
                             FilterChips(labelText = "Junior")
                             FilterChips(labelText = "Moscow")

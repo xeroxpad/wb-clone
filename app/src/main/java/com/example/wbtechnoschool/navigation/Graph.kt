@@ -15,4 +15,7 @@ object Graph {
     const val screenDetailsCommunity = "screen_details_community"
     const val screenDescriptionMeeting = "screen_description_meeting"
     const val splashScreen = "splash_screen"
+    const val screenAuthorizationProfile = "screen_authorization_profile"
+    const val screenAuthorization = "screen_authorization"
+    const val screenEntryCode = "screen_entry_code"
 }

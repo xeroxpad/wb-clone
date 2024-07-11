@@ -29,7 +29,6 @@ import com.example.wbtechnoschool.ui.theme.LightColorTheme
 fun AppSearchBar(modifier: Modifier = Modifier) {
     var text by rememberSaveable { mutableStateOf("") }
     val interactionSource = remember { MutableInteractionSource() }
-
     BasicTextField(
         value = text,
         onValueChange = { text = it },
