@@ -10,5 +10,5 @@
     <string name="meetings_community">Встречи сообщества</string>
     <string name="enter_number_phone">Введите номер телефона</string>
     <string name="enter_code">Введите код</string>
-    <string name="confirm_code">Мы вышлем код подтверждения на указанный номер</string>
+    <string name="topbar_profile">Профиль</string>
 </resources>
