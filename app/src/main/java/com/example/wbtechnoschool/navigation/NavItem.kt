@@ -13,17 +13,17 @@ object Element{
         NavItem(
             description = "Встречи",
             icon = R.drawable.meeting,
-            route = Screens.ScreenMeeting.name
+            route = Graph.screenMeeting
         ),
         NavItem(
             description = "Сообщества",
             icon = R.drawable.community,
-            route = Screens.ScreenCommunity.name
+            route = Graph.screenCommunity
         ),
         NavItem(
             description = "Еще",
             icon = R.drawable.info,
-            route = Screens.ScreenProfile.name
+            route = Graph.screenInfo
         )
     )
 }

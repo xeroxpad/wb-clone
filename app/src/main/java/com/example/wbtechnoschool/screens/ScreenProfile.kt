@@ -1,6 +1,9 @@
 package com.example.wbtechnoschool.screens
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -11,6 +14,8 @@ import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -21,16 +26,22 @@ import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.core.net.toUri
 import androidx.navigation.NavController
+import coil.compose.rememberAsyncImagePainter
+import coil.compose.rememberImagePainter
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.avatar.MyMainAvatar
 import com.example.wbtechnoschool.button.IconOutlinedButton
+import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 
@@ -52,7 +63,11 @@ fun ScreenProfile(navController: NavController) {
                     )
                 },
                 navigationIcon = {
-                    IconButton(onClick = {navController.navigate("icon_screen_profile")}, modifier = Modifier.offset(x = (-10).dp)) {
+                    IconButton(
+                        onClick =
+                        { navController.popBackStack() },
+                        modifier = Modifier.offset(x = (-10).dp)
+                    ) {
                         Icon(
                             painter = painterResource(id = R.drawable.arrow_back),
                             contentDescription = "вернуться",
@@ -81,16 +96,19 @@ fun ScreenProfile(navController: NavController) {
                 verticalArrangement = Arrangement.Top,
             ) {
                 Spacer(modifier = Modifier.height(80.dp))
+
                 MyMainAvatar(
-                    painter = painterResource(id = R.drawable.avatar_main),
-                    contentDescription = "аватар профиль",
+                    painter = painterResource(id = R.drawable.avatars),
+                    contentDescription = "",
                     modifier = Modifier
                         .size(200.dp)
-                        .align(Alignment.CenterHorizontally),
+                        .align(Alignment.CenterHorizontally)
+                        .clip((CircleShape))
                 )
+
                 Spacer(modifier = Modifier.height(20.dp))
                 Text(
-                    text = "Иван Иванов",
+                    text = "Михаил Никонов",
                     fontSize = 24.sp,
                     fontFamily = fontSFPro,
                     fontWeight = FontWeight.W600,
@@ -134,9 +152,3 @@ fun ScreenProfile(navController: NavController) {
         }
     )
 }
-
-//@Preview(showBackground = true)
-//@Composable
-//fun PrevScreenProfile() {
-//    ScreenProfile()
-//}

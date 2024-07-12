@@ -2,13 +2,40 @@ package com.example.wbtechnoschool.screens
 
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
-import com.example.wbtechnoschool.events.Events
+import androidx.navigation.NavController
+import com.example.wbtechnoschool.R
+import com.example.wbtechnoschool.events.CardActiveMeetings
+import com.example.wbtechnoschool.events.CardCompletedMeetings
+import com.example.wbtechnoschool.events.Meetings
+import com.example.wbtechnoschool.navigation.Graph
 
 @Composable
-fun AllMeetings() {
+fun AllMeetings(navController: NavController) {
     LazyColumn {
         items(15) {
-            Events(true)
+            CardActiveMeetings(
+                onClick = { navController.navigate(Graph.screenDescriptionMeeting) },
+                meetings = Meetings(
+                    icon = R.drawable.avatar_preview,
+                    title = "Developer meeting",
+                    date = R.string.date_meeting,
+                    city = R.string.location_meeting,
+                    tagDevelopmentLanguage = "Kotlin",
+                    tagGradeDeveloper = "Junior",
+                    tagCityMeeting = "Moscow",
+                )
+            )
+            CardCompletedMeetings(
+                meetings = Meetings(
+                    icon = R.drawable.avatar_preview,
+                    title = "Developer meeting",
+                    date = R.string.date_meeting,
+                    city = R.string.location_meeting,
+                    tagDevelopmentLanguage = "Kotlin",
+                    tagGradeDeveloper = "Junior",
+                    tagCityMeeting = "Moscow",
+                )
+            )
         }
     }
 }

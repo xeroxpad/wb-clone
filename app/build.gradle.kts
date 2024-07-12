@@ -50,8 +50,7 @@ android {
 }
 
 dependencies {
-    val nav_version = "2.7.7"
-    implementation("androidx.navigation:navigation-compose:$nav_version")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
     implementation("androidx.compose.ui:ui-text-google-fonts:1.6.8")
     implementation("com.google.accompanist:accompanist-pager:0.13.0")
     implementation("com.google.accompanist:accompanist-pager-indicators:0.13.0")
@@ -59,8 +58,12 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.9")
     implementation("androidx.compose.material:material:1.7.0-beta03")
     implementation("androidx.compose.foundation:foundation:1.7.0-beta03")
-    implementation("io.coil-kt:coil-compose:2.2.2")
+    implementation("io.coil-kt:coil-compose:2.6.0")
     implementation("io.coil-kt:coil-svg:2.2.2")
+    implementation("io.coil-kt:coil:2.6.0")
+    implementation("com.thedeanda:lorem:2.1")
+    implementation("com.airbnb.android:lottie-compose:6.1.0")
+    implementation("com.google.android.exoplayer:exoplayer:2.14.2")
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

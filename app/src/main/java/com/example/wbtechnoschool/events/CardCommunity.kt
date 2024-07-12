@@ -1,6 +1,5 @@
 package com.example.wbtechnoschool.events
 
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -19,37 +18,37 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.avatar.MyPreviewAvatar
+import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
-import com.example.wbtechnoschool.ui.theme.LightGrey
 import com.example.wbtechnoschool.ui.theme.SpaceGreyLight
 
 @Composable
-fun CardCommunity() {
+fun CardCommunity(onClick: () -> Unit, community: Community) {
     Card(
-        onClick = { /*TODO*/ }, modifier = Modifier
+        onClick = { onClick() }, modifier = Modifier
             .fillMaxWidth()
-            .padding(top = 7.dp, start = 5.dp, bottom = 7.dp),
+            .padding( start = 5.dp),
         colors = CardDefaults.cardColors(Color.Transparent)
     ) {
         Row {
             MyPreviewAvatar(
-                painter = painterResource(id = R.drawable.avatar_meeting),
+                painter = painterResource(id = community.icon),
                 contentDescription = "",
                 modifier = Modifier
                     .padding(end = 10.dp, bottom = 10.dp)
-                    .clickable { }
                     .size(56.dp)
             )
             Column {
                 Text(
-                    text = stringResource(id = R.string.name_card_meeting),
+                    text = community.title,
                     fontWeight = FontWeight.Bold,
                     fontSize = 14.sp
                 )
                 Text(
-                    text = stringResource(id = R.string.current_users),
+                    text = community.countPersons,
                     fontWeight = FontWeight.Light,
                     fontSize = 12.sp,
                     color = LightColorTheme.neutralDisabled
