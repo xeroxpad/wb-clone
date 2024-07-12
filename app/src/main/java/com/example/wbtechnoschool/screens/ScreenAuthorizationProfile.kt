@@ -66,7 +66,7 @@ fun ScreenAuthorizationProfile(navController: NavController) {
                 StatusButton(
                     containerColor = LightColorTheme.brandColorDefault,
                     enable = name.isNotEmpty(),
-                    onClick = { navController.navigate(Graph.screenMeeting) }, // пока для показа тут пример перехода
+                    onClick = { navController.navigate("${Graph.screenSplashHelloName}/$name") }, // пока для показа тут пример перехода
                     contentText = "Сохранить",
                     modifier = Modifier
                         .fillMaxWidth()

@@ -21,6 +21,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -36,15 +37,21 @@ import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.button.StatusButton
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
+import com.example.wbtechnoschool.viewmodel.AuthorizationViewModel
 
 @Composable
-fun ScreenAuthorization(navController: NavController) {
+fun ScreenAuthorization(
+    navController: NavController,
+    viewModel: AuthorizationViewModel = viewModel(),
+) {
+    val number by viewModel.number.observeAsState("")
     Column(
         modifier = Modifier
             .statusBarsPadding()
@@ -53,7 +60,6 @@ fun ScreenAuthorization(navController: NavController) {
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        var number by rememberSaveable { mutableStateOf("") }
         Spacer(modifier = Modifier.height(96.dp))
         Text(
             text = stringResource(id = R.string.enter_number_phone),
@@ -114,13 +120,7 @@ fun ScreenAuthorization(navController: NavController) {
             Spacer(modifier = Modifier.width(10.dp))
             BasicTextField(
                 value = number,
-                onValueChange = { countNumber ->
-                    when {
-                        countNumber.length <= 10 && countNumber.all { it.isDigit() } -> {
-                            number = countNumber
-                        }
-                    }
-                },
+                onValueChange = { viewModel.onNumberChange(it) },
                 modifier = Modifier
                     .background(
                         LightColorTheme.neutralSecondaryBG,
@@ -163,8 +163,8 @@ fun ScreenAuthorization(navController: NavController) {
         Spacer(modifier = Modifier.height(60.dp))
         StatusButton(
             containerColor = LightColorTheme.brandColorDefault,
-            enable = number.isNotEmpty(), // пока для показа тут пример перехода
-            onClick = { navController.navigate(Graph.screenEntryCode) },
+            enable = viewModel.numberValid(number),
+            onClick = { navController.navigate("${Graph.screenEntryCode}/$number") },
             contentText = "Продолжить",
             modifier = Modifier
                 .fillMaxWidth()

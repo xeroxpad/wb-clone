@@ -17,7 +17,7 @@ fun StartScreen(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
     val showBottomBar =
-        currentRoute != Graph.splashScreen && currentRoute != Graph.screenAuthorization && currentRoute != Graph.screenEntryCode && currentRoute != Graph.screenAuthorizationProfile
+        currentRoute != Graph.splashScreen && currentRoute != Graph.screenAuthorization && currentRoute != Graph.screenEntryCode && currentRoute != Graph.screenAuthorizationProfile && currentRoute != Graph.screenSplashHelloName
     Scaffold(bottomBar = {
         if (showBottomBar) {
             BottomNavBar(navController = navController, modifier = Modifier.navigationBarsPadding())

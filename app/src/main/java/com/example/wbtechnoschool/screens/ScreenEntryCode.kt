@@ -20,9 +20,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -35,6 +33,7 @@ import androidx.compose.ui.text.input.TextFieldValue
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.button.StatusTextButton
@@ -42,11 +41,15 @@ import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
+import com.example.wbtechnoschool.viewmodel.EntryCodeViewModel
 
 @Composable
 fun ScreenEntryCode(
-    navController: NavController
+    phoneNumber: String,
+    navController: NavController,
+    viewModel: EntryCodeViewModel = viewModel(),
 ) {
+    val codeText by viewModel.codeText.observeAsState("")
     Scaffold(
         modifier = Modifier
             .statusBarsPadding()
@@ -74,7 +77,7 @@ fun ScreenEntryCode(
                 )
                 Spacer(modifier = Modifier.height(15.dp))
                 Text(
-                    text = "Отправили код на номер\n+7 999 99-99-99",
+                    text = "Отправили код на номер\n+7 $phoneNumber",
                     fontWeight = FontWeight.W400,
                     fontSize = 14.sp,
                     fontFamily = fontSFPro,
@@ -82,15 +85,15 @@ fun ScreenEntryCode(
                     textAlign = TextAlign.Center,
                     lineHeight = 20.sp
                 )
-                var codeText by remember { mutableStateOf("") }
-                val onNumberEntered: (String, Boolean) -> Unit = { text, isComplete ->
-                    codeText = text
-                    isComplete
-                }
                 EntryCode(
                     codeText = codeText,
                     countNumber = 4,
-                    numberEnter = onNumberEntered
+                    numberEnter = { text, isComplete ->
+                        viewModel.onCodeChange(text)
+                        if (isComplete) {
+                            navController.navigate(Graph.screenAuthorizationProfile) // пока для показа тут пример перехода
+                        }
+                    }
                 )
                 StatusTextButton(
                     contentColor = LightColorTheme.brandColorDefault,

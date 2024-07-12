@@ -18,4 +18,5 @@ object Graph {
     const val screenAuthorizationProfile = "screen_authorization_profile"
     const val screenAuthorization = "screen_authorization"
     const val screenEntryCode = "screen_entry_code"
+    const val screenSplashHelloName = "screen_splash_hello_name"
 }

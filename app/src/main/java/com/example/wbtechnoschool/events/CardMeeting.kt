@@ -95,7 +95,7 @@ fun CardCompletedMeetings(meetings: Meetings) {
             )
             Column(
                 modifier = Modifier
-                    .padding(horizontal = 15.dp, vertical = 10.dp),
+                    .padding(horizontal = 15.dp),
             ) {
                 val dateMeeting = stringResource(id = meetings.date)
                 val locationMeeting = stringResource(id = meetings.city)
