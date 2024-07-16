@@ -6,6 +6,8 @@ import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
 import androidx.navigation.compose.rememberNavController
 import com.example.wbtechnoschool.screens.StartScreen
+import com.example.wbtechnoschool.ui.theme.LightColorTheme
+import com.example.wbtechnoschool.ui.theme.MyTheme
 import com.example.wbtechnoschool.ui.theme.WBTechnoschoolTheme
 
 class MainActivity : ComponentActivity() {
@@ -13,7 +15,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
-            WBTechnoschoolTheme {
+            MyTheme {
                 val navController = rememberNavController()
                 StartScreen(navController = navController)
             }

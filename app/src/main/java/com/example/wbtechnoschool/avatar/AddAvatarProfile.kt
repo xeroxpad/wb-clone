@@ -30,7 +30,6 @@ fun AddAvatarProfile() {
     Box(
         modifier = Modifier
             .size(100.dp)
-            .clickable { avatarOpen = true }
     ) {
         MyMainAvatar(
             painter = painterResource(id = R.drawable.avatars),
@@ -38,6 +37,7 @@ fun AddAvatarProfile() {
             modifier = Modifier
                 .clip(CircleShape)
                 .fillMaxSize()
+                .clickable { avatarOpen = true }
         )
         Icon(
             Icons.Filled.AddCircle,
