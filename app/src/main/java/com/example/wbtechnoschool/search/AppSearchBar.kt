@@ -20,9 +20,12 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.unit.dp
+import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
+import com.example.wbtechnoschool.utils.MagicNumbers
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -39,13 +42,18 @@ fun AppSearchBar(modifier: Modifier = Modifier) {
                 innerTextField = innerTextField,
                 enabled = true,
                 interactionSource = interactionSource,
-                placeholder = { Text("Поиск", color = LightColorTheme.neutralDisabled) },
+                placeholder = {
+                    Text(
+                        stringResource(id = R.string.text_placeholder_search),
+                        color = LightColorTheme.neutralDisabled
+                    )
+                },
                 visualTransformation = VisualTransformation.None,
                 singleLine = true,
                 leadingIcon = {
                     Icon(
                         Icons.Filled.Search,
-                        contentDescription = "Поиск",
+                        contentDescription = null,
                         tint = LightColorTheme.neutralDisabled
                     )
                 },
@@ -56,7 +64,7 @@ fun AppSearchBar(modifier: Modifier = Modifier) {
                         }) {
                             Icon(
                                 imageVector = Icons.Filled.Clear,
-                                contentDescription = "Clear"
+                                contentDescription = null
                             )
                         }
                     }
@@ -70,9 +78,9 @@ fun AppSearchBar(modifier: Modifier = Modifier) {
                     focusedTextColor = LightColorTheme.neutralActive,
                     unfocusedContainerColor = LightColorTheme.neutralSecondaryBG,
                     focusedContainerColor = LightColorTheme.neutralSecondaryBG,
-                    ),
-                shape = RoundedCornerShape(8.dp),
-                contentPadding = PaddingValues(0.dp)
+                ),
+                shape = RoundedCornerShape(MagicNumbers.APP_SEARCH_BAR_SHAPE.dp),
+                contentPadding = PaddingValues(MagicNumbers.APP_SEARCH_CONTENT_PADDING.dp)
             )
         }
     )

@@ -34,29 +34,33 @@ import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
+import com.example.wbtechnoschool.utils.MagicNumbers
+import com.example.wbtechnoschool.utils.SPACER
 import com.thedeanda.lorem.Lorem
 import com.thedeanda.lorem.LoremIpsum
 
 @Composable
-fun ScreenDetailsCommunity(navController: NavController) {
+fun ScreenDetailsCommunity(modifier: Modifier = Modifier, navController: NavController) {
+    var showMoreText by remember { mutableStateOf(false) }
+    val lorem: Lorem = LoremIpsum() /*для примера*/
+    val loremText = lorem.getWords(100, 200) /*для примера*/
     Scaffold(
-        modifier = Modifier
+        modifier = modifier
             .statusBarsPadding()
             .fillMaxSize(),
         topBar = {
             MainTopAppBar(
-                title = "Designa",
+                title = stringResource(id = R.string.card_community_title),
                 iconBack = { navController.popBackStack() },
             )
         }, content = { innerPadding ->
-            var showMoreText by remember { mutableStateOf(false) }
             LazyColumn(
                 modifier = Modifier
-                    .padding(start = 20.dp, end = 20.dp)
+                    .padding(horizontal = MagicNumbers.SCREEN_DETAILS_COMMUNITY_LAZY_PADDING_HORIZONTAL.dp)
                     .padding(innerPadding)
                     .navigationBarsPadding()
                     .fillMaxSize()
-                    .animateContentSize(animationSpec = tween(100))
+//                    .animateContentSize(animationSpec = tween(100))
                     .clickable(
                         interactionSource = remember { MutableInteractionSource() },
                         indication = null
@@ -64,44 +68,44 @@ fun ScreenDetailsCommunity(navController: NavController) {
                 verticalArrangement = Arrangement.Top,
             ) {
                 item(1) {
-                    val lorem: Lorem = LoremIpsum()
-                    val loremText = lorem.getWords(100, 200)
-                    if (showMoreText) {
-                        Text(
-                            text = loremText,
-                            fontSize = 12.sp,
-                            fontFamily = fontSFPro,
-                            fontWeight = FontWeight.W400,
-                            color = LightColorTheme.neutralWeak
-                        )
-                    } else {
-                        Text(
-                            text = loremText,
-                            fontSize = 12.sp,
-                            fontFamily = fontSFPro,
-                            fontWeight = FontWeight.W400,
-                            color = LightColorTheme.neutralWeak,
-                            maxLines = 13,
-                            overflow = TextOverflow.Ellipsis
-                        )
+                    when {
+                        showMoreText -> {
+                            Text(
+                                text = loremText,
+                                fontSize = MagicNumbers.SCREEN_DETAILS_COMMUNITY_LAZY_SHOW_TEXT_FONT_SIZE.sp,
+                                fontFamily = fontSFPro,
+                                fontWeight = FontWeight.W400,
+                                color = LightColorTheme.neutralWeak
+                            )
+                        }
+                        else -> {
+                            Text(
+                                text = loremText,
+                                fontSize = MagicNumbers.SCREEN_DETAILS_COMMUNITY_LAZY_SHOW_TEXT_FONT_SIZE.sp,
+                                fontFamily = fontSFPro,
+                                fontWeight = FontWeight.W400,
+                                color = LightColorTheme.neutralWeak,
+                                maxLines = MagicNumbers.SCREEN_DETAILS_COMMUNITY_LAZY_SHOW_TEXT_MAX_LINES,
+                                overflow = TextOverflow.Ellipsis
+                            )
+                        }
                     }
-
-                    Spacer(modifier = Modifier.height(30.dp))
+                    Spacer(modifier = Modifier.height(SPACER.SPACER_30.value.dp))
                     Text(
                         text = stringResource(id = R.string.meetings_community),
-                        fontSize = 14.sp,
+                        fontSize = MagicNumbers.SCREEN_DETAILS_COMMUNITY_TEXT_MEETINGS_COMMUNITY_FONT_SIZE.sp,
                         fontFamily = fontSFPro,
                         fontWeight = FontWeight.W600,
                         color = LightColorTheme.neutralWeak
                     )
-                    Spacer(modifier = Modifier.height(20.dp))
+                    Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                 }
                 items(18) {
                     CardActiveMeetings(
                         onClick = { navController.navigate(Graph.screenDescriptionMeeting) },
                         meetings = Meetings(
                             icon = R.drawable.avatar_preview,
-                            title = "Developer meeting",
+                            title = stringResource(id = R.string.meetings_community),
                             date = R.string.date_meeting,
                             city = R.string.location_meeting,
                             tagDevelopmentLanguage = "Kotlin",
@@ -112,7 +116,7 @@ fun ScreenDetailsCommunity(navController: NavController) {
                     CardCompletedMeetings(
                         meetings = Meetings(
                             icon = R.drawable.avatar_preview,
-                            title = "Developer meeting",
+                            title = stringResource(id = R.string.meetings_community),
                             date = R.string.date_meeting,
                             city = R.string.location_meeting,
                             tagDevelopmentLanguage = "Kotlin",

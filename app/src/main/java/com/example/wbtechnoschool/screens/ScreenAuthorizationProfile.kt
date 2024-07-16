@@ -16,24 +16,30 @@ import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.avatar.AddAvatarProfile
 import com.example.wbtechnoschool.button.StatusButton
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.search.CustomTextFieldForProfile
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
+import com.example.wbtechnoschool.utils.MagicNumbers
+import com.example.wbtechnoschool.utils.SPACER
 
 @Composable
-fun ScreenAuthorizationProfile(navController: NavController) {
+fun ScreenAuthorizationProfile(navController: NavController, modifier: Modifier = Modifier) {
+    var name by rememberSaveable { mutableStateOf("") }
+    var surname by rememberSaveable { mutableStateOf("") }
     Scaffold(
-        modifier = Modifier
+        modifier = modifier
             .statusBarsPadding()
             .fillMaxSize(),
         topBar = {
             MainTopAppBar(
-                title = "Профиль",
+                title = stringResource(id = R.string.top_bar_profile),
                 iconBack = { navController.popBackStack() },
                 actions = null,
             )
@@ -42,35 +48,33 @@ fun ScreenAuthorizationProfile(navController: NavController) {
                 modifier = Modifier
                     .padding(innerPadding)
                     .fillMaxSize()
-                    .padding(start = 20.dp, end = 20.dp),
+                    .padding(horizontal = MagicNumbers.SCREEN_AUTH_PROF_COLUMN_PADDING_HORIZONTAL.dp),
                 verticalArrangement = Arrangement.Top,
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                var name by rememberSaveable { mutableStateOf("") }
-                var surname by rememberSaveable { mutableStateOf("") }
-                Spacer(modifier = Modifier.height(60.dp))
+                Spacer(modifier = Modifier.height(SPACER.SPACER_60.value.dp))
                 AddAvatarProfile()
-                Spacer(modifier = Modifier.height(30.dp))
+                Spacer(modifier = Modifier.height(SPACER.SPACER_30.value.dp))
                 CustomTextFieldForProfile(
-                    textPlaceholder = "Имя (обязательно)",
+                    textPlaceholder = stringResource(id = R.string.text_placeholder_name),
                     text = name,
-                    textChange = {name = it}
+                    textChange = { name = it }
                 )
-                Spacer(modifier = Modifier.height(10.dp))
+                Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
                 CustomTextFieldForProfile(
-                    textPlaceholder = "Фамилия (опционально)",
+                    textPlaceholder = stringResource(id = R.string.text_placeholder_surname),
                     text = surname,
-                    textChange = {surname = it}
+                    textChange = { surname = it }
                 )
-                Spacer(modifier = Modifier.height(40.dp))
+                Spacer(modifier = Modifier.height(SPACER.SPACER_40.value.dp))
                 StatusButton(
                     containerColor = LightColorTheme.brandColorDefault,
                     enable = name.isNotEmpty(),
                     onClick = { navController.navigate("${Graph.screenSplashHelloName}/$name") }, // пока для показа тут пример перехода
-                    contentText = "Сохранить",
+                    contentText = stringResource(id = R.string.save),
                     modifier = Modifier
                         .fillMaxWidth()
-                        .height(53.dp)
+                        .height(MagicNumbers.SCREEN_AUTH_PROF_STATUS_BUTTON_HEIGHT.dp)
                 )
             }
         }

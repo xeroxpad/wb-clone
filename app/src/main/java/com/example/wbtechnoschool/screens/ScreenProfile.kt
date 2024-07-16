@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -29,16 +30,18 @@ import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
+import com.example.wbtechnoschool.utils.MagicNumbers
+import com.example.wbtechnoschool.utils.SPACER
 
 @Composable
-fun ScreenProfile(navController: NavController) {
+fun ScreenProfile(navController: NavController, modifier: Modifier = Modifier) {
     Scaffold(
-        modifier = Modifier
+        modifier = modifier
             .statusBarsPadding()
             .fillMaxSize(),
         topBar = {
             MainTopAppBar(
-                title = "Профиль",
+                title = stringResource(id = R.string.top_bar_my_profile),
                 iconBack = { navController.popBackStack() },
                 actions = { navController.navigate(Graph.screenAuthorizationProfile) },
                 actionsIcon = R.drawable.edit
@@ -46,37 +49,37 @@ fun ScreenProfile(navController: NavController) {
         }, content = { innerPadding ->
             Column(
                 modifier = Modifier
-                    .padding(start = 20.dp, end = 20.dp)
+                    .padding(MagicNumbers.SCREEN_PROFILE_PADDING_HORIZONTAL.dp)
                     .padding(innerPadding)
                     .fillMaxSize(),
                 verticalArrangement = Arrangement.Top,
             ) {
-                Spacer(modifier = Modifier.height(80.dp))
+                Spacer(modifier = Modifier.height(SPACER.SPACER_80.value.dp))
                 MyMainAvatar(
                     painter = painterResource(id = R.drawable.avatars),
-                    contentDescription = "",
+                    contentDescription = null,
                     modifier = Modifier
-                        .size(200.dp)
+                        .size(MagicNumbers.SCREEN_PROFILE_MY_MAIN_AVATAR_SIZE.dp)
                         .align(Alignment.CenterHorizontally)
                         .clip((CircleShape))
                 )
-                Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                 Text(
                     text = "Михаил Никонов",
-                    fontSize = 24.sp,
+                    fontSize = MagicNumbers.SCREEN_PROFILE_TEXT_NAME_FONT_SIZE.sp,
                     fontFamily = fontSFPro,
                     fontWeight = FontWeight.W600,
                     modifier = Modifier.align(Alignment.CenterHorizontally)
                 )
                 Text(
                     text = "+7 999 999-99-99",
-                    fontSize = 16.sp,
+                    fontSize = MagicNumbers.SCREEN_PROFILE_TEXT_NUMBER_FONT_SIZE.sp,
                     fontFamily = fontSFPro,
                     fontWeight = FontWeight.W400,
                     color = LightColorTheme.neutralDisabled,
                     modifier = Modifier.align(Alignment.CenterHorizontally)
                 )
-                Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                 Row(
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.fillMaxWidth()

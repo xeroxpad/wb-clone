@@ -43,6 +43,8 @@ import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 import com.example.wbtechnoschool.viewmodel.EntryCodeViewModel
 
+const val COUNTER_NUMBER = 4
+
 @Composable
 fun ScreenEntryCode(
     phoneNumber: String,
@@ -87,7 +89,6 @@ fun ScreenEntryCode(
                 )
                 EntryCode(
                     codeText = codeText,
-                    countNumber = 4,
                     numberEnter = { text, isComplete ->
                         viewModel.onCodeChange(text)
                         if (isComplete) {
@@ -115,7 +116,11 @@ fun NumberView(
     index: Int,
     text: String,
 ) {
-    val char = text.getOrNull(index)?.toString() ?: ""
+    val char = when {
+        index == text.length -> ""
+        index > text.length -> ""
+        else -> text[index].toString()
+    }
     val contentColor = LightColorTheme.neutralActive
     Box(
         contentAlignment = Alignment.Center,
@@ -145,14 +150,13 @@ fun NumberView(
 @Composable
 fun EntryCode(
     codeText: String,
-    countNumber: Int = 4,
     numberEnter: (String, Boolean) -> Unit,
 ) {
     BasicTextField(
         value = TextFieldValue(codeText, selection = TextRange(codeText.length)),
         onValueChange = {
-            if (it.text.length <= countNumber) {
-                numberEnter.invoke(it.text, it.text.length == countNumber)
+            if (it.text.length <= COUNTER_NUMBER) {
+                numberEnter.invoke(it.text, it.text.length == COUNTER_NUMBER)
             }
         },
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
@@ -162,7 +166,7 @@ fun EntryCode(
                     .fillMaxWidth()
                     .padding(50.dp)
             ) {
-                repeat(countNumber) { index ->
+                repeat(COUNTER_NUMBER) { index ->
                     NumberView(
                         index = index,
                         text = codeText

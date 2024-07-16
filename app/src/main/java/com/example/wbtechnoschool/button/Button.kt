@@ -21,6 +21,7 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
+import com.example.wbtechnoschool.utils.MagicNumbers
 
 @Composable
 fun AllButton(
@@ -66,16 +67,16 @@ fun StatusButton(
     containerColor: Color,
     enable: Boolean,
     onClick: () -> Unit,
-    contentText: String
+    contentText: String,
 ) {
     Button(
         onClick = onClick,
-        shape = RoundedCornerShape(78),
+        shape = RoundedCornerShape(MagicNumbers.BUTTON_SHAPE),
         modifier = modifier,
         colors = ButtonDefaults.buttonColors(
             containerColor = containerColor,
             contentColor = White,
-            disabledContainerColor = LightColorTheme.brandColorDefault.copy(alpha = 0.5f)
+            disabledContainerColor = LightColorTheme.brandColorDefault.copy(alpha = MagicNumbers.BUTTON_DISABLED_CONTAINER_COLOR)
         ),
         enabled = enable,
     ) {
@@ -90,14 +91,14 @@ fun StatusOutlinedButton(
     contentColor: Color,
     enable: Boolean,
     onClick: () -> Unit,
-    contentText: String
+    contentText: String,
 ) {
     OutlinedButton(
         onClick = onClick,
-        shape = RoundedCornerShape(78),
+        shape = RoundedCornerShape(MagicNumbers.BUTTON_SHAPE),
         modifier = modifier,
         border = BorderStroke(
-            width = 2.dp,
+            width = MagicNumbers.BUTTON_BORDER_STROKE_WIDTH.dp,
             color = contentColor
         ),
         colors = ButtonDefaults.buttonColors(
@@ -117,11 +118,11 @@ fun StatusTextButton(
     containerColor: Color,
     enable: Boolean,
     onClick: () -> Unit,
-    contentText: String
+    contentText: String,
 ) {
     TextButton(
         onClick = onClick,
-        shape = RoundedCornerShape(78),
+        shape = RoundedCornerShape(MagicNumbers.BUTTON_SHAPE),
         modifier = modifier,
         colors = ButtonDefaults.buttonColors(
             contentColor = contentColor,
@@ -129,7 +130,7 @@ fun StatusTextButton(
         ),
         enabled = enable,
     ) {
-        Text(text = contentText, fontSize = 20.sp)
+        Text(text = contentText, fontSize = MagicNumbers.BUTTON_TEXT_BUTTON_FONT_SIZE.sp)
     }
 }
 
@@ -138,14 +139,14 @@ fun IconOutlinedButton(
     modifier: Modifier = Modifier,
     contentColor: Color,
     onClick: () -> Unit,
-    icon: Int
+    icon: Int,
 ) {
     OutlinedButton(
         onClick = onClick,
-        shape = RoundedCornerShape(78),
+        shape = RoundedCornerShape(MagicNumbers.BUTTON_SHAPE),
         modifier = modifier,
         border = BorderStroke(
-            width = 2.dp,
+            width = MagicNumbers.BUTTON_BORDER_STROKE_WIDTH.dp,
             color = contentColor
         ),
         colors = ButtonDefaults.buttonColors(
@@ -153,7 +154,7 @@ fun IconOutlinedButton(
             contentColor = contentColor,
         ),
     ) {
-        Icon(painter = painterResource(id = icon), contentDescription = "")
+        Icon(painter = painterResource(id = icon), contentDescription = null)
     }
 }
 

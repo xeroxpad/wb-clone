@@ -23,6 +23,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -34,48 +35,54 @@ import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
+import com.example.wbtechnoschool.utils.MagicNumbers
+import com.example.wbtechnoschool.utils.SPACER
 
 @Composable
-fun ScreenInfo(navController: NavController) {
+fun ScreenInfo(navController: NavController, modifier: Modifier = Modifier) {
     Scaffold(
-        modifier = Modifier
+        modifier = modifier
             .statusBarsPadding()
             .fillMaxSize(),
         topBar = {
             MainTopAppBar(
-                title = "Еще"
+                title = stringResource(id = R.string.top_bar_screen_info)
             )
         }, content = { innerPadding ->
             Column(
                 modifier = Modifier
-                    .padding(start = 20.dp, end = 20.dp)
+                    .padding(horizontal = MagicNumbers.SCREEN_INFO_COLUMN_PADDING_HORIZONTAL.dp)
                     .padding(innerPadding)
                     .fillMaxSize(),
                 verticalArrangement = Arrangement.Top,
             ) {
-                Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                 Row(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .clip(RoundedCornerShape(8.dp))
-                        .clickable {navController.navigate(Graph.screenProfile)},
+                        .clip(RoundedCornerShape(MagicNumbers.SCREEN_INFO_ROW_CLIP.dp))
+                        .clickable { navController.navigate(Graph.screenProfile) },
                     verticalAlignment = Alignment.CenterVertically
                 )
                 {
                     MyMainAvatar(
-                        painter = painterResource(id = R.drawable.avatars), contentDescription = "", modifier = Modifier.size(60.dp).clip((CircleShape))
+                        painter = painterResource(id = R.drawable.avatars),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(MagicNumbers.SCREEN_INFO_MY_MAIN_AVATAR_SIZE.dp)
+                            .clip((CircleShape))
                     )
-                    Spacer(modifier = Modifier.width(20.dp))
-                    Column(modifier = Modifier.weight(1.8f)) {
+                    Spacer(modifier = Modifier.width(SPACER.SPACER_20.value.dp))
+                    Column(modifier = Modifier.weight(MagicNumbers.SCREEN_INFO_COLUMN_WEIGHT)) {
                         Text(
-                            text = "Михаил Никонов",
-                            fontSize = 18.sp,
+                            text = stringResource(id = R.string.profile_name), /*для примера*/
+                            fontSize = MagicNumbers.SCREEN_INFO_COLUMN_TEXT_NAME_FONT_SIZE.sp,
                             fontFamily = fontSFPro,
                             fontWeight = FontWeight.W600,
                         )
                         Text(
-                            text = "+7 999 999-99-99",
-                            fontSize = 14.sp,
+                            text = stringResource(id = R.string.profile_number), /*для примера*/
+                            fontSize = MagicNumbers.SCREEN_INFO_COLUMN_TEXT_NUMBER_FONT_SIZE.sp,
                             fontFamily = fontSFPro,
                             fontWeight = FontWeight.W400,
                             color = LightColorTheme.neutralDisabled,
@@ -83,52 +90,52 @@ fun ScreenInfo(navController: NavController) {
                     }
                     Icon(
                         painter = painterResource(id = R.drawable.icon_go),
-                        contentDescription = "Перейти",
-                        modifier = Modifier.size(18.dp)
+                        contentDescription = null,
+                        modifier = Modifier.size(MagicNumbers.SCREEN_INFO_ICON_GO_SIZE.dp)
                     )
                 }
-                Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                 ContainerToGo(
                     icon = R.drawable.meeting,
-                    title = "Мои встречи",
-                    onClick = {navController.navigate(Graph.screenMyMeetings)}
+                    title = stringResource(id = R.string.container_to_go_title_my_meetings),
+                    onClick = { navController.navigate(Graph.screenMyMeetings) }
                 )
-                Spacer(modifier = Modifier.height(20.dp))
+                Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                 ContainerToGo(
                     icon = R.drawable.icon_theme,
-                    title = "Тема",
-                    onClick = {navController.navigate(Graph.screenTheme)}
+                    title = stringResource(id = R.string.container_to_go_title_theme),
+                    onClick = { navController.navigate(Graph.screenTheme) }
                 )
                 ContainerToGo(
                     icon = R.drawable.icon_notifications,
-                    title = "Уведомления",
-                    onClick = {navController.navigate(Graph.screenNotifications)}
+                    title = stringResource(id = R.string.container_to_go_title_notifications),
+                    onClick = { navController.navigate(Graph.screenNotifications) }
                 )
                 ContainerToGo(
                     icon = R.drawable.icon_safety,
-                    title = "Безопасность",
-                    onClick = {navController.navigate(Graph.screenSafety)}
+                    title = stringResource(id = R.string.container_to_go_title_safety),
+                    onClick = { navController.navigate(Graph.screenSafety) }
                 )
                 ContainerToGo(
                     icon = R.drawable.icon_recources,
-                    title = "Память и ресурсы",
-                    onClick = {navController.navigate(Graph.screenResources)}
+                    title = stringResource(id = R.string.container_to_go_title_resources),
+                    onClick = { navController.navigate(Graph.screenResources) }
                 )
                 HorizontalDivider(
-                    modifier = Modifier.padding(vertical = 10.dp),
+                    modifier = Modifier.padding(vertical = MagicNumbers.SCREEN_INFO_HORIZONTAL_DIVIDER_VERTICAL_PADDING.dp),
                     color = LightColorTheme.neutralLine
                 )
                 ContainerToGo(
                     icon = R.drawable.icon_help,
-                    title = "Помощь",
-                    onClick = {navController.navigate(Graph.screenHelp)},
-                    sizeIcon = 33.dp,
-                    paddingIcon = 0.dp
+                    title = stringResource(id = R.string.container_to_go_title_help),
+                    onClick = { navController.navigate(Graph.screenHelp) },
+                    sizeIcon = MagicNumbers.SCREEN_INFO_ICON_HELP_SIZE.dp,
+                    paddingIcon = MagicNumbers.SCREEN_INFO_ICON_HELP_PADDING.dp
                 )
                 ContainerToGo(
                     icon = R.drawable.icon_invite_friend,
-                    title = "Пригласи друга",
-                    onClick = {navController.navigate(Graph.inviteFriend)}
+                    title = stringResource(id = R.string.container_to_go_title_invite_friend),
+                    onClick = { navController.navigate(Graph.inviteFriend) }
                 )
             }
         }

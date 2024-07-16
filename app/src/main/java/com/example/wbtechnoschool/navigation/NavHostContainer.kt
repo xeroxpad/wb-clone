@@ -9,9 +9,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.wbtechnoschool.screens.ScreenAuthorization
 import com.example.wbtechnoschool.screens.ScreenAuthorizationProfile
-import com.example.wbtechnoschool.screens.ScreenDetailsCommunity
 import com.example.wbtechnoschool.screens.ScreenCommunity
 import com.example.wbtechnoschool.screens.ScreenDescriptionMeeting
+import com.example.wbtechnoschool.screens.ScreenDetailsCommunity
 import com.example.wbtechnoschool.screens.ScreenEntryCode
 import com.example.wbtechnoschool.screens.ScreenHelp
 import com.example.wbtechnoschool.screens.ScreenInfo
@@ -69,7 +69,7 @@ fun NavHostContainer(
             ScreenInviteFriend()
         }
         composable(Graph.screenDetailsCommunity) {
-            ScreenDetailsCommunity(navController)
+            ScreenDetailsCommunity(navController = navController)
         }
         composable(Graph.screenDescriptionMeeting) {
             ScreenDescriptionMeeting(navController)
@@ -78,19 +78,16 @@ fun NavHostContainer(
             SplashScreen{navController.navigate(Graph.screenAuthorization) {popUpTo(Graph.splashScreen) {inclusive = true}}}
         }
         composable(Graph.screenAuthorization) {
-            ScreenAuthorization(navController)
+            ScreenAuthorization(navController = navController)
         }
-//        composable(Graph.screenEntryCode) {
-//            ScreenEntryCode(navController)
-//        }
         composable(
             route = "${Graph.screenEntryCode}/{phoneNumber}",
             arguments = listOf(navArgument("phoneNumber") {type = NavType.StringType})
         ) { backStackEntry ->
-          ScreenEntryCode(
-              navController = navController,
-              phoneNumber = backStackEntry.arguments?.getString("phoneNumber") ?: ""
-          )
+            ScreenEntryCode(
+                navController = navController,
+                phoneNumber = backStackEntry.arguments?.getString("phoneNumber") ?: ""
+            )
         }
         composable(Graph.screenAuthorizationProfile) {
             ScreenAuthorizationProfile(navController)

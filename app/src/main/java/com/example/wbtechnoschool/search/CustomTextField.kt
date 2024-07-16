@@ -21,43 +21,51 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
+import com.example.wbtechnoschool.utils.MagicNumbers
 
 @Composable
-fun CustomTextFieldForProfile(textPlaceholder: String, textChange: (String) -> Unit, text: String) {
+fun CustomTextFieldForProfile(
+    modifier: Modifier = Modifier,
+    textPlaceholder: String,
+    textChange: (String) -> Unit,
+    text: String,
+) {
     BasicTextField(
         value = text,
         onValueChange = { textChange(it) },
-        modifier = Modifier
+        modifier = modifier
             .background(
                 LightColorTheme.neutralSecondaryBG,
-                RoundedCornerShape(5.dp)
+                RoundedCornerShape(MagicNumbers.CUSTOM_TF_FOR_PROFILE_BASIC_TF_SHAPE.dp)
             )
             .fillMaxWidth(),
         decorationBox = { innerTextField ->
             Box(
                 contentAlignment = Alignment.CenterStart,
                 modifier = Modifier
-                    .padding(horizontal = 8.dp)
-                    .height(36.dp)
+                    .padding(horizontal = MagicNumbers.CUSTOM_TF_FOR_PROFILE_DECORATION_BOX_PADDING_HORIZONTAL.dp)
+                    .height(MagicNumbers.CUSTOM_TF_FOR_PROFILE_DECORATION_BOX_PADDING_HEIGHT.dp)
             ) {
-                if (text.isEmpty()) {
-                    Text(
-                        text = textPlaceholder,
-                        color = LightColorTheme.neutralDisabled,
-                        fontWeight = FontWeight.W600,
-                        fontSize = 14.sp,
-                        fontFamily = fontSFPro,
-                        letterSpacing = 1.sp
-                    )
+                when {
+                    text.isEmpty() -> {
+                        Text(
+                            text = textPlaceholder,
+                            color = LightColorTheme.neutralDisabled,
+                            fontWeight = FontWeight.W600,
+                            fontSize = MagicNumbers.CUSTOM_TF_FOR_PROFILE_DECORATION_BOX_TEXT_FONT_SIZE.sp,
+                            fontFamily = fontSFPro,
+                            letterSpacing = MagicNumbers.CUSTOM_TF_FOR_PROFILE_DECORATION_BOX_TEXT_LETTER_SPACING.sp
+                        )
+                    }
                 }
                 innerTextField()
             }
         },
         textStyle = TextStyle(
             fontWeight = FontWeight.W600,
-            fontSize = 14.sp,
+            fontSize = MagicNumbers.CUSTOM_TF_FOR_PROFILE_DECORATION_BOX_TEXT_STYLE_FONT_SIZE.sp,
             fontFamily = fontSFPro,
-            letterSpacing = 1.sp,
+            letterSpacing = MagicNumbers.CUSTOM_TF_FOR_PROFILE_DECORATION_BOX_TEXT_STYLE_LETTER_SPACING.sp,
             color = LightColorTheme.neutralActive
         ),
         singleLine = true,

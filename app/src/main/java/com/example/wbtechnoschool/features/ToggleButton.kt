@@ -1,22 +1,20 @@
 package com.example.wbtechnoschool.features
 
-import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.unit.dp
+import androidx.compose.ui.res.stringResource
+import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.button.StatusButton
 import com.example.wbtechnoschool.button.StatusOutlinedButton
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 
 @Composable
-fun ToggleButton(isSelected: (Boolean) -> Unit, modifier: Modifier = Modifier) {
+fun ToggleButton(modifier: Modifier = Modifier, isSelected: (Boolean) -> Unit) {
     var isGoing by remember { mutableStateOf(true) }
-
     when {
         isGoing -> {
             StatusButton(
@@ -26,11 +24,10 @@ fun ToggleButton(isSelected: (Boolean) -> Unit, modifier: Modifier = Modifier) {
                     isGoing = !isGoing
                     isSelected(isGoing)
                 },
-                contentText = "Пойду на встречу!",
+                contentText = stringResource(id = R.string.go_to_the_meetings),
                 modifier = modifier
             )
         }
-
         else -> {
             StatusOutlinedButton(
                 contentColor = LightColorTheme.brandColorDefault,
@@ -39,7 +36,7 @@ fun ToggleButton(isSelected: (Boolean) -> Unit, modifier: Modifier = Modifier) {
                     isGoing = !isGoing
                     isSelected(isGoing)
                 },
-                contentText = "Схожу в другой раз",
+                contentText = stringResource(id = R.string.go_another_time_meetings),
                 modifier = modifier
             )
         }

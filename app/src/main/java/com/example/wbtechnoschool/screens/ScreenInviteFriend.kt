@@ -10,6 +10,6 @@ import androidx.compose.ui.Modifier
 @Composable
 fun ScreenInviteFriend() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(text = "Пригласи друга")
+        Text(text = "Пригласи друга") /*для примера*/
     }
 }

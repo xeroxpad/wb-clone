@@ -25,10 +25,15 @@ import androidx.compose.ui.zIndex
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.ui.theme.LightGrey
 import com.example.wbtechnoschool.ui.theme.fontSFPro
+import com.example.wbtechnoschool.utils.MagicNumbers
 
+const val take = 5
+const val zIndex = 1F
 
 @Composable
-fun RowAvatars() {
+fun RowAvatars(
+    modifier: Modifier = Modifier
+) {
     val arrayImage = listOf(
         painterResource(id = R.drawable.avatars),
         painterResource(id = R.drawable.nature),
@@ -53,20 +58,19 @@ fun RowAvatars() {
                 else -> -15.dp
             }
         ),
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
-            .zIndex(-1f),
+            .zIndex(-zIndex),
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        for (i in arrayImage.withIndex().take(5)) {
+        for (i in arrayImage.withIndex().take(take)) {
             val zIndex = (arrayImage.size - i.index).toFloat()
             Box(
                 modifier = Modifier
                     .zIndex(zIndex)
-                    .padding(vertical = 5.dp)
-                    .size(50.dp)
-                    .border(2.dp, LightGrey, RoundedCornerShape(40))
-
+                    .padding(vertical = MagicNumbers.ROW_LIST_AVATAR_BOX_PADDING_VERTICAL.dp)
+                    .size(MagicNumbers.ROW_LIST_AVATAR_BOX_SIZE.dp)
+                    .border(MagicNumbers.ROW_LIST_AVATAR_BOX_BORDER.dp, LightGrey, RoundedCornerShape(MagicNumbers.ROW_LIST_AVATAR_BOX_BORDER_SHAPE))
             ) {
                 MyPreviewAvatar(
                     painter = i.value,
@@ -80,13 +84,13 @@ fun RowAvatars() {
                 )
             }
         }
-        if (arrayImage.size > 5) {
+        if (arrayImage.size > take) {
             Text(
-                text = "+ ${arrayImage.size - 5}",
-                fontSize = 14.sp,
+                text = "+ ${arrayImage.size - take}",
+                fontSize = MagicNumbers.ROW_LIST_AVATAR_TEXT_FONT_SIZE.sp,
                 fontFamily = fontSFPro,
                 fontWeight = FontWeight.Bold,
-                modifier = Modifier.padding(20.dp)
+                modifier = Modifier.padding(MagicNumbers.ROW_LIST_AVATAR_TEXT_PADDING.dp)
             )
         }
     }

@@ -19,34 +19,42 @@ import androidx.compose.ui.unit.sp
 import com.example.wbtechnoschool.avatar.MyPreviewAvatar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.SpaceGreyLight
+import com.example.wbtechnoschool.utils.MagicNumbers
 
 @Composable
-fun CardCommunity(onClick: () -> Unit, community: Community) {
+fun CardCommunity(
+    modifier: Modifier = Modifier,
+    community: Community,
+    onClick: () -> Unit,
+) {
     Card(
-        onClick = { onClick() },
-        modifier = Modifier
-            .padding(vertical = 7.dp)
+        onClick = onClick,
+        modifier = modifier
             .fillMaxWidth(),
         colors = CardDefaults.cardColors(Color.Transparent)
     ) {
         Row() {
             MyPreviewAvatar(
                 painter = painterResource(id = community.icon),
-                contentDescription = "",
+                contentDescription = null,
                 modifier = Modifier
-                    .padding(end = 10.dp, bottom = 10.dp)
-                    .size(56.dp)
+                    .padding(
+                        end = MagicNumbers.CARD_COMMUNITY_MY_PREV_AVATAR_PADDING_END.dp,
+                        bottom = MagicNumbers.CARD_COMMUNITY_MY_PREV_AVATAR_PADDING_BOTTOM.dp
+                    )
+                    .size(MagicNumbers.CARD_COMMUNITY_MY_PREV_AVATAR_SIZE.dp)
             )
             Column {
                 Text(
                     text = community.title,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp
+                    fontSize = MagicNumbers.CARD_COMMUNITY_TEXT_TITLE.sp,
+                    color = LightColorTheme.neutralActive
                 )
                 Text(
                     text = community.countPersons,
                     fontWeight = FontWeight.Light,
-                    fontSize = 12.sp,
+                    fontSize = MagicNumbers.CARD_COMMUNITY_TEXT_COUNT_PERSONS.sp,
                     color = LightColorTheme.neutralDisabled
                 )
             }

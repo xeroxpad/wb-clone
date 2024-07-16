@@ -1,6 +1,5 @@
 package com.example.wbtechnoschool.events
 
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -26,35 +25,37 @@ import com.example.wbtechnoschool.chips.FilterChips
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.SpaceGreyLight
 import com.example.wbtechnoschool.ui.theme.fontSFPro
+import com.example.wbtechnoschool.utils.MagicNumbers
 
 @Composable
-fun CardActiveMeetings(onClick: () -> Unit, meetings: Meetings) {
+fun CardActiveMeetings(modifier: Modifier = Modifier, meetings: Meetings, onClick: () -> Unit) {
+    val dateMeeting = stringResource(id = meetings.date)
+    val locationMeeting = stringResource(id = meetings.city)
+    val allTextMeeting = ("$dateMeeting - $locationMeeting")
     Card(
         onClick = { onClick() }, colors = CardDefaults.cardColors(Color.Transparent)
     ) {
         Row(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
-                .padding(top = 7.dp)
+                .padding(top = MagicNumbers.CARD_ACTIVE_MEETINGS_ROW_PADDING_TOP.dp)
         ) {
             MyPreviewAvatar(
                 modifier = Modifier
-                    .size(48.dp),
+                    .size(MagicNumbers.CARD_ACTIVE_MEETINGS_MY_PREV_AVATAR_SIZE.dp),
                 painter = painterResource(id = meetings.icon),
                 contentDescription = null
             )
             Column(
                 modifier = Modifier
-                    .padding(horizontal = 15.dp)
+                    .padding(horizontal = MagicNumbers.CARD_ACTIVE_MEETINGS_COLUMN_PADDING_HORIZONTAL.dp)
             ) {
-                val dateMeeting = stringResource(id = meetings.date)
-                val locationMeeting = stringResource(id = meetings.city)
-                val allTextMeeting = ("$dateMeeting - $locationMeeting")
+
                 Text(
                     text = meetings.title,
                     fontFamily = fontSFPro,
                     fontWeight = FontWeight.Bold,
-                    fontSize = 14.sp,
+                    fontSize = MagicNumbers.CARD_ACTIVE_MEETINGS_TEXT_FONT_SIZE.sp,
                     color = LightColorTheme.neutralActive
                 )
                 Row(verticalAlignment = Alignment.CenterVertically) {
@@ -62,11 +63,11 @@ fun CardActiveMeetings(onClick: () -> Unit, meetings: Meetings) {
                         text = allTextMeeting,
                         fontFamily = fontSFPro,
                         fontWeight = FontWeight.Light,
-                        fontSize = 12.sp,
+                        fontSize = MagicNumbers.CARD_ACTIVE_MEETINGS_ROW_TEXT_FONT_SIZE.sp,
                         color = LightColorTheme.neutralWeak
                     )
                 }
-                Row(modifier = Modifier.padding(bottom = 10.dp)) {
+                Row(modifier = Modifier.padding(bottom = MagicNumbers.CARD_ACTIVE_MEETINGS_ROW_PADDING_BOTTOM.dp)) {
                     FilterChips(labelText = meetings.tagDevelopmentLanguage)
                     FilterChips(labelText = meetings.tagGradeDeveloper)
                     FilterChips(labelText = meetings.tagCityMeeting)
@@ -78,42 +79,42 @@ fun CardActiveMeetings(onClick: () -> Unit, meetings: Meetings) {
 }
 
 @Composable
-fun CardCompletedMeetings(meetings: Meetings) {
+fun CardCompletedMeetings(modifier: Modifier = Modifier, meetings: Meetings) {
+    val dateMeeting = stringResource(id = meetings.date)
+    val locationMeeting = stringResource(id = meetings.city)
+    val allTextMeeting = ("$dateMeeting - $locationMeeting")
     Card(
         onClick = { /*TODO*/ }, colors = CardDefaults.cardColors(Color.Transparent)
     ) {
         Row(
-            modifier = Modifier
+            modifier = modifier
                 .fillMaxWidth()
-                .padding(top = 7.dp)
+                .padding(top = MagicNumbers.CARD_COMPLETED_MEETINGS_ROW_PADDING_TOP.dp)
         ) {
             MyPreviewAvatar(
                 modifier = Modifier
-                    .size(48.dp),
+                    .size(MagicNumbers.CARD_COMPLETED_MEETINGS_MY_PREV_AVATAR_SIZE.dp),
                 painter = painterResource(id = meetings.icon),
                 contentDescription = null
             )
             Column(
                 modifier = Modifier
-                    .padding(horizontal = 15.dp),
+                    .padding(horizontal = MagicNumbers.CARD_COMPLETED_MEETINGS_COLUMN_PADDING_HORIZONTAL.dp),
             ) {
-                val dateMeeting = stringResource(id = meetings.date)
-                val locationMeeting = stringResource(id = meetings.city)
-                val allTextMeeting = ("$dateMeeting - $locationMeeting")
                 Row() {
                     Text(
                         text = meetings.title,
                         fontFamily = fontSFPro,
                         fontWeight = FontWeight.Bold,
-                        fontSize = 14.sp,
+                        fontSize = MagicNumbers.CARD_COMPLETED_MEETINGS_TEXT_FONT_SIZE.sp,
                         color = LightColorTheme.neutralActive
                     )
-                    Spacer(modifier = Modifier.weight(1f))
+                    Spacer(modifier = Modifier.weight(MagicNumbers.CARD_COMPLETED_SPACER_WEIGHT))
                     Text(
                         text = stringResource(id = R.string.state_meeting),
                         fontFamily = fontSFPro,
                         fontWeight = FontWeight.Light,
-                        fontSize = 10.sp,
+                        fontSize = MagicNumbers.CARD_COMPLETED_MEETINGS_TEXT_END.sp,
                         color = LightColorTheme.neutralWeak
                     )
                 }
@@ -122,11 +123,11 @@ fun CardCompletedMeetings(meetings: Meetings) {
                         text = allTextMeeting,
                         fontFamily = fontSFPro,
                         fontWeight = FontWeight.Light,
-                        fontSize = 12.sp,
+                        fontSize = MagicNumbers.CARD_COMPLETED_MEETINGS_ROW_TEXT_FONT_SIZE.sp,
                         color = LightColorTheme.neutralWeak
                     )
                 }
-                Row(modifier = Modifier.padding(bottom = 10.dp)) {
+                Row(modifier = Modifier.padding(bottom = MagicNumbers.CARD_COMPLETED_MEETINGS_ROW_PADDING_BOTTOM.dp)) {
                     FilterChips(labelText = meetings.tagDevelopmentLanguage)
                     FilterChips(labelText = meetings.tagGradeDeveloper)
                     FilterChips(labelText = meetings.tagCityMeeting)

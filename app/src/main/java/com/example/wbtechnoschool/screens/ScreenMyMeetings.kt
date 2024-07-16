@@ -12,46 +12,49 @@ import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
+import com.example.wbtechnoschool.utils.MagicNumbers
 
 @Composable
-fun ScreenMyMeetings(navController: NavController) {
+fun ScreenMyMeetings(navController: NavController, modifier: Modifier = Modifier) {
+    var tabIndex by remember { mutableIntStateOf(0) }
+    val tabs = listOf(stringResource(id = R.string.meetings_planned), stringResource(id = R.string.meetings_past))
     Scaffold(
-        modifier = Modifier
+        modifier = modifier
             .statusBarsPadding()
             .fillMaxSize(),
         topBar = {
             MainTopAppBar(
-                title = "Мои встречи",
-                iconBack = {navController.popBackStack()},
+                title = stringResource(id = R.string.top_bar_my_meetings),
+                iconBack = { navController.popBackStack() },
             )
         }, content = { innerPadding ->
             Column(
                 modifier = Modifier
-                    .padding(start = 20.dp, end = 20.dp)
+                    .padding(horizontal = MagicNumbers.SCREEN_MY_MEETING_PADDING_HORIZONTAL.dp)
                     .padding(innerPadding)
                     .fillMaxSize(),
                 verticalArrangement = Arrangement.Top,
             ) {
-                var tabIndex by remember { mutableStateOf(0) }
-                val tabs = listOf("ЗАПЛАНИРОВАНО", "УЖЕ ПРОШЛИ")
                 TabRow(selectedTabIndex = tabIndex, modifier = Modifier.fillMaxWidth()) {
                     tabs.forEachIndexed { index, title ->
                         Tab(
                             text = {
                                 Text(
                                     title,
-                                    fontSize = 14.sp,
+                                    fontSize = MagicNumbers.SCREEN_MY_MEETING_TAB_ROW_TEXT_FOT_SIZE.sp,
                                     fontWeight = FontWeight.W500,
                                     fontFamily = fontSFPro
                                 )

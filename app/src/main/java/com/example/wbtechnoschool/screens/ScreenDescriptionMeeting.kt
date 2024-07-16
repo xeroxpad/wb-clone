@@ -26,6 +26,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -39,22 +40,30 @@ import com.example.wbtechnoschool.features.ToggleButton
 import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
+import com.example.wbtechnoschool.utils.MagicNumbers
+import com.example.wbtechnoschool.utils.SPACER
 import com.thedeanda.lorem.Lorem
 import com.thedeanda.lorem.LoremIpsum
 
 @Composable
-fun ScreenDescriptionMeeting(navController: NavController) {
+fun ScreenDescriptionMeeting(navController: NavController, modifier: Modifier = Modifier) {
     var isGoing by remember { mutableStateOf(true) }
+    var showMoreText by remember { mutableStateOf(false) }
+    val lorem: Lorem = LoremIpsum() /*для примера*/
+    val loremText = lorem.getWords(200) /*для примера*/
     Scaffold(
-        modifier = Modifier
+        modifier = modifier
             .statusBarsPadding()
             .fillMaxSize(),
         topBar = {
             MainTopAppBar(
-                title = "Developer meeting",
+                title = stringResource(id = R.string.top_bar_description_meeting),
                 iconBack = { navController.popBackStack() },
                 actions = { },
-                actionsIcon = if (!isGoing) R.drawable.icon_bird else null,
+                actionsIcon = when {
+                    !isGoing -> R.drawable.icon_bird
+                    else -> null
+                },
                 actionsTint = LightColorTheme.brandColorDefault
             )
         }, content = { innerPadding ->
@@ -63,9 +72,12 @@ fun ScreenDescriptionMeeting(navController: NavController) {
                     .fillMaxSize()
                     .navigationBarsPadding()
                     .padding(innerPadding)
-                    .padding(start = 20.dp, end = 20.dp, bottom = 20.dp),
+                    .padding(
+                        start = MagicNumbers.SCREEN_DESCRIPTION_MEETING_CONTENT_COLUMN_PADDING_START.dp,
+                        end = MagicNumbers.SCREEN_DESCRIPTION_MEETING_CONTENT_COLUMN_PADDING_END.dp,
+                        bottom = MagicNumbers.SCREEN_DESCRIPTION_MEETING_CONTENT_COLUMN_PADDING_BOTTOM.dp
+                    ),
             ) {
-                var showMoreText by remember { mutableStateOf(false) }
                 LazyColumn(
                     modifier = Modifier
                         .weight(1f)
@@ -79,52 +91,47 @@ fun ScreenDescriptionMeeting(navController: NavController) {
                     item(1) {
                         Row(
                             modifier = Modifier
-                                .padding(top = 20.dp)
+                                .padding(top = MagicNumbers.SCREEN_DESCRIPTION_ROW_PADDING_TOP.dp)
                         ) {
-                            val dateMeeting = "13.09.2024"
-                            val locationMeeting = "Москва, ул. Громова, 4"
-                            val allTextMeeting = ("$dateMeeting - $locationMeeting")
                             Text(
-                                text = allTextMeeting,
+                                text = stringResource(id = R.string.date_and_location_meeting),
                                 fontFamily = fontSFPro,
                                 fontWeight = FontWeight.W600,
-                                fontSize = 14.sp,
+                                fontSize = MagicNumbers.SCREEN_DESCRIPTION_ROW_TEXT_FONT_SIZE.sp,
                                 color = LightColorTheme.neutralWeak
                             )
                         }
-                        Row(
-                            modifier = Modifier
-                                .padding(bottom = 5.dp)
-                        ) {
+                        Row() {
                             FilterChips(labelText = "Kotlin")
                             FilterChips(labelText = "Junior")
                             FilterChips(labelText = "Moscow")
                         }
-                        Spacer(modifier = Modifier.height(5.dp))
-                        ShowImage(R.drawable.map)
-                        Spacer(modifier = Modifier.height(15.dp))
-                        val lorem: Lorem = LoremIpsum()
-                        val loremText = lorem.getWords(200)
-                        if (showMoreText) {
-                            Text(
-                                text = loremText,
-                                fontSize = 12.sp,
-                                fontFamily = fontSFPro,
-                                fontWeight = FontWeight.W400,
-                                color = LightColorTheme.neutralWeak
-                            )
-                        } else {
-                            Text(
-                                text = loremText,
-                                fontSize = 12.sp,
-                                fontFamily = fontSFPro,
-                                fontWeight = FontWeight.W400,
-                                color = LightColorTheme.neutralWeak,
-                                maxLines = 8,
-                                overflow = TextOverflow.Ellipsis
-                            )
+                        Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
+                        ShowImage(image = R.drawable.map)
+                        Spacer(modifier = Modifier.height(SPACER.SPACER_15.value.dp))
+                        when {
+                            showMoreText -> {
+                                Text(
+                                    text = loremText,
+                                    fontSize = MagicNumbers.SCREEN_DESCRIPTION_SHOW_MORE_TEXT_FONT_SIZE.sp,
+                                    fontFamily = fontSFPro,
+                                    fontWeight = FontWeight.W400,
+                                    color = LightColorTheme.neutralWeak
+                                )
+                            }
+                            else -> {
+                                Text(
+                                    text = loremText,
+                                    fontSize = MagicNumbers.SCREEN_DESCRIPTION_SHOW_MORE_TEXT_FONT_SIZE.sp,
+                                    fontFamily = fontSFPro,
+                                    fontWeight = FontWeight.W400,
+                                    color = LightColorTheme.neutralWeak,
+                                    maxLines = MagicNumbers.SCREEN_DESCRIPTION_SHOW_MORE_MAX_LINES,
+                                    overflow = TextOverflow.Ellipsis
+                                )
+                            }
                         }
-                        Spacer(modifier = Modifier.height(15.dp))
+                        Spacer(modifier = Modifier.height(SPACER.SPACER_15.value.dp))
                         RowAvatars()
                         Spacer(
                             Modifier.windowInsetsBottomHeight(
@@ -138,7 +145,7 @@ fun ScreenDescriptionMeeting(navController: NavController) {
                         isGoing = selected
                     }, modifier = Modifier
                         .fillMaxWidth()
-                        .height(60.dp)
+                        .height(MagicNumbers.SCREEN_DESCRIPTION_TOGGLE_BUTTON_HEIGHT.dp)
                 )
             }
         }

@@ -10,6 +10,6 @@ import androidx.compose.ui.Modifier
 @Composable
 fun ScreenTheme() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(text = "Тема")
+        Text(text = "Тема") /*для примера*/
     }
 }

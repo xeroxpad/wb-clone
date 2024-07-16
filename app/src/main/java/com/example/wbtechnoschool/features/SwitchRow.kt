@@ -6,6 +6,7 @@ import androidx.compose.material3.TabRow
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableIntStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
@@ -17,20 +18,22 @@ import com.example.wbtechnoschool.screens.ActiveMeetings
 import com.example.wbtechnoschool.screens.AllMeetings
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
+import com.example.wbtechnoschool.utils.MagicNumbers
 
 @Composable
 fun SwitchRow(
+    modifier: Modifier = Modifier,
     titleRow: List<String>,
     navController: NavController
 ) {
-    var tabIndex by remember { mutableStateOf(0) }
-    TabRow(selectedTabIndex = tabIndex, modifier = Modifier.fillMaxWidth()) {
+    var tabIndex by remember { mutableIntStateOf(0) }
+    TabRow(selectedTabIndex = tabIndex, modifier = modifier.fillMaxWidth()) {
         titleRow.forEachIndexed { index, title ->
             Tab(
                 text = {
                     Text(
                         title,
-                        fontSize = 14.sp,
+                        fontSize = MagicNumbers.SWITCH_ROW_TAB_TEXT_FONT_SIZE.sp,
                         fontWeight = FontWeight.W500,
                         fontFamily = fontSFPro
                     )

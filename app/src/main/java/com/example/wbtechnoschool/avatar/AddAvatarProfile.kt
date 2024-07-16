@@ -19,17 +19,18 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.example.wbtechnoschool.R
+import com.example.wbtechnoschool.utils.MagicNumbers
 
 
 @Composable
-fun AddAvatarProfile() {
+fun AddAvatarProfile(modifier: Modifier = Modifier) {
     var avatarOpen by remember {
         mutableStateOf(false)
     }
 
     Box(
-        modifier = Modifier
-            .size(100.dp)
+        modifier = modifier
+            .size(MagicNumbers.ADD_AVATAR_PROFILE_BOX_SIZE.dp)
     ) {
         MyMainAvatar(
             painter = painterResource(id = R.drawable.avatars),
@@ -41,7 +42,7 @@ fun AddAvatarProfile() {
         )
         Icon(
             Icons.Filled.AddCircle,
-            contentDescription = "Добавить фото",
+            contentDescription = null,
             modifier = Modifier
                 .clickable { }
                 .align(Alignment.BottomEnd)

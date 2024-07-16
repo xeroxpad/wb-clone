@@ -22,9 +22,6 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -44,103 +41,90 @@ import com.example.wbtechnoschool.button.StatusButton
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
+import com.example.wbtechnoschool.utils.MagicNumbers
+import com.example.wbtechnoschool.utils.SPACER
 import com.example.wbtechnoschool.viewmodel.AuthorizationViewModel
 
 @Composable
 fun ScreenAuthorization(
+    modifier: Modifier = Modifier,
     navController: NavController,
     viewModel: AuthorizationViewModel = viewModel(),
 ) {
     val number by viewModel.number.observeAsState("")
     Column(
-        modifier = Modifier
+        modifier = modifier
             .statusBarsPadding()
             .fillMaxSize()
-            .padding(start = 20.dp, end = 20.dp),
+            .padding(horizontal = MagicNumbers.SCREEN_AUTH_PROF_COLUMN_PADDING_HORIZONTAL.dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Spacer(modifier = Modifier.height(96.dp))
+        Spacer(modifier = Modifier.height(SPACER.SPACER_95.value.dp))
         Text(
             text = stringResource(id = R.string.enter_number_phone),
             fontWeight = FontWeight.W700,
-            fontSize = 24.sp,
+            fontSize = MagicNumbers.SCREEN_AUTH_FONT_SIZE_ENTER_NUMBER_PHONE.sp,
             fontFamily = fontSFPro,
             color = LightColorTheme.neutralActive
         )
-        Spacer(modifier = Modifier.height(15.dp))
+        Spacer(modifier = Modifier.height(SPACER.SPACER_15.value.dp))
         Text(
-            text = "Мы вышлем код подтверждения\nна указанный номер",
+            text = stringResource(id = R.string.send_confirmation_code),
             fontWeight = FontWeight.W400,
-            fontSize = 14.sp,
+            fontSize = MagicNumbers.SCREEN_AUTH_FONT_SIZE_SEND_CONFIRMATION_CODE.sp,
             fontFamily = fontSFPro,
             color = LightColorTheme.neutralActive,
             textAlign = TextAlign.Center,
-            lineHeight = 20.sp
+            lineHeight = MagicNumbers.SCREEN_AUTH_LINE_HEIGHT_SEND_CONFIRMATION_CODE.sp
         )
-        Spacer(modifier = Modifier.height(60.dp))
+        Spacer(modifier = Modifier.height(SPACER.SPACER_60.value.dp))
         Row(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(40.dp),
+                .height(MagicNumbers.SCREEN_AUTH_HEIGHT_ROW_MODIFIER.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Box(
                 modifier = Modifier
                     .background(
                         LightColorTheme.neutralSecondaryBG,
-                        RoundedCornerShape(5.dp)
+                        RoundedCornerShape(MagicNumbers.SCREEN_AUTH_BOX_ROUNDED_CORNER_SHAPE.dp)
                     )
-                    .width(60.dp)
+                    .width(MagicNumbers.SCREEN_AUTH_BOX_WIDTH_MODIFIER.dp)
                     .fillMaxHeight()
             ) {
-                Row(modifier = Modifier.padding(10.dp)) {
-                    Image(
-                        painter = painterResource(id = R.drawable.icon_flag_russian),
-                        contentDescription = "flag",
-                        modifier = Modifier
-                            .size(16.dp)
-                            .clip(RoundedCornerShape(5.dp))
-                    )
-                    BasicTextField(
-                        value = "+7",
-                        onValueChange = {},
-                        singleLine = true,
-                        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
-                        modifier = Modifier.padding(start = 5.dp),
-                        textStyle = TextStyle(
-                            color = LightColorTheme.neutralDisabled,
-                            fontWeight = FontWeight.W600,
-                            fontSize = 14.sp,
-                            fontFamily = fontSFPro
-                        )
-                    )
+                Row(modifier = Modifier.padding(MagicNumbers.SCREEN_AUTH_ROW_MODIFIER_PADDING_PREFIX_TF.dp)) {
+                    PrefixNumberTextField()
                 }
             }
-            Spacer(modifier = Modifier.width(10.dp))
+            Spacer(modifier = Modifier.width(MagicNumbers.SCREEN_AUTH_SPACER_WIDTH_TF.dp))
             BasicTextField(
                 value = number,
                 onValueChange = { viewModel.onNumberChange(it) },
                 modifier = Modifier
                     .background(
                         LightColorTheme.neutralSecondaryBG,
-                        RoundedCornerShape(5.dp)
+                        RoundedCornerShape(MagicNumbers.SCREEN_AUTH_BASIC_TF_ROUNDED_CORNER_SHAPE_MODIFIER.dp)
                     )
                     .fillMaxHeight()
-                    .weight(1f),
+                    .weight(MagicNumbers.SCREEN_AUTH_BASIC_WEIGHT_MODIFIER),
                 decorationBox = { innerTextField ->
                     Box(
                         contentAlignment = Alignment.CenterStart,
-                        modifier = Modifier.padding(horizontal = 8.dp, vertical = 0.dp)
+                        modifier = Modifier.padding(
+                            horizontal = MagicNumbers.SCREEN_AUTH_DECORATION_BOX_MODIFIER_HORIZONTAL.dp,
+                            vertical = MagicNumbers.SCREEN_AUTH_DECORATION_BOX_MODIFIER_VERTICAL.dp
+                        )
                     ) {
                         if (number.isEmpty()) {
                             Text(
-                                text = "000 000-00-00",
+                                text = stringResource(id = R.string.placeholder_number),
                                 color = LightColorTheme.neutralDisabled,
                                 fontWeight = FontWeight.W600,
-                                fontSize = 14.sp,
+                                fontSize = MagicNumbers.SCREEN_AUTH_DECORATION_BOX_TEXT_FONT_SIZE.sp,
                                 fontFamily = fontSFPro,
-                                letterSpacing = 1.sp
+                                letterSpacing = MagicNumbers.SCREEN_AUTH_DECORATION_BOX_TEXT_LETTER_SPACING.sp
                             )
                         }
                         innerTextField()
@@ -148,9 +132,9 @@ fun ScreenAuthorization(
                 },
                 textStyle = TextStyle(
                     fontWeight = FontWeight.W600,
-                    fontSize = 14.sp,
+                    fontSize = MagicNumbers.SCREEN_AUTH_BASIC_TF_TEXT_STYLE_FONT_SIZE.sp,
                     fontFamily = fontSFPro,
-                    letterSpacing = 1.sp,
+                    letterSpacing = MagicNumbers.SCREEN_AUTH_BASIC_TF_TEXT_STYLE_LETTER_SPACING.sp,
                     color = LightColorTheme.neutralActive
                 ),
                 singleLine = true,
@@ -160,15 +144,39 @@ fun ScreenAuthorization(
                 ),
             )
         }
-        Spacer(modifier = Modifier.height(60.dp))
+        Spacer(modifier = Modifier.height(SPACER.SPACER_60.value.dp))
         StatusButton(
             containerColor = LightColorTheme.brandColorDefault,
             enable = viewModel.numberValid(number),
             onClick = { navController.navigate("${Graph.screenEntryCode}/$number") },
-            contentText = "Продолжить",
+            contentText = stringResource(id = R.string.resume),
             modifier = Modifier
                 .fillMaxWidth()
-                .height(52.dp)
+                .height(MagicNumbers.SCREEN_AUTH_STATUS_BUTTON_MODIFIER_HEIGHT.dp)
         )
     }
+}
+
+@Composable
+fun PrefixNumberTextField() {
+    Image(
+        painter = painterResource(id = R.drawable.icon_flag_russian),
+        contentDescription = "",
+        modifier = Modifier
+            .size(MagicNumbers.PREF_NUMBER_TF_IMAGE_MODIFIER_SIZE.dp)
+            .clip(RoundedCornerShape(MagicNumbers.PREF_NUMBER_TF_IMAGE_MODIFIER_CLIP.dp))
+    )
+    BasicTextField(
+        value = "+7",
+        onValueChange = {},
+        singleLine = true,
+        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+        modifier = Modifier.padding(start = MagicNumbers.PREF_NUMBER_TF_BASIC_TF_MODIFIER_PADDING_START.dp),
+        textStyle = TextStyle(
+            color = LightColorTheme.neutralDisabled,
+            fontWeight = FontWeight.W600,
+            fontSize = MagicNumbers.PREF_NUMBER_TF_BASIC_TF_TEXT_STYLE_FONT_SIZE.sp,
+            fontFamily = fontSFPro
+        )
+    )
 }

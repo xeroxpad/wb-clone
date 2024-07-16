@@ -16,8 +16,12 @@ import com.example.wbtechnoschool.navigation.NavHostContainer
 fun StartScreen(navController: NavHostController) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination?.route
-    val showBottomBar =
-        currentRoute != Graph.splashScreen && currentRoute != Graph.screenAuthorization && currentRoute != Graph.screenEntryCode && currentRoute != Graph.screenAuthorizationProfile && currentRoute != Graph.screenSplashHelloName
+    val baseRoute = currentRoute?.substringBefore("/") ?: ""
+    val showBottomBar = baseRoute != Graph.splashScreen &&
+                baseRoute != Graph.screenAuthorization &&
+                baseRoute != Graph.screenEntryCode &&
+                baseRoute != Graph.screenAuthorizationProfile &&
+                baseRoute != Graph.screenSplashHelloName
     Scaffold(bottomBar = {
         if (showBottomBar) {
             BottomNavBar(navController = navController, modifier = Modifier.navigationBarsPadding())

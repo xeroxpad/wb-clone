@@ -20,50 +20,53 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
+import com.example.wbtechnoschool.utils.MagicNumbers
+import com.example.wbtechnoschool.utils.SPACER
 
 @Composable
 fun MainTopAppBar(
+    modifier: Modifier = Modifier,
     title: String? = null,
-    iconBack: (() -> Unit)? = null,
-    actions: (() -> Unit)? = null,
     actionsIcon: Int? = null,
     actionsTint: Color = LightColorTheme.neutralActive,
+    iconBack: (() -> Unit)? = null,
+    actions: (() -> Unit)? = null,
 ) {
     Row(
-        modifier = Modifier
-            .padding(start = 10.dp, end = 10.dp)
+        modifier = modifier
+            .padding(horizontal = MagicNumbers.MAIN_TOP_BAR_ROW_PADDING_HORIZONTAL.dp)
             .fillMaxWidth()
-            .height(36.dp),
+            .height(MagicNumbers.MAIN_TOP_BAR_ROW_HEIGHT.dp),
         verticalAlignment = Alignment.CenterVertically
     ) {
-        if (iconBack != null) {
+        iconBack?.let {
             IconButton(onClick = iconBack) {
                 Icon(
                     painter = painterResource(id = R.drawable.arrow_back),
-                    contentDescription = "Назад",
+                    contentDescription = null,
                     modifier = Modifier
-                        .size(16.dp)
+                        .size(MagicNumbers.MAIN_TOP_BAR_ICON_SIZE.dp)
                 )
             }
         }
-        Spacer(modifier = Modifier.width(7.dp))
-        if (title != null) {
+        Spacer(modifier = Modifier.width(SPACER.SPACER_5.value.dp))
+        title?.let {
             Text(
                 text = title,
-                fontSize = 24.sp,
+                fontSize = MagicNumbers.MAIN_TOP_BAR_TEXT_FONT_SIZE.sp,
                 fontWeight = FontWeight.W600,
                 color = LightColorTheme.neutralActive
             )
         }
-        Spacer(modifier = Modifier.weight(1f))
+        Spacer(modifier = Modifier.weight(MagicNumbers.MAIN_TOP_BAR_SPACER_WEIGHT))
         if (actions != null && actionsIcon != null) {
             IconButton(onClick = actions) {
                 Icon(
                     painter = painterResource(id = actionsIcon),
-                    contentDescription = "",
+                    contentDescription = null,
                     tint = actionsTint,
                     modifier = Modifier
-                        .size(18.dp)
+                        .size(MagicNumbers.MAIN_TOP_BAR_ICON_SIZE.dp)
                 )
             }
         }

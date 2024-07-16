@@ -10,6 +10,6 @@ import androidx.compose.ui.Modifier
 @Composable
 fun ScreenNotifications() {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(text = "Уведомления")
+        Text(text = "Уведомления")/*для примера*/
     }
 }

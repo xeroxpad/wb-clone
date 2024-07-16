@@ -2,29 +2,36 @@ package com.example.wbtechnoschool.navigation
 
 import com.example.wbtechnoschool.R
 
-data class NavItem(
+sealed class NavItem(
     val description: String,
-    val icon: Int,
-    val route: String
-)
+    val icon: Int?,
+    val route: String,
+) {
+    data object MeetingElement: NavItem(
+        description = "Встречи",
+        icon = R.drawable.meeting,
+        route = Graph.screenMeeting,
+    )
 
-object Element{
-    val listOfNavItems = listOf(
-        NavItem(
-            description = "Встречи",
-            icon = R.drawable.meeting,
-            route = Graph.screenMeeting
-        ),
-        NavItem(
-            description = "Сообщества",
-            icon = R.drawable.community,
-            route = Graph.screenCommunity
-        ),
-        NavItem(
-            description = "Еще",
-            icon = R.drawable.info,
-            route = Graph.screenInfo
-        )
+    data object CommunityElement : NavItem(
+        description = "Сообщества",
+        icon = R.drawable.community,
+        route = Graph.screenCommunity,
+    )
+
+    data object InfoElement : NavItem(
+        description = "Еще",
+        icon = R.drawable.info,
+        route = Graph.screenInfo,
     )
 }
+
+val listRootElement = listOf(
+    NavItem.MeetingElement,
+    NavItem.CommunityElement,
+    NavItem.InfoElement
+)
+
+
+
 

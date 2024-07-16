@@ -11,6 +11,6 @@ import androidx.navigation.NavController
 @Composable
 fun ScreenResources(navController: NavController) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(text = "Память и ресурсы")
+        Text(text = "Память и ресурсы") /*для примера*/
     }
 }
