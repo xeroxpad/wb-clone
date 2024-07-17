@@ -7,24 +7,24 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.wbtechnoschool.screens.ScreenAuthorization
-import com.example.wbtechnoschool.screens.ScreenAuthorizationProfile
-import com.example.wbtechnoschool.screens.ScreenCommunity
-import com.example.wbtechnoschool.screens.ScreenDescriptionMeeting
-import com.example.wbtechnoschool.screens.ScreenDetailsCommunity
-import com.example.wbtechnoschool.screens.ScreenEntryCode
-import com.example.wbtechnoschool.screens.ScreenHelp
-import com.example.wbtechnoschool.screens.ScreenInfo
-import com.example.wbtechnoschool.screens.ScreenInviteFriend
-import com.example.wbtechnoschool.screens.ScreenMeeting
-import com.example.wbtechnoschool.screens.ScreenMyMeetings
-import com.example.wbtechnoschool.screens.ScreenNotifications
-import com.example.wbtechnoschool.screens.ScreenProfile
-import com.example.wbtechnoschool.screens.ScreenResources
-import com.example.wbtechnoschool.screens.ScreenSafety
-import com.example.wbtechnoschool.screens.ScreenTheme
-import com.example.wbtechnoschool.screens.SplashScreen
-import com.example.wbtechnoschool.screens.SplashScreenHelloName
+import com.example.wbtechnoschool.screens.auth.ScreenAuthorization
+import com.example.wbtechnoschool.screens.auth.ScreenAuthorizationProfile
+import com.example.wbtechnoschool.screens.community.ScreenCommunity
+import com.example.wbtechnoschool.screens.meetings.ScreenDescriptionMeeting
+import com.example.wbtechnoschool.screens.community.ScreenDetailsCommunity
+import com.example.wbtechnoschool.screens.auth.ScreenEntryCode
+import com.example.wbtechnoschool.screens.more.help.ScreenHelp
+import com.example.wbtechnoschool.screens.more.ScreenInfo
+import com.example.wbtechnoschool.screens.more.invite_friend.ScreenInviteFriend
+import com.example.wbtechnoschool.screens.meetings.ScreenMeeting
+import com.example.wbtechnoschool.screens.more.my_meetings.ScreenMyMeetings
+import com.example.wbtechnoschool.screens.more.notifications.ScreenNotifications
+import com.example.wbtechnoschool.screens.more.profile.ScreenProfile
+import com.example.wbtechnoschool.screens.more.resources.ScreenResources
+import com.example.wbtechnoschool.screens.more.safety.ScreenSafety
+import com.example.wbtechnoschool.screens.more.theme.ScreenTheme
+import com.example.wbtechnoschool.screens.splash.SplashScreen
+import com.example.wbtechnoschool.screens.splash.SplashScreenHelloName
 
 @Composable
 fun NavHostContainer(
@@ -36,10 +36,10 @@ fun NavHostContainer(
         startDestination = Graph.splashScreen,
     ){
         composable(Graph.screenMeeting) {
-            ScreenMeeting(navController)
+            ScreenMeeting(navController = navController)
         }
         composable(Graph.screenCommunity) {
-            ScreenCommunity(navController)
+            ScreenCommunity(navController = navController)
         }
         composable(Graph.screenInfo) {
             ScreenInfo(navController)
@@ -48,7 +48,7 @@ fun NavHostContainer(
             ScreenProfile(navController)
         }
         composable(Graph.screenMyMeetings) {
-            ScreenMyMeetings(navController)
+            ScreenMyMeetings(navController = navController)
         }
         composable(Graph.screenTheme) {
             ScreenTheme()
@@ -78,7 +78,7 @@ fun NavHostContainer(
             SplashScreen{navController.navigate(Graph.screenAuthorization) {popUpTo(Graph.splashScreen) {inclusive = true}}}
         }
         composable(Graph.screenAuthorization) {
-            ScreenAuthorization(navController = navController)
+            ScreenAuthorization(navController = navController,)
         }
         composable(
             route = "${Graph.screenEntryCode}/{phoneNumber}",
@@ -86,11 +86,11 @@ fun NavHostContainer(
         ) { backStackEntry ->
             ScreenEntryCode(
                 navController = navController,
-                phoneNumber = backStackEntry.arguments?.getString("phoneNumber") ?: ""
+                phoneNumber = backStackEntry.arguments?.getString("phoneNumber") ?: "",
             )
         }
         composable(Graph.screenAuthorizationProfile) {
-            ScreenAuthorizationProfile(navController)
+            ScreenAuthorizationProfile(navController = navController)
         }
         composable(
             route = "${Graph.screenSplashHelloName}/{name}",
