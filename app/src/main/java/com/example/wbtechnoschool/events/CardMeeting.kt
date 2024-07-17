@@ -79,12 +79,12 @@ fun CardActiveMeetings(modifier: Modifier = Modifier, meetings: Meetings, onClic
 }
 
 @Composable
-fun CardCompletedMeetings(modifier: Modifier = Modifier, meetings: Meetings) {
+fun CardCompletedMeetings(modifier: Modifier = Modifier, meetings: Meetings, onClick: () -> Unit) {
     val dateMeeting = stringResource(id = meetings.date)
     val locationMeeting = stringResource(id = meetings.city)
     val allTextMeeting = ("$dateMeeting - $locationMeeting")
     Card(
-        onClick = { /*TODO*/ }, colors = CardDefaults.cardColors(Color.Transparent)
+        onClick = { onClick() }, colors = CardDefaults.cardColors(Color.Transparent)
     ) {
         Row(
             modifier = modifier

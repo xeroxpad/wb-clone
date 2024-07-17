@@ -54,8 +54,8 @@ fun RowAvatars(
                 1 -> 0.dp
                 2 -> 5.dp
                 3 -> 3.dp
-                4 -> -3.dp
-                else -> -15.dp
+                4 -> (-3).dp
+                else -> (-15).dp
             }
         ),
         modifier = modifier

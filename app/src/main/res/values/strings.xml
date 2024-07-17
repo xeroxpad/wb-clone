@@ -25,6 +25,7 @@
     <string name="top_bar_screen_info">Еще</string>
     <string name="top_bar_meetings">Встречи</string>
     <string name="top_bar_my_meetings">Мои встречи</string>
+    <string name="top_bar_community">Сообщества</string>
     <string name="top_bar_my_profile">Профиль</string>
     <string name="container_to_go_title_my_meetings">Мои встречи</string>
     <string name="container_to_go_title_theme">Тема</string>
@@ -44,4 +45,6 @@
     <string name="bottom_bar_more">Еще</string>
     <string name="go_to_the_meetings">Пойду на встречу!</string>
     <string name="go_another_time_meetings">Схожу в другой раз</string>
+    <string name="sent_code_number">Отправили код на номер</string>
+    <string name="request_code_again">Запросить код повторно</string>
 </resources>
