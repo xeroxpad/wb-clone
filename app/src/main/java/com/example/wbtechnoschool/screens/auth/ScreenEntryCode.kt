@@ -95,7 +95,7 @@ fun ScreenEntryCode(
                         viewModel.onCodeChange(text)
                         when {
                             isComplete -> {
-                                navController.navigate(Graph.screenAuthorizationProfile) // пока для показа тут пример перехода
+                                navController.navigate(Graph.AuthorizationProfile.route) // пока для показа тут пример перехода
                             }
                         }
                     }
@@ -104,7 +104,7 @@ fun ScreenEntryCode(
                     contentColor = LightColorTheme.brandColorDefault,
                     containerColor = Color.Transparent,
                     enable = true,
-                    onClick = { navController.navigate(Graph.screenAuthorizationProfile) }, // пока для показа тут пример перехода
+                    onClick = { navController.navigate(Graph.AuthorizationProfile.route) }, // пока для показа тут пример перехода
                     contentText = stringResource(id = R.string.request_code_again),
                     modifier = Modifier
                         .fillMaxWidth()

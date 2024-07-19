@@ -62,7 +62,7 @@ fun ScreenCommunity(
             ) {
                 items(community) { community ->
                     CardCommunity(
-                        onClick = { navController.navigate(Graph.screenDetailsCommunity) },
+                        onClick = { navController.navigate(Graph.DetailsCommunity.route) },
                         community = community,
                         modifier = Modifier.padding(vertical = MagicNumbers.SCREEN_COMMUNITY_LAZY_CARD_COMMUNITY_PADDING_VERTICAL.dp)
                     )

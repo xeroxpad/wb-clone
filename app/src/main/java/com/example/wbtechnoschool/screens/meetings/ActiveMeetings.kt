@@ -13,7 +13,7 @@ fun ActiveMeetings(navController: NavController) {
     LazyColumn {
         items(15) {
             CardActiveMeetings(
-                onClick = { navController.navigate(Graph.screenDescriptionMeeting) },
+                onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                 meetings = Meetings(
                     icon = R.drawable.avatar_preview,
                     title = "Developer meeting",

@@ -10,7 +10,7 @@ import com.example.wbtechnoschool.viewmodel.more_view_model.my_meetings_view_mod
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-val viewModule = module {
+val appModule = module {
     viewModel { AuthorizationViewModel() }
     viewModel { EntryCodeViewModel() }
     viewModel { AuthorizationProfileViewModel() }

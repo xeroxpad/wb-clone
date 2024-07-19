@@ -14,7 +14,7 @@ fun MyPastMeetings(navController: NavController) {
     LazyColumn {
         items(8) {
             CardCompletedMeetings(
-                onClick = { navController.navigate(Graph.screenDescriptionMeeting) },
+                onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                 meetings = Meetings(
                     icon = R.drawable.avatar_preview,
                     title = "Developer meeting",

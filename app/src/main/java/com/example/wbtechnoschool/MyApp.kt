@@ -1,6 +1,7 @@
-package com.example.wbtechnoschool.di
+package com.example.wbtechnoschool
 
 import android.app.Application
+import com.example.wbtechnoschool.di.appModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext.startKoin
@@ -12,7 +13,7 @@ class MyApp : Application() {
         startKoin {
             androidLogger(Level.INFO)
             androidContext(this@MyApp)
-            modules(viewModule)
+            modules(appModule)
         }
     }
 }

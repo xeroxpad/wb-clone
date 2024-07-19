@@ -22,6 +22,8 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.mutableIntStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -37,6 +39,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.button.StatusButton
+import com.example.wbtechnoschool.features.PhoneNumberVisualTransformation
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
@@ -52,6 +55,7 @@ fun ScreenAuthorization(
     viewModel: AuthorizationViewModel = koinViewModel(),
 ) {
     val number by viewModel.number.observeAsState("")
+    val cursorPosition = remember { mutableIntStateOf(0) }
     Column(
         modifier = modifier
             .statusBarsPadding()
@@ -101,7 +105,10 @@ fun ScreenAuthorization(
             Spacer(modifier = Modifier.width(MagicNumbers.SCREEN_AUTH_SPACER_WIDTH_TF.dp))
             BasicTextField(
                 value = number,
-                onValueChange = { viewModel.onNumberChange(it) },
+                onValueChange = {
+                    viewModel.onNumberChange(it)
+                    cursorPosition.intValue = it.length
+                },
                 modifier = Modifier
                     .background(
                         LightColorTheme.neutralSecondaryBG,
@@ -109,6 +116,7 @@ fun ScreenAuthorization(
                     )
                     .fillMaxHeight()
                     .weight(MagicNumbers.SCREEN_AUTH_BASIC_WEIGHT_MODIFIER),
+                visualTransformation = PhoneNumberVisualTransformation(),
                 decorationBox = { innerTextField ->
                     Box(
                         contentAlignment = Alignment.CenterStart,
@@ -148,7 +156,7 @@ fun ScreenAuthorization(
         StatusButton(
             containerColor = LightColorTheme.brandColorDefault,
             enable = viewModel.numberValid(number),
-            onClick = { navController.navigate("${Graph.screenEntryCode}/$number") },
+            onClick = { navController.navigate("${Graph.EntryCode.route}/$number") },
             contentText = stringResource(id = R.string.resume),
             modifier = Modifier
                 .fillMaxWidth()

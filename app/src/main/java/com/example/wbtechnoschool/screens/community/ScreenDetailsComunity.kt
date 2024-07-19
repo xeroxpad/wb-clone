@@ -108,11 +108,11 @@ fun ScreenDetailsCommunity(
                 }
                 items(meetings) { meeting ->
                     CardActiveMeetings(
-                        onClick = { navController.navigate(Graph.screenDescriptionMeeting) },
+                        onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                         meetings = meeting,
                     )
                     CardCompletedMeetings(
-                        onClick = { navController.navigate(Graph.screenDescriptionMeeting) },
+                        onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                         meetings = meeting,
                     )
                 }
