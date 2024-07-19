@@ -20,10 +20,10 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.features.NoRippleInteractionSource
+import com.example.wbtechnoschool.utils.widgets.NoRippleInteractionSource
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
-import com.example.wbtechnoschool.utils.MagicNumbers
+import com.example.wbtechnoschool.utils.constants.MagicNumbers
 
 @Composable
 fun BottomNavBar(

@@ -30,15 +30,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.avatar.RowAvatars
-import com.example.wbtechnoschool.chips.FilterChips
-import com.example.wbtechnoschool.features.ShowImage
-import com.example.wbtechnoschool.features.ToggleButton
+import com.example.wbtechnoschool.utils.avatar.RowAvatars
+import com.example.wbtechnoschool.utils.chips.FilterChips
+import com.example.wbtechnoschool.utils.widgets.ShowImage
+import com.example.wbtechnoschool.utils.widgets.ToggleButton
 import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
-import com.example.wbtechnoschool.utils.MagicNumbers
-import com.example.wbtechnoschool.utils.SPACER
+import com.example.wbtechnoschool.utils.constants.MagicNumbers
+import com.example.wbtechnoschool.utils.constants.SPACER
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.DescriptionMeetingViewModel
 import org.koin.androidx.compose.koinViewModel
 

@@ -16,9 +16,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -27,18 +25,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.events.CardActiveMeetings
-import com.example.wbtechnoschool.events.CardCompletedMeetings
-import com.example.wbtechnoschool.events.Meetings
+import com.example.wbtechnoschool.utils.events.CardActiveMeetings
+import com.example.wbtechnoschool.utils.events.CardCompletedMeetings
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
-import com.example.wbtechnoschool.utils.MagicNumbers
-import com.example.wbtechnoschool.utils.SPACER
+import com.example.wbtechnoschool.utils.constants.MagicNumbers
+import com.example.wbtechnoschool.utils.constants.SPACER
 import com.example.wbtechnoschool.viewmodel.community_view_model.DetailsCommunityViewModel
-import com.thedeanda.lorem.Lorem
-import com.thedeanda.lorem.LoremIpsum
 import org.koin.androidx.compose.koinViewModel
 
 @Composable

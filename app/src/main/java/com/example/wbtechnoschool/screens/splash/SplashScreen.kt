@@ -25,8 +25,8 @@ import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
-import com.example.wbtechnoschool.utils.MagicNumbers
-import com.example.wbtechnoschool.utils.SPACER
+import com.example.wbtechnoschool.utils.constants.MagicNumbers
+import com.example.wbtechnoschool.utils.constants.SPACER
 
 const val iterationsSplashScreen = 1
 

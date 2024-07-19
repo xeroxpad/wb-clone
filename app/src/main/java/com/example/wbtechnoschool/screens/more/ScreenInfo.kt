@@ -29,14 +29,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.avatar.MyMainAvatar
-import com.example.wbtechnoschool.features.ContainerToGo
+import com.example.wbtechnoschool.utils.avatar.MyMainAvatar
+import com.example.wbtechnoschool.utils.widgets.ContainerToGo
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
-import com.example.wbtechnoschool.utils.MagicNumbers
-import com.example.wbtechnoschool.utils.SPACER
+import com.example.wbtechnoschool.utils.constants.MagicNumbers
+import com.example.wbtechnoschool.utils.constants.SPACER
 
 @Composable
 fun ScreenInfo(navController: NavController, modifier: Modifier = Modifier) {

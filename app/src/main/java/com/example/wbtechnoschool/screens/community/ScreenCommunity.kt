@@ -18,12 +18,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.events.CardCommunity
-import com.example.wbtechnoschool.events.Community
+import com.example.wbtechnoschool.utils.events.CardCommunity
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.navigation.MainTopAppBar
-import com.example.wbtechnoschool.search.AppSearchBar
-import com.example.wbtechnoschool.utils.MagicNumbers
+import com.example.wbtechnoschool.utils.search.AppSearchBar
+import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.viewmodel.community_view_model.CommunityViewModel
 import org.koin.androidx.compose.koinViewModel
 

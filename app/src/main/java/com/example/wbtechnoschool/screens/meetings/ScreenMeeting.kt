@@ -16,13 +16,11 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.features.SwitchRow
+import com.example.wbtechnoschool.utils.widgets.SwitchRow
 import com.example.wbtechnoschool.navigation.MainTopAppBar
-import com.example.wbtechnoschool.search.AppSearchBar
-import com.example.wbtechnoschool.utils.MagicNumbers
-import com.example.wbtechnoschool.utils.SPACER
-import com.example.wbtechnoschool.viewmodel.more_view_model.my_meetings_view_model.MyMeetingsViewModel
-import org.koin.androidx.compose.koinViewModel
+import com.example.wbtechnoschool.utils.search.AppSearchBar
+import com.example.wbtechnoschool.utils.constants.MagicNumbers
+import com.example.wbtechnoschool.utils.constants.SPACER
 
 @Composable
 fun ScreenMeeting(

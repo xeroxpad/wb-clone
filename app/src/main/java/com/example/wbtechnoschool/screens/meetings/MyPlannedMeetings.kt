@@ -3,10 +3,10 @@ package com.example.wbtechnoschool.screens.meetings
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavController
+import com.example.domain.entities.Meetings
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.events.CardActiveMeetings
-import com.example.wbtechnoschool.events.CardCompletedMeetings
-import com.example.wbtechnoschool.events.Meetings
+import com.example.wbtechnoschool.utils.events.CardActiveMeetings
+import com.example.wbtechnoschool.utils.events.CardCompletedMeetings
 import com.example.wbtechnoschool.navigation.Graph
 
 @Composable

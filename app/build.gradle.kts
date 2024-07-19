@@ -65,6 +65,8 @@ dependencies {
     implementation("com.airbnb.android:lottie-compose:6.1.0")
     implementation("com.google.android.exoplayer:exoplayer:2.14.2")
     implementation("io.insert-koin:koin-androidx-compose:3.5.6")
+    implementation(project(":domain"))
+    implementation(project(":data"))
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)

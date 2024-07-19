@@ -3,12 +3,14 @@ package com.example.wbtechnoschool.viewmodel.community_view_model
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.events.Community
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
+import com.example.domain.entities.Community
 
-class CommunityViewModel: ViewModel() {
+class CommunityViewModel: ViewModel(
+
+) {
     private val _community = MutableStateFlow<List<Community>>(emptyList())
     val community: StateFlow<List<Community>> = _community
 

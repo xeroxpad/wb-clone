@@ -2,8 +2,8 @@ package com.example.wbtechnoschool.viewmodel.community_view_model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.domain.entities.Meetings
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.events.Meetings
 import com.thedeanda.lorem.Lorem
 import com.thedeanda.lorem.LoremIpsum
 import kotlinx.coroutines.flow.MutableStateFlow
