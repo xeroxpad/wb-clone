@@ -1,4 +1,6 @@
 package com.example.domain.usecases
 
-class GetDetailsCommunityUseCase {
+import com.example.domain.repository.Repository
+
+class GetDetailsCommunityUseCase(val repository: Repository) {
 }

@@ -1,7 +1,9 @@
-package com.example.wbtechnoschool
+package com.example.wbtechnoschool.presentation
 
 import android.app.Application
-import com.example.wbtechnoschool.di.appModule
+import com.example.wbtechnoschool.di.dataModule
+import com.example.wbtechnoschool.di.domainModule
+import com.example.wbtechnoschool.di.presentationModule
 import org.koin.android.ext.koin.androidContext
 import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.GlobalContext.startKoin
@@ -13,7 +15,7 @@ class MyApp : Application() {
         startKoin {
             androidLogger(Level.INFO)
             androidContext(this@MyApp)
-            modules(appModule)
+            modules(listOf(presentationModule, domainModule, dataModule))
         }
     }
 }
