@@ -18,13 +18,13 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.avatar.AddAvatarProfile
-import com.example.wbtechnoschool.button.StatusButton
+import com.example.wbtechnoschool.utils.avatar.AddAvatarProfile
+import com.example.wbtechnoschool.utils.button.StatusButton
 import com.example.wbtechnoschool.navigation.MainTopAppBar
-import com.example.wbtechnoschool.search.CustomTextFieldForProfile
+import com.example.wbtechnoschool.utils.search.CustomTextFieldForProfile
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
-import com.example.wbtechnoschool.utils.MagicNumbers
-import com.example.wbtechnoschool.utils.SPACER
+import com.example.wbtechnoschool.utils.constants.MagicNumbers
+import com.example.wbtechnoschool.utils.constants.SPACER
 import com.example.wbtechnoschool.viewmodel.auth_view_model.AuthorizationProfileViewModel
 import org.koin.androidx.compose.koinViewModel
 

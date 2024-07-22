@@ -25,7 +25,7 @@ class AuthorizationProfileViewModel: ViewModel() {
 
     fun saveDataProfile (navController: NavController) {
         viewModelScope.launch {
-            navController.navigate("${Graph.screenSplashHelloName}/${_name.value}")
+            navController.navigate("${Graph.SplashHelloName.route}/${_name.value}")
         }
     }
 }

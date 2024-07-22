@@ -9,7 +9,6 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -21,10 +20,10 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.features.NoRippleInteractionSource
+import com.example.wbtechnoschool.utils.widgets.NoRippleInteractionSource
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
-import com.example.wbtechnoschool.utils.MagicNumbers
+import com.example.wbtechnoschool.utils.constants.MagicNumbers
 
 @Composable
 fun BottomNavBar(
@@ -33,7 +32,6 @@ fun BottomNavBar(
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination
-    val selectedChildren = remember { mutableStateOf<NavItem>(NavItem.MeetingElement) }
     val noRippleInteractionSource = remember { NoRippleInteractionSource() }
     BottomNavigation(
         modifier = modifier,
@@ -41,9 +39,9 @@ fun BottomNavBar(
         backgroundColor = LightColorTheme.neutralWhite,
     ) {
         listRootElement.forEach { item ->
-            val selectedRootItem = selectedChildren.value == item
+            val selected = currentRoute?.hierarchy?.any { it.route == item.route } == true
             BottomNavigationItem(
-                selected = currentRoute?.hierarchy?.any { it.route == item.route } == true,
+                selected = selected,
                 onClick = {
                     navController.navigate(item.route) {
                         popUpTo(navController.graph.findStartDestination().id) {
@@ -52,13 +50,12 @@ fun BottomNavBar(
                         launchSingleTop = true
                         restoreState = true
                     }
-                    selectedChildren.value = item
                 },
                 interactionSource = noRippleInteractionSource,
                 icon = {
                     Column(horizontalAlignment = Alignment.CenterHorizontally) {
                         when {
-                            selectedRootItem -> {
+                            selected -> {
                                 Text(
                                     text = item.description,
                                     fontWeight = FontWeight.W600,

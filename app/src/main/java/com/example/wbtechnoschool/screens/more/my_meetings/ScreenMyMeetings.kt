@@ -26,7 +26,7 @@ import com.example.wbtechnoschool.screens.meetings.MyPastMeetings
 import com.example.wbtechnoschool.screens.meetings.MyPlannedMeetings
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
-import com.example.wbtechnoschool.utils.MagicNumbers
+import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.viewmodel.more_view_model.my_meetings_view_model.MyMeetingsViewModel
 import org.koin.androidx.compose.koinViewModel
 

@@ -2,13 +2,15 @@ package com.example.wbtechnoschool.viewmodel.meetings_view_model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.domain.entities.MeetingsDescription
+import com.example.domain.usecases.GetDescriptionMeetingsUseCase
 import com.thedeanda.lorem.Lorem
 import com.thedeanda.lorem.LoremIpsum
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class DescriptionMeetingViewModel : ViewModel() {
+class DescriptionMeetingViewModel(private val getDescriptionMeetingsUseCase: GetDescriptionMeetingsUseCase) : ViewModel() {
     private val _showMoreText = MutableStateFlow(false)
     val showMoreText: StateFlow<Boolean> = _showMoreText
 
@@ -17,6 +19,9 @@ class DescriptionMeetingViewModel : ViewModel() {
 
     private val _isGoing = MutableStateFlow(true)
     val isGoing: StateFlow<Boolean> = _isGoing
+
+    private val _meetingDescription = MutableStateFlow<MeetingsDescription?>(null)
+    val meetingDescription: StateFlow<MeetingsDescription?> get() = _meetingDescription
 
     fun toggleShowMoreText() {
         _showMoreText.value = !_showMoreText.value
@@ -33,7 +38,16 @@ class DescriptionMeetingViewModel : ViewModel() {
         }
     }
 
+    private fun loadMeetingDescription() {
+        viewModelScope.launch {
+            val description = getDescriptionMeetingsUseCase.execute()
+            _meetingDescription.value = description
+        }
+    }
+
+
     init {
         loadLoremText()
+        loadMeetingDescription()
     }
 }

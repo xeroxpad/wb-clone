@@ -10,19 +10,19 @@ sealed class NavItem(
     data object MeetingElement: NavItem(
         description = "Встречи",
         icon = R.drawable.meeting,
-        route = Graph.screenMeeting,
+        route = Graph.MeetingsRoot.route,
     )
 
     data object CommunityElement : NavItem(
         description = "Сообщества",
         icon = R.drawable.community,
-        route = Graph.screenCommunity,
+        route = Graph.CommunityRoot.route,
     )
 
     data object InfoElement : NavItem(
         description = "Еще",
         icon = R.drawable.info,
-        route = Graph.screenInfo,
+        route = Graph.InfoRoot.route,
     )
 }
 
@@ -31,7 +31,6 @@ val listRootElement = listOf(
     NavItem.CommunityElement,
     NavItem.InfoElement
 )
-
 
 
 

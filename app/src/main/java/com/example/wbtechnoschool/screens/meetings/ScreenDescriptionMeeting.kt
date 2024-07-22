@@ -30,15 +30,15 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.avatar.RowAvatars
-import com.example.wbtechnoschool.chips.FilterChips
-import com.example.wbtechnoschool.features.ShowImage
-import com.example.wbtechnoschool.features.ToggleButton
+import com.example.wbtechnoschool.utils.avatar.RowAvatars
+import com.example.wbtechnoschool.utils.chips.FilterChips
+import com.example.wbtechnoschool.utils.widgets.ShowImage
+import com.example.wbtechnoschool.utils.widgets.ToggleButton
 import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
-import com.example.wbtechnoschool.utils.MagicNumbers
-import com.example.wbtechnoschool.utils.SPACER
+import com.example.wbtechnoschool.utils.constants.MagicNumbers
+import com.example.wbtechnoschool.utils.constants.SPACER
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.DescriptionMeetingViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -49,8 +49,8 @@ fun ScreenDescriptionMeeting(
     viewModel: DescriptionMeetingViewModel = koinViewModel(),
 ) {
     val showMoreText by viewModel.showMoreText.collectAsState()
-    val loremText by viewModel.loremText.collectAsState()
     val isGoing by viewModel.isGoing.collectAsState()
+    val meetingDescription by viewModel.meetingDescription.collectAsState()
     Scaffold(
         modifier = modifier
             .statusBarsPadding()
@@ -87,60 +87,57 @@ fun ScreenDescriptionMeeting(
                         ) { viewModel.toggleShowMoreText() },
                     verticalArrangement = Arrangement.Top,
                 ) {
-                    item(1) {
-                        Row(
-                            modifier = Modifier
-                                .padding(top = MagicNumbers.SCREEN_DESCRIPTION_ROW_PADDING_TOP.dp)
-                        ) {
-                            Text(
-                                text = stringResource(id = R.string.date_and_location_meeting),
-                                fontFamily = fontSFPro,
-                                fontWeight = FontWeight.W600,
-                                fontSize = MagicNumbers.SCREEN_DESCRIPTION_ROW_TEXT_FONT_SIZE.sp,
-                                color = LightColorTheme.neutralWeak
-                            )
-                        }
-                        Row() {
-                            FilterChips(labelText = "Kotlin")
-                            FilterChips(labelText = "Junior")
-                            FilterChips(labelText = "Moscow")
-                        }
-                        Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
-                        ShowImage(image = R.drawable.map)
-                        Spacer(modifier = Modifier.height(SPACER.SPACER_15.value.dp))
-                        when {
-                            showMoreText -> {
+                    item {
+                        meetingDescription?.let { description ->
+                            Row(
+                                modifier = Modifier
+                                    .padding(top = MagicNumbers.SCREEN_DESCRIPTION_ROW_PADDING_TOP.dp)
+                            ) {
                                 Text(
-                                    text = loremText,
-                                    fontSize = MagicNumbers.SCREEN_DESCRIPTION_SHOW_MORE_TEXT_FONT_SIZE.sp,
+                                    text = description.dateAndLocation,
                                     fontFamily = fontSFPro,
-                                    fontWeight = FontWeight.W400,
+                                    fontWeight = FontWeight.W600,
+                                    fontSize = MagicNumbers.SCREEN_DESCRIPTION_ROW_TEXT_FONT_SIZE.sp,
                                     color = LightColorTheme.neutralWeak
                                 )
                             }
-                            else -> {
-                                Text(
-                                    text = loremText,
-                                    fontSize = MagicNumbers.SCREEN_DESCRIPTION_SHOW_MORE_TEXT_FONT_SIZE.sp,
-                                    fontFamily = fontSFPro,
-                                    fontWeight = FontWeight.W400,
-                                    color = LightColorTheme.neutralWeak,
-                                    maxLines = MagicNumbers.SCREEN_DESCRIPTION_SHOW_MORE_MAX_LINES,
-                                    overflow = TextOverflow.Ellipsis
-                                )
+                            Row {
+                                description.tags.forEach { tag ->
+                                    FilterChips(labelText = tag)
+                                }
                             }
+                            Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
+                            ShowImage()
+                            Spacer(modifier = Modifier.height(SPACER.SPACER_15.value.dp))
+                            when {
+                                showMoreText -> {
+                                    Text(
+                                        text = description.description,
+                                        fontSize = MagicNumbers.SCREEN_DESCRIPTION_SHOW_MORE_TEXT_FONT_SIZE.sp,
+                                        fontFamily = fontSFPro,
+                                        fontWeight = FontWeight.W400,
+                                        color = LightColorTheme.neutralWeak
+                                    )
+                                }
+                                else -> {
+                                    Text(
+                                        text = description.description,
+                                        fontSize = MagicNumbers.SCREEN_DESCRIPTION_SHOW_MORE_TEXT_FONT_SIZE.sp,
+                                        fontFamily = fontSFPro,
+                                        fontWeight = FontWeight.W400,
+                                        color = LightColorTheme.neutralWeak,
+                                        maxLines = MagicNumbers.SCREEN_DESCRIPTION_SHOW_MORE_MAX_LINES,
+                                        overflow = TextOverflow.Ellipsis
+                                    )
+                                }
+                            }
+                            Spacer(modifier = Modifier.height(SPACER.SPACER_15.value.dp))
+                            RowAvatars(arrayImage = description.rowAvatars)
                         }
-                        Spacer(modifier = Modifier.height(SPACER.SPACER_15.value.dp))
-                        RowAvatars()
-                        Spacer(
-                            Modifier.windowInsetsBottomHeight(
-                                WindowInsets.systemBars
-                            )
-                        )
                     }
                 }
                 ToggleButton(
-                    isSelected = { selected ->
+                    isSelected = { _ ->
                         viewModel.toggleIsGoing()
                     }, modifier = Modifier
                         .fillMaxWidth()

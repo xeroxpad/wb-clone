@@ -9,26 +9,38 @@ import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Tab
+import androidx.compose.material3.TabRow
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.features.SwitchRow
+import com.example.wbtechnoschool.utils.widgets.SwitchRow
 import com.example.wbtechnoschool.navigation.MainTopAppBar
-import com.example.wbtechnoschool.search.AppSearchBar
-import com.example.wbtechnoschool.utils.MagicNumbers
-import com.example.wbtechnoschool.utils.SPACER
-import com.example.wbtechnoschool.viewmodel.more_view_model.my_meetings_view_model.MyMeetingsViewModel
+import com.example.wbtechnoschool.ui.theme.LightColorTheme
+import com.example.wbtechnoschool.ui.theme.fontSFPro
+import com.example.wbtechnoschool.utils.search.AppSearchBar
+import com.example.wbtechnoschool.utils.constants.MagicNumbers
+import com.example.wbtechnoschool.utils.constants.SPACER
+import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ScreenMeeting(
     modifier: Modifier = Modifier,
     navController: NavController,
+    viewModel: MeetingViewModel = koinViewModel()
 ) {
+    val tabIndex by viewModel.tabIndex.collectAsState()
+    val tabs = viewModel.getTabs().map { stringResource(id = it) }
     Scaffold(
         modifier = modifier
             .statusBarsPadding()
@@ -55,12 +67,28 @@ fun ScreenMeeting(
                         .height(MagicNumbers.SCREEN_MEETING_APP_SEARCH_BAR_HEIGHT.dp)
                 )
                 Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
-                SwitchRow(
-                    titleRow = listOf(
-                        stringResource(id = R.string.all_meetings),
-                        stringResource(id = R.string.active_meetings)
-                    ), navController = navController
-                )
+                TabRow(selectedTabIndex = tabIndex, modifier = Modifier.fillMaxWidth()) {
+                    tabs.forEachIndexed { index, title ->
+                        Tab(
+                            text = {
+                                Text(
+                                    title,
+                                    fontSize = MagicNumbers.SCREEN_MY_MEETING_TAB_ROW_TEXT_FOT_SIZE.sp,
+                                    fontWeight = FontWeight.W500,
+                                    fontFamily = fontSFPro
+                                )
+                            },
+                            selected = tabIndex == index,
+                            onClick = { viewModel.setTabIndex(index) },
+                            selectedContentColor = LightColorTheme.brandColorDefault,
+                            unselectedContentColor = LightColorTheme.accentGrey
+                        )
+                    }
+                }
+                when (tabIndex) {
+                    0 -> AllMeetings(navController)
+                    1 -> ActiveMeetings(navController)
+                }
             }
         },
     )

@@ -29,14 +29,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.avatar.MyMainAvatar
-import com.example.wbtechnoschool.features.ContainerToGo
+import com.example.wbtechnoschool.utils.avatar.MyMainAvatar
+import com.example.wbtechnoschool.utils.widgets.ContainerToGo
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
-import com.example.wbtechnoschool.utils.MagicNumbers
-import com.example.wbtechnoschool.utils.SPACER
+import com.example.wbtechnoschool.utils.constants.MagicNumbers
+import com.example.wbtechnoschool.utils.constants.SPACER
 
 @Composable
 fun ScreenInfo(navController: NavController, modifier: Modifier = Modifier) {
@@ -61,7 +61,7 @@ fun ScreenInfo(navController: NavController, modifier: Modifier = Modifier) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .clip(RoundedCornerShape(MagicNumbers.SCREEN_INFO_ROW_CLIP.dp))
-                        .clickable { navController.navigate(Graph.screenProfile) },
+                        .clickable { navController.navigate(Graph.InfoRoot.MyProfile.route) },
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     MyMainAvatar(
@@ -97,28 +97,32 @@ fun ScreenInfo(navController: NavController, modifier: Modifier = Modifier) {
                 ContainerToGo(
                     icon = R.drawable.meeting,
                     title = stringResource(id = R.string.container_to_go_title_my_meetings),
-                    onClick = { navController.navigate(Graph.screenMyMeetings) }
+                    onClick = { navController.navigate(Graph.InfoRoot.MyMeetings.route) }
                 )
                 Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                 ContainerToGo(
                     icon = R.drawable.icon_theme,
                     title = stringResource(id = R.string.container_to_go_title_theme),
-                    onClick = { navController.navigate(Graph.screenTheme) }
+                    onClick = { navController.navigate(Graph.InfoRoot.MyTheme.route) }
+
                 )
                 ContainerToGo(
                     icon = R.drawable.icon_notifications,
                     title = stringResource(id = R.string.container_to_go_title_notifications),
-                    onClick = { navController.navigate(Graph.screenNotifications) }
+                    onClick = { navController.navigate(Graph.InfoRoot.MyNotifications.route) }
+
                 )
                 ContainerToGo(
                     icon = R.drawable.icon_safety,
                     title = stringResource(id = R.string.container_to_go_title_safety),
-                    onClick = { navController.navigate(Graph.screenSafety) }
+                    onClick = { navController.navigate(Graph.InfoRoot.MySafety.route) }
+
                 )
                 ContainerToGo(
                     icon = R.drawable.icon_recources,
                     title = stringResource(id = R.string.container_to_go_title_resources),
-                    onClick = { navController.navigate(Graph.screenResources) }
+                    onClick = { navController.navigate(Graph.InfoRoot.MyResources.route) }
+
                 )
                 HorizontalDivider(
                     modifier = Modifier.padding(vertical = MagicNumbers.SCREEN_INFO_HORIZONTAL_DIVIDER_VERTICAL_PADDING.dp),
@@ -127,14 +131,15 @@ fun ScreenInfo(navController: NavController, modifier: Modifier = Modifier) {
                 ContainerToGo(
                     icon = R.drawable.icon_help,
                     title = stringResource(id = R.string.container_to_go_title_help),
-                    onClick = { navController.navigate(Graph.screenHelp) },
+                    onClick = { navController.navigate(Graph.InfoRoot.MyHelp.route) },
                     sizeIcon = MagicNumbers.SCREEN_INFO_ICON_HELP_SIZE.dp,
                     paddingIcon = MagicNumbers.SCREEN_INFO_ICON_HELP_PADDING.dp
                 )
                 ContainerToGo(
                     icon = R.drawable.icon_invite_friend,
                     title = stringResource(id = R.string.container_to_go_title_invite_friend),
-                    onClick = { navController.navigate(Graph.inviteFriend) }
+                    onClick = { navController.navigate(Graph.InfoRoot.MyInviteFriend.route) }
+
                 )
             }
         }

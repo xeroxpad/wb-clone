@@ -35,13 +35,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.button.StatusTextButton
+import com.example.wbtechnoschool.utils.button.StatusTextButton
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
-import com.example.wbtechnoschool.utils.MagicNumbers
-import com.example.wbtechnoschool.utils.SPACER
+import com.example.wbtechnoschool.utils.constants.MagicNumbers
+import com.example.wbtechnoschool.utils.constants.SPACER
 import com.example.wbtechnoschool.viewmodel.auth_view_model.EntryCodeViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -95,7 +95,7 @@ fun ScreenEntryCode(
                         viewModel.onCodeChange(text)
                         when {
                             isComplete -> {
-                                navController.navigate(Graph.screenAuthorizationProfile) // пока для показа тут пример перехода
+                                navController.navigate(Graph.AuthorizationProfile.route) // пока для показа тут пример перехода
                             }
                         }
                     }
@@ -104,7 +104,7 @@ fun ScreenEntryCode(
                     contentColor = LightColorTheme.brandColorDefault,
                     containerColor = Color.Transparent,
                     enable = true,
-                    onClick = { navController.navigate(Graph.screenAuthorizationProfile) }, // пока для показа тут пример перехода
+                    onClick = { navController.navigate(Graph.AuthorizationProfile.route) }, // пока для показа тут пример перехода
                     contentText = stringResource(id = R.string.request_code_again),
                     modifier = Modifier
                         .fillMaxWidth()
