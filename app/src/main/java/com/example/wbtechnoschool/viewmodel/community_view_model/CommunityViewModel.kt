@@ -8,6 +8,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import com.example.domain.entities.Community
 import com.example.domain.usecases.GetAllCommunityUseCase
+import kotlinx.coroutines.flow.update
 
 class CommunityViewModel(private val getAllCommunityUseCase: GetAllCommunityUseCase) : ViewModel() {
     private val _community = MutableStateFlow<List<Community>>(emptyList())
@@ -16,7 +17,7 @@ class CommunityViewModel(private val getAllCommunityUseCase: GetAllCommunityUseC
     private fun loadCommunity() {
         viewModelScope.launch {
             val communityList = getAllCommunityUseCase.execute()
-            _community.value = communityList
+            _community.update { communityList }
         }
     }
 

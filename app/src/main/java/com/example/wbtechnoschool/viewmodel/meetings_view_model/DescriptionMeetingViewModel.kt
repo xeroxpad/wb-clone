@@ -8,6 +8,7 @@ import com.thedeanda.lorem.Lorem
 import com.thedeanda.lorem.LoremIpsum
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class DescriptionMeetingViewModel(private val getDescriptionMeetingsUseCase: GetDescriptionMeetingsUseCase) : ViewModel() {
@@ -41,10 +42,9 @@ class DescriptionMeetingViewModel(private val getDescriptionMeetingsUseCase: Get
     private fun loadMeetingDescription() {
         viewModelScope.launch {
             val description = getDescriptionMeetingsUseCase.execute()
-            _meetingDescription.value = description
+            _meetingDescription.update { description }
         }
     }
-
 
     init {
         loadLoremText()
