@@ -1,8 +1,13 @@
 package com.example.wbtechnoschool.viewmodel.community_view_model
 
+import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.domain.entities.Community
 import com.example.domain.entities.Meetings
+import com.example.domain.repository.CommunityRepository
+import com.example.domain.usecases.GetAllCommunityUseCase
+import com.example.domain.usecases.GetDetailsCommunityUseCase
 import com.example.wbtechnoschool.R
 import com.thedeanda.lorem.Lorem
 import com.thedeanda.lorem.LoremIpsum
@@ -10,7 +15,9 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class DetailsCommunityViewModel : ViewModel() {
+class DetailsCommunityViewModel(
+    private val getDetailsCommunityUseCase: GetDetailsCommunityUseCase
+): ViewModel() {
     private val _showMoreText = MutableStateFlow(false)
     val showMoreText: StateFlow<Boolean> = _showMoreText
 
@@ -32,18 +39,9 @@ class DetailsCommunityViewModel : ViewModel() {
     }
 
     private fun loadMeetings() {
+        val details = getDetailsCommunityUseCase.execute()
         viewModelScope.launch {
-            _meetings.value = List(18) {
-                Meetings(
-                    icon = R.drawable.avatar_preview,
-                    title = "Designa",
-                    date = R.string.date_meeting,
-                    city = R.string.location_meeting,
-                    tagDevelopmentLanguage = "Kotlin",
-                    tagGradeDeveloper = "Junior",
-                    tagCityMeeting = "Moscow",
-                )
-            }
+            _meetings.value = details.meetingsCommunity
         }
     }
 

@@ -60,7 +60,6 @@ dependencies {
     implementation("androidx.compose.foundation:foundation:1.7.0-beta03")
     implementation("io.coil-kt:coil-compose:2.6.0")
     implementation("io.coil-kt:coil-svg:2.2.2")
-    implementation("io.coil-kt:coil:2.6.0")
     implementation("com.thedeanda:lorem:2.1")
     implementation("com.airbnb.android:lottie-compose:6.1.0")
     implementation("com.google.android.exoplayer:exoplayer:2.14.2")

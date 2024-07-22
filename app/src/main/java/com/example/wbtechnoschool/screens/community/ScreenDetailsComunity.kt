@@ -78,7 +78,6 @@ fun ScreenDetailsCommunity(
                                 color = LightColorTheme.neutralWeak
                             )
                         }
-
                         else -> {
                             Text(
                                 text = loremText,

@@ -1,7 +1,8 @@
 package com.example.domain.entities
 
 data class Community(
-    val icon: Int,
+    val id: Int,
+    val icon: String,
     val title: String,
     val countPersons: String,
 )

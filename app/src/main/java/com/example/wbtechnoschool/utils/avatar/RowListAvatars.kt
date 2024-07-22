@@ -32,22 +32,9 @@ const val zIndex = 1F
 
 @Composable
 fun RowAvatars(
-    modifier: Modifier = Modifier
+    modifier: Modifier = Modifier,
+    arrayImage: List<String>
 ) {
-    val arrayImage = listOf(
-        painterResource(id = R.drawable.avatars),
-        painterResource(id = R.drawable.nature),
-        painterResource(id = R.drawable.avatars),
-        painterResource(id = R.drawable.nature),
-        painterResource(id = R.drawable.avatars),
-        painterResource(id = R.drawable.nature),
-        painterResource(id = R.drawable.avatars),
-        painterResource(id = R.drawable.avatars),
-        painterResource(id = R.drawable.avatars),
-        painterResource(id = R.drawable.avatars),
-        painterResource(id = R.drawable.avatars),
-        painterResource(id = R.drawable.avatars),
-    )
     Row(
         horizontalArrangement = Arrangement.spacedBy(
             when (arrayImage.size) {
@@ -75,7 +62,6 @@ fun RowAvatars(
                             MagicNumbers.ROW_LIST_AVATAR_BOX_BORDER_SHAPE))
             ) {
                 MyPreviewAvatar(
-                    painter = i.value,
                     modifier = Modifier
                         .fillMaxSize()
                         .align(Alignment.Center)

@@ -14,6 +14,8 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -23,6 +25,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.rememberImagePainter
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.utils.avatar.MyMainAvatar
 import com.example.wbtechnoschool.utils.button.IconOutlinedButton
@@ -32,9 +35,19 @@ import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.utils.constants.SPACER
+import com.example.wbtechnoschool.viewmodel.more_view_model.profile_view_model.ProfileViewModule
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun ScreenProfile(navController: NavController, modifier: Modifier = Modifier) {
+fun ScreenProfile(
+    modifier: Modifier = Modifier,
+    navController: NavController,
+    viewModel: ProfileViewModule = koinViewModel(),
+) {
+    val name by viewModel.name.collectAsState()
+    val phoneNumber by viewModel.phoneNumber.collectAsState()
+    val socialMediaIcons by viewModel.socialMediaIcons.collectAsState()
+    val avatar by viewModel.avatar.collectAsState()
     Scaffold(
         modifier = modifier
             .statusBarsPadding()
@@ -65,14 +78,14 @@ fun ScreenProfile(navController: NavController, modifier: Modifier = Modifier) {
                 )
                 Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                 Text(
-                    text = "Михаил Никонов",
+                    text = name,
                     fontSize = MagicNumbers.SCREEN_PROFILE_TEXT_NAME_FONT_SIZE.sp,
                     fontFamily = fontSFPro,
                     fontWeight = FontWeight.W600,
                     modifier = Modifier.align(Alignment.CenterHorizontally)
                 )
                 Text(
-                    text = "+7 999 999-99-99",
+                    text = phoneNumber,
                     fontSize = MagicNumbers.SCREEN_PROFILE_TEXT_NUMBER_FONT_SIZE.sp,
                     fontFamily = fontSFPro,
                     fontWeight = FontWeight.W400,
@@ -84,26 +97,13 @@ fun ScreenProfile(navController: NavController, modifier: Modifier = Modifier) {
                     horizontalArrangement = Arrangement.SpaceBetween,
                     modifier = Modifier.fillMaxWidth()
                 ) {
-                    IconOutlinedButton(
-                        contentColor = LightColorTheme.brandColorDefault,
-                        onClick = { /*TODO*/ },
-                        icon = (R.drawable.icon_twitter)
-                    )
-                    IconOutlinedButton(
-                        contentColor = LightColorTheme.brandColorDefault,
-                        onClick = { /*TODO*/ },
-                        icon = (R.drawable.icon_inst)
-                    )
-                    IconOutlinedButton(
-                        contentColor = LightColorTheme.brandColorDefault,
-                        onClick = { /*TODO*/ },
-                        icon = (R.drawable.icon_linkedin)
-                    )
-                    IconOutlinedButton(
-                        contentColor = LightColorTheme.brandColorDefault,
-                        onClick = { /*TODO*/ },
-                        icon = (R.drawable.icon_meta)
-                    )
+                    socialMediaIcons.forEach { icon ->
+                        IconOutlinedButton(
+                            contentColor = LightColorTheme.brandColorDefault,
+                            onClick = {  },
+                            icon = icon
+                        )
+                    }
                 }
             }
         }

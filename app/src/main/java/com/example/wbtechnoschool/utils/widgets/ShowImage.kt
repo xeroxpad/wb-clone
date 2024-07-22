@@ -25,7 +25,6 @@ import com.example.wbtechnoschool.utils.constants.MagicNumbers
 @Composable
 fun ShowImage(
     modifier: Modifier = Modifier,
-    image: Int,
 ) {
     var showImage by remember { mutableStateOf(false) }
     Box(
@@ -34,7 +33,7 @@ fun ShowImage(
             .clip(RoundedCornerShape(MagicNumbers.SHOW_IMAGE_BOX_CLIP.dp))
     ) {
         Image(
-            painter = rememberAsyncImagePainter(model = image),
+            painter = rememberAsyncImagePainter(model = R.drawable.map),
             contentDescription = null,
             modifier = Modifier
                 .fillMaxWidth()

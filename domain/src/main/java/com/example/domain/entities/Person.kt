@@ -5,4 +5,5 @@ data class Person(
     val secondName: String?,
     val numberPhone: String,
     val avatar: String?,
+    val socialMediaIcons: List<String>
 )

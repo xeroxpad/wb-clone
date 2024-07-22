@@ -1,5 +1,6 @@
 package com.example.wbtechnoschool.utils.events
 
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -30,8 +31,8 @@ import com.example.wbtechnoschool.utils.constants.MagicNumbers
 
 @Composable
 fun CardActiveMeetings(modifier: Modifier = Modifier, meetings: Meetings, onClick: () -> Unit) {
-    val dateMeeting = stringResource(id = meetings.date)
-    val locationMeeting = stringResource(id = meetings.city)
+    val dateMeeting = meetings.date
+    val locationMeeting = meetings.city
     val allTextMeeting = ("$dateMeeting - $locationMeeting")
     Card(
         onClick = { onClick() }, colors = CardDefaults.cardColors(Color.Transparent)
@@ -41,17 +42,17 @@ fun CardActiveMeetings(modifier: Modifier = Modifier, meetings: Meetings, onClic
                 .fillMaxWidth()
                 .padding(top = MagicNumbers.CARD_ACTIVE_MEETINGS_ROW_PADDING_TOP.dp)
         ) {
-            MyPreviewAvatar(
-                modifier = Modifier
-                    .size(MagicNumbers.CARD_ACTIVE_MEETINGS_MY_PREV_AVATAR_SIZE.dp),
-                painter = painterResource(id = meetings.icon),
-                contentDescription = null
-            )
+            Box(modifier = Modifier.padding(top = MagicNumbers.BOTTOM_NAV_COLUMN_ICON_PADDING_TOP.dp)) {
+                MyPreviewAvatar(
+                    modifier = Modifier
+                        .size(MagicNumbers.CARD_ACTIVE_MEETINGS_MY_PREV_AVATAR_SIZE.dp),
+                    contentDescription = null
+                )
+            }
             Column(
                 modifier = Modifier
                     .padding(horizontal = MagicNumbers.CARD_ACTIVE_MEETINGS_COLUMN_PADDING_HORIZONTAL.dp)
             ) {
-
                 Text(
                     text = meetings.title,
                     fontFamily = fontSFPro,
@@ -81,8 +82,8 @@ fun CardActiveMeetings(modifier: Modifier = Modifier, meetings: Meetings, onClic
 
 @Composable
 fun CardCompletedMeetings(modifier: Modifier = Modifier, meetings: Meetings, onClick: () -> Unit) {
-    val dateMeeting = stringResource(id = meetings.date)
-    val locationMeeting = stringResource(id = meetings.city)
+    val dateMeeting = meetings.date
+    val locationMeeting = meetings.city
     val allTextMeeting = ("$dateMeeting - $locationMeeting")
     Card(
         onClick = { onClick() }, colors = CardDefaults.cardColors(Color.Transparent)
@@ -92,12 +93,13 @@ fun CardCompletedMeetings(modifier: Modifier = Modifier, meetings: Meetings, onC
                 .fillMaxWidth()
                 .padding(top = MagicNumbers.CARD_COMPLETED_MEETINGS_ROW_PADDING_TOP.dp)
         ) {
-            MyPreviewAvatar(
-                modifier = Modifier
-                    .size(MagicNumbers.CARD_COMPLETED_MEETINGS_MY_PREV_AVATAR_SIZE.dp),
-                painter = painterResource(id = meetings.icon),
-                contentDescription = null
-            )
+            Box(modifier = Modifier.padding(top = MagicNumbers.BOTTOM_NAV_COLUMN_ICON_PADDING_TOP.dp)) {
+                MyPreviewAvatar(
+                    modifier = Modifier
+                        .size(MagicNumbers.CARD_COMPLETED_MEETINGS_MY_PREV_AVATAR_SIZE.dp),
+                    contentDescription = null
+                )
+            }
             Column(
                 modifier = Modifier
                     .padding(horizontal = MagicNumbers.CARD_COMPLETED_MEETINGS_COLUMN_PADDING_HORIZONTAL.dp),

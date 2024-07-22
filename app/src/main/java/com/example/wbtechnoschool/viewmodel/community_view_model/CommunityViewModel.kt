@@ -7,22 +7,16 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import com.example.domain.entities.Community
+import com.example.domain.usecases.GetAllCommunityUseCase
 
-class CommunityViewModel: ViewModel(
-
-) {
+class CommunityViewModel(private val getAllCommunityUseCase: GetAllCommunityUseCase) : ViewModel() {
     private val _community = MutableStateFlow<List<Community>>(emptyList())
     val community: StateFlow<List<Community>> = _community
 
     private fun loadCommunity() {
         viewModelScope.launch {
-            _community.value = List(size = 18) /*для примера*/ {
-                Community(
-                    icon = R.drawable.avatar_meeting,
-                    title = "Designa", /*для примера*/
-                    countPersons = "10 000 человек" /*для примера*/
-                )
-            }
+            val communityList = getAllCommunityUseCase.execute()
+            _community.value = communityList
         }
     }
 

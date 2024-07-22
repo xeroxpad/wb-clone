@@ -40,6 +40,7 @@ class MagicNumbers {
         const val SCREEN_COMMUNITY_LAZY_CARD_COMMUNITY_PADDING_VERTICAL = 7
 
         //        CardCommunity
+        const val CARD_COMMUNITY_MY_PREV_AVATAR_PADDING_START = 10
         const val CARD_COMMUNITY_MY_PREV_AVATAR_PADDING_END = 10
         const val CARD_COMMUNITY_MY_PREV_AVATAR_PADDING_BOTTOM = 10
         const val CARD_COMMUNITY_MY_PREV_AVATAR_SIZE = 56
