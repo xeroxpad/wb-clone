@@ -31,13 +31,14 @@ import com.example.wbtechnoschool.utils.search.AppSearchBar
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.utils.constants.SPACER
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingViewModel
+import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingsTab
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ScreenMeeting(
     modifier: Modifier = Modifier,
     navController: NavController,
-    viewModel: MeetingViewModel = koinViewModel()
+    viewModel: MeetingViewModel = koinViewModel(),
 ) {
     val tabIndex by viewModel.tabIndex.collectAsState()
     val tabs = viewModel.getTabs().map { stringResource(id = it) }
@@ -67,7 +68,7 @@ fun ScreenMeeting(
                         .height(MagicNumbers.SCREEN_MEETING_APP_SEARCH_BAR_HEIGHT.dp)
                 )
                 Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
-                TabRow(selectedTabIndex = tabIndex, modifier = Modifier.fillMaxWidth()) {
+                TabRow(selectedTabIndex = tabIndex.ordinal, modifier = Modifier.fillMaxWidth()) {
                     tabs.forEachIndexed { index, title ->
                         Tab(
                             text = {
@@ -78,21 +79,23 @@ fun ScreenMeeting(
                                     fontFamily = fontSFPro
                                 )
                             },
-                            selected = tabIndex == index,
-                            onClick = { viewModel.setTabIndex(index) },
+                            selected = tabIndex.ordinal == index,
+                            onClick = { viewModel.setTabIndex(MeetingsTab.entries[index]) },
                             selectedContentColor = LightColorTheme.brandColorDefault,
                             unselectedContentColor = LightColorTheme.accentGrey
                         )
                     }
                 }
                 when (tabIndex) {
-                    0 -> AllMeetings(navController)
-                    1 -> ActiveMeetings(navController)
+                    MeetingsTab.ALL_MEETINGS -> AllMeetings(navController)
+                    MeetingsTab.ACTIVE_MEETINGS -> ActiveMeetings(navController)
                 }
             }
         },
     )
 }
+
+
 
 
 

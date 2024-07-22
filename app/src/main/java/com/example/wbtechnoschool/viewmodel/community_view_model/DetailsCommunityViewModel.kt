@@ -13,11 +13,12 @@ import com.thedeanda.lorem.Lorem
 import com.thedeanda.lorem.LoremIpsum
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class DetailsCommunityViewModel(
-    private val getDetailsCommunityUseCase: GetDetailsCommunityUseCase
-): ViewModel() {
+    private val getDetailsCommunityUseCase: GetDetailsCommunityUseCase,
+) : ViewModel() {
     private val _showMoreText = MutableStateFlow(false)
     val showMoreText: StateFlow<Boolean> = _showMoreText
 
@@ -34,14 +35,14 @@ class DetailsCommunityViewModel(
     private fun loadLoremText() {
         viewModelScope.launch {
             val lorem: Lorem = LoremIpsum()
-            _loremText.value = lorem.getWords(100, 200)
+            _loremText.update { lorem.getWords(100, 200) }
         }
     }
 
     private fun loadMeetings() {
         val details = getDetailsCommunityUseCase.execute()
         viewModelScope.launch {
-            _meetings.value = details.meetingsCommunity
+            _meetings.update { details.meetingsCommunity }
         }
     }
 

@@ -13,8 +13,8 @@ class MeetingViewModel(private val getMeetingsUseCase: GetMeetingsUseCase) : Vie
     private val _meetings = MutableStateFlow<List<Meetings>>(emptyList())
     val meetings: StateFlow<List<Meetings>> get() = _meetings
 
-    private val _tabIndex = MutableStateFlow(0)
-    val tabIndex: StateFlow<Int> = _tabIndex
+    private val _tabIndex = MutableStateFlow(MeetingsTab.ALL_MEETINGS)
+    val tabIndex: StateFlow<MeetingsTab> = _tabIndex
 
     private val nameTabs = listOf(
         R.string.all_meetings,
@@ -23,8 +23,8 @@ class MeetingViewModel(private val getMeetingsUseCase: GetMeetingsUseCase) : Vie
 
     fun getTabs(): List<Int> = nameTabs
 
-    fun setTabIndex(index: Int) {
-        _tabIndex.value = index
+    fun setTabIndex(tab: MeetingsTab) {
+        _tabIndex.value = tab
     }
 
     init {
@@ -37,4 +37,9 @@ class MeetingViewModel(private val getMeetingsUseCase: GetMeetingsUseCase) : Vie
             _meetings.value = meetingsList
         }
     }
+}
+
+enum class MeetingsTab {
+    ALL_MEETINGS,
+    ACTIVE_MEETINGS
 }
