@@ -30,6 +30,7 @@ fun StartScreen(navController: NavHostController) {
     val currentRoute = navBackStackEntry?.destination?.route
     val baseRoute = currentRoute?.substringBefore("/") ?: ""
     val bottomBarIsShow = rememberSaveable { (mutableStateOf(true)) }
+// тут с навигацией фигня, поправлю
     bottomBarIsShow.value = when (baseRoute) {
         Graph.Splash.route,
         Graph.Authorization.route,
