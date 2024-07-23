@@ -65,7 +65,7 @@ fun ScreenInfo(navController: NavController, modifier: Modifier = Modifier) {
                     verticalAlignment = Alignment.CenterVertically
                 ) {
                     MyMainAvatar(
-                        painter = painterResource(id = R.drawable.avatars),
+                        painter = "https://i.pinimg.com/originals/89/e5/8e/89e58e371fded01e2ccf40fdea5c2c4d.jpg",
                         contentDescription = null,
                         modifier = Modifier
                             .size(MagicNumbers.SCREEN_INFO_MY_MAIN_AVATAR_SIZE.dp)

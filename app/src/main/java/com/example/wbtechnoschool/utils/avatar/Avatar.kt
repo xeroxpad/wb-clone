@@ -1,35 +1,30 @@
 package com.example.wbtechnoschool.utils.avatar
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.zIndex
+import coil.compose.AsyncImage
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.ui.theme.LightGrey
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 
 @Composable
 fun MyMainAvatar(
     modifier: Modifier = Modifier,
-    painter: Painter,
+    painter: String,
     contentDescription: String?,
     contentScale: ContentScale = ContentScale.Crop,
 ) {
-    Image(
+    AsyncImage(
         modifier = modifier,
-        painter = painter,
+        model = painter,
         contentDescription = contentDescription,
         contentScale = contentScale
     )
@@ -38,6 +33,7 @@ fun MyMainAvatar(
 @Composable
 fun MyPreviewAvatar(
     modifier: Modifier = Modifier,
+    painter: String,
     contentDescription: String?,
     contentScale: ContentScale = ContentScale.Crop,
 ) {
@@ -46,9 +42,9 @@ fun MyPreviewAvatar(
             .size(MagicNumbers.ROW_LIST_AVATAR_BOX_SIZE.dp)
             .clip(RoundedCornerShape(MagicNumbers.ROW_LIST_AVATAR_BOX_BORDER_SHAPE))
     ) {
-        Image(
+        AsyncImage(
             modifier = modifier,
-            painter = painterResource(id = R.drawable.avatars),
+            model = painter,
             contentDescription = contentDescription,
             contentScale = contentScale,
         )

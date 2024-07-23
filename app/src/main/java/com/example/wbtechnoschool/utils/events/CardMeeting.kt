@@ -46,7 +46,8 @@ fun CardActiveMeetings(modifier: Modifier = Modifier, meetings: Meetings, onClic
                 MyPreviewAvatar(
                     modifier = Modifier
                         .size(MagicNumbers.CARD_ACTIVE_MEETINGS_MY_PREV_AVATAR_SIZE.dp),
-                    contentDescription = null
+                    contentDescription = null,
+                    painter = meetings.icon
                 )
             }
             Column(
@@ -97,7 +98,8 @@ fun CardCompletedMeetings(modifier: Modifier = Modifier, meetings: Meetings, onC
                 MyPreviewAvatar(
                     modifier = Modifier
                         .size(MagicNumbers.CARD_COMPLETED_MEETINGS_MY_PREV_AVATAR_SIZE.dp),
-                    contentDescription = null
+                    contentDescription = null,
+                    painter = meetings.icon
                 )
             }
             Column(

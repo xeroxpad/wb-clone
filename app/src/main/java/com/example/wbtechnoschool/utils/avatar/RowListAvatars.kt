@@ -69,6 +69,7 @@ fun RowAvatars(
                         .clickable {},
                     contentDescription = null,
                     contentScale = ContentScale.Crop,
+                    painter = "https://i.pinimg.com/originals/89/e5/8e/89e58e371fded01e2ccf40fdea5c2c4d.jpg"
                 )
             }
         }

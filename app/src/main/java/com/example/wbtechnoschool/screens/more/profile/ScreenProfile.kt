@@ -47,7 +47,7 @@ fun ScreenProfile(
     val name by viewModel.name.collectAsState()
     val phoneNumber by viewModel.phoneNumber.collectAsState()
     val socialMediaIcons by viewModel.socialMediaIcons.collectAsState()
-    val avatar by viewModel.avatar.collectAsState()
+    val avatarUrl = viewModel.avatar.collectAsState()
     Scaffold(
         modifier = modifier
             .statusBarsPadding()
@@ -69,7 +69,7 @@ fun ScreenProfile(
             ) {
                 Spacer(modifier = Modifier.height(SPACER.SPACER_80.value.dp))
                 MyMainAvatar(
-                    painter = painterResource(id = R.drawable.avatars),
+                    painter = avatarUrl.value,
                     contentDescription = null,
                     modifier = Modifier
                         .size(MagicNumbers.SCREEN_PROFILE_MY_MAIN_AVATAR_SIZE.dp)

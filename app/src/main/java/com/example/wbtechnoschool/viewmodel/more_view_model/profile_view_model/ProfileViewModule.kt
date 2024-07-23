@@ -15,7 +15,7 @@ class ProfileViewModule(private val getDataProfileUseCase: GetDataProfileUseCase
     private val _phoneNumber = MutableStateFlow(person.numberPhone)
     val phoneNumber: StateFlow<String> = _phoneNumber
 
-    private val _avatar  = MutableStateFlow(person.avatar ?: "")
+    private val _avatar  = MutableStateFlow(person.avatarUrl ?: "")
     val avatar: StateFlow<String> = _avatar
 
     private val _socialMediaIcons = MutableStateFlow(

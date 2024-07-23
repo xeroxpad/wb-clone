@@ -27,13 +27,12 @@ fun AddAvatarProfile(modifier: Modifier = Modifier) {
     var avatarOpen by remember {
         mutableStateOf(false)
     }
-
     Box(
         modifier = modifier
             .size(MagicNumbers.ADD_AVATAR_PROFILE_BOX_SIZE.dp)
     ) {
         MyMainAvatar(
-            painter = painterResource(id = R.drawable.avatars),
+            painter = "https://i.pinimg.com/originals/89/e5/8e/89e58e371fded01e2ccf40fdea5c2c4d.jpg",
             contentDescription = null,
             modifier = Modifier
                 .clip(CircleShape)
