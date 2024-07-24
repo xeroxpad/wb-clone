@@ -1,0 +1,129 @@
+[33mcommit 84393a22ddf73f8c9cb43472896904e3995ecf1e[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mweek_5_2[m[33m)[m
+Author: mikhail_nikonov <xerox.pad@mail.ru>
+Date:   Mon Jul 22 21:54:32 2024 +0300
+
+    добавил реализацию нереализованных usecase, поправил код следуя рекомендациям ревьверов
+
+[33mcommit 994da38316335a8c47b0649e9dc56fad9072b33c[m[33m ([m[1;31morigin/week_5_2[m[33m)[m
+Author: mikhail_nikonov <xerox.pad@mail.ru>
+Date:   Mon Jul 22 12:06:13 2024 +0300
+
+    clean architecture
+
+[33mcommit 85d54d54a4234f5c6241e58198133b8b2790e6e8[m
+Author: mikhail_nikonov <xerox.pad@mail.ru>
+Date:   Sat Jul 20 20:50:13 2024 +0300
+
+    добавил repositoryImpl, сущности и useCase
+
+[33mcommit 3746c075d70036dc2bc57cb949c0b78b06942acb[m
+Author: mikhail_nikonov <xerox.pad@mail.ru>
+Date:   Fri Jul 19 23:07:55 2024 +0300
+
+    начал реализовывать Clean Architecture, добавил модули (domain, data, ui(app))
+
+[33mcommit e5046f050f29fad519231369d0c08977f53a6f47[m[33m ([m[1;32mweek_5_1[m[33m)[m
+Author: mikhail_nikonov <xerox.pad@mail.ru>
+Date:   Fri Jul 19 12:34:05 2024 +0300
+
+    поправил навигацию, форматирование номера телефона и по мелочи
+
+[33mcommit 5116f22e798b6737f887fa10ecb25c886c34789b[m[33m ([m[1;31morigin/week_5_1[m[33m)[m
+Author: mikhail_nikonov <xerox.pad@mail.ru>
+Date:   Wed Jul 17 15:58:06 2024 +0300
+
+    задание 9, добавил Koin и ViewModel
+
+[33mcommit c7bce7c6a636ddb150ae941f463d5902c670ccf3[m[33m ([m[1;31morigin/week_5[m[33m, [m[1;32mweek_5[m[33m, [m[1;32mweek_4_2[m[33m)[m
+Author: mikhail_nikonov <xerox.pad@mail.ru>
+Date:   Tue Jul 16 16:12:24 2024 +0300
+
+    обработаны магические числа, исправлена навигация и другие моменты данные в рекомендациях к ревью
+
+[33mcommit 8989471be7b6d4aaab44840d5481d0e18e0b47fd[m[33m ([m[1;31morigin/week_4_2[m[33m)[m
+Author: mikhail_nikonov <xerox.pad@mail.ru>
+Date:   Fri Jul 12 14:17:50 2024 +0300
+
+    добавил передачу аргументов между экранами, и еще экран приветствия после экрана заполнения информации профиля
+
+[33mcommit 0d2d6b138ab3330f5fbb3711c5a18c6e32e931c2[m
+Author: mikhail_nikonov <xerox.pad@mail.ru>
+Date:   Thu Jul 11 20:25:42 2024 +0300
+
+    сделано 8 задание, добавлены экраны с авторизацией, сделан единый topbar
+
+[33mcommit 677b411acbe7f66bcb2c717dad6b90c54062137a[m[33m ([m[1;31morigin/week_4_1[m[33m, [m[1;32mweek_4_1[m[33m)[m
+Author: mikhail_nikonov <xerox.pad@mail.ru>
+Date:   Wed Jul 10 16:11:19 2024 +0300
+
+    сделано задание 7, поправил расхождения с макетом в фигме
+
+[33mcommit e6fadee5007da01b6e3cc2198800adb9e253b527[m[33m ([m[1;31morigin/week_4[m[33m, [m[1;31morigin/week_3[m[33m, [m[1;32mweek_4[m[33m, [m[1;32mweek_3[m[33m)[m
+Author: mikhail_nikonov <xerox.pad@mail.ru>
+Date:   Tue Jul 9 15:25:50 2024 +0300
+
+    сделал задание 6, немного правки навигации
+
+[33mcommit 1e6a93814264822e7854da83019b8b9608fefc6a[m
+Author: mikhail_nikonov <xerox.pad@mail.ru>
+Date:   Sun Jul 7 20:19:24 2024 +0300
+
+    убрал лишнее
+
+[33mcommit e982349abe085521f4179036cf23f27dd3e1676f[m
+Author: mikhail_nikonov <xerox.pad@mail.ru>
+Date:   Sun Jul 7 19:55:38 2024 +0300
+
+    задание 4-5 готово, поправил навигацию + рефакторинг
+
+[33mcommit 550a172c533fa91baa361b7b4dd08646fb4b9e21[m
+Author: mikhail_nikonov <xerox.pad@mail.ru>
+Date:   Sat Jul 6 15:58:45 2024 +0300
+
+    поправил навигацию,сделано 4 задание
+
+[33mcommit 5dfcf6120dcb5da7c11824a55a352d86abccd95f[m
+Author: mikhail_nikonov <xerox.pad@mail.ru>
+Date:   Fri Jul 5 21:47:27 2024 +0300
+
+    исправлена навигация, начато задание 4
+
+[33mcommit 99a10e5734a7b8f65fcbf18a83c0f526834d4481[m[33m ([m[1;31morigin/week_1_2[m[33m, [m[1;31morigin/master[m[33m, [m[1;32mweek_1_2[m[33m, [m[1;32mmaster[m[33m)[m
+Merge: a3a01b7 794940c
+Author: Михаил Никонов <xerox.pad@mail.ru>
+Date:   Tue Jul 2 13:22:30 2024 +0000
+
+    Merge branch 'main' into 'master'
+    
+    # Conflicts:
+    #   .gitignore
+
+[33mcommit a3a01b7515c20654e23e91a695643eadbcd26745[m
+Author: mikhail_nikonov <xerox.pad@mail.ru>
+Date:   Tue Jul 2 15:55:26 2024 +0300
+
+    задание 1,2,3
+
+[33mcommit fa53dbe74a4acc469c8ac98eeb75fbf62a5283a4[m
+Author: mikhail_nikonov <xerox.pad@mail.ru>
+Date:   Tue Jul 2 15:41:26 2024 +0300
+
+    задание 1,2,3
+
+[33mcommit ca6bd304b1fc1a83ca0c438c031ea67ff5273d18[m
+Author: mikhail_nikonov <xerox.pad@mail.ru>
+Date:   Mon Jul 1 22:50:50 2024 +0300
+
+    1,2 готовы, 3 в процессе
+
+[33mcommit 794940c322610016b6fe3328bb74b730b9c09298[m[33m ([m[1;31morigin/main[m[33m, [m[1;32mmain[m[33m)[m
+Author: vboyko <for.work.vboyko@yandex.ru>
+Date:   Sun Jun 30 18:00:46 2024 +0000
+
+    add .gitignore
+
+[33mcommit f1d8eac40df8d5e09df3ebdf720ffd4a9ffd3605[m
+Author: vboyko <for.work.vboyko@yandex.ru>
+Date:   Sun Jun 30 17:59:05 2024 +0000
+
+    Initial commit

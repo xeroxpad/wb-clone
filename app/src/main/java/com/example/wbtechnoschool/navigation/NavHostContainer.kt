@@ -1,112 +1,104 @@
 package com.example.wbtechnoschool.navigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.example.wbtechnoschool.screens.ScreenAuthorization
-import com.example.wbtechnoschool.screens.ScreenAuthorizationProfile
-import com.example.wbtechnoschool.screens.ScreenDetailsCommunity
-import com.example.wbtechnoschool.screens.ScreenCommunity
-import com.example.wbtechnoschool.screens.ScreenDescriptionMeeting
-import com.example.wbtechnoschool.screens.ScreenEntryCode
-import com.example.wbtechnoschool.screens.ScreenHelp
-import com.example.wbtechnoschool.screens.ScreenInfo
-import com.example.wbtechnoschool.screens.ScreenInviteFriend
-import com.example.wbtechnoschool.screens.ScreenMeeting
-import com.example.wbtechnoschool.screens.ScreenMyMeetings
-import com.example.wbtechnoschool.screens.ScreenNotifications
-import com.example.wbtechnoschool.screens.ScreenProfile
-import com.example.wbtechnoschool.screens.ScreenResources
-import com.example.wbtechnoschool.screens.ScreenSafety
-import com.example.wbtechnoschool.screens.ScreenTheme
-import com.example.wbtechnoschool.screens.SplashScreen
-import com.example.wbtechnoschool.screens.SplashScreenHelloName
+import com.example.wbtechnoschool.screens.auth.ScreenAuthorization
+import com.example.wbtechnoschool.screens.auth.ScreenAuthorizationProfile
+import com.example.wbtechnoschool.screens.community.ScreenCommunity
+import com.example.wbtechnoschool.screens.meetings.ScreenDescriptionMeeting
+import com.example.wbtechnoschool.screens.community.ScreenDetailsCommunity
+import com.example.wbtechnoschool.screens.auth.ScreenEntryCode
+import com.example.wbtechnoschool.screens.more.help.ScreenHelp
+import com.example.wbtechnoschool.screens.more.ScreenInfo
+import com.example.wbtechnoschool.screens.more.invite_friend.ScreenInviteFriend
+import com.example.wbtechnoschool.screens.meetings.ScreenMeeting
+import com.example.wbtechnoschool.screens.more.my_meetings.ScreenMyMeetings
+import com.example.wbtechnoschool.screens.more.notifications.ScreenNotifications
+import com.example.wbtechnoschool.screens.more.profile.ScreenProfile
+import com.example.wbtechnoschool.screens.more.resources.ScreenResources
+import com.example.wbtechnoschool.screens.more.safety.ScreenSafety
+import com.example.wbtechnoschool.screens.more.theme.ScreenTheme
+import com.example.wbtechnoschool.screens.splash.SplashScreen
+import com.example.wbtechnoschool.screens.splash.SplashScreenHelloName
 
 @Composable
 fun NavHostContainer(
     navController: NavHostController,
     modifier: Modifier = Modifier,
+    meetingsScreen: @Composable () -> Unit,
+    meetingsScreenDescription: @Composable () -> Unit,
+    communityScreen: @Composable () -> Unit,
+    communityDetailsScreen: @Composable () -> Unit,
+    myMoreScreen: @Composable () -> Unit,
+    myProfileScreen: @Composable () -> Unit,
+    myMeetingsScreen: @Composable () -> Unit,
+    myThemeScreen: @Composable () -> Unit,
+    myNotificationsScreen: @Composable () -> Unit,
+    mySafetyScreen: @Composable () -> Unit,
+    myResourcesScreen: @Composable () -> Unit,
+    myHelpScreen: @Composable () -> Unit,
+    myInviteFriendScreen: @Composable () -> Unit,
 ) {
     NavHost(
         navController = navController,
-        startDestination = Graph.splashScreen,
-    ){
-        composable(Graph.screenMeeting) {
-            ScreenMeeting(navController)
+        startDestination = Graph.Splash.route,
+    ) {
+        meetingsNavGraph(
+            meetingsScreen = meetingsScreen,
+            meetingsScreenDescription = meetingsScreenDescription
+        )
+        communityNavGraph(
+            communityScreen = communityScreen,
+            communityDetailsScreen = communityDetailsScreen
+        )
+        infoNavGraph(
+            myMoreScreen = myMoreScreen,
+            myProfileScreen = myProfileScreen,
+            myMeetingsScreen = myMeetingsScreen,
+            myThemeScreen = myThemeScreen,
+            myNotificationsScreen = myNotificationsScreen,
+            mySafetyScreen = mySafetyScreen,
+            myResourcesScreen = myResourcesScreen,
+            myHelpScreen = myHelpScreen,
+            myInviteFriendScreen = myInviteFriendScreen
+        )
+        composable(Graph.Splash.route) {
+            SplashScreen{navController.navigate(Graph.Authorization.route) {popUpTo(Graph.Splash.route) {inclusive = true}}}
         }
-        composable(Graph.screenCommunity) {
-            ScreenCommunity(navController)
+        composable(Graph.Authorization.route) {
+            ScreenAuthorization(navController = navController)
         }
-        composable(Graph.screenInfo) {
-            ScreenInfo(navController)
-        }
-        composable(Graph.screenProfile) {
-            ScreenProfile(navController)
-        }
-        composable(Graph.screenMyMeetings) {
-            ScreenMyMeetings(navController)
-        }
-        composable(Graph.screenTheme) {
-            ScreenTheme()
-        }
-        composable(Graph.screenNotifications) {
-            ScreenNotifications()
-        }
-        composable(Graph.screenSafety) {
-            ScreenSafety(navController)
-        }
-        composable(Graph.screenResources) {
-            ScreenResources(navController)
-        }
-        composable(Graph.screenHelp) {
-            ScreenHelp(navController)
-        }
-        composable(Graph.inviteFriend) {
-            ScreenInviteFriend()
-        }
-        composable(Graph.screenDetailsCommunity) {
-            ScreenDetailsCommunity(navController)
-        }
-        composable(Graph.screenDescriptionMeeting) {
-            ScreenDescriptionMeeting(navController)
-        }
-        composable(Graph.splashScreen) {
-            SplashScreen{navController.navigate(Graph.screenAuthorization) {popUpTo(Graph.splashScreen) {inclusive = true}}}
-        }
-        composable(Graph.screenAuthorization) {
-            ScreenAuthorization(navController)
-        }
-//        composable(Graph.screenEntryCode) {
-//            ScreenEntryCode(navController)
-//        }
         composable(
-            route = "${Graph.screenEntryCode}/{phoneNumber}",
+            route = "${Graph.EntryCode.route}/{phoneNumber}",
             arguments = listOf(navArgument("phoneNumber") {type = NavType.StringType})
         ) { backStackEntry ->
-          ScreenEntryCode(
-              navController = navController,
-              phoneNumber = backStackEntry.arguments?.getString("phoneNumber") ?: ""
-          )
+            ScreenEntryCode(
+                navController = navController,
+                phoneNumber = backStackEntry.arguments?.getString("phoneNumber") ?: "",
+            )
         }
-        composable(Graph.screenAuthorizationProfile) {
-            ScreenAuthorizationProfile(navController)
+        composable(Graph.AuthorizationProfile.route) {
+            ScreenAuthorizationProfile(navController = navController)
         }
         composable(
-            route = "${Graph.screenSplashHelloName}/{name}",
+            route = "${Graph.SplashHelloName.route}/{name}",
             arguments = listOf(navArgument("name") { type = NavType.StringType })
         ) { backStackEntry ->
             SplashScreenHelloName(
                 name = backStackEntry.arguments?.getString("name") ?: "",
                 onTimeout = {
-                    navController.navigate(Graph.screenMeeting) {
-                        popUpTo(Graph.screenSplashHelloName) { inclusive = true }
+                    navController.navigate(Graph.Meetings.route) {
+                        popUpTo(Graph.SplashHelloName.route) { inclusive = true }
                     }
                 }
             )
         }
     }
 }
+
