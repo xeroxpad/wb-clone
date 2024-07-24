@@ -1,7 +1,7 @@
 package com.example.wbtechnoschool.presentation
 
 import android.app.Application
-import com.example.wbtechnoschool.di.dataModule
+import com.example.data.repository.di.dataModule
 import com.example.wbtechnoschool.di.domainModule
 import com.example.wbtechnoschool.di.presentationModule
 import org.koin.android.ext.koin.androidContext

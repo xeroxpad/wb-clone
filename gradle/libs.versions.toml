@@ -24,6 +24,11 @@ lorem = "2.1"
 lottie-compose = "6.1.0"
 exoplayer = "2.14.2"
 koin = "3.5.6"
+libphonenumber = "8.12.40"
+mockito-core = "5.12.0"
+mockito-kotlin = "5.4.0"
+junit-jupiter-api = "5.9.3"
+junit-jupiter-engine = "5.9.3"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -56,6 +61,11 @@ lorem = { group = "com.thedeanda", name = "lorem", version.ref = "lorem" }
 lottie-compose = { group = "com.airbnb.android", name = "lottie-compose", version.ref = "lottie-compose" }
 exoplayer = { group = "com.google.android.exoplayer", name = "exoplayer", version.ref = "exoplayer" }
 koin = { group = "io.insert-koin", name = "koin-androidx-compose", version.ref = "koin" }
+libphonenumber = { group = "com.googlecode.libphonenumber", name = "libphonenumber", version.ref = "libphonenumber" }
+mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito-core" }
+mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin" }
+junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-jupiter-api" }
+junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter-engine" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

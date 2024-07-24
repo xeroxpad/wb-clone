@@ -35,8 +35,7 @@ fun MainTopAppBar(
     Row(
         modifier = modifier
             .padding(horizontal = MagicNumbers.MAIN_TOP_BAR_ROW_PADDING_HORIZONTAL.dp)
-            .fillMaxWidth()
-            .height(MagicNumbers.MAIN_TOP_BAR_ROW_HEIGHT.dp),
+            .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
     ) {
         iconBack?.let {

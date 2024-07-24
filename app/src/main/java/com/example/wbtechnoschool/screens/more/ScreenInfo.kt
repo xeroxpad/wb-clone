@@ -57,91 +57,102 @@ fun ScreenInfo(navController: NavController, modifier: Modifier = Modifier) {
                 verticalArrangement = Arrangement.Top,
             ) {
                 Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .clip(RoundedCornerShape(MagicNumbers.SCREEN_INFO_ROW_CLIP.dp))
-                        .clickable { navController.navigate(Graph.InfoRoot.MyProfile.route) },
-                    verticalAlignment = Alignment.CenterVertically
-                ) {
-                    MyMainAvatar(
-                        painter = "https://i.pinimg.com/originals/89/e5/8e/89e58e371fded01e2ccf40fdea5c2c4d.jpg",
-                        contentDescription = null,
-                        modifier = Modifier
-                            .size(MagicNumbers.SCREEN_INFO_MY_MAIN_AVATAR_SIZE.dp)
-                            .clip((CircleShape))
-                    )
-                    Spacer(modifier = Modifier.width(SPACER.SPACER_20.value.dp))
-                    Column(modifier = Modifier.weight(MagicNumbers.SCREEN_INFO_COLUMN_WEIGHT)) {
-                        Text(
-                            text = stringResource(id = R.string.profile_name), /*для примера*/
-                            fontSize = MagicNumbers.SCREEN_INFO_COLUMN_TEXT_NAME_FONT_SIZE.sp,
-                            fontFamily = fontSFPro,
-                            fontWeight = FontWeight.W600,
-                        )
-                        Text(
-                            text = stringResource(id = R.string.profile_number), /*для примера*/
-                            fontSize = MagicNumbers.SCREEN_INFO_COLUMN_TEXT_NUMBER_FONT_SIZE.sp,
-                            fontFamily = fontSFPro,
-                            fontWeight = FontWeight.W400,
-                            color = LightColorTheme.neutralDisabled,
-                        )
-                    }
-                    Icon(
-                        painter = painterResource(id = R.drawable.icon_go),
-                        contentDescription = null,
-                        modifier = Modifier.size(MagicNumbers.SCREEN_INFO_ICON_GO_SIZE.dp)
-                    )
-                }
+                ProfileCard(navController = navController)
                 Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
-                ContainerToGo(
-                    icon = R.drawable.meeting,
-                    title = stringResource(id = R.string.container_to_go_title_my_meetings),
-                    onClick = { navController.navigate(Graph.InfoRoot.MyMeetings.route) }
-                )
-                Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
-                ContainerToGo(
-                    icon = R.drawable.icon_theme,
-                    title = stringResource(id = R.string.container_to_go_title_theme),
-                    onClick = { navController.navigate(Graph.InfoRoot.MyTheme.route) }
-
-                )
-                ContainerToGo(
-                    icon = R.drawable.icon_notifications,
-                    title = stringResource(id = R.string.container_to_go_title_notifications),
-                    onClick = { navController.navigate(Graph.InfoRoot.MyNotifications.route) }
-
-                )
-                ContainerToGo(
-                    icon = R.drawable.icon_safety,
-                    title = stringResource(id = R.string.container_to_go_title_safety),
-                    onClick = { navController.navigate(Graph.InfoRoot.MySafety.route) }
-
-                )
-                ContainerToGo(
-                    icon = R.drawable.icon_recources,
-                    title = stringResource(id = R.string.container_to_go_title_resources),
-                    onClick = { navController.navigate(Graph.InfoRoot.MyResources.route) }
-
-                )
-                HorizontalDivider(
-                    modifier = Modifier.padding(vertical = MagicNumbers.SCREEN_INFO_HORIZONTAL_DIVIDER_VERTICAL_PADDING.dp),
-                    color = LightColorTheme.neutralLine
-                )
-                ContainerToGo(
-                    icon = R.drawable.icon_help,
-                    title = stringResource(id = R.string.container_to_go_title_help),
-                    onClick = { navController.navigate(Graph.InfoRoot.MyHelp.route) },
-                    sizeIcon = MagicNumbers.SCREEN_INFO_ICON_HELP_SIZE.dp,
-                    paddingIcon = MagicNumbers.SCREEN_INFO_ICON_HELP_PADDING.dp
-                )
-                ContainerToGo(
-                    icon = R.drawable.icon_invite_friend,
-                    title = stringResource(id = R.string.container_to_go_title_invite_friend),
-                    onClick = { navController.navigate(Graph.InfoRoot.MyInviteFriend.route) }
-
-                )
+                ListContainerToGo(navController = navController)
             }
         }
+    )
+}
+
+
+@Composable
+fun ProfileCard(navController: NavController) {
+    Row(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(MagicNumbers.SCREEN_INFO_ROW_CLIP.dp))
+            .clickable { navController.navigate(Graph.InfoRoot.MyProfile.route) },
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        MyMainAvatar(
+            painter = "https://i.pinimg.com/originals/89/e5/8e/89e58e371fded01e2ccf40fdea5c2c4d.jpg",
+            contentDescription = null,
+            modifier = Modifier
+                .size(MagicNumbers.SCREEN_INFO_MY_MAIN_AVATAR_SIZE.dp)
+                .clip((CircleShape))
+        )
+        Spacer(modifier = Modifier.width(SPACER.SPACER_20.value.dp))
+        Column(modifier = Modifier.weight(MagicNumbers.SCREEN_INFO_COLUMN_WEIGHT)) {
+            Text(
+                text = stringResource(id = R.string.profile_name), /*для примера*/
+                fontSize = MagicNumbers.SCREEN_INFO_COLUMN_TEXT_NAME_FONT_SIZE.sp,
+                fontFamily = fontSFPro,
+                fontWeight = FontWeight.W600,
+            )
+            Text(
+                text = stringResource(id = R.string.profile_number), /*для примера*/
+                fontSize = MagicNumbers.SCREEN_INFO_COLUMN_TEXT_NUMBER_FONT_SIZE.sp,
+                fontFamily = fontSFPro,
+                fontWeight = FontWeight.W400,
+                color = LightColorTheme.neutralDisabled,
+            )
+        }
+        Icon(
+            painter = painterResource(id = R.drawable.icon_go),
+            contentDescription = null,
+            modifier = Modifier.size(MagicNumbers.SCREEN_INFO_ICON_GO_SIZE.dp)
+        )
+    }
+}
+
+@Composable
+fun ListContainerToGo(navController: NavController) {
+    ContainerToGo(
+        icon = R.drawable.meeting,
+        title = stringResource(id = R.string.container_to_go_title_my_meetings),
+        onClick = { navController.navigate(Graph.InfoRoot.MyMeetings.route) }
+    )
+    Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
+    ContainerToGo(
+        icon = R.drawable.icon_theme,
+        title = stringResource(id = R.string.container_to_go_title_theme),
+        onClick = { navController.navigate(Graph.InfoRoot.MyTheme.route) }
+
+    )
+    ContainerToGo(
+        icon = R.drawable.icon_notifications,
+        title = stringResource(id = R.string.container_to_go_title_notifications),
+        onClick = { navController.navigate(Graph.InfoRoot.MyNotifications.route) }
+
+    )
+    ContainerToGo(
+        icon = R.drawable.icon_safety,
+        title = stringResource(id = R.string.container_to_go_title_safety),
+        onClick = { navController.navigate(Graph.InfoRoot.MySafety.route) }
+
+    )
+    ContainerToGo(
+        icon = R.drawable.icon_recources,
+        title = stringResource(id = R.string.container_to_go_title_resources),
+        onClick = { navController.navigate(Graph.InfoRoot.MyResources.route) }
+
+    )
+    HorizontalDivider(
+        modifier = Modifier.padding(vertical = MagicNumbers.SCREEN_INFO_HORIZONTAL_DIVIDER_VERTICAL_PADDING.dp),
+        color = LightColorTheme.neutralLine
+    )
+    ContainerToGo(
+        icon = R.drawable.icon_help,
+        title = stringResource(id = R.string.container_to_go_title_help),
+        onClick = { navController.navigate(Graph.InfoRoot.MyHelp.route) },
+        sizeIcon = MagicNumbers.SCREEN_INFO_ICON_HELP_SIZE.dp,
+        paddingIcon = MagicNumbers.SCREEN_INFO_ICON_HELP_PADDING.dp
+    )
+    ContainerToGo(
+        icon = R.drawable.icon_invite_friend,
+        title = stringResource(id = R.string.container_to_go_title_invite_friend),
+        onClick = { navController.navigate(Graph.InfoRoot.MyInviteFriend.route) }
+
     )
 }

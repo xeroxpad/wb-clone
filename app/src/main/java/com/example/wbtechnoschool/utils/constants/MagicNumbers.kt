@@ -33,7 +33,7 @@ class MagicNumbers {
 
         //        ScreenCommunity
         const val SCREEN_COMMUNITY_SEARCH_BAR_PADDING_HORIZONTAL = 20
-        const val SCREEN_COMMUNITY_SEARCH_BAR_PADDING_TOP = 20
+        const val SCREEN_COMMUNITY_SEARCH_BAR_PADDING_TOP = 40
         const val SCREEN_COMMUNITY_SEARCH_BAR_HEIGHT = 36
         const val SCREEN_COMMUNITY_LAZY_PADDING_HORIZONTAL = 20
         const val SCREEN_COMMUNITY_LAZY_PADDING_TOP = 70
