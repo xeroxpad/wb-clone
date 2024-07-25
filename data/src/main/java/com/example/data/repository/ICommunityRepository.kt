@@ -9,7 +9,7 @@ class ICommunityRepository: CommunityRepository {
     override fun getAllCommunity(): List<Community> = mockCommunityData
     override fun getDetailsCommunity(): CommunityDetails = mockCommunityDetails
 
-    val mockCommunityData = listOf(
+    val mockCommunityData = listOf<Community>(
         Community(
             id = 0,
             icon = "https://adwebs.ru/upload/iblock/98a/rhus873ierncldvyonl8fgfjokvudw0n/reklama_v_yandekse.png",
