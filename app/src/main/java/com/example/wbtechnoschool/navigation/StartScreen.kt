@@ -36,7 +36,8 @@ fun StartScreen(navController: NavHostController) {
         Graph.Authorization.route,
         Graph.EntryCode.route,
         Graph.AuthorizationProfile.route,
-        Graph.SplashHelloName.route -> false
+        Graph.SplashHelloName.route,
+        -> false
         else -> true
     }
     Scaffold(bottomBar = {

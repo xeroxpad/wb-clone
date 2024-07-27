@@ -8,8 +8,11 @@ java {
     targetCompatibility = JavaVersion.VERSION_17
 }
 
-//dependencies {
-//    testImplementation(libs.junit)
-//    testImplementation(libs.testng)
-//    testImplementation(libs.kotlinx.coroutines)
-//}
+dependencies {
+    implementation(libs.koin.core)
+//    implementation(libs.koin.android)
+//    implementation(libs.koin.compose)
+//    implementation(libs.koin.navigation)
+    implementation(platform(libs.koin.bom))
+    testImplementation(libs.junit)
+}

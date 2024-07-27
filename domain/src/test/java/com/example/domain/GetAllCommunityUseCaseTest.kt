@@ -1,13 +1,12 @@
-package com.example.wbtechnoschool
+package com.example.domain
 
-import com.example.data.repository.ICommunityRepository
 import com.example.domain.repository.CommunityRepository
+import com.example.domain.repository.ICommunityRepositoryTest
 import org.junit.Assert.assertFalse
 import org.junit.Test
 
-
 class GetAllCommunityUseCaseTest {
-    private val repoCommunity: CommunityRepository = ICommunityRepository()
+    private val repoCommunity: CommunityRepository = ICommunityRepositoryTest()
     @Test
     fun `getAllCommunityTest returns correct community`() {
         val allCommunity = repoCommunity.getAllCommunity()
