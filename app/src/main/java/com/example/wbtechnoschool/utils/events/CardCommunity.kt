@@ -45,7 +45,7 @@ fun CardCommunity(
                 contentDescription = null,
                 modifier = Modifier
                     .size(MagicNumbers.CARD_ACTIVE_MEETINGS_MY_PREV_AVATAR_SIZE.dp),
-                painter = community.icon
+                painter = community.icon ?: "https://banner2.cleanpng.com/20180901/prt/kisspng-luket-dner-consumer-production-logo-quality-a-verb-with-the-letter-k-my-pinterest-site-sym-5b8ae977b23648.94143731153583039173.jpg"
             )
             Spacer(modifier = Modifier.padding(horizontal = SPACER.SPACER_5.value.dp))
             Column {
@@ -56,7 +56,7 @@ fun CardCommunity(
                     color = LightColorTheme.neutralActive
                 )
                 Text(
-                    text = community.countPersons,
+                    text = community.countPersons ?: "тут пока нет участников",
                     fontWeight = FontWeight.Light,
                     fontSize = MagicNumbers.CARD_COMMUNITY_TEXT_COUNT_PERSONS.sp,
                     color = LightColorTheme.neutralDisabled

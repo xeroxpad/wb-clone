@@ -7,6 +7,7 @@ class IProfileRepository: ProfileRepository {
     override fun getDataProfileUseCase(): Person = mockPersonData
 
     private val mockPersonData = Person(
+        id = 1,
         name = "Михаил",
         secondName = "Никонов",
         numberPhone = "+7 999 999-99-99",

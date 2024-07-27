@@ -10,6 +10,7 @@ class IMeetingsRepository: MeetingsRepository {
     override fun getDescriptionMeetings(): MeetingsDescription = mockMeetingsDescriptionData
     val mockMeetings = listOf(
         Meetings(
+            id = 41,
             icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
             title = "Developer Meetings",
             date = "13.09.2024",
@@ -19,6 +20,7 @@ class IMeetingsRepository: MeetingsRepository {
             tagCityMeeting = "Moscow"
         ),
         Meetings(
+            id = 42,
             icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
             title = "Developer Meetings",
             date = "13.09.2024",
@@ -28,6 +30,7 @@ class IMeetingsRepository: MeetingsRepository {
             tagCityMeeting = "SPB"
         ),
         Meetings(
+            id = 43,
             icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
             title = "Developer Meetings",
             date = "13.09.2024",
@@ -37,6 +40,7 @@ class IMeetingsRepository: MeetingsRepository {
             tagCityMeeting = "Moscow"
         ),
         Meetings(
+            id = 44,
             icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
             title = "Developer Meetings",
             date = "13.09.2024",
@@ -46,6 +50,7 @@ class IMeetingsRepository: MeetingsRepository {
             tagCityMeeting = "Kazan"
         ),
         Meetings(
+            id = 45,
             icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
             title = "Developer Meetings",
             date = "13.09.2024",
@@ -55,6 +60,7 @@ class IMeetingsRepository: MeetingsRepository {
             tagCityMeeting = "Moscow"
         ),
         Meetings(
+            id = 46,
             icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
             title = "Developer Meetings",
             date = "13.09.2024",
@@ -64,6 +70,7 @@ class IMeetingsRepository: MeetingsRepository {
             tagCityMeeting = "Ufa"
         ),
         Meetings(
+            id = 47,
             icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
             title = "Developer Meetings",
             date = "13.09.2024",
@@ -73,6 +80,7 @@ class IMeetingsRepository: MeetingsRepository {
             tagCityMeeting = "Moscow"
         ),
         Meetings(
+            id = 48,
             icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
             title = "Developer Meetings",
             date = "13.09.2024",
