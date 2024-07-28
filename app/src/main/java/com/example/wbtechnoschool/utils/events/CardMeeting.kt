@@ -15,18 +15,17 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.domain.entities.Meetings
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.utils.avatar.MyPreviewAvatar
-import com.example.wbtechnoschool.utils.chips.FilterChips
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.SpaceGreyLight
 import com.example.wbtechnoschool.ui.theme.fontSFPro
+import com.example.wbtechnoschool.utils.avatar.MyPreviewAvatar
+import com.example.wbtechnoschool.utils.chips.FilterChips
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 
 @Composable
@@ -47,7 +46,7 @@ fun CardActiveMeetings(modifier: Modifier = Modifier, meetings: Meetings, onClic
                     modifier = Modifier
                         .size(MagicNumbers.CARD_ACTIVE_MEETINGS_MY_PREV_AVATAR_SIZE.dp),
                     contentDescription = null,
-                    painter = meetings.icon
+                    painter = meetings.icon ?: "https://w7.pngwing.com/pngs/21/228/png-transparent-computer-icons-user-profile-others-miscellaneous-face-monochrome.png"
                 )
             }
             Column(
@@ -99,7 +98,7 @@ fun CardCompletedMeetings(modifier: Modifier = Modifier, meetings: Meetings, onC
                     modifier = Modifier
                         .size(MagicNumbers.CARD_COMPLETED_MEETINGS_MY_PREV_AVATAR_SIZE.dp),
                     contentDescription = null,
-                    painter = meetings.icon
+                    painter = meetings.icon ?: "https://w7.pngwing.com/pngs/21/228/png-transparent-computer-icons-user-profile-others-miscellaneous-face-monochrome.png"
                 )
             }
             Column(

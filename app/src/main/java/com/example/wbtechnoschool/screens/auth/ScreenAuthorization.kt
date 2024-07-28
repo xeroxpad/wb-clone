@@ -27,6 +27,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -56,6 +57,7 @@ fun ScreenAuthorization(
 ) {
     val number by viewModel.number.observeAsState("")
     val cursorPosition = remember { mutableIntStateOf(0) }
+    val textColor = if (number.isEmpty()) LightColorTheme.neutralDisabled else Color.Black
     Column(
         modifier = modifier
             .statusBarsPadding()
@@ -99,7 +101,7 @@ fun ScreenAuthorization(
                     .fillMaxHeight()
             ) {
                 Row(modifier = Modifier.padding(MagicNumbers.SCREEN_AUTH_ROW_MODIFIER_PADDING_PREFIX_TF.dp)) {
-                    PrefixNumberTextField()
+                    PrefixNumberTextField(textColor)
                 }
             }
             Spacer(modifier = Modifier.width(MagicNumbers.SCREEN_AUTH_SPACER_WIDTH_TF.dp))
@@ -166,7 +168,7 @@ fun ScreenAuthorization(
 }
 
 @Composable
-fun PrefixNumberTextField() {
+fun PrefixNumberTextField(textColor: Color) {
     Image(
         painter = painterResource(id = R.drawable.icon_flag_russian),
         contentDescription = "",
@@ -178,10 +180,11 @@ fun PrefixNumberTextField() {
         value = "+7",
         onValueChange = {},
         singleLine = true,
+        readOnly = true,
         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
         modifier = Modifier.padding(start = MagicNumbers.PREF_NUMBER_TF_BASIC_TF_MODIFIER_PADDING_START.dp),
         textStyle = TextStyle(
-            color = LightColorTheme.neutralDisabled,
+            color = textColor,
             fontWeight = FontWeight.W600,
             fontSize = MagicNumbers.PREF_NUMBER_TF_BASIC_TF_TEXT_STYLE_FONT_SIZE.sp,
             fontFamily = fontSFPro

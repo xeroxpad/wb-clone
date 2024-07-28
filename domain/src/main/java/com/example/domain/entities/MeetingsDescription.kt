@@ -1,7 +1,5 @@
 package com.example.domain.entities
 
-import javax.swing.border.TitledBorder
-
 data class MeetingsDescription(
     val id: Int,
     val title: String,

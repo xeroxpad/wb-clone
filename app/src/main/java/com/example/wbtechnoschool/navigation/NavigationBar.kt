@@ -3,7 +3,9 @@ package com.example.wbtechnoschool.navigation
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
+//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.BottomNavigation
+//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -20,10 +22,10 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavGraph.Companion.findStartDestination
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.utils.widgets.NoRippleInteractionSource
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
+import com.example.wbtechnoschool.utils.widgets.NoRippleInteractionSource
 
 @Composable
 fun BottomNavBar(

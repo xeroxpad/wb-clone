@@ -57,10 +57,7 @@ fun ScreenDescriptionMeeting(
                 title = stringResource(id = R.string.top_bar_description_meeting),
                 iconBack = { navController.popBackStack() },
                 actions = {},
-                actionsIcon = when {
-                    !isGoing -> R.drawable.icon_bird
-                    else -> null
-                },
+                actionsIcon = R.drawable.icon_bird.takeIf { !isGoing },
                 actionsTint = LightColorTheme.brandColorDefault
             )
         }, content = { innerPadding ->
