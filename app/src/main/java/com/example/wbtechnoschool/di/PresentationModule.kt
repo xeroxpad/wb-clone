@@ -20,9 +20,6 @@ import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
 val presentationModule = module {
-    single<CommunityRepository> { ICommunityRepository() }
-    single<MeetingsRepository> { IMeetingsRepository() }
-    single<ProfileRepository> { IProfileRepository() }
     viewModel { AuthorizationViewModel() }
     viewModel { EntryCodeViewModel() }
     viewModel { AuthorizationProfileViewModel() }

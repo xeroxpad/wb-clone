@@ -45,8 +45,7 @@ fun ScreenCommunity(
             AppSearchBar(
                 modifier = Modifier
                     .padding(horizontal = MagicNumbers.SCREEN_COMMUNITY_SEARCH_BAR_PADDING_HORIZONTAL.dp)
-                    .padding(top = MagicNumbers.SCREEN_COMMUNITY_SEARCH_BAR_PADDING_TOP.dp)
-                    .padding(innerPadding)
+                    .padding(top = MagicNumbers.SCREEN_COMMUNITY_SEARCH_BAR_PADDING_TOP.dp, bottom = innerPadding.calculateBottomPadding())
                     .fillMaxWidth()
                     .height(MagicNumbers.SCREEN_COMMUNITY_SEARCH_BAR_HEIGHT.dp)
             )

@@ -1,11 +1,10 @@
-package com.example.data.repository
+package com.example.domain.repository
 
 import com.example.domain.entities.Community
 import com.example.domain.entities.CommunityDetails
 import com.example.domain.entities.Meetings
-import com.example.domain.repository.CommunityRepository
 
-class ICommunityRepository: CommunityRepository {
+class CommunityRepositoryTestStub: CommunityRepository {
     override fun getAllCommunity(): List<Community> = mockCommunityData
     override fun getDetailsCommunity(): CommunityDetails = mockCommunityDetails
 
@@ -14,7 +13,7 @@ class ICommunityRepository: CommunityRepository {
             id = 0,
             icon = null,
             title = "Яндекс",
-            countPersons = null,
+            countPersons = "10 000 человек",
         ),
         Community(
             id = 1,
@@ -80,7 +79,7 @@ class ICommunityRepository: CommunityRepository {
 
     val mockMeetingsData = listOf(
         Meetings(
-            id = 31,
+            id = 1,
             icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
             title = "Developer Meetings",
             date = "13.09.2024",
@@ -90,7 +89,7 @@ class ICommunityRepository: CommunityRepository {
             tagCityMeeting = "Moscow"
         ),
         Meetings(
-            id = 33,
+            id = 2,
             icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
             title = "Developer Meetings",
             date = "13.09.2024",
@@ -100,7 +99,7 @@ class ICommunityRepository: CommunityRepository {
             tagCityMeeting = "SPB"
         ),
         Meetings(
-            id = 33,
+            id = 3,
             icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
             title = "Developer Meetings",
             date = "13.09.2024",
@@ -110,7 +109,7 @@ class ICommunityRepository: CommunityRepository {
             tagCityMeeting = "Moscow"
         ),
         Meetings(
-            id = 34,
+            id = 4,
             icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
             title = "Developer Meetings",
             date = "13.09.2024",
@@ -120,7 +119,7 @@ class ICommunityRepository: CommunityRepository {
             tagCityMeeting = "Kazan"
         ),
         Meetings(
-            id = 35,
+            id = 5,
             icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
             title = "Developer Meetings",
             date = "13.09.2024",
@@ -130,7 +129,7 @@ class ICommunityRepository: CommunityRepository {
             tagCityMeeting = "Moscow"
         ),
         Meetings(
-            id = 36,
+            id = 6,
             icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
             title = "Developer Meetings",
             date = "13.09.2024",
@@ -140,7 +139,7 @@ class ICommunityRepository: CommunityRepository {
             tagCityMeeting = "Ufa"
         ),
         Meetings(
-            id = 37,
+            id = 7,
             icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
             title = "Developer Meetings",
             date = "13.09.2024",
@@ -150,7 +149,7 @@ class ICommunityRepository: CommunityRepository {
             tagCityMeeting = "Moscow"
         ),
         Meetings(
-            id = 38,
+            id = 8,
             icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
             title = "Developer Meetings",
             date = "13.09.2024",

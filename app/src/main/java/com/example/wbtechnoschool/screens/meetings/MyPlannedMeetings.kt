@@ -17,6 +17,7 @@ fun MyPlannedMeetings(navController: NavController) {
             CardActiveMeetings(
                 onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                 meetings = Meetings(
+                    id = 3,
                     icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
                     title = "Developer meeting",
                     date = stringResource(id = R.string.date_meeting),
@@ -29,6 +30,7 @@ fun MyPlannedMeetings(navController: NavController) {
             CardCompletedMeetings(
                 onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                 meetings = Meetings(
+                    id = 4,
                     icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
                     title = "Developer meeting",
                     date = stringResource(id = R.string.date_meeting),

@@ -16,6 +16,7 @@ fun MyPastMeetings(navController: NavController) {
             CardCompletedMeetings(
                 onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                 meetings = Meetings(
+                    id = 2,
                     icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
                     title = "Developer meeting",
                     date = stringResource(id = R.string.date_meeting),

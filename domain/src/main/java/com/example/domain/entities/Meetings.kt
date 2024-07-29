@@ -1,7 +1,8 @@
 package com.example.domain.entities
 
 data class Meetings(
-    val icon: String,
+    val id: Int,
+    val icon: String?,
     val title: String,
     val date: String,
     val city: String,
