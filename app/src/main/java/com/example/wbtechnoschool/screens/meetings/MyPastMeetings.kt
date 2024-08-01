@@ -6,8 +6,8 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.example.domain.entities.Meetings
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.utils.events.CardCompletedMeetings
 import com.example.wbtechnoschool.navigation.Graph
+import com.example.wbtechnoschool.utils.events.CardCompletedMeetings
 
 @Composable
 fun MyPastMeetings(navController: NavController) {
@@ -15,7 +15,8 @@ fun MyPastMeetings(navController: NavController) {
         items(8) {
             CardCompletedMeetings(
                 onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
-                meetings = Meetings(
+                meetings =
+                Meetings(
                     id = 2,
                     icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
                     title = "Developer meeting",
@@ -23,7 +24,7 @@ fun MyPastMeetings(navController: NavController) {
                     city = stringResource(id = R.string.location_meeting),
                     tagDevelopmentLanguage = "Kotlin",
                     tagGradeDeveloper = "Junior",
-                    tagCityMeeting = "Moscow",
+                    tagCityMeeting = "Moscow"
                 )
             )
         }

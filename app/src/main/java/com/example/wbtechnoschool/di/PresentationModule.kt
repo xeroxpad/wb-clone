@@ -1,12 +1,5 @@
 package com.example.wbtechnoschool.di
 
-import com.example.data.repository.ICommunityRepository
-import com.example.data.repository.IMeetingsRepository
-import com.example.data.repository.IProfileRepository
-import com.example.domain.repository.CommunityRepository
-import com.example.domain.repository.MeetingsRepository
-import com.example.domain.repository.ProfileRepository
-import com.example.wbtechnoschool.screens.meetings.AllMeetings
 import com.example.wbtechnoschool.viewmodel.auth_view_model.AuthorizationProfileViewModel
 import com.example.wbtechnoschool.viewmodel.auth_view_model.AuthorizationViewModel
 import com.example.wbtechnoschool.viewmodel.auth_view_model.EntryCodeViewModel
@@ -19,14 +12,15 @@ import com.example.wbtechnoschool.viewmodel.more_view_model.profile_view_model.P
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
-val presentationModule = module {
-    viewModel { AuthorizationViewModel() }
-    viewModel { EntryCodeViewModel() }
-    viewModel { AuthorizationProfileViewModel() }
-    viewModel { CommunityViewModel(get()) }
-    viewModel { DetailsCommunityViewModel(get()) }
-    viewModel { DescriptionMeetingViewModel(get()) }
-    viewModel { MeetingViewModel(get()) }
-    viewModel { MyMeetingsViewModel() }
-    viewModel { ProfileViewModule(get()) }
-}
+val presentationModule =
+    module {
+        viewModel { AuthorizationViewModel() }
+        viewModel { EntryCodeViewModel() }
+        viewModel { AuthorizationProfileViewModel() }
+        viewModel { CommunityViewModel(get()) }
+        viewModel { DetailsCommunityViewModel(get()) }
+        viewModel { DescriptionMeetingViewModel(get()) }
+        viewModel { MeetingViewModel(get()) }
+        viewModel { MyMeetingsViewModel() }
+        viewModel { ProfileViewModule(get()) }
+    }

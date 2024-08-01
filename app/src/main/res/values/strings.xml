@@ -47,4 +47,6 @@
     <string name="go_another_time_meetings">Схожу в другой раз</string>
     <string name="sent_code_number">Отправили код на номер</string>
     <string name="request_code_again">Запросить код повторно</string>
+    <string name="no_participants">сейчас нет участников</string>
+
 </resources>

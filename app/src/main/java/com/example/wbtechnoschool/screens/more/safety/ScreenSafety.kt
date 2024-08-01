@@ -11,6 +11,6 @@ import androidx.navigation.NavHostController
 @Composable
 fun ScreenSafety(navController: NavHostController) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(text = "Безопасность") /*для примера*/
+        Text(text = "Безопасность") // для примера
     }
 }

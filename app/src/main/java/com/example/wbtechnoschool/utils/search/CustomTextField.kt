@@ -28,21 +28,22 @@ fun CustomTextFieldForProfile(
     modifier: Modifier = Modifier,
     textPlaceholder: String,
     textChange: (String) -> Unit,
-    text: String,
+    text: String
 ) {
     BasicTextField(
         value = text,
         onValueChange = { textChange(it) },
-        modifier = modifier
+        modifier =
+        modifier
             .background(
                 LightColorTheme.neutralSecondaryBG,
                 RoundedCornerShape(MagicNumbers.CUSTOM_TF_FOR_PROFILE_BASIC_TF_SHAPE.dp)
-            )
-            .fillMaxWidth(),
+            ).fillMaxWidth(),
         decorationBox = { innerTextField ->
             Box(
                 contentAlignment = Alignment.CenterStart,
-                modifier = Modifier
+                modifier =
+                Modifier
                     .padding(horizontal = MagicNumbers.CUSTOM_TF_FOR_PROFILE_DECORATION_BOX_PADDING_HORIZONTAL.dp)
                     .height(MagicNumbers.CUSTOM_TF_FOR_PROFILE_DECORATION_BOX_PADDING_HEIGHT.dp)
             ) {
@@ -61,7 +62,8 @@ fun CustomTextFieldForProfile(
                 innerTextField()
             }
         },
-        textStyle = TextStyle(
+        textStyle =
+        TextStyle(
             fontWeight = FontWeight.W600,
             fontSize = MagicNumbers.CUSTOM_TF_FOR_PROFILE_DECORATION_BOX_TEXT_STYLE_FONT_SIZE.sp,
             fontFamily = fontSFPro,
@@ -70,9 +72,10 @@ fun CustomTextFieldForProfile(
         ),
         singleLine = true,
         cursorBrush = SolidColor(LightColorTheme.neutralActive),
-        keyboardOptions = KeyboardOptions.Default.copy(
+        keyboardOptions =
+        KeyboardOptions.Default.copy(
             keyboardType = KeyboardType.Text,
             capitalization = KeyboardCapitalization.Words
-        ),
+        )
     )
 }

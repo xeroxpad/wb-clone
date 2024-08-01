@@ -34,27 +34,30 @@ import org.koin.androidx.compose.koinViewModel
 fun ScreenMyMeetings(
     modifier: Modifier = Modifier,
     navController: NavController,
-    viewModel: MyMeetingsViewModel = koinViewModel(),
+    viewModel: MyMeetingsViewModel = koinViewModel()
 ) {
     val tabIndex by viewModel.tabIndex.collectAsState()
     val tabs = viewModel.getTabs().map { stringResource(id = it) }
     Scaffold(
-        modifier = modifier
+        modifier =
+        modifier
             .statusBarsPadding()
             .fillMaxSize(),
         topBar = {
             MainTopAppBar(
                 title = stringResource(id = R.string.top_bar_my_meetings),
-                iconBack = { navController.popBackStack() },
+                iconBack = { navController.popBackStack() }
             )
-        }, content = { innerPadding ->
+        },
+        content = { innerPadding ->
             Column(
-                modifier = Modifier
+                modifier =
+                Modifier
                     .padding(horizontal = MagicNumbers.SCREEN_MY_MEETING_PADDING_HORIZONTAL.dp)
                     .navigationBarsPadding()
                     .padding(innerPadding)
                     .fillMaxSize(),
-                verticalArrangement = Arrangement.Top,
+                verticalArrangement = Arrangement.Top
             ) {
                 TabRow(selectedTabIndex = tabIndex, modifier = Modifier.fillMaxWidth()) {
                     tabs.forEachIndexed { index, title ->

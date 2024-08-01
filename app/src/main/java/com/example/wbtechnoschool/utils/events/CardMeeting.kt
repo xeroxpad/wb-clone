@@ -29,28 +29,38 @@ import com.example.wbtechnoschool.utils.chips.FilterChips
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 
 @Composable
-fun CardActiveMeetings(modifier: Modifier = Modifier, meetings: Meetings, onClick: () -> Unit) {
+fun CardActiveMeetings(
+    modifier: Modifier = Modifier,
+    meetings: Meetings,
+    onClick: () -> Unit
+) {
     val dateMeeting = meetings.date
     val locationMeeting = meetings.city
     val allTextMeeting = ("$dateMeeting - $locationMeeting")
     Card(
-        onClick = { onClick() }, colors = CardDefaults.cardColors(Color.Transparent)
+        onClick = { onClick() },
+        colors = CardDefaults.cardColors(Color.Transparent)
     ) {
         Row(
-            modifier = modifier
+            modifier =
+            modifier
                 .fillMaxWidth()
                 .padding(top = MagicNumbers.CARD_ACTIVE_MEETINGS_ROW_PADDING_TOP.dp)
         ) {
             Box(modifier = Modifier.padding(top = MagicNumbers.BOTTOM_NAV_COLUMN_ICON_PADDING_TOP.dp)) {
                 MyPreviewAvatar(
-                    modifier = Modifier
+                    modifier =
+                    Modifier
                         .size(MagicNumbers.CARD_ACTIVE_MEETINGS_MY_PREV_AVATAR_SIZE.dp),
                     contentDescription = null,
-                    painter = meetings.icon ?: "https://w7.pngwing.com/pngs/21/228/png-transparent-computer-icons-user-profile-others-miscellaneous-face-monochrome.png"
+                    painter =
+                    meetings.icon
+                        ?: "https://w7.pngwing.com/pngs/21/228/png-transparent-computer-icons-user-profile-others-miscellaneous-face-monochrome.png"
                 )
             }
             Column(
-                modifier = Modifier
+                modifier =
+                Modifier
                     .padding(horizontal = MagicNumbers.CARD_ACTIVE_MEETINGS_COLUMN_PADDING_HORIZONTAL.dp)
             ) {
                 Text(
@@ -81,31 +91,41 @@ fun CardActiveMeetings(modifier: Modifier = Modifier, meetings: Meetings, onClic
 }
 
 @Composable
-fun CardCompletedMeetings(modifier: Modifier = Modifier, meetings: Meetings, onClick: () -> Unit) {
+fun CardCompletedMeetings(
+    modifier: Modifier = Modifier,
+    meetings: Meetings,
+    onClick: () -> Unit
+) {
     val dateMeeting = meetings.date
     val locationMeeting = meetings.city
     val allTextMeeting = ("$dateMeeting - $locationMeeting")
     Card(
-        onClick = { onClick() }, colors = CardDefaults.cardColors(Color.Transparent)
+        onClick = { onClick() },
+        colors = CardDefaults.cardColors(Color.Transparent)
     ) {
         Row(
-            modifier = modifier
+            modifier =
+            modifier
                 .fillMaxWidth()
                 .padding(top = MagicNumbers.CARD_COMPLETED_MEETINGS_ROW_PADDING_TOP.dp)
         ) {
             Box(modifier = Modifier.padding(top = MagicNumbers.BOTTOM_NAV_COLUMN_ICON_PADDING_TOP.dp)) {
                 MyPreviewAvatar(
-                    modifier = Modifier
+                    modifier =
+                    Modifier
                         .size(MagicNumbers.CARD_COMPLETED_MEETINGS_MY_PREV_AVATAR_SIZE.dp),
                     contentDescription = null,
-                    painter = meetings.icon ?: "https://w7.pngwing.com/pngs/21/228/png-transparent-computer-icons-user-profile-others-miscellaneous-face-monochrome.png"
+                    painter =
+                    meetings.icon
+                        ?: "https://w7.pngwing.com/pngs/21/228/png-transparent-computer-icons-user-profile-others-miscellaneous-face-monochrome.png"
                 )
             }
             Column(
-                modifier = Modifier
-                    .padding(horizontal = MagicNumbers.CARD_COMPLETED_MEETINGS_COLUMN_PADDING_HORIZONTAL.dp),
+                modifier =
+                Modifier
+                    .padding(horizontal = MagicNumbers.CARD_COMPLETED_MEETINGS_COLUMN_PADDING_HORIZONTAL.dp)
             ) {
-                Row{
+                Row {
                     Text(
                         text = meetings.title,
                         fontFamily = fontSFPro,

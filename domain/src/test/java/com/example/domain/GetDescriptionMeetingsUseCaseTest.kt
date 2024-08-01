@@ -5,11 +5,19 @@ import com.example.domain.usecases.GetDescriptionMeetingsUseCase
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Test
 
-class GetDescriptionMeetingsUseCaseTest {
-    private val repoMeetings = MeetingsRepositoryTestStub()
-    private val useCase: GetDescriptionMeetingsUseCase = GetDescriptionMeetingsUseCase(repoMeetings)
+internal class GetDescriptionMeetingsUseCaseTest {
+    private lateinit var repoMeetings: MeetingsRepositoryTestStub
+    private lateinit var useCase: GetDescriptionMeetingsUseCase
+
+    @Before
+    fun setUp() {
+        repoMeetings = MeetingsRepositoryTestStub()
+        useCase = GetDescriptionMeetingsUseCase(repoMeetings)
+    }
+
     @Test
     fun `getDescriptionMeetingsTest returns meetings details correct id`() {
         val expectedMeetingID = 1

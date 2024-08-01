@@ -1,11 +1,10 @@
 package com.example.domain.usecases
 
-import com.example.domain.entities.Community
 import com.example.domain.entities.CommunityDetails
-import com.example.domain.repository.CommunityRepository
+import com.example.domain.repository.ICommunityRepository
 
-class GetDetailsCommunityUseCase(val repository: CommunityRepository) {
-    fun execute(): CommunityDetails {
-        return repository.getDetailsCommunity()
-    }
+class GetDetailsCommunityUseCase(
+    val repository: ICommunityRepository,
+) {
+    fun execute(): CommunityDetails = repository.getDetailsCommunity()
 }

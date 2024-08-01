@@ -16,11 +16,8 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
-
 
 @Composable
 fun AddAvatarProfile(modifier: Modifier = Modifier) {
@@ -28,13 +25,15 @@ fun AddAvatarProfile(modifier: Modifier = Modifier) {
         mutableStateOf(false)
     }
     Box(
-        modifier = modifier
+        modifier =
+        modifier
             .size(MagicNumbers.ADD_AVATAR_PROFILE_BOX_SIZE.dp)
     ) {
         MyMainAvatar(
             painter = "https://i.pinimg.com/originals/89/e5/8e/89e58e371fded01e2ccf40fdea5c2c4d.jpg",
             contentDescription = null,
-            modifier = Modifier
+            modifier =
+            Modifier
                 .clip(CircleShape)
                 .fillMaxSize()
                 .clickable { avatarOpen = true }
@@ -42,7 +41,8 @@ fun AddAvatarProfile(modifier: Modifier = Modifier) {
         Icon(
             Icons.Filled.AddCircle,
             contentDescription = null,
-            modifier = Modifier
+            modifier =
+            Modifier
                 .clickable { }
                 .align(Alignment.BottomEnd)
         )

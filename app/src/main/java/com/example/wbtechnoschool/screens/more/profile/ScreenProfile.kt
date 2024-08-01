@@ -19,20 +19,18 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import coil.compose.rememberImagePainter
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.utils.avatar.MyMainAvatar
-import com.example.wbtechnoschool.utils.button.IconOutlinedButton
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
+import com.example.wbtechnoschool.utils.avatar.MyMainAvatar
+import com.example.wbtechnoschool.utils.button.IconOutlinedButton
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.utils.constants.SPACER
 import com.example.wbtechnoschool.viewmodel.more_view_model.profile_view_model.ProfileViewModule
@@ -42,14 +40,15 @@ import org.koin.androidx.compose.koinViewModel
 fun ScreenProfile(
     modifier: Modifier = Modifier,
     navController: NavController,
-    viewModel: ProfileViewModule = koinViewModel(),
+    viewModel: ProfileViewModule = koinViewModel()
 ) {
     val name by viewModel.name.collectAsState()
     val phoneNumber by viewModel.phoneNumber.collectAsState()
     val socialMediaIcons by viewModel.socialMediaIcons.collectAsState()
     val avatarUrl = viewModel.avatar.collectAsState()
     Scaffold(
-        modifier = modifier
+        modifier =
+        modifier
             .statusBarsPadding()
             .fillMaxSize(),
         topBar = {
@@ -59,19 +58,22 @@ fun ScreenProfile(
                 actions = { navController.navigate(Graph.AuthorizationProfile.route) },
                 actionsIcon = R.drawable.edit
             )
-        }, content = { innerPadding ->
+        },
+        content = { innerPadding ->
             Column(
-                modifier = Modifier
+                modifier =
+                Modifier
                     .padding(MagicNumbers.SCREEN_PROFILE_PADDING_HORIZONTAL.dp)
                     .padding(innerPadding)
                     .fillMaxSize(),
-                verticalArrangement = Arrangement.Top,
+                verticalArrangement = Arrangement.Top
             ) {
                 Spacer(modifier = Modifier.height(SPACER.SPACER_80.value.dp))
                 MyMainAvatar(
                     painter = avatarUrl.value,
                     contentDescription = null,
-                    modifier = Modifier
+                    modifier =
+                    Modifier
                         .size(MagicNumbers.SCREEN_PROFILE_MY_MAIN_AVATAR_SIZE.dp)
                         .align(Alignment.CenterHorizontally)
                         .clip((CircleShape))
@@ -100,7 +102,7 @@ fun ScreenProfile(
                     socialMediaIcons.forEach { icon ->
                         IconOutlinedButton(
                             contentColor = LightColorTheme.brandColorDefault,
-                            onClick = {  },
+                            onClick = { },
                             icon = icon
                         )
                     }

@@ -23,13 +23,12 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.utils.widgets.SwitchRow
 import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
-import com.example.wbtechnoschool.utils.search.AppSearchBar
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.utils.constants.SPACER
+import com.example.wbtechnoschool.utils.search.AppSearchBar
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingViewModel
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingsTab
 import org.koin.androidx.compose.koinViewModel
@@ -38,12 +37,13 @@ import org.koin.androidx.compose.koinViewModel
 fun ScreenMeeting(
     modifier: Modifier = Modifier,
     navController: NavController,
-    viewModel: MeetingViewModel = koinViewModel(),
+    viewModel: MeetingViewModel = koinViewModel()
 ) {
     val tabIndex by viewModel.tabIndex.collectAsState()
     val tabs = viewModel.getTabs().map { stringResource(id = it) }
     Scaffold(
-        modifier = modifier
+        modifier =
+        modifier
             .statusBarsPadding()
             .fillMaxSize(),
         topBar = {
@@ -54,16 +54,18 @@ fun ScreenMeeting(
         },
         content = { innerPadding ->
             Column(
-                modifier = Modifier
+                modifier =
+                Modifier
                     .padding(innerPadding)
                     .padding(horizontal = MagicNumbers.SCREEN_MEETING_PADDING_HORIZONTAL.dp)
                     .padding(top = MagicNumbers.SCREEN_MEETING_PADDING_TOP.dp)
                     .navigationBarsPadding()
                     .fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 AppSearchBar(
-                    modifier = Modifier
+                    modifier =
+                    Modifier
                         .fillMaxWidth()
                         .height(MagicNumbers.SCREEN_MEETING_APP_SEARCH_BAR_HEIGHT.dp)
                 )
@@ -91,12 +93,6 @@ fun ScreenMeeting(
                     MeetingsTab.ACTIVE_MEETINGS -> ActiveMeetings(navController)
                 }
             }
-        },
+        }
     )
 }
-
-
-
-
-
-

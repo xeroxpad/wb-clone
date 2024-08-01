@@ -8,10 +8,11 @@ import com.example.domain.usecases.GetMeetingsUseCase
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 
-val domainModule =  module {
-    factoryOf (::GetAllCommunityUseCase)
-    factoryOf (::GetDataProfileUseCase)
-    factoryOf (::GetDescriptionMeetingsUseCase)
-    factoryOf (::GetDetailsCommunityUseCase)
-    factoryOf (::GetMeetingsUseCase)
-}
+val domainModule =
+    module {
+        factoryOf(::GetAllCommunityUseCase)
+        factoryOf(::GetDataProfileUseCase)
+        factoryOf(::GetDescriptionMeetingsUseCase)
+        factoryOf(::GetDetailsCommunityUseCase)
+        factoryOf(::GetMeetingsUseCase)
+    }

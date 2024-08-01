@@ -10,19 +10,19 @@ import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.utils.events.CardCommunity
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.navigation.MainTopAppBar
-import com.example.wbtechnoschool.utils.search.AppSearchBar
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
+import com.example.wbtechnoschool.utils.events.CardCommunity
+import com.example.wbtechnoschool.utils.search.AppSearchBar
 import com.example.wbtechnoschool.viewmodel.community_view_model.CommunityViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -30,33 +30,40 @@ import org.koin.androidx.compose.koinViewModel
 fun ScreenCommunity(
     modifier: Modifier = Modifier,
     navController: NavController,
-    viewModel: CommunityViewModel = koinViewModel(),
+    viewModel: CommunityViewModel = koinViewModel()
 ) {
-    val community by viewModel.community.collectAsState()
+    val community by viewModel.community.collectAsStateWithLifecycle()
+
     Scaffold(
-        modifier = modifier
+        modifier =
+        modifier
             .statusBarsPadding()
             .fillMaxSize(),
         topBar = {
             MainTopAppBar(
-                title = stringResource(id = R.string.top_bar_community),
+                title = stringResource(id = R.string.top_bar_community)
             )
-        }, content = { innerPadding ->
+        },
+        content = { innerPadding ->
             AppSearchBar(
-                modifier = Modifier
+                modifier =
+                Modifier
                     .padding(horizontal = MagicNumbers.SCREEN_COMMUNITY_SEARCH_BAR_PADDING_HORIZONTAL.dp)
-                    .padding(top = MagicNumbers.SCREEN_COMMUNITY_SEARCH_BAR_PADDING_TOP.dp, bottom = innerPadding.calculateBottomPadding())
-                    .fillMaxWidth()
+                    .padding(
+                        top = MagicNumbers.SCREEN_COMMUNITY_SEARCH_BAR_PADDING_TOP.dp,
+                        bottom = innerPadding.calculateBottomPadding()
+                    ).fillMaxWidth()
                     .height(MagicNumbers.SCREEN_COMMUNITY_SEARCH_BAR_HEIGHT.dp)
             )
             LazyColumn(
-                modifier = Modifier
+                modifier =
+                Modifier
                     .padding(horizontal = MagicNumbers.SCREEN_COMMUNITY_LAZY_PADDING_HORIZONTAL.dp)
                     .padding(innerPadding)
                     .padding(top = MagicNumbers.SCREEN_COMMUNITY_LAZY_PADDING_TOP.dp)
                     .navigationBarsPadding()
                     .fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally,
+                horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 items(community) { community ->
                     CardCommunity(

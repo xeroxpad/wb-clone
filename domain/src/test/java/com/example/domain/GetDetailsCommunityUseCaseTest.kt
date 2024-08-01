@@ -6,11 +6,19 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Test
 
-class GetDetailsCommunityUseCaseTest {
-    private val repoCommunity = CommunityRepositoryTestStub()
-    private val useCase = GetDetailsCommunityUseCase(repoCommunity)
+internal class GetDetailsCommunityUseCaseTest {
+    lateinit var repoCommunity: CommunityRepositoryTestStub
+    lateinit var useCase: GetDetailsCommunityUseCase
+
+    @Before
+    fun setUp() {
+        repoCommunity = CommunityRepositoryTestStub()
+        useCase = GetDetailsCommunityUseCase(repoCommunity)
+    }
+
     @Test
     fun `getDetailsCommunityTest returns community details correct id`() {
         val expectedCommunityID = 1

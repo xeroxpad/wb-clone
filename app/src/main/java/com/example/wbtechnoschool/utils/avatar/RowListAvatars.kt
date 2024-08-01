@@ -17,12 +17,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
-import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.ui.theme.LightGrey
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
@@ -36,7 +34,8 @@ fun RowAvatars(
     arrayImage: List<String>
 ) {
     Row(
-        horizontalArrangement = Arrangement.spacedBy(
+        horizontalArrangement =
+        Arrangement.spacedBy(
             when (arrayImage.size) {
                 1 -> 0.dp
                 2 -> 5.dp
@@ -45,24 +44,31 @@ fun RowAvatars(
                 else -> (-15).dp
             }
         ),
-        modifier = modifier
+        modifier =
+        modifier
             .fillMaxWidth()
             .zIndex(-zIndex),
-        verticalAlignment = Alignment.CenterVertically,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         for (i in arrayImage.withIndex().take(take)) {
             val zIndex = (arrayImage.size - i.index).toFloat()
             Box(
-                modifier = Modifier
+                modifier =
+                Modifier
                     .zIndex(zIndex)
                     .padding(vertical = MagicNumbers.ROW_LIST_AVATAR_BOX_PADDING_VERTICAL.dp)
                     .size(MagicNumbers.ROW_LIST_AVATAR_BOX_SIZE.dp)
                     .border(
-                        MagicNumbers.ROW_LIST_AVATAR_BOX_BORDER.dp, LightGrey, RoundedCornerShape(
-                            MagicNumbers.ROW_LIST_AVATAR_BOX_BORDER_SHAPE))
+                        MagicNumbers.ROW_LIST_AVATAR_BOX_BORDER.dp,
+                        LightGrey,
+                        RoundedCornerShape(
+                            MagicNumbers.ROW_LIST_AVATAR_BOX_BORDER_SHAPE
+                        )
+                    )
             ) {
                 MyPreviewAvatar(
-                    modifier = Modifier
+                    modifier =
+                    Modifier
                         .fillMaxSize()
                         .align(Alignment.Center)
                         .clip(CircleShape)
@@ -84,6 +90,3 @@ fun RowAvatars(
         }
     }
 }
-
-
-

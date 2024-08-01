@@ -31,15 +31,16 @@ fun StartScreen(navController: NavHostController) {
     val baseRoute = currentRoute?.substringBefore("/") ?: ""
     val bottomBarIsShow = rememberSaveable { (mutableStateOf(true)) }
 // тут с навигацией фигня, поправлю
-    bottomBarIsShow.value = when (baseRoute) {
-        Graph.Splash.route,
-        Graph.Authorization.route,
-        Graph.EntryCode.route,
-        Graph.AuthorizationProfile.route,
-        Graph.SplashHelloName.route,
-        -> false
-        else -> true
-    }
+    bottomBarIsShow.value =
+        when (baseRoute) {
+            Graph.Splash.route,
+            Graph.Authorization.route,
+            Graph.EntryCode.route,
+            Graph.AuthorizationProfile.route,
+            Graph.SplashHelloName.route
+            -> false
+            else -> true
+        }
     Scaffold(bottomBar = {
         when {
             bottomBarIsShow.value -> {

@@ -3,9 +3,7 @@ package com.example.wbtechnoschool.navigation
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.BottomNavigation
-//noinspection UsingMaterialAndMaterial3Libraries
 import androidx.compose.material.BottomNavigationItem
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
@@ -30,7 +28,7 @@ import com.example.wbtechnoschool.utils.widgets.NoRippleInteractionSource
 @Composable
 fun BottomNavBar(
     navController: NavController,
-    modifier: Modifier = Modifier,
+    modifier: Modifier = Modifier
 ) {
     val navBackStackEntry by navController.currentBackStackEntryAsState()
     val currentRoute = navBackStackEntry?.destination
@@ -38,7 +36,7 @@ fun BottomNavBar(
     BottomNavigation(
         modifier = modifier,
         elevation = MagicNumbers.BOTTOM_NAV_BAR_ELEVATION.dp,
-        backgroundColor = LightColorTheme.neutralWhite,
+        backgroundColor = LightColorTheme.neutralWhite
     ) {
         listRootElement.forEach { item ->
             val selected = currentRoute?.hierarchy?.any { it.route == item.route } == true
@@ -74,7 +72,7 @@ fun BottomNavBar(
                                 Image(
                                     painterResource(id = item.icon!!),
                                     contentDescription = item.description,
-                                    modifier = Modifier.padding(top = MagicNumbers.BOTTOM_NAV_COLUMN_IMAGE_PADDING_TOP.dp),
+                                    modifier = Modifier.padding(top = MagicNumbers.BOTTOM_NAV_COLUMN_IMAGE_PADDING_TOP.dp)
                                 )
                             }
                         }
@@ -84,9 +82,3 @@ fun BottomNavBar(
         }
     }
 }
-
-
-
-
-
-

@@ -33,17 +33,19 @@ fun ContainerToGo(
     paddingIcon: Dp = 4.dp
 ) {
     Row(
-        modifier = Modifier
+        modifier =
+        Modifier
             .fillMaxWidth()
             .clip(RoundedCornerShape(10.dp))
             .height(60.dp)
             .clickable(onClick = { onClick() }),
-        verticalAlignment = Alignment.CenterVertically,
+        verticalAlignment = Alignment.CenterVertically
     ) {
         Icon(
             painter = painterResource(id = icon),
             contentDescription = null,
-            modifier = Modifier
+            modifier =
+            Modifier
                 .size(sizeIcon)
                 .padding(start = paddingIcon),
             tint = LightColorTheme.neutralActive
@@ -53,13 +55,14 @@ fun ContainerToGo(
             text = title,
             fontSize = 18.sp,
             fontFamily = fontSFPro,
-            fontWeight = FontWeight.W600,
+            fontWeight = FontWeight.W600
         )
         Spacer(modifier = Modifier.weight(1.8f))
         Icon(
             painter = painterResource(id = R.drawable.icon_go),
             contentDescription = null,
-            modifier = Modifier
+            modifier =
+            Modifier
                 .size(18.dp)
                 .padding(end = 4.dp)
         )

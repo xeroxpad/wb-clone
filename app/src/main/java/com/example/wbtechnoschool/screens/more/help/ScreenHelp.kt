@@ -11,6 +11,6 @@ import androidx.navigation.NavController
 @Composable
 fun ScreenHelp(navController: NavController) {
     Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text(text = "Помощь") /*для примера*/
+        Text(text = "Помощь") // для примера
     }
 }

@@ -43,13 +43,14 @@ import org.koin.androidx.compose.koinViewModel
 fun ScreenDescriptionMeeting(
     navController: NavController,
     modifier: Modifier = Modifier,
-    viewModel: DescriptionMeetingViewModel = koinViewModel(),
+    viewModel: DescriptionMeetingViewModel = koinViewModel()
 ) {
     val showMoreText by viewModel.showMoreText.collectAsState()
     val isGoing by viewModel.isGoing.collectAsState()
     val meetingDescription by viewModel.meetingDescription.collectAsState()
     Scaffold(
-        modifier = modifier
+        modifier =
+        modifier
             .statusBarsPadding()
             .fillMaxSize(),
         topBar = {
@@ -60,9 +61,11 @@ fun ScreenDescriptionMeeting(
                 actionsIcon = R.drawable.icon_bird.takeIf { !isGoing },
                 actionsTint = LightColorTheme.brandColorDefault
             )
-        }, content = { innerPadding ->
+        },
+        content = { innerPadding ->
             Column(
-                modifier = Modifier
+                modifier =
+                Modifier
                     .fillMaxSize()
                     .navigationBarsPadding()
                     .padding(innerPadding)
@@ -70,21 +73,23 @@ fun ScreenDescriptionMeeting(
                         start = MagicNumbers.SCREEN_DESCRIPTION_MEETING_CONTENT_COLUMN_PADDING_START.dp,
                         end = MagicNumbers.SCREEN_DESCRIPTION_MEETING_CONTENT_COLUMN_PADDING_END.dp,
                         bottom = MagicNumbers.SCREEN_DESCRIPTION_MEETING_CONTENT_COLUMN_PADDING_BOTTOM.dp
-                    ),
+                    )
             ) {
                 LazyColumn(
-                    modifier = Modifier
+                    modifier =
+                    Modifier
                         .weight(1f)
                         .clickable(
                             interactionSource = remember { MutableInteractionSource() },
                             indication = null
                         ) { viewModel.toggleShowMoreText() },
-                    verticalArrangement = Arrangement.Top,
+                    verticalArrangement = Arrangement.Top
                 ) {
                     item {
                         meetingDescription?.let { description ->
                             Row(
-                                modifier = Modifier
+                                modifier =
+                                Modifier
                                     .padding(top = MagicNumbers.SCREEN_DESCRIPTION_ROW_PADDING_TOP.dp)
                             ) {
                                 Text(
@@ -133,7 +138,9 @@ fun ScreenDescriptionMeeting(
                 ToggleButton(
                     isSelected = { _ ->
                         viewModel.toggleIsGoing()
-                    }, modifier = Modifier
+                    },
+                    modifier =
+                    Modifier
                         .fillMaxWidth()
                         .height(MagicNumbers.SCREEN_DESCRIPTION_TOGGLE_BUTTON_HEIGHT.dp)
                 )
@@ -141,4 +148,3 @@ fun ScreenDescriptionMeeting(
         }
     )
 }
-

@@ -1,8 +1,7 @@
 package com.example.domain.repository
 
-import com.example.domain.entities.Community
 import com.example.domain.entities.Person
 
-interface ProfileRepository {
+interface IProfileRepository {
     fun getDataProfileUseCase(): Person
 }

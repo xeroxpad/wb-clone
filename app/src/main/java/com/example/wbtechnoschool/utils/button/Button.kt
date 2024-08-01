@@ -27,10 +27,11 @@ fun AllButton(
     containerColor: Color,
     shadowColor: Color = Color.Transparent,
     enable: Boolean,
-    onClick: () -> Unit,
+    onClick: () -> Unit
 ) {
     Row(
-        modifier = Modifier
+        modifier =
+        Modifier
             .fillMaxWidth(),
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
@@ -65,23 +66,23 @@ fun StatusButton(
     containerColor: Color,
     enable: Boolean,
     onClick: () -> Unit,
-    contentText: String,
+    contentText: String
 ) {
     Button(
         onClick = onClick,
         shape = RoundedCornerShape(MagicNumbers.BUTTON_SHAPE),
         modifier = modifier,
-        colors = ButtonDefaults.buttonColors(
+        colors =
+        ButtonDefaults.buttonColors(
             containerColor = containerColor,
             contentColor = White,
             disabledContainerColor = LightColorTheme.brandColorDefault.copy(alpha = MagicNumbers.BUTTON_DISABLED_CONTAINER_COLOR)
         ),
-        enabled = enable,
+        enabled = enable
     ) {
         Text(text = contentText)
     }
 }
-
 
 @Composable
 fun StatusOutlinedButton(
@@ -89,21 +90,23 @@ fun StatusOutlinedButton(
     contentColor: Color,
     enable: Boolean,
     onClick: () -> Unit,
-    contentText: String,
+    contentText: String
 ) {
     OutlinedButton(
         onClick = onClick,
         shape = RoundedCornerShape(MagicNumbers.BUTTON_SHAPE),
         modifier = modifier,
-        border = BorderStroke(
+        border =
+        BorderStroke(
             width = MagicNumbers.BUTTON_BORDER_STROKE_WIDTH.dp,
             color = contentColor
         ),
-        colors = ButtonDefaults.buttonColors(
+        colors =
+        ButtonDefaults.buttonColors(
             containerColor = Color.Transparent,
-            contentColor = contentColor,
+            contentColor = contentColor
         ),
-        enabled = enable,
+        enabled = enable
     ) {
         Text(text = contentText)
     }
@@ -116,17 +119,18 @@ fun StatusTextButton(
     containerColor: Color,
     enable: Boolean,
     onClick: () -> Unit,
-    contentText: String,
+    contentText: String
 ) {
     TextButton(
         onClick = onClick,
         shape = RoundedCornerShape(MagicNumbers.BUTTON_SHAPE),
         modifier = modifier,
-        colors = ButtonDefaults.buttonColors(
+        colors =
+        ButtonDefaults.buttonColors(
             contentColor = contentColor,
-            containerColor = containerColor,
+            containerColor = containerColor
         ),
-        enabled = enable,
+        enabled = enable
     ) {
         Text(text = contentText, fontSize = MagicNumbers.BUTTON_TEXT_BUTTON_FONT_SIZE.sp)
     }
@@ -137,22 +141,23 @@ fun IconOutlinedButton(
     modifier: Modifier = Modifier,
     contentColor: Color,
     onClick: () -> Unit,
-    icon: Int,
+    icon: Int
 ) {
     OutlinedButton(
         onClick = onClick,
         shape = RoundedCornerShape(MagicNumbers.BUTTON_SHAPE),
         modifier = modifier,
-        border = BorderStroke(
+        border =
+        BorderStroke(
             width = MagicNumbers.BUTTON_BORDER_STROKE_WIDTH.dp,
             color = contentColor
         ),
-        colors = ButtonDefaults.buttonColors(
+        colors =
+        ButtonDefaults.buttonColors(
             containerColor = Color.Transparent,
-            contentColor = contentColor,
-        ),
+            contentColor = contentColor
+        )
     ) {
         Icon(painter = painterResource(id = icon), contentDescription = null)
     }
 }
-

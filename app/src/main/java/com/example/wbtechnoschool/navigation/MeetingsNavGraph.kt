@@ -7,7 +7,7 @@ import androidx.navigation.navigation
 
 fun NavGraphBuilder.meetingsNavGraph(
     meetingsScreen: @Composable () -> Unit,
-    meetingsScreenDescription: @Composable () -> Unit,
+    meetingsScreenDescription: @Composable () -> Unit
 ) {
     navigation(startDestination = Graph.MeetingsRoot.AllMeetings.route, route = Graph.MeetingsRoot.route) {
         composable(Graph.MeetingsRoot.AllMeetings.route) {

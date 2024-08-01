@@ -59,17 +59,19 @@ fun AppSearchBar(modifier: Modifier = Modifier) {
                 },
                 trailingIcon = {
                     when {
-                        text.isNotEmpty() -> IconButton(onClick = {
-                            text = ""
-                        }) {
-                            Icon(
-                                imageVector = Icons.Filled.Clear,
-                                contentDescription = null
-                            )
-                        }
+                        text.isNotEmpty() ->
+                            IconButton(onClick = {
+                                text = ""
+                            }) {
+                                Icon(
+                                    imageVector = Icons.Filled.Clear,
+                                    contentDescription = null
+                                )
+                            }
                     }
                 },
-                colors = TextFieldDefaults.colors(
+                colors =
+                TextFieldDefaults.colors(
                     unfocusedTextColor = Color.Transparent,
                     unfocusedIndicatorColor = Color.Transparent,
                     focusedIndicatorColor = Color.Transparent,
@@ -77,7 +79,7 @@ fun AppSearchBar(modifier: Modifier = Modifier) {
                     focusedLeadingIconColor = LightColorTheme.neutralActive,
                     focusedTextColor = LightColorTheme.neutralActive,
                     unfocusedContainerColor = LightColorTheme.neutralSecondaryBG,
-                    focusedContainerColor = LightColorTheme.neutralSecondaryBG,
+                    focusedContainerColor = LightColorTheme.neutralSecondaryBG
                 ),
                 shape = RoundedCornerShape(MagicNumbers.APP_SEARCH_BAR_SHAPE.dp),
                 contentPadding = PaddingValues(MagicNumbers.APP_SEARCH_CONTENT_PADDING.dp)

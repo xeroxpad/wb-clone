@@ -6,7 +6,9 @@ import com.example.wbtechnoschool.R
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
-class ProfileViewModule(private val getDataProfileUseCase: GetDataProfileUseCase): ViewModel() {
+class ProfileViewModule(
+    getDataProfileUseCase: GetDataProfileUseCase
+) : ViewModel() {
     private val person = getDataProfileUseCase.execute()
 
     private val _name = MutableStateFlow(person.name)
@@ -15,16 +17,17 @@ class ProfileViewModule(private val getDataProfileUseCase: GetDataProfileUseCase
     private val _phoneNumber = MutableStateFlow(person.numberPhone)
     val phoneNumber: StateFlow<String> = _phoneNumber
 
-    private val _avatar  = MutableStateFlow(person.avatarUrl ?: "")
+    private val _avatar = MutableStateFlow(person.avatarUrl ?: "")
     val avatar: StateFlow<String> = _avatar
 
-    private val _socialMediaIcons = MutableStateFlow(
-        listOf(
-            R.drawable.icon_twitter,
-            R.drawable.icon_inst,
-            R.drawable.icon_linkedin,
-            R.drawable.icon_meta
+    private val _socialMediaIcons =
+        MutableStateFlow(
+            listOf(
+                R.drawable.icon_twitter,
+                R.drawable.icon_inst,
+                R.drawable.icon_linkedin,
+                R.drawable.icon_meta
+            )
         )
-    )
     val socialMediaIcons: StateFlow<List<Int>> = _socialMediaIcons
 }

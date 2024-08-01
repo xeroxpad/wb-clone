@@ -6,11 +6,18 @@ import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Test
 
-class GetDataProfileUseCaseTest {
-    private val repoProfile = ProfileRepositoryTestStub()
-    private val useCase = GetDataProfileUseCase(repoProfile)
+internal class GetDataProfileUseCaseTest {
+    private lateinit var repoProfile: ProfileRepositoryTestStub
+    private lateinit var useCase: GetDataProfileUseCase
+
+    @Before
+    fun setUp() {
+        repoProfile = ProfileRepositoryTestStub()
+        useCase = GetDataProfileUseCase(repoProfile)
+    }
 
     @Test
     fun `getDataProfileUseCase returns profile correct id`() {

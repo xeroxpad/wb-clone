@@ -19,6 +19,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Alignment
@@ -35,11 +36,11 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.utils.button.StatusTextButton
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
+import com.example.wbtechnoschool.utils.button.StatusTextButton
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.utils.constants.SPACER
 import com.example.wbtechnoschool.viewmodel.auth_view_model.EntryCodeViewModel
@@ -51,20 +52,27 @@ const val COUNTER_NUMBER = 4
 fun ScreenEntryCode(
     phoneNumber: String,
     navController: NavController,
-    viewModel: EntryCodeViewModel = koinViewModel(),
+    viewModel: EntryCodeViewModel = koinViewModel()
 ) {
     val codeText by viewModel.codeText.observeAsState("")
+
+    LaunchedEffect(codeText) {
+        viewModel.onCodeChange(codeText)
+    }
     Scaffold(
-        modifier = Modifier
+        modifier =
+        Modifier
             .statusBarsPadding()
             .fillMaxSize(),
         topBar = {
             MainTopAppBar(
-                iconBack = { navController.popBackStack() },
+                iconBack = { navController.popBackStack() }
             )
-        }, content = { innerPadding ->
+        },
+        content = { innerPadding ->
             Column(
-                modifier = Modifier
+                modifier =
+                Modifier
                     .padding(innerPadding)
                     .fillMaxSize()
                     .padding(horizontal = MagicNumbers.SCREEN_ENTRY_CODE_PADDING_HORIZONTAL.dp),
@@ -106,7 +114,8 @@ fun ScreenEntryCode(
                     enable = true,
                     onClick = { navController.navigate(Graph.AuthorizationProfile.route) }, // пока для показа тут пример перехода
                     contentText = stringResource(id = R.string.request_code_again),
-                    modifier = Modifier
+                    modifier =
+                    Modifier
                         .fillMaxWidth()
                         .height(MagicNumbers.SCREEN_ENTRY_CODE_STATUS_TEXT_BUTTON_HEIGHT.dp)
                 )
@@ -119,17 +128,19 @@ fun ScreenEntryCode(
 fun NumberView(
     modifier: Modifier = Modifier,
     index: Int,
-    text: String,
+    text: String
 ) {
-    val char = when {
-        index == text.length -> ""
-        index > text.length -> ""
-        else -> text[index].toString()
-    }
+    val char =
+        when {
+            index == text.length -> ""
+            index > text.length -> ""
+            else -> text[index].toString()
+        }
     val contentColor = LightColorTheme.neutralActive
     Box(
         contentAlignment = Alignment.Center,
-        modifier = modifier
+        modifier =
+        modifier
             .height(MagicNumbers.FUN_NUMBER_VIEW_BOX_HEIGHT.dp)
             .width(MagicNumbers.FUN_NUMBER_VIEW_BOX_WIDTH.dp)
             .background(Color.Transparent)
@@ -146,7 +157,8 @@ fun NumberView(
 
             else -> {
                 Box(
-                    modifier = Modifier
+                    modifier =
+                    Modifier
                         .clip(CircleShape)
                         .size(MagicNumbers.FUN_NUMBER_VIEW_BOX_SIZE.dp)
                         .background(LightColorTheme.neutralLine)
@@ -160,7 +172,7 @@ fun NumberView(
 fun EntryCode(
     modifier: Modifier = Modifier,
     codeText: String,
-    numberEnter: (String, Boolean) -> Unit,
+    numberEnter: (String, Boolean) -> Unit
 ) {
     BasicTextField(
         value = TextFieldValue(codeText, selection = TextRange(codeText.length)),
@@ -172,7 +184,9 @@ fun EntryCode(
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         decorationBox = {
             Row(
-                horizontalArrangement = Arrangement.SpaceBetween, modifier = modifier
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier =
+                modifier
                     .fillMaxWidth()
                     .padding(MagicNumbers.FUN_ENTRY_CODE_ROW_PADDING.dp)
             ) {
@@ -186,7 +200,3 @@ fun EntryCode(
         }
     )
 }
-
-
-
-

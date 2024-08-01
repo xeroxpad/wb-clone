@@ -14,8 +14,8 @@ fun NavGraphBuilder.infoNavGraph(
     mySafetyScreen: @Composable () -> Unit,
     myResourcesScreen: @Composable () -> Unit,
     myHelpScreen: @Composable () -> Unit,
-    myInviteFriendScreen: @Composable () -> Unit,
-){
+    myInviteFriendScreen: @Composable () -> Unit
+) {
     navigation(startDestination = Graph.InfoRoot.AllInfo.route, route = Graph.InfoRoot.route) {
         composable(Graph.InfoRoot.AllInfo.route) {
             myMoreScreen()

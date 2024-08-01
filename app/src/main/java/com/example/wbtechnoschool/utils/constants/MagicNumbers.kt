@@ -40,10 +40,6 @@ class MagicNumbers {
         const val SCREEN_COMMUNITY_LAZY_CARD_COMMUNITY_PADDING_VERTICAL = 7
 
         //        CardCommunity
-        const val CARD_COMMUNITY_MY_PREV_AVATAR_PADDING_START = 10
-        const val CARD_COMMUNITY_MY_PREV_AVATAR_PADDING_END = 10
-        const val CARD_COMMUNITY_MY_PREV_AVATAR_PADDING_BOTTOM = 10
-        const val CARD_COMMUNITY_MY_PREV_AVATAR_SIZE = 56
         const val CARD_COMMUNITY_TEXT_TITLE = 14
         const val CARD_COMMUNITY_TEXT_COUNT_PERSONS = 12
 
@@ -188,7 +184,9 @@ class MagicNumbers {
     }
 }
 
-enum class SPACER(val value: Int) {
+enum class SPACER(
+    val value: Int
+) {
     SPACER_5(5),
     SPACER_10(10),
     SPACER_15(15),
@@ -197,5 +195,5 @@ enum class SPACER(val value: Int) {
     SPACER_40(40),
     SPACER_60(60),
     SPACER_80(80),
-    SPACER_95(95),
+    SPACER_95(95)
 }

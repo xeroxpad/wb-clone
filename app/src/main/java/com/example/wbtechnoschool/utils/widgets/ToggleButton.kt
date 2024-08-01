@@ -8,12 +8,15 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import com.example.wbtechnoschool.R
+import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.utils.button.StatusButton
 import com.example.wbtechnoschool.utils.button.StatusOutlinedButton
-import com.example.wbtechnoschool.ui.theme.LightColorTheme
 
 @Composable
-fun ToggleButton(modifier: Modifier = Modifier, isSelected: (Boolean) -> Unit) {
+fun ToggleButton(
+    modifier: Modifier = Modifier,
+    isSelected: (Boolean) -> Unit
+) {
     var isGoing by remember { mutableStateOf(true) }
     when {
         isGoing -> {

@@ -20,6 +20,7 @@ import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableIntStateOf
@@ -39,13 +40,13 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.utils.button.StatusButton
-import com.example.wbtechnoschool.utils.widgets.PhoneNumberVisualTransformation
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
+import com.example.wbtechnoschool.utils.button.StatusButton
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.utils.constants.SPACER
+import com.example.wbtechnoschool.utils.widgets.PhoneNumberVisualTransformation
 import com.example.wbtechnoschool.viewmodel.auth_view_model.AuthorizationViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -53,13 +54,19 @@ import org.koin.androidx.compose.koinViewModel
 fun ScreenAuthorization(
     modifier: Modifier = Modifier,
     navController: NavController,
-    viewModel: AuthorizationViewModel = koinViewModel(),
+    viewModel: AuthorizationViewModel = koinViewModel()
 ) {
     val number by viewModel.number.observeAsState("")
     val cursorPosition = remember { mutableIntStateOf(0) }
     val textColor = if (number.isEmpty()) LightColorTheme.neutralDisabled else Color.Black
+
+    LaunchedEffect(number) {
+        viewModel.onNumberChange(number)
+    }
+
     Column(
-        modifier = modifier
+        modifier =
+        modifier
             .statusBarsPadding()
             .fillMaxSize()
             .padding(horizontal = MagicNumbers.SCREEN_AUTH_PROF_COLUMN_PADDING_HORIZONTAL.dp),
@@ -86,18 +93,19 @@ fun ScreenAuthorization(
         )
         Spacer(modifier = Modifier.height(SPACER.SPACER_60.value.dp))
         Row(
-            modifier = Modifier
+            modifier =
+            Modifier
                 .fillMaxWidth()
                 .height(MagicNumbers.SCREEN_AUTH_HEIGHT_ROW_MODIFIER.dp),
             verticalAlignment = Alignment.CenterVertically
         ) {
             Box(
-                modifier = Modifier
+                modifier =
+                Modifier
                     .background(
                         LightColorTheme.neutralSecondaryBG,
                         RoundedCornerShape(MagicNumbers.SCREEN_AUTH_BOX_ROUNDED_CORNER_SHAPE.dp)
-                    )
-                    .width(MagicNumbers.SCREEN_AUTH_BOX_WIDTH_MODIFIER.dp)
+                    ).width(MagicNumbers.SCREEN_AUTH_BOX_WIDTH_MODIFIER.dp)
                     .fillMaxHeight()
             ) {
                 Row(modifier = Modifier.padding(MagicNumbers.SCREEN_AUTH_ROW_MODIFIER_PADDING_PREFIX_TF.dp)) {
@@ -111,18 +119,19 @@ fun ScreenAuthorization(
                     viewModel.onNumberChange(it)
                     cursorPosition.intValue = it.length
                 },
-                modifier = Modifier
+                modifier =
+                Modifier
                     .background(
                         LightColorTheme.neutralSecondaryBG,
                         RoundedCornerShape(MagicNumbers.SCREEN_AUTH_BASIC_TF_ROUNDED_CORNER_SHAPE_MODIFIER.dp)
-                    )
-                    .fillMaxHeight()
+                    ).fillMaxHeight()
                     .weight(MagicNumbers.SCREEN_AUTH_BASIC_WEIGHT_MODIFIER),
                 visualTransformation = PhoneNumberVisualTransformation(),
                 decorationBox = { innerTextField ->
                     Box(
                         contentAlignment = Alignment.CenterStart,
-                        modifier = Modifier.padding(
+                        modifier =
+                        Modifier.padding(
                             horizontal = MagicNumbers.SCREEN_AUTH_DECORATION_BOX_MODIFIER_HORIZONTAL.dp,
                             vertical = MagicNumbers.SCREEN_AUTH_DECORATION_BOX_MODIFIER_VERTICAL.dp
                         )
@@ -140,7 +149,8 @@ fun ScreenAuthorization(
                         innerTextField()
                     }
                 },
-                textStyle = TextStyle(
+                textStyle =
+                TextStyle(
                     fontWeight = FontWeight.W600,
                     fontSize = MagicNumbers.SCREEN_AUTH_BASIC_TF_TEXT_STYLE_FONT_SIZE.sp,
                     fontFamily = fontSFPro,
@@ -149,9 +159,10 @@ fun ScreenAuthorization(
                 ),
                 singleLine = true,
                 cursorBrush = SolidColor(LightColorTheme.neutralActive),
-                keyboardOptions = KeyboardOptions.Default.copy(
+                keyboardOptions =
+                KeyboardOptions.Default.copy(
                     keyboardType = KeyboardType.Number
-                ),
+                )
             )
         }
         Spacer(modifier = Modifier.height(SPACER.SPACER_60.value.dp))
@@ -160,7 +171,8 @@ fun ScreenAuthorization(
             enable = viewModel.numberValid(number),
             onClick = { navController.navigate("${Graph.EntryCode.route}/$number") },
             contentText = stringResource(id = R.string.resume),
-            modifier = Modifier
+            modifier =
+            Modifier
                 .fillMaxWidth()
                 .height(MagicNumbers.SCREEN_AUTH_STATUS_BUTTON_MODIFIER_HEIGHT.dp)
         )
@@ -172,7 +184,8 @@ fun PrefixNumberTextField(textColor: Color) {
     Image(
         painter = painterResource(id = R.drawable.icon_flag_russian),
         contentDescription = "",
-        modifier = Modifier
+        modifier =
+        Modifier
             .size(MagicNumbers.PREF_NUMBER_TF_IMAGE_MODIFIER_SIZE.dp)
             .clip(RoundedCornerShape(MagicNumbers.PREF_NUMBER_TF_IMAGE_MODIFIER_CLIP.dp))
     )
@@ -183,7 +196,8 @@ fun PrefixNumberTextField(textColor: Color) {
         readOnly = true,
         keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
         modifier = Modifier.padding(start = MagicNumbers.PREF_NUMBER_TF_BASIC_TF_MODIFIER_PADDING_START.dp),
-        textStyle = TextStyle(
+        textStyle =
+        TextStyle(
             color = textColor,
             fontWeight = FontWeight.W600,
             fontSize = MagicNumbers.PREF_NUMBER_TF_BASIC_TF_TEXT_STYLE_FONT_SIZE.sp,

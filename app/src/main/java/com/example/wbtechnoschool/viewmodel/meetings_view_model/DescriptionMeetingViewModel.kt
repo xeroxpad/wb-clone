@@ -11,7 +11,9 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
-class DescriptionMeetingViewModel(private val getDescriptionMeetingsUseCase: GetDescriptionMeetingsUseCase) : ViewModel() {
+class DescriptionMeetingViewModel(
+    private val getDescriptionMeetingsUseCase: GetDescriptionMeetingsUseCase
+) : ViewModel() {
     private val _showMoreText = MutableStateFlow(false)
     val showMoreText: StateFlow<Boolean> = _showMoreText
 
@@ -32,6 +34,11 @@ class DescriptionMeetingViewModel(private val getDescriptionMeetingsUseCase: Get
         _isGoing.value = !_isGoing.value
     }
 
+    init {
+        loadLoremText()
+        loadMeetingDescription()
+    }
+
     private fun loadLoremText() {
         viewModelScope.launch {
             val lorem: Lorem = LoremIpsum()
@@ -44,10 +51,5 @@ class DescriptionMeetingViewModel(private val getDescriptionMeetingsUseCase: Get
             val description = getDescriptionMeetingsUseCase.execute()
             _meetingDescription.update { description }
         }
-    }
-
-    init {
-        loadLoremText()
-        loadMeetingDescription()
     }
 }

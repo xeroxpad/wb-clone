@@ -1,10 +1,11 @@
-package com.example.domain.repository
+package com.example.data.repository
 
 import com.example.domain.entities.Community
 import com.example.domain.entities.CommunityDetails
 import com.example.domain.entities.Meetings
+import com.example.domain.repository.ICommunityRepository
 
-class CommunityRepositoryTestStub : ICommunityRepository {
+class CommunityRepositoryImpl : ICommunityRepository {
     override fun getAllCommunity(): List<Community> = mockCommunityData
 
     override fun getDetailsCommunity(): CommunityDetails = mockCommunityDetails
@@ -15,7 +16,7 @@ class CommunityRepositoryTestStub : ICommunityRepository {
                 id = 0,
                 icon = null,
                 title = "Яндекс",
-                countPersons = "10 000 человек",
+                countPersons = null,
             ),
             Community(
                 id = 1,
@@ -82,7 +83,7 @@ class CommunityRepositoryTestStub : ICommunityRepository {
     val mockMeetingsData =
         listOf(
             Meetings(
-                id = 1,
+                id = 31,
                 icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
                 title = "Developer Meetings",
                 date = "13.09.2024",
@@ -92,7 +93,7 @@ class CommunityRepositoryTestStub : ICommunityRepository {
                 tagCityMeeting = "Moscow",
             ),
             Meetings(
-                id = 2,
+                id = 33,
                 icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
                 title = "Developer Meetings",
                 date = "13.09.2024",
@@ -102,7 +103,7 @@ class CommunityRepositoryTestStub : ICommunityRepository {
                 tagCityMeeting = "SPB",
             ),
             Meetings(
-                id = 3,
+                id = 33,
                 icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
                 title = "Developer Meetings",
                 date = "13.09.2024",
@@ -112,7 +113,7 @@ class CommunityRepositoryTestStub : ICommunityRepository {
                 tagCityMeeting = "Moscow",
             ),
             Meetings(
-                id = 4,
+                id = 34,
                 icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
                 title = "Developer Meetings",
                 date = "13.09.2024",
@@ -122,7 +123,7 @@ class CommunityRepositoryTestStub : ICommunityRepository {
                 tagCityMeeting = "Kazan",
             ),
             Meetings(
-                id = 5,
+                id = 35,
                 icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
                 title = "Developer Meetings",
                 date = "13.09.2024",
@@ -132,7 +133,7 @@ class CommunityRepositoryTestStub : ICommunityRepository {
                 tagCityMeeting = "Moscow",
             ),
             Meetings(
-                id = 6,
+                id = 36,
                 icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
                 title = "Developer Meetings",
                 date = "13.09.2024",
@@ -142,7 +143,7 @@ class CommunityRepositoryTestStub : ICommunityRepository {
                 tagCityMeeting = "Ufa",
             ),
             Meetings(
-                id = 7,
+                id = 37,
                 icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
                 title = "Developer Meetings",
                 date = "13.09.2024",
@@ -152,7 +153,7 @@ class CommunityRepositoryTestStub : ICommunityRepository {
                 tagCityMeeting = "Moscow",
             ),
             Meetings(
-                id = 8,
+                id = 38,
                 icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
                 title = "Developer Meetings",
                 date = "13.09.2024",

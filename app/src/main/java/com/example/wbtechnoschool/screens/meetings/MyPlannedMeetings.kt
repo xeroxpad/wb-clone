@@ -6,9 +6,9 @@ import androidx.compose.ui.res.stringResource
 import androidx.navigation.NavController
 import com.example.domain.entities.Meetings
 import com.example.wbtechnoschool.R
+import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.utils.events.CardActiveMeetings
 import com.example.wbtechnoschool.utils.events.CardCompletedMeetings
-import com.example.wbtechnoschool.navigation.Graph
 
 @Composable
 fun MyPlannedMeetings(navController: NavController) {
@@ -16,7 +16,8 @@ fun MyPlannedMeetings(navController: NavController) {
         items(6) {
             CardActiveMeetings(
                 onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
-                meetings = Meetings(
+                meetings =
+                Meetings(
                     id = 3,
                     icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
                     title = "Developer meeting",
@@ -24,12 +25,13 @@ fun MyPlannedMeetings(navController: NavController) {
                     city = stringResource(id = R.string.location_meeting),
                     tagDevelopmentLanguage = "Kotlin",
                     tagGradeDeveloper = "Junior",
-                    tagCityMeeting = "Moscow",
+                    tagCityMeeting = "Moscow"
                 )
             )
             CardCompletedMeetings(
                 onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
-                meetings = Meetings(
+                meetings =
+                Meetings(
                     id = 4,
                     icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
                     title = "Developer meeting",
@@ -37,7 +39,7 @@ fun MyPlannedMeetings(navController: NavController) {
                     city = stringResource(id = R.string.location_meeting),
                     tagDevelopmentLanguage = "Kotlin",
                     tagGradeDeveloper = "Junior",
-                    tagCityMeeting = "Moscow",
+                    tagCityMeeting = "Moscow"
                 )
             )
         }

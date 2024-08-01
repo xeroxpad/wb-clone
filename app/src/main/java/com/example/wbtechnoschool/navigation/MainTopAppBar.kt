@@ -3,7 +3,6 @@ package com.example.wbtechnoschool.navigation
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -30,10 +29,11 @@ fun MainTopAppBar(
     actionsIcon: Int? = null,
     actionsTint: Color = LightColorTheme.neutralActive,
     iconBack: (() -> Unit)? = null,
-    actions: (() -> Unit)? = null,
+    actions: (() -> Unit)? = null
 ) {
     Row(
-        modifier = modifier
+        modifier =
+        modifier
             .padding(horizontal = MagicNumbers.MAIN_TOP_BAR_ROW_PADDING_HORIZONTAL.dp)
             .fillMaxWidth(),
         verticalAlignment = Alignment.CenterVertically
@@ -43,7 +43,8 @@ fun MainTopAppBar(
                 Icon(
                     painter = painterResource(id = R.drawable.arrow_back),
                     contentDescription = null,
-                    modifier = Modifier
+                    modifier =
+                    Modifier
                         .size(MagicNumbers.MAIN_TOP_BAR_ICON_SIZE.dp)
                 )
             }
@@ -64,7 +65,8 @@ fun MainTopAppBar(
                     painter = painterResource(id = actionsIcon),
                     contentDescription = null,
                     tint = actionsTint,
-                    modifier = Modifier
+                    modifier =
+                    Modifier
                         .size(MagicNumbers.MAIN_TOP_BAR_ICON_SIZE.dp)
                 )
             }

@@ -3,10 +3,8 @@ package com.example.wbtechnoschool.typography
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -22,7 +20,8 @@ import com.example.wbtechnoschool.ui.theme.fontSFPro
 @Composable
 fun AllTypography() {
     Row(
-        modifier = Modifier
+        modifier =
+        Modifier
             .fillMaxWidth()
     ) {
         Column {
@@ -93,7 +92,8 @@ fun FontTypography(
 ) {
     val scrollHorizontal = rememberScrollState(0)
     Row(
-        modifier = Modifier
+        modifier =
+        Modifier
             .fillMaxWidth()
             .padding(end = 20.dp)
     ) {
@@ -116,10 +116,10 @@ fun FontTypography(
             fontFamily = fontSFPro,
             fontWeight = fontWeight,
             fontSize = fontSize,
-            modifier = Modifier
+            modifier =
+            Modifier
                 .horizontalScroll(scrollHorizontal)
                 .padding(start = 20.dp)
         )
-
     }
 }

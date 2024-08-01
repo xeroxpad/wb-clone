@@ -1,14 +1,9 @@
 package com.example.wbtechnoschool.viewmodel.community_view_model
 
-import androidx.compose.ui.res.stringResource
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import com.example.domain.entities.Community
 import com.example.domain.entities.Meetings
-import com.example.domain.repository.CommunityRepository
-import com.example.domain.usecases.GetAllCommunityUseCase
 import com.example.domain.usecases.GetDetailsCommunityUseCase
-import com.example.wbtechnoschool.R
 import com.thedeanda.lorem.Lorem
 import com.thedeanda.lorem.LoremIpsum
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -17,7 +12,7 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class DetailsCommunityViewModel(
-    private val getDetailsCommunityUseCase: GetDetailsCommunityUseCase,
+    private val getDetailsCommunityUseCase: GetDetailsCommunityUseCase
 ) : ViewModel() {
     private val _showMoreText = MutableStateFlow(false)
     val showMoreText: StateFlow<Boolean> = _showMoreText
@@ -32,6 +27,11 @@ class DetailsCommunityViewModel(
         _showMoreText.value = !_showMoreText.value
     }
 
+    init {
+        loadLoremText()
+        loadMeetings()
+    }
+
     private fun loadLoremText() {
         viewModelScope.launch {
             val lorem: Lorem = LoremIpsum()
@@ -44,10 +44,5 @@ class DetailsCommunityViewModel(
         viewModelScope.launch {
             _meetings.update { details.meetingsCommunity }
         }
-    }
-
-    init {
-        loadLoremText()
-        loadMeetings()
     }
 }

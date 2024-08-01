@@ -5,14 +5,21 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Test
 
-class GetAllCommunityUseCaseTest {
-    private val repoCommunity = CommunityRepositoryTestStub()
+internal class GetAllCommunityUseCaseTest {
+    lateinit var repoCommunity: CommunityRepositoryTestStub
+
+    @Before
+    fun setUp() {
+        repoCommunity = CommunityRepositoryTestStub()
+    }
+
     @Test
     fun `getAllCommunityTest returns not empty`() {
         val allCommunity = repoCommunity.getAllCommunity()
-        assertFalse("список не пустой",allCommunity.isEmpty())
+        assertFalse("список не пустой", allCommunity.isEmpty())
     }
 
     @Test

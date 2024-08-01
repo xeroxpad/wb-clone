@@ -9,17 +9,20 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 
-class MeetingViewModel(private val getMeetingsUseCase: GetMeetingsUseCase) : ViewModel() {
+class MeetingViewModel(
+    private val getMeetingsUseCase: GetMeetingsUseCase
+) : ViewModel() {
     private val _meetings = MutableStateFlow<List<Meetings>>(emptyList())
     val meetings: StateFlow<List<Meetings>> get() = _meetings
 
     private val _tabIndex = MutableStateFlow(MeetingsTab.ALL_MEETINGS)
     val tabIndex: StateFlow<MeetingsTab> = _tabIndex
 
-    private val nameTabs = listOf(
-        R.string.all_meetings,
-        R.string.active_meetings,
-    )
+    private val nameTabs =
+        listOf(
+            R.string.all_meetings,
+            R.string.active_meetings
+        )
 
     fun getTabs(): List<Int> = nameTabs
 

@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
@@ -18,33 +19,44 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
+import com.example.wbtechnoschool.navigation.MainTopAppBar
+import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.utils.avatar.AddAvatarProfile
 import com.example.wbtechnoschool.utils.button.StatusButton
-import com.example.wbtechnoschool.navigation.MainTopAppBar
-import com.example.wbtechnoschool.utils.search.CustomTextFieldForProfile
-import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.utils.constants.SPACER
+import com.example.wbtechnoschool.utils.search.CustomTextFieldForProfile
 import com.example.wbtechnoschool.viewmodel.auth_view_model.AuthorizationProfileViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun ScreenAuthorizationProfile(modifier: Modifier = Modifier, navController: NavController, viewModel: AuthorizationProfileViewModel = koinViewModel()) {
+fun ScreenAuthorizationProfile(
+    modifier: Modifier = Modifier,
+    navController: NavController,
+    viewModel: AuthorizationProfileViewModel = koinViewModel()
+) {
     val name by viewModel.name.collectAsState()
     val surname by viewModel.surname.collectAsState()
+
+    LaunchedEffect(name) {
+        viewModel.nameChange(name)
+    }
     Scaffold(
-        modifier = modifier
+        modifier =
+        modifier
             .statusBarsPadding()
             .fillMaxSize(),
         topBar = {
             MainTopAppBar(
                 title = stringResource(id = R.string.top_bar_profile),
                 iconBack = { navController.popBackStack() },
-                actions = null,
+                actions = null
             )
-        }, content = { innerPadding ->
+        },
+        content = { innerPadding ->
             Column(
-                modifier = Modifier
+                modifier =
+                Modifier
                     .padding(innerPadding)
                     .fillMaxSize()
                     .padding(horizontal = MagicNumbers.SCREEN_AUTH_PROF_COLUMN_PADDING_HORIZONTAL.dp),
@@ -71,7 +83,8 @@ fun ScreenAuthorizationProfile(modifier: Modifier = Modifier, navController: Nav
                     enable = name.isNotEmpty(),
                     onClick = { viewModel.saveDataProfile(navController) }, // пока для показа тут пример перехода
                     contentText = stringResource(id = R.string.save),
-                    modifier = Modifier
+                    modifier =
+                    Modifier
                         .fillMaxWidth()
                         .height(MagicNumbers.SCREEN_AUTH_PROF_STATUS_BUTTON_HEIGHT.dp)
                 )

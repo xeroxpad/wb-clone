@@ -5,10 +5,16 @@ import org.junit.Assert.assertFalse
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Assert.assertTrue
+import org.junit.Before
 import org.junit.Test
 
-class GetMeetingsUseCaseTest {
-    private val repoMeetings = MeetingsRepositoryTestStub()
+internal class GetMeetingsUseCaseTest {
+    lateinit var repoMeetings: MeetingsRepositoryTestStub
+
+    @Before
+    fun setUp() {
+        repoMeetings = MeetingsRepositoryTestStub()
+    }
 
     @Test
     fun `getMeetingsTest returns correct meetings`() {

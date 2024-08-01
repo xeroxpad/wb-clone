@@ -31,7 +31,10 @@ import com.example.wbtechnoschool.utils.constants.SPACER
 const val iterationsSplashScreen = 1
 
 @Composable
-fun SplashScreen(modifier: Modifier = Modifier, onTimeout: () -> Unit) {
+fun SplashScreen(
+    modifier: Modifier = Modifier,
+    onTimeout: () -> Unit
+) {
     val lottiAnimation by rememberLottieComposition(LottieCompositionSpec.Asset("lottie_animation.json"))
     val progress by animateLottieCompositionAsState(
         composition = lottiAnimation,
@@ -49,7 +52,11 @@ fun SplashScreen(modifier: Modifier = Modifier, onTimeout: () -> Unit) {
 }
 
 @Composable
-fun SplashScreenHelloName(modifier: Modifier = Modifier, name: String, onTimeout: () -> Unit) {
+fun SplashScreenHelloName(
+    modifier: Modifier = Modifier,
+    name: String,
+    onTimeout: () -> Unit
+) {
     val lottiAnimation by rememberLottieComposition(LottieCompositionSpec.Asset("lottie4.json"))
     val progress by animateLottieCompositionAsState(
         composition = lottiAnimation,
@@ -57,7 +64,8 @@ fun SplashScreenHelloName(modifier: Modifier = Modifier, name: String, onTimeout
         speed = (1f)
     )
     Column(
-        modifier = modifier
+        modifier =
+        modifier
             .fillMaxSize()
             .statusBarsPadding(),
         verticalArrangement = Arrangement.Top,
@@ -82,4 +90,3 @@ fun SplashScreenHelloName(modifier: Modifier = Modifier, name: String, onTimeout
         }
     }
 }
-

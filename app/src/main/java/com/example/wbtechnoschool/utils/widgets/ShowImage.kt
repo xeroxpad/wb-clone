@@ -23,19 +23,19 @@ import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 
 @Composable
-fun ShowImage(
-    modifier: Modifier = Modifier,
-) {
+fun ShowImage(modifier: Modifier = Modifier) {
     var showImage by remember { mutableStateOf(false) }
     Box(
-        modifier = modifier
+        modifier =
+        modifier
             .fillMaxSize()
             .clip(RoundedCornerShape(MagicNumbers.SHOW_IMAGE_BOX_CLIP.dp))
     ) {
         Image(
             painter = rememberAsyncImagePainter(model = R.drawable.map),
             contentDescription = null,
-            modifier = Modifier
+            modifier =
+            Modifier
                 .fillMaxWidth()
                 .height(MagicNumbers.SHOW_IMAGE_BOX_IMAGE_HEIGHT.dp)
                 .pointerInput(Unit) { detectTapGestures(onTap = { showImage = true }) }
@@ -44,25 +44,26 @@ fun ShowImage(
             showImage -> {
                 Dialog(onDismissRequest = { showImage = false }) {
                     Box(
-                        modifier = Modifier
+                        modifier =
+                        Modifier
                             .fillMaxSize()
                             .pointerInput(Unit) {
                                 detectTapGestures(onTap = {
                                     showImage = false
                                 })
-                            },
-
-                        ) {
+                            }
+                    ) {
                         Image(
                             painter = rememberAsyncImagePainter(model = R.drawable.map),
                             contentDescription = null,
-                            modifier = Modifier
+                            modifier =
+                            Modifier
                                 .fillMaxSize()
                                 .pointerInput(Unit) {
                                     detectTransformGestures { _, _, _, _ ->
                                         showImage = false
                                     }
-                                },
+                                }
                         )
                     }
                 }

@@ -7,5 +7,5 @@ data class MeetingsDescription(
     val tags: List<String>,
     val map: String,
     val description: String,
-    val rowAvatars: List<String>
+    val rowAvatars: List<String>,
 )

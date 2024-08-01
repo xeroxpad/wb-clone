@@ -17,25 +17,28 @@ import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 
 @Composable
-fun FilterChips(modifier: Modifier = Modifier, labelText: String) {
+fun FilterChips(
+    modifier: Modifier = Modifier,
+    labelText: String
+) {
     Box(
-        modifier = modifier
+        modifier =
+        modifier
             .padding(
                 end = MagicNumbers.FILTER_CHIPS_BOX_PADDING_END.dp,
                 top = MagicNumbers.FILTER_CHIPS_BOX_PADDING_TOP.dp,
                 bottom = MagicNumbers.FILTER_CHIPS_BOX_PADDING_BOTTOM.dp
-            )
-            .height(MagicNumbers.FILTER_CHIPS_BOX_HEIGHT.dp)
+            ).height(MagicNumbers.FILTER_CHIPS_BOX_HEIGHT.dp)
             .clip(RoundedCornerShape(MagicNumbers.FILTER_CHIPS_BOX_CLIP.dp))
             .background(LightColorTheme.brandColorBG),
-        contentAlignment = Alignment.Center,
+        contentAlignment = Alignment.Center
     ) {
         Text(
             text = labelText,
             color = LightColorTheme.brandColorDark,
             fontSize = MagicNumbers.FILTER_CHIPS_BOX_TEXT_FONT_SIZE.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(horizontal = MagicNumbers.FILTER_CHIPS_BOX_TEXT_PADDING_HORIZONTAL.dp),
+            modifier = Modifier.padding(horizontal = MagicNumbers.FILTER_CHIPS_BOX_TEXT_PADDING_HORIZONTAL.dp)
         )
     }
 }

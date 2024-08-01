@@ -1,8 +1,9 @@
-package com.example.domain.repository
+package com.example.data.repository
 
 import com.example.domain.entities.Person
+import com.example.domain.repository.IProfileRepository
 
-class ProfileRepositoryTestStub : IProfileRepository {
+class ProfileRepositoryImpl : IProfileRepository {
     override fun getDataProfileUseCase(): Person = mockPersonData
 
     private val mockPersonData =

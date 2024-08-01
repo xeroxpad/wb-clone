@@ -9,10 +9,11 @@ class MyMeetingsViewModel : ViewModel() {
     private val _tabIndex = MutableStateFlow(0)
     val tabIndex: StateFlow<Int> = _tabIndex
 
-    private val nameTabs = listOf(
-        R.string.meetings_planned,
-        R.string.meetings_past,
-    )
+    private val nameTabs =
+        listOf(
+            R.string.meetings_planned,
+            R.string.meetings_past
+        )
 
     fun getTabs(): List<Int> = nameTabs
 

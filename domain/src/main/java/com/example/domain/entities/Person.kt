@@ -6,5 +6,5 @@ data class Person(
     val secondName: String?,
     val numberPhone: String,
     val avatarUrl: String?,
-    val socialMediaIcons: List<String>
+    val socialMediaIcons: List<String>,
 )

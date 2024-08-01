@@ -25,14 +25,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
-import com.example.wbtechnoschool.utils.events.CardActiveMeetings
-import com.example.wbtechnoschool.utils.events.CardCompletedMeetings
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.utils.constants.SPACER
+import com.example.wbtechnoschool.utils.events.CardActiveMeetings
+import com.example.wbtechnoschool.utils.events.CardCompletedMeetings
 import com.example.wbtechnoschool.viewmodel.community_view_model.DetailsCommunityViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -40,23 +40,26 @@ import org.koin.androidx.compose.koinViewModel
 fun ScreenDetailsCommunity(
     modifier: Modifier = Modifier,
     navController: NavController,
-    viewModel: DetailsCommunityViewModel = koinViewModel(),
+    viewModel: DetailsCommunityViewModel = koinViewModel()
 ) {
     val showMoreText by viewModel.showMoreText.collectAsState()
     val loremText by viewModel.loremText.collectAsState()
     val meetings by viewModel.meetings.collectAsState()
     Scaffold(
-        modifier = modifier
+        modifier =
+        modifier
             .statusBarsPadding()
             .fillMaxSize(),
         topBar = {
             MainTopAppBar(
                 title = stringResource(id = R.string.card_community_title),
-                iconBack = { navController.popBackStack() },
+                iconBack = { navController.popBackStack() }
             )
-        }, content = { innerPadding ->
+        },
+        content = { innerPadding ->
             LazyColumn(
-                modifier = Modifier
+                modifier =
+                Modifier
                     .padding(horizontal = MagicNumbers.SCREEN_DETAILS_COMMUNITY_LAZY_PADDING_HORIZONTAL.dp)
                     .padding(innerPadding)
                     .navigationBarsPadding()
@@ -65,7 +68,7 @@ fun ScreenDetailsCommunity(
                         interactionSource = remember { MutableInteractionSource() },
                         indication = null
                     ) { viewModel.toggleShowMoreText() },
-                verticalArrangement = Arrangement.Top,
+                verticalArrangement = Arrangement.Top
             ) {
                 item(1) {
                     when {
@@ -103,11 +106,11 @@ fun ScreenDetailsCommunity(
                 items(meetings) { meeting ->
                     CardActiveMeetings(
                         onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
-                        meetings = meeting,
+                        meetings = meeting
                     )
                     CardCompletedMeetings(
                         onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
-                        meetings = meeting,
+                        meetings = meeting
                     )
                 }
             }

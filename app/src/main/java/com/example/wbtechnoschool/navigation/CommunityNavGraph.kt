@@ -7,8 +7,8 @@ import androidx.navigation.navigation
 
 fun NavGraphBuilder.communityNavGraph(
     communityScreen: @Composable () -> Unit,
-    communityDetailsScreen: @Composable () -> Unit,
-){
+    communityDetailsScreen: @Composable () -> Unit
+) {
     navigation(startDestination = Graph.CommunityRoot.AllCommunity.route, route = Graph.CommunityRoot.route) {
         composable(Graph.CommunityRoot.AllCommunity.route) {
             communityScreen()
