@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -39,7 +40,7 @@ fun SplashScreen(
     val progress by animateLottieCompositionAsState(
         composition = lottiAnimation,
         iterations = iterationsSplashScreen,
-        speed = (1.5f)
+        speed = (2f)
     )
     Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         LottieAnimation(composition = lottiAnimation, progress = { progress })
