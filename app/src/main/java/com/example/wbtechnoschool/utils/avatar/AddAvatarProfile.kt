@@ -18,9 +18,11 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
+import com.example.wbtechnoschool.viewmodel.auth_view_model.AddAvatarProfileViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun AddAvatarProfile(modifier: Modifier = Modifier) {
+fun AddAvatarProfile(modifier: Modifier = Modifier, viewModel: AddAvatarProfileViewModel = koinViewModel()) {
     var avatarOpen by remember {
         mutableStateOf(false)
     }
@@ -43,7 +45,7 @@ fun AddAvatarProfile(modifier: Modifier = Modifier) {
             contentDescription = null,
             modifier =
             Modifier
-                .clickable { }
+                .clickable { viewModel.openGallery() }
                 .align(Alignment.BottomEnd)
         )
     }

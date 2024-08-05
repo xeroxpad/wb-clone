@@ -69,7 +69,7 @@ koin-navigation = { module = "io.insert-koin:koin-androidx-navigation", version.
 koin-core = { module = "io.insert-koin:koin-core" }
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin" }
 libphonenumber = { group = "com.googlecode.libphonenumber", name = "libphonenumber", version.ref = "libphonenumber" }
-accompanist-swiperefresh = {group = 'com.google.accompanist', name = 'accompanist-swiperefresh', version = "accompanist-swiperefresh"}
+accompanist-swiperefresh = {group = 'com.google.accompanist', name = 'accompanist-swiperefresh', version.ref = "accompanist-swiperefresh"}
 testng = {group = "org.testng", name = "testng", version.ref = "testng"}
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito-core" }
 mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin" }

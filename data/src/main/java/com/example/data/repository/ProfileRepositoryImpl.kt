@@ -2,6 +2,7 @@ package com.example.data.repository
 
 import com.example.domain.entities.Person
 import com.example.domain.repository.IProfileRepository
+import java.net.URI
 
 class ProfileRepositoryImpl : IProfileRepository {
     override fun getDataProfileUseCase(): Person = mockPersonData

@@ -33,10 +33,10 @@ fun StartScreen(navController: NavHostController) {
         if (bottomBarIsShow.value) {
             BottomNavBar(navController = navController, modifier = Modifier.navigationBarsPadding())
         }
-    }) { innerPadding ->
+    }) { padding ->
         NavHostContainer(
             navController = navController,
-            modifier = Modifier.padding(innerPadding),
+            modifier = Modifier.padding(padding),
         )
     }
 }
