@@ -106,7 +106,7 @@ fun ScreenDescriptionMeeting(
                                 }
                             }
                             Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
-                            ShowImage()
+                            ShowImage(image = R.drawable.map)
                             Spacer(modifier = Modifier.height(SPACER.SPACER_15.value.dp))
                             when {
                                 showMoreText -> {

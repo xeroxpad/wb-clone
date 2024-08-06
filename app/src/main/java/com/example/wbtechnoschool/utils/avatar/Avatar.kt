@@ -22,7 +22,7 @@ fun MyMainAvatar(
 ) {
     AsyncImage(
         modifier = modifier,
-        model = model ?: R.drawable.default_icon,
+        model = model,
         contentDescription = contentDescription,
         contentScale = contentScale
     )

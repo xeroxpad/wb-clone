@@ -156,6 +156,7 @@ class MagicNumbers {
         const val BUTTON_DISABLED_CONTAINER_COLOR = 0.5F
 
         //        AddAvatarProfile
+        const val ADD_AVATAR_PROFILE_MAIN_BOX_SIZE = 120
         const val ADD_AVATAR_PROFILE_BOX_SIZE = 100
         const val ADD_AVATAR_ICON_SHADOW_ELEVATION = 5
 
