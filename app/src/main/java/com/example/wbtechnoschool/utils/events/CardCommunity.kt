@@ -46,7 +46,7 @@ fun CardCommunity(
                 modifier =
                 Modifier
                     .size(MagicNumbers.CARD_ACTIVE_MEETINGS_MY_PREV_AVATAR_SIZE.dp),
-                painter = community.icon ?: DEFAULT_AVATAR
+                model = community.icon ?: DEFAULT_AVATAR
             )
             Spacer(modifier = Modifier.padding(horizontal = SPACER.SPACER_5.value.dp))
             Column {

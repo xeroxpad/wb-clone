@@ -70,7 +70,7 @@ fun ScreenProfile(
             ) {
                 Spacer(modifier = Modifier.height(SPACER.SPACER_80.value.dp))
                 MyMainAvatar(
-                    painter = avatarUrl.value,
+                    model = avatarUrl.value,
                     contentDescription = null,
                     modifier =
                     Modifier

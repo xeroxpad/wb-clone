@@ -53,7 +53,7 @@ fun CardActiveMeetings(
                     Modifier
                         .size(MagicNumbers.CARD_ACTIVE_MEETINGS_MY_PREV_AVATAR_SIZE.dp),
                     contentDescription = null,
-                    painter =
+                    model =
                     meetings.icon
                         ?: "https://w7.pngwing.com/pngs/21/228/png-transparent-computer-icons-user-profile-others-miscellaneous-face-monochrome.png"
                 )
@@ -115,7 +115,7 @@ fun CardCompletedMeetings(
                     Modifier
                         .size(MagicNumbers.CARD_COMPLETED_MEETINGS_MY_PREV_AVATAR_SIZE.dp),
                     contentDescription = null,
-                    painter =
+                    model =
                     meetings.icon
                         ?: "https://w7.pngwing.com/pngs/21/228/png-transparent-computer-icons-user-profile-others-miscellaneous-face-monochrome.png"
                 )

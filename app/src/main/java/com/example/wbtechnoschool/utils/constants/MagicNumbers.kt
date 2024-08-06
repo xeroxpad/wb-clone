@@ -157,6 +157,7 @@ class MagicNumbers {
 
         //        AddAvatarProfile
         const val ADD_AVATAR_PROFILE_BOX_SIZE = 100
+        const val ADD_AVATAR_ICON_SHADOW_ELEVATION = 5
 
         //        RowListAvatar
         const val ROW_LIST_AVATAR_BOX_PADDING_VERTICAL = 5

@@ -1,5 +1,9 @@
 package com.example.wbtechnoschool.utils.avatar
 
+import android.net.Uri
+import androidx.activity.compose.rememberLauncherForActivityResult
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -16,23 +20,27 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.unit.dp
+import com.example.wbtechnoschool.R
+import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
-import com.example.wbtechnoschool.viewmodel.auth_view_model.AddAvatarProfileViewModel
-import org.koin.androidx.compose.koinViewModel
 
 @Composable
-fun AddAvatarProfile(modifier: Modifier = Modifier, viewModel: AddAvatarProfileViewModel = koinViewModel()) {
-    var avatarOpen by remember {
-        mutableStateOf(false)
-    }
+fun AddAvatarProfile(
+    modifier: Modifier = Modifier,
+) {
+    var avatarOpen by remember { mutableStateOf(false) }
+    var imageUri by remember { mutableStateOf<Uri?>(null) }
+    val launcher = rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()) { uri: Uri? -> imageUri = uri }
     Box(
         modifier =
         modifier
             .size(MagicNumbers.ADD_AVATAR_PROFILE_BOX_SIZE.dp)
+            .background(LightColorTheme.neutralSecondaryBG),
     ) {
         MyMainAvatar(
-            painter = "https://i.pinimg.com/originals/89/e5/8e/89e58e371fded01e2ccf40fdea5c2c4d.jpg",
+            model = imageUri,
             contentDescription = null,
             modifier =
             Modifier
@@ -45,8 +53,9 @@ fun AddAvatarProfile(modifier: Modifier = Modifier, viewModel: AddAvatarProfileV
             contentDescription = null,
             modifier =
             Modifier
-                .clickable { viewModel.openGallery() }
+                .clickable { launcher.launch("image/*") }
                 .align(Alignment.BottomEnd)
+                .shadow(MagicNumbers.ADD_AVATAR_ICON_SHADOW_ELEVATION.dp, CircleShape)
         )
     }
 }
