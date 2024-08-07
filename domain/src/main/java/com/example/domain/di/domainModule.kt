@@ -6,7 +6,6 @@ import com.example.domain.usecases.GetDescriptionMeetingsUseCase
 import com.example.domain.usecases.GetDetailsCommunityUseCase
 import com.example.domain.usecases.GetMeetingsUseCase
 import com.example.domain.usecases.VerifyPhoneNumberUseCase
-import com.example.domain.usecases.OpenGalleryUseCase
 import org.koin.core.module.dsl.factoryOf
 import org.koin.dsl.module
 
@@ -18,5 +17,4 @@ val domainModule =
         factoryOf(::GetDetailsCommunityUseCase)
         factoryOf(::GetMeetingsUseCase)
         factoryOf(::VerifyPhoneNumberUseCase)
-        factoryOf(::OpenGalleryUseCase)
     }

@@ -1,7 +1,5 @@
 package com.example.wbtechnoschool.di
 
-import com.example.wbtechnoschool.utils.avatar.AddAvatarProfile
-import com.example.wbtechnoschool.viewmodel.auth_view_model.AddAvatarProfileViewModel
 import com.example.wbtechnoschool.viewmodel.auth_view_model.AuthorizationProfileViewModel
 import com.example.wbtechnoschool.viewmodel.auth_view_model.AuthorizationViewModel
 import com.example.wbtechnoschool.viewmodel.auth_view_model.EntryCodeViewModel
@@ -25,5 +23,4 @@ val presentationModule =
         viewModel { MeetingViewModel(get()) }
         viewModel { MyMeetingsViewModel() }
         viewModel { ProfileViewModule(get()) }
-        viewModel { AddAvatarProfileViewModel(get()) }
     }

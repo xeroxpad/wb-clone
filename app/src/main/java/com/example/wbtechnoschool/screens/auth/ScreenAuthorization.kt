@@ -23,8 +23,6 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableIntStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -57,7 +55,6 @@ fun ScreenAuthorization(
     viewModel: AuthorizationViewModel = koinViewModel()
 ) {
     val number by viewModel.number.observeAsState("")
-    val cursorPosition = remember { mutableIntStateOf(0) }
     val textColor = if (number.isEmpty()) LightColorTheme.neutralDisabled else Color.Black
 
     LaunchedEffect(number) {
@@ -115,9 +112,8 @@ fun ScreenAuthorization(
             Spacer(modifier = Modifier.width(MagicNumbers.SCREEN_AUTH_SPACER_WIDTH_TF.dp))
             BasicTextField(
                 value = number,
-                onValueChange = {
-                    viewModel.onNumberChange(it)
-                    cursorPosition.intValue = it.length
+                onValueChange = { newNumber ->
+                    viewModel.onNumberChange(newNumber)
                 },
                 modifier =
                 Modifier
