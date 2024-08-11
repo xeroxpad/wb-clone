@@ -10,7 +10,7 @@ import kotlinx.coroutines.withContext
 
 const val lengthNumber = 10
 
-class AuthorizationViewModel : ViewModel() {
+class AuthorizationViewModel() : ViewModel() {
     private val _number = MutableLiveData("")
     val number: LiveData<String> get() = _number
 

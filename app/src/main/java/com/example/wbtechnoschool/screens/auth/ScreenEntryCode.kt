@@ -52,11 +52,14 @@ const val COUNTER_NUMBER = 4
 fun ScreenEntryCode(
     phoneNumber: String,
     navController: NavController,
-    viewModel: EntryCodeViewModel = koinViewModel()
+    viewModel: EntryCodeViewModel = koinViewModel(),
 ) {
     val codeText by viewModel.codeText.observeAsState("")
 
-    LaunchedEffect(codeText) {
+    LaunchedEffect(
+        codeText,
+        phoneNumber
+    ) {
         viewModel.onCodeChange(codeText)
     }
     Scaffold(
@@ -103,7 +106,7 @@ fun ScreenEntryCode(
                         viewModel.onCodeChange(text)
                         when {
                             isComplete -> {
-                                navController.navigate(Graph.AuthorizationProfile.route) // пока для показа тут пример перехода
+
                             }
                         }
                     }

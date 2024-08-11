@@ -30,7 +30,7 @@ mockito-kotlin = "5.4.0"
 junit-jupiter-api = "5.9.3"
 junit-jupiter-engine = "5.9.3"
 testng = "7.9.0"
-accompanist-swiperefresh = "0.28.0"
+accompanist-swiperefresh = "0.34.0"
 lifecycleLivedataCoreKtx = "2.8.4"
 
 [libraries]

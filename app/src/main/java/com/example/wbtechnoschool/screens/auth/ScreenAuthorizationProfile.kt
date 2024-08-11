@@ -33,7 +33,7 @@ import org.koin.androidx.compose.koinViewModel
 fun ScreenAuthorizationProfile(
     modifier: Modifier = Modifier,
     navController: NavController,
-    viewModel: AuthorizationProfileViewModel = koinViewModel()
+    viewModel: AuthorizationProfileViewModel = koinViewModel(),
 ) {
     val name by viewModel.name.collectAsState()
     val surname by viewModel.surname.collectAsState()

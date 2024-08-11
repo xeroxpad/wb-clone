@@ -52,7 +52,7 @@ import org.koin.androidx.compose.koinViewModel
 fun ScreenAuthorization(
     modifier: Modifier = Modifier,
     navController: NavController,
-    viewModel: AuthorizationViewModel = koinViewModel()
+    viewModel: AuthorizationViewModel = koinViewModel(),
 ) {
     val number by viewModel.number.observeAsState("")
     val textColor = if (number.isEmpty()) LightColorTheme.neutralDisabled else Color.Black
@@ -102,7 +102,8 @@ fun ScreenAuthorization(
                     .background(
                         LightColorTheme.neutralSecondaryBG,
                         RoundedCornerShape(MagicNumbers.SCREEN_AUTH_BOX_ROUNDED_CORNER_SHAPE.dp)
-                    ).width(MagicNumbers.SCREEN_AUTH_BOX_WIDTH_MODIFIER.dp)
+                    )
+                    .width(MagicNumbers.SCREEN_AUTH_BOX_WIDTH_MODIFIER.dp)
                     .fillMaxHeight()
             ) {
                 Row(modifier = Modifier.padding(MagicNumbers.SCREEN_AUTH_ROW_MODIFIER_PADDING_PREFIX_TF.dp)) {
@@ -120,7 +121,8 @@ fun ScreenAuthorization(
                     .background(
                         LightColorTheme.neutralSecondaryBG,
                         RoundedCornerShape(MagicNumbers.SCREEN_AUTH_BASIC_TF_ROUNDED_CORNER_SHAPE_MODIFIER.dp)
-                    ).fillMaxHeight()
+                    )
+                    .fillMaxHeight()
                     .weight(MagicNumbers.SCREEN_AUTH_BASIC_WEIGHT_MODIFIER),
                 visualTransformation = PhoneNumberVisualTransformation(),
                 decorationBox = { innerTextField ->
@@ -165,7 +167,9 @@ fun ScreenAuthorization(
         StatusButton(
             containerColor = LightColorTheme.brandColorDefault,
             enable = viewModel.numberValid(number),
-            onClick = { navController.navigate("${Graph.EntryCode.route}/$number") },
+            onClick = {
+                navController.navigate("${Graph.EntryCode.route}/$number")
+            },
             contentText = stringResource(id = R.string.resume),
             modifier =
             Modifier

@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 class ProfileViewModule(
-    getDataProfileUseCase: GetDataProfileUseCase
+    getDataProfileUseCase: GetDataProfileUseCase,
 ) : ViewModel() {
     private val person = getDataProfileUseCase.execute()
 

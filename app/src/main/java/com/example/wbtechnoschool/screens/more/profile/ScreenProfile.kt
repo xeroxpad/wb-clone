@@ -40,7 +40,7 @@ import org.koin.androidx.compose.koinViewModel
 fun ScreenProfile(
     modifier: Modifier = Modifier,
     navController: NavController,
-    viewModel: ProfileViewModule = koinViewModel()
+    viewModel: ProfileViewModule = koinViewModel(),
 ) {
     val name by viewModel.name.collectAsState()
     val phoneNumber by viewModel.phoneNumber.collectAsState()

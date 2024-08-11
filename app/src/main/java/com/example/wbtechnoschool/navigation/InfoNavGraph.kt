@@ -2,7 +2,9 @@ package com.example.wbtechnoschool.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavGraphBuilder
+import androidx.navigation.NavType
 import androidx.navigation.compose.composable
+import androidx.navigation.navArgument
 import androidx.navigation.navigation
 
 fun NavGraphBuilder.infoNavGraph(

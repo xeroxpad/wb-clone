@@ -40,8 +40,8 @@ import com.example.wbtechnoschool.utils.widgets.ContainerToGo
 
 @Composable
 fun ScreenInfo(
+    modifier: Modifier = Modifier,
     navController: NavController,
-    modifier: Modifier = Modifier
 ) {
     Scaffold(
         modifier =
@@ -98,7 +98,7 @@ fun ProfileCard(navController: NavController) {
                 fontWeight = FontWeight.W600
             )
             Text(
-                text = stringResource(id = R.string.profile_number), // для примера
+                text = "+7 999 999-99-99", // для примера
                 fontSize = MagicNumbers.SCREEN_INFO_COLUMN_TEXT_NUMBER_FONT_SIZE.sp,
                 fontFamily = fontSFPro,
                 fontWeight = FontWeight.W400,

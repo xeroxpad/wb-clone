@@ -23,6 +23,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.navigation.Graph
@@ -42,9 +43,9 @@ fun ScreenDetailsCommunity(
     navController: NavController,
     viewModel: DetailsCommunityViewModel = koinViewModel()
 ) {
-    val showMoreText by viewModel.showMoreText.collectAsState()
-    val loremText by viewModel.loremText.collectAsState()
-    val meetings by viewModel.meetings.collectAsState()
+    val showMoreText by viewModel.showMoreText.collectAsStateWithLifecycle()
+    val loremText by viewModel.loremText.collectAsStateWithLifecycle()
+    val meetings by viewModel.meetings.collectAsStateWithLifecycle()
     Scaffold(
         modifier =
         modifier

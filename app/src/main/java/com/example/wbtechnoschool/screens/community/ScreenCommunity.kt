@@ -33,7 +33,6 @@ fun ScreenCommunity(
     viewModel: CommunityViewModel = koinViewModel()
 ) {
     val community by viewModel.community.collectAsStateWithLifecycle()
-
     Scaffold(
         modifier =
         modifier
@@ -52,7 +51,8 @@ fun ScreenCommunity(
                     .padding(
                         top = MagicNumbers.SCREEN_COMMUNITY_SEARCH_BAR_PADDING_TOP.dp,
                         bottom = innerPadding.calculateBottomPadding()
-                    ).fillMaxWidth()
+                    )
+                    .fillMaxWidth()
                     .height(MagicNumbers.SCREEN_COMMUNITY_SEARCH_BAR_HEIGHT.dp)
             )
             LazyColumn(

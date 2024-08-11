@@ -36,7 +36,13 @@ fun NavHostContainer(
         startDestination = Graph.Splash.route
     ) {
         composable(Graph.Splash.route) {
-            SplashScreen { navController.navigate(Graph.Authorization.route) { popUpTo(Graph.Splash.route) { inclusive = true } } }
+            SplashScreen {
+                navController.navigate(Graph.Authorization.route) {
+                    popUpTo(Graph.Splash.route) {
+                        inclusive = true
+                    }
+                }
+            }
         }
         composable(Graph.Authorization.route) {
             ScreenAuthorization(navController = navController)
@@ -68,16 +74,16 @@ fun NavHostContainer(
             )
         }
         meetingsNavGraph(
-            meetingsScreen = {ScreenMeeting(navController = navController)},
-            meetingsScreenDescription = { ScreenDescriptionMeeting(navController = navController)}
+            meetingsScreen = { ScreenMeeting(navController = navController) },
+            meetingsScreenDescription = { ScreenDescriptionMeeting(navController = navController) }
         )
         communityNavGraph(
-            communityScreen = {ScreenCommunity(navController = navController)},
-            communityDetailsScreen = { ScreenDetailsCommunity(navController = navController)}
+            communityScreen = { ScreenCommunity(navController = navController) },
+            communityDetailsScreen = { ScreenDetailsCommunity(navController = navController) }
         )
         infoNavGraph(
-            myMoreScreen = {ScreenInfo(navController = navController)},
-            myProfileScreen = { ScreenProfile(navController = navController) },
+            myMoreScreen = {ScreenInfo(navController = navController) },
+            myProfileScreen = {ScreenProfile(navController = navController) },
             myMeetingsScreen = { ScreenMyMeetings(navController = navController) },
             myThemeScreen = { ScreenTheme() },
             myNotificationsScreen = { ScreenNotifications() },
