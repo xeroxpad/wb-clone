@@ -38,7 +38,16 @@ data class ColorThemeWB(
     val accentWarning: Color,
     val accentSuccess: Color,
     val accentSafe: Color,
-    val accentGrey: Color
+    val accentGrey: Color,
+    val fixBrandColorDark: Color,
+    val fixBlushPink: Color,
+    val fixFuchsiaGlow: Color,
+    val fixVividViolet: Color,
+    val fixElectricViolet: Color,
+    val fixRadiantMagenta: Color,
+    val fixVioletBlaze: Color,
+    val fixNeonLavender: Color,
+    val fixRoyalIndigo: Color,
 )
 
 val LightColorTheme =
@@ -60,8 +69,17 @@ val LightColorTheme =
         accentWarning = Color(0xFFFDCF41),
         accentSuccess = Color(0xFF2CC069),
         accentSafe = Color(0xFF7BCBCF),
-        accentGrey = Color(0xFF666666)
-    )
+        accentGrey = Color(0xFF666666),
+        fixBrandColorDark = Color(0xFF9A10F0),
+        fixBlushPink = Color(0xFFED3CCA),
+        fixFuchsiaGlow = Color(0xFFDF34D2),
+        fixVividViolet = Color(0xFFD02BD9),
+        fixElectricViolet = Color(0xFFBF22E1),
+        fixRadiantMagenta = Color(0xFFAE1AE8),
+        fixVioletBlaze = Color(0xFF9A10F0),
+        fixNeonLavender = Color(0xFF8306F7),
+        fixRoyalIndigo = Color(0xFF6600FF),
+        )
 
 val ColorTheme =
     staticCompositionLocalOf {

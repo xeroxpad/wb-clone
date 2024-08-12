@@ -1,6 +1,5 @@
 package com.example.wbtechnoschool.utils.avatar
 
-import android.net.Uri
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -10,7 +9,6 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 
 @Composable
@@ -43,6 +41,40 @@ fun MyPreviewAvatar(
     ) {
         AsyncImage(
             modifier = modifier,
+            model = model,
+            contentDescription = contentDescription,
+            contentScale = contentScale
+        )
+    }
+}
+
+@Composable
+fun FixMyAvatar(
+    modifier: Modifier = Modifier,
+    model: Any?,
+    contentDescription: String?,
+    contentScale: ContentScale = ContentScale.Crop
+) {
+    AsyncImage(
+        modifier = modifier,
+        model = model,
+        contentDescription = contentDescription,
+        contentScale = contentScale
+    )
+}
+
+@Composable
+fun FixMyPreviewAvatar(
+    modifier: Modifier = Modifier,
+    model: String,
+    contentDescription: String?,
+    contentScale: ContentScale = ContentScale.Crop
+) {
+    Box(
+        modifier = modifier
+    ) {
+        AsyncImage(
+            modifier = Modifier,
             model = model,
             contentDescription = contentDescription,
             contentScale = contentScale

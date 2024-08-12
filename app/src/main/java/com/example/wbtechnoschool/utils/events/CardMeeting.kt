@@ -25,7 +25,7 @@ import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.SpaceGreyLight
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 import com.example.wbtechnoschool.utils.avatar.MyPreviewAvatar
-import com.example.wbtechnoschool.utils.chips.FilterChips
+import com.example.wbtechnoschool.utils.tags.FilterChips
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 
 @Composable

@@ -1,9 +1,7 @@
 package com.example.wbtechnoschool.utils.button
 
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.background
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -13,52 +11,21 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.focusModifier
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.Color.Companion.Transparent
 import androidx.compose.ui.graphics.Color.Companion.White
+import androidx.compose.ui.graphics.Paint
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
-
-@Composable
-fun AllButton(
-    modifier: Modifier = Modifier,
-    containerColor: Color,
-    shadowColor: Color = Color.Transparent,
-    enable: Boolean,
-    onClick: () -> Unit
-) {
-    Row(
-        modifier =
-        Modifier
-            .fillMaxWidth(),
-        horizontalArrangement = Arrangement.SpaceBetween
-    ) {
-        StatusButton(
-            containerColor = containerColor,
-            enable = enable,
-            modifier = modifier,
-            onClick = onClick,
-            contentText = "Button"
-        )
-        StatusOutlinedButton(
-            contentColor = containerColor,
-            enable = enable,
-            modifier = modifier,
-            onClick = onClick,
-            contentText = "Button"
-        )
-        StatusTextButton(
-            contentColor = containerColor,
-            enable = enable,
-            containerColor = shadowColor,
-            modifier = modifier,
-            onClick = onClick,
-            contentText = "Button"
-        )
-    }
-}
 
 @Composable
 fun StatusButton(
@@ -160,4 +127,71 @@ fun IconOutlinedButton(
     ) {
         Icon(painter = painterResource(id = icon), contentDescription = null)
     }
+}
+
+@Composable
+fun FixButton(
+    modifier: Modifier = Modifier,
+    containerColor: Color,
+    enable: Boolean,
+    onClick: () -> Unit,
+    icon: Int,
+) {
+    Button(
+        onClick = onClick,
+        shape = RoundedCornerShape(MagicNumbers.BUTTON_SHAPE),
+        modifier = modifier,
+        colors =
+        ButtonDefaults.buttonColors(
+            containerColor = containerColor,
+            contentColor = White,
+            disabledContainerColor = LightColorTheme.brandColorDefault.copy(alpha = MagicNumbers.BUTTON_DISABLED_CONTAINER_COLOR)
+        ),
+        enabled = enable
+    ) {
+        Icon(painter = painterResource(id = icon), contentDescription = null)
+    }
+}
+
+@Composable
+fun FixGradientButton(
+    modifier: Modifier = Modifier,
+    background: List<Color>,
+    enable: Boolean,
+    onClick: () -> Unit,
+    contentText: String,
+) {
+    val gradient = Brush.horizontalGradient(colors = background)
+    Button(
+        modifier = modifier.background(gradient),
+        onClick = onClick,
+        shape = RoundedCornerShape(MagicNumbers.BUTTON_SHAPE),
+        colors =
+        ButtonDefaults.buttonColors(
+            containerColor = Transparent,
+            contentColor = White,
+            disabledContainerColor = LightColorTheme.brandColorDefault.copy(alpha = MagicNumbers.BUTTON_DISABLED_CONTAINER_COLOR)
+        ),
+        enabled = enable,
+    )
+    {
+        Text(text = contentText)
+    }
+}
+
+@Preview
+@Composable
+fun PrevFixButton() {
+//    FixGradientButton(
+//        background = listOf(
+//            LightColorTheme.fixBlushPink,
+//            LightColorTheme.fixFuchsiaGlow,
+//            LightColorTheme.fixVividViolet,
+//            LightColorTheme.fixElectricViolet,
+//            LightColorTheme.fixRadiantMagenta,
+//            LightColorTheme.fixVioletBlaze,
+//            LightColorTheme.fixNeonLavender,
+//            LightColorTheme.fixRoyalIndigo,
+//        ), enable = true, onClick = { /*TODO*/ }, contentText = "Оплатить"
+//    )
 }

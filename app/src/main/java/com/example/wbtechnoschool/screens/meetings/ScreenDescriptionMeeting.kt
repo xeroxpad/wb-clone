@@ -31,7 +31,7 @@ import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 import com.example.wbtechnoschool.utils.avatar.RowAvatars
-import com.example.wbtechnoschool.utils.chips.FilterChips
+import com.example.wbtechnoschool.utils.tags.FilterChips
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.utils.constants.SPACER
 import com.example.wbtechnoschool.utils.widgets.ShowImage

@@ -1,4 +1,4 @@
-package com.example.wbtechnoschool.utils.chips
+package com.example.wbtechnoschool.utils.tags
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
@@ -11,6 +11,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
@@ -42,3 +43,28 @@ fun FilterChips(
         )
     }
 }
+
+@Composable
+fun FixTags(
+    modifier: Modifier = Modifier,
+    labelText: String
+) {
+    Box(
+        modifier = modifier,
+        contentAlignment = Alignment.Center
+    ) {
+        Text(
+            text = labelText,
+            color = LightColorTheme.brandColorDark,
+            fontSize = MagicNumbers.FILTER_CHIPS_BOX_TEXT_FONT_SIZE.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(horizontal = MagicNumbers.FILTER_CHIPS_BOX_TEXT_PADDING_HORIZONTAL.dp)
+        )
+    }
+}
+
+//@Preview
+//@Composable
+//fun PrevFilterChips() {
+//    FixTags(labelText = "Тестирование")
+//}

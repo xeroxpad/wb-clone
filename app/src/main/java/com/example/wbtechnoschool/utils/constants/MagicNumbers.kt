@@ -182,6 +182,9 @@ class MagicNumbers {
 
         //        FunEntryCode
         const val FUN_ENTRY_CODE_ROW_PADDING = 50
+
+        //        FixTextField
+        const val FIX_TEXT_FIELD_SHAPE_RADIUS = 16
     }
 }
 
