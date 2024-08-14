@@ -18,11 +18,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 
@@ -60,7 +62,7 @@ fun FixTextField() {
             decorationBox = { innerTextField ->
                 if (!isFocused && textState.isEmpty()) {
                     Text(
-                        text = "Имя и фамилия",
+                        text = stringResource(id = R.string.name_and_second_name),
                         color = LightColorTheme.neutralDisabled,
                     )
                 }

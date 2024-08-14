@@ -48,5 +48,6 @@
     <string name="sent_code_number">Отправили код на номер</string>
     <string name="request_code_again">Запросить код повторно</string>
     <string name="no_participants">сейчас нет участников</string>
+    <string name="name_and_second_name">Имя и фамилия</string>
 
 </resources>
