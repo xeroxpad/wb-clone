@@ -1,5 +1,6 @@
 package com.example.wbtechnoschool.utils.avatar
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -21,11 +22,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.LightGrey
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 
-const val take = 5
+const val take = 8
 const val zIndex = 1F
 
 @Composable
@@ -87,6 +89,61 @@ fun RowAvatars(
                 fontWeight = FontWeight.Bold,
                 modifier = Modifier.padding(MagicNumbers.ROW_LIST_AVATAR_TEXT_PADDING.dp)
             )
+        }
+    }
+}
+
+
+@Composable
+fun FixRowAvatars(
+    modifier: Modifier = Modifier,
+    arrayImage: List<String>
+) {
+    Row(
+        horizontalArrangement =
+        Arrangement.spacedBy(
+            when (arrayImage.size) {
+                1 -> 0.dp
+                2 -> 5.dp
+                3 -> 3.dp
+                4 -> (-3).dp
+                else -> (-15).dp
+            }
+        ),
+        modifier =
+        modifier
+            .fillMaxWidth()
+            .zIndex(-zIndex),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        for (i in arrayImage.withIndex().take(take)) {
+            MyPreviewAvatar(
+                modifier =
+                Modifier
+                    .size(MagicNumbers.ROW_LIST_AVATAR_SIZE_PREV_AVATAR.dp)
+                    .clip(CircleShape)
+                    .clickable {},
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                model = i.value
+            )
+        }
+        if (arrayImage.size > take) {
+            Box(
+                modifier = Modifier
+                    .size(MagicNumbers.ROW_LIST_AVATAR_SIZE_PREV_AVATAR.dp)
+                    .clip(CircleShape)
+                    .background(LightColorTheme.fixLavenderBlush),
+                contentAlignment = Alignment.Center
+            ){
+                Text(
+                    text = "+${arrayImage.size - take}",
+                    fontSize = MagicNumbers.ROW_LIST_AVATAR_TEXT_FONT_SIZE.sp,
+                    fontFamily = fontSFPro,
+                    fontWeight = FontWeight.Bold,
+                    color = LightColorTheme.fixVioletBlaze,
+                )
+            }
         }
     }
 }

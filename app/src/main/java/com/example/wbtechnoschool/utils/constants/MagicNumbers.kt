@@ -166,6 +166,7 @@ class MagicNumbers {
         const val ROW_LIST_AVATAR_BOX_BORDER_SHAPE = 40
         const val ROW_LIST_AVATAR_TEXT_FONT_SIZE = 14
         const val ROW_LIST_AVATAR_TEXT_PADDING = 20
+        const val ROW_LIST_AVATAR_SIZE_PREV_AVATAR = 60
 
         //        ScreenEntryCode
         const val SCREEN_ENTRY_CODE_PADDING_HORIZONTAL = 20
@@ -185,6 +186,15 @@ class MagicNumbers {
 
         //        FixTextField
         const val FIX_TEXT_FIELD_SHAPE_RADIUS = 16
+        const val FIX_TEXT_FIELD_BOX_BORDER_WIDTH = 1
+        const val FIX_TEXT_FIELD_BOX_PADDING_HORIZONTAL = 16
+        const val FIX_TEXT_FIELD_BOX_HEIGHT = 56
+        const val FIX_TEXT_FIELD_TEXT_STYLE_LINE_HEIGHT = 56
+        const val FIX_TEXT_FIELD_TEXT_STYLE_FONT_SIZE = 14
+        const val FIX_TEXT_FIELD_TEXT_STYLE_LETTER_SPACING = 1
+        const val FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_LINE_HEIGHT = 56
+        const val FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_FONT_SIZE = 14
+        const val FIX_TEXT_FIELD_DECORATION_BOX_LETTER_SPACING = 1
     }
 }
 
