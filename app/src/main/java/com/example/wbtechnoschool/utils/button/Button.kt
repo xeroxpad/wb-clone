@@ -2,14 +2,24 @@ package com.example.wbtechnoschool.utils.button
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.focus.focusModifier
 import androidx.compose.ui.graphics.Brush
@@ -20,12 +30,21 @@ import androidx.compose.ui.graphics.Paint
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.airbnb.lottie.compose.LottieAnimation
+import com.airbnb.lottie.compose.LottieCompositionSpec
+import com.airbnb.lottie.compose.animateLottieCompositionAsState
+import com.airbnb.lottie.compose.rememberLottieComposition
 import com.example.wbtechnoschool.R
+import com.example.wbtechnoschool.screens.splash.iterationsSplashScreen
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
+import com.example.wbtechnoschool.ui.theme.fontSFPro
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 @Composable
 fun StatusButton(
@@ -161,10 +180,32 @@ fun FixGradientButton(
     onClick: () -> Unit,
     contentText: String,
 ) {
+    var loading by remember { mutableStateOf(false) }
     val gradient = Brush.horizontalGradient(colors = background)
+    var success by remember { mutableStateOf(false) }
+    val interactionSource = remember { MutableInteractionSource() }
+    val lottiAnimation by rememberLottieComposition(LottieCompositionSpec.Asset("ic_check2.json"))
+    val progress by animateLottieCompositionAsState(
+        composition = lottiAnimation,
+        iterations = iterationsSplashScreen,
+        isPlaying = success
+    )
+    val coroutineScope = rememberCoroutineScope()
     Button(
-        modifier = modifier.background(gradient),
-        onClick = onClick,
+        modifier = modifier
+            .fillMaxWidth()
+            .height(50.dp),
+        onClick = {
+            loading = true
+            onClick()
+            coroutineScope.launch {
+                delay(3000)
+                loading = false
+                success = true
+                delay(3000)
+                success = false
+            }
+        },
         shape = RoundedCornerShape(MagicNumbers.BUTTON_SHAPE),
         colors =
         ButtonDefaults.buttonColors(
@@ -172,26 +213,41 @@ fun FixGradientButton(
             contentColor = White,
             disabledContainerColor = LightColorTheme.brandColorDefault.copy(alpha = MagicNumbers.BUTTON_DISABLED_CONTAINER_COLOR)
         ),
-        enabled = enable,
-    )
-    {
-        Text(text = contentText)
+        enabled = enable && !loading && !success,
+        interactionSource = interactionSource,
+        contentPadding = PaddingValues(0.dp)
+    ) {
+        Box(
+            modifier = Modifier
+                .background(gradient)
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            when {
+                loading -> {
+                    CircularProgressIndicator(
+                        modifier = Modifier.size(20.dp),
+                        color = White,
+                        strokeWidth = 2.dp
+                    )
+                }
+                success -> {
+                    LottieAnimation(
+                        composition = lottiAnimation,
+                        progress = progress,
+                        modifier = Modifier.fillMaxSize(),
+                    )
+                }
+                else -> {
+                    Text(
+                        text = contentText,
+                        fontSize = MagicNumbers.FIX_BUTTON_TEXT_BUTTON_FONT_SIZE.sp,
+                        fontWeight = FontWeight.W600,
+                        fontFamily = fontSFPro
+                    )
+                }
+            }
+        }
     }
 }
 
-@Preview
-@Composable
-fun PrevFixButton() {
-//    FixGradientButton(
-//        background = listOf(
-//            LightColorTheme.fixBlushPink,
-//            LightColorTheme.fixFuchsiaGlow,
-//            LightColorTheme.fixVividViolet,
-//            LightColorTheme.fixElectricViolet,
-//            LightColorTheme.fixRadiantMagenta,
-//            LightColorTheme.fixVioletBlaze,
-//            LightColorTheme.fixNeonLavender,
-//            LightColorTheme.fixRoyalIndigo,
-//        ), enable = true, onClick = { /*TODO*/ }, contentText = "Оплатить"
-//    )
-}

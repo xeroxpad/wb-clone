@@ -150,9 +150,10 @@ class MagicNumbers {
         const val FILTER_CHIPS_BOX_TEXT_PADDING_HORIZONTAL = 10
 
         //        Button
-        const val BUTTON_SHAPE = 78
+        const val BUTTON_SHAPE = 30
         const val BUTTON_BORDER_STROKE_WIDTH = 2
         const val BUTTON_TEXT_BUTTON_FONT_SIZE = 20
+        const val FIX_BUTTON_TEXT_BUTTON_FONT_SIZE = 18
         const val BUTTON_DISABLED_CONTAINER_COLOR = 0.5F
 
         //        AddAvatarProfile
@@ -180,6 +181,7 @@ class MagicNumbers {
         const val FUN_NUMBER_VIEW_BOX_WIDTH = 30
         const val FUN_NUMBER_VIEW_TEXT_IN_BOX_FONT_SIZE = 30
         const val FUN_NUMBER_VIEW_BOX_SIZE = 24
+        const val PHONE_MAX_LENGTH = 10
 
         //        FunEntryCode
         const val FUN_ENTRY_CODE_ROW_PADDING = 50
@@ -191,10 +193,11 @@ class MagicNumbers {
         const val FIX_TEXT_FIELD_BOX_HEIGHT = 56
         const val FIX_TEXT_FIELD_TEXT_STYLE_LINE_HEIGHT = 56
         const val FIX_TEXT_FIELD_TEXT_STYLE_FONT_SIZE = 14
-        const val FIX_TEXT_FIELD_TEXT_STYLE_LETTER_SPACING = 1
+        const val FIX_TEXT_FIELD_TEXT_STYLE_LETTER_SPACING = 2
         const val FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_LINE_HEIGHT = 56
         const val FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_FONT_SIZE = 14
-        const val FIX_TEXT_FIELD_DECORATION_BOX_LETTER_SPACING = 1
+        const val FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_FONT_SIZE_NUMBER = 18
+        const val FIX_TEXT_FIELD_DECORATION_BOX_LETTER_SPACING = 2
     }
 }
 

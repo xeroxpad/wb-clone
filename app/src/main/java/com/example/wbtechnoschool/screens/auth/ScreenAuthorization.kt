@@ -1,11 +1,18 @@
 package com.example.wbtechnoschool.screens.auth
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
@@ -19,6 +26,8 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
@@ -31,7 +40,10 @@ import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 import com.example.wbtechnoschool.utils.avatar.FixRowAvatars
+import com.example.wbtechnoschool.utils.button.FixButton
+import com.example.wbtechnoschool.utils.button.FixGradientButton
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
+import com.example.wbtechnoschool.utils.search.FieldForNumber
 import com.example.wbtechnoschool.utils.search.FixTextField
 import com.example.wbtechnoschool.utils.toggle.FixToggleSwitch
 import com.example.wbtechnoschool.viewmodel.auth_view_model.AuthorizationViewModel
@@ -45,6 +57,7 @@ fun ScreenAuthorization(
 ) {
     val number by viewModel.number.observeAsState("")
     val textColor = if (number.isEmpty()) LightColorTheme.neutralDisabled else Color.Black
+    val focusManager = LocalFocusManager.current
 
     LaunchedEffect(number) {
         viewModel.onNumberChange(number)
@@ -172,14 +185,22 @@ fun ScreenAuthorization(
         modifier
             .statusBarsPadding()
             .fillMaxSize()
+            .pointerInput(Unit) {
+                detectTapGestures(onTap = { focusManager.clearFocus() })
+            }
             .padding(horizontal = MagicNumbers.SCREEN_AUTH_PROF_COLUMN_PADDING_HORIZONTAL.dp),
         verticalArrangement = Arrangement.Top,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         items(1) {
             Text(text = "Фикс макета")
+            Spacer(modifier = Modifier.height(10.dp))
             FixTextField()
+            Spacer(modifier = Modifier.height(10.dp))
+            FieldForNumber {}
+            Spacer(modifier = Modifier.height(10.dp))
             FixToggleSwitch()
+            Spacer(modifier = Modifier.height(10.dp))
             FixRowAvatars(
                 arrayImage = listOf(
                     "https://img.freepik.com/free-photo/river-surrounded-by-forests-under-a-cloudy-sky-in-thuringia-in-germany_181624-30863.jpg?w=2000&t=st=1721590773~exp=1721591373~hmac=8bafe832f555c2d27e0eb6104a156a05517526716799a7f7329d7a3ed3ad5fda",
@@ -204,6 +225,31 @@ fun ScreenAuthorization(
                     "https://img.freepik.com/free-photo/vertical-landscape-with-mountains-lake_1398-3441.jpg?w=1800&t=st=1721590816~exp=1721591416~hmac=57c4ee8e445680e70baea9e6f29a83a917b0579ad40193b0b18396bac22220f6",
                 ),
             )
+            Spacer(modifier = Modifier.height(10.dp))
+            FixGradientButton(
+                background = listOf(
+                    LightColorTheme.fixBlushPink,
+                    LightColorTheme.fixFuchsiaGlow,
+                    LightColorTheme.fixVividViolet,
+                    LightColorTheme.fixElectricViolet,
+                    LightColorTheme.fixRadiantMagenta,
+                    LightColorTheme.fixVioletBlaze,
+                    LightColorTheme.fixNeonLavender,
+                    LightColorTheme.fixRoyalIndigo
+                ),
+                enable = true,
+                onClick = { /*TODO*/ },
+                contentText = "Оплатить",
+                modifier = Modifier
+                    .clip(shape = RoundedCornerShape(MagicNumbers.BUTTON_SHAPE))
+                    .fillMaxWidth(),
+            )
+            Spacer(modifier = Modifier.height(10.dp))
+            Row (horizontalArrangement = Arrangement.Center){
+                Image(painter = painterResource(id = R.drawable.icon_habr), contentDescription = null)
+                Spacer(modifier = Modifier.width(10.dp))
+                Image(painter = painterResource(id = R.drawable.icon_telegram), contentDescription = null)
+            }
         }
     }
 }
