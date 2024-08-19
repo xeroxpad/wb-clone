@@ -1,18 +1,25 @@
 package com.example.wbtechnoschool.utils.search
 
 import android.telephony.PhoneNumberUtils
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -26,6 +33,7 @@ import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.SolidColor
 import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
@@ -45,10 +53,9 @@ import com.google.i18n.phonenumbers.PhoneNumberUtil
 
 
 @Composable
-fun FixTextField() {
+fun FixTextField(placeholder: Int) {
     var textState by remember { mutableStateOf(("")) }
     var isFocused by remember { mutableStateOf(false) }
-    val focusManager = LocalFocusManager.current
     Box(
         modifier = Modifier
             .fillMaxWidth()
@@ -89,7 +96,7 @@ fun FixTextField() {
                 decorationBox = { innerTextField ->
                     if (textState.isEmpty()) {
                         Text(
-                            text = stringResource(id = R.string.name_and_second_name),
+                            text = stringResource(id = placeholder),
                             color = LightColorTheme.neutralDisabled,
                             style = TextStyle(lineHeight = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_LINE_HEIGHT.sp),
                             fontWeight = FontWeight.W500,
@@ -103,6 +110,83 @@ fun FixTextField() {
             )
         }
 
+    }
+}
+
+@Composable
+fun FixSearchTextField(modifier: Modifier = Modifier, placeholder: Int) {
+    var textState by remember { mutableStateOf(("")) }
+    var isFocused by remember { mutableStateOf(false) }
+    Row(verticalAlignment = Alignment.CenterVertically) {
+        Box(
+            modifier = modifier
+                .clip(shape = RoundedCornerShape(MagicNumbers.FIX_TEXT_FIELD_SHAPE_RADIUS.dp))
+                .background(LightColorTheme.fixLavenderBlush)
+                .border(
+                    width = MagicNumbers.FIX_TEXT_FIELD_BOX_BORDER_WIDTH.dp,
+                    color = if (isFocused) LightColorTheme.brandColorDefault else Color.Transparent,
+                    shape = RoundedCornerShape(MagicNumbers.FIX_TEXT_FIELD_SHAPE_RADIUS.dp)
+                )
+                .padding(horizontal = MagicNumbers.FIX_TEXT_FIELD_BOX_PADDING_HORIZONTAL.dp)
+                .height(MagicNumbers.FIX_TEXT_FIELD_BOX_HEIGHT.dp),
+        ) {
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                modifier = Modifier
+                    .fillMaxHeight()
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.search),
+                    contentDescription = null,
+                    tint = LightColorTheme.indigoTwilight,
+                    modifier = Modifier
+                        .size(25.dp)
+                )
+                Spacer(modifier = Modifier.width(5.dp))
+                BasicTextField(
+                    value = textState,
+                    onValueChange = { textState = it },
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .onFocusChanged { focusState ->
+                            isFocused = focusState.isFocused
+                        },
+                    textStyle = TextStyle(
+                        textAlign = TextAlign.Start,
+                        color = Color.Black,
+                        lineHeight = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_LINE_HEIGHT.sp,
+                        fontWeight = FontWeight.W500,
+                        fontFamily = fontSFPro,
+                        fontSize = 16.sp,
+                        letterSpacing = 1.sp,
+                    ),
+                    cursorBrush = SolidColor(LightColorTheme.fixVioletBlaze),
+                    keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
+                    decorationBox = { innerTextField ->
+                        if (textState.isEmpty()) {
+                            Text(
+                                text = stringResource(id = placeholder),
+                                color = LightColorTheme.indigoTwilight,
+                                style = TextStyle(lineHeight = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_LINE_HEIGHT.sp),
+                                fontWeight = FontWeight.W500,
+                                fontFamily = fontSFPro,
+                                fontSize = 16.sp,
+                                letterSpacing = 1.sp,
+                            )
+                        }
+                        innerTextField()
+                    }
+                )
+            }
+        }
+        Spacer(modifier = Modifier.width(5.dp))
+        Icon(
+            painter = painterResource(id = R.drawable.icon_user),
+            contentDescription = null,
+            tint = LightColorTheme.fixVioletBlaze,
+            modifier = Modifier
+                .size(44.dp)
+        )
     }
 }
 

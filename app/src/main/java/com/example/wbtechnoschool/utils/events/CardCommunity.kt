@@ -23,9 +23,9 @@ import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.SpaceGreyLight
 import com.example.wbtechnoschool.utils.avatar.MyPreviewAvatar
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
+import com.example.wbtechnoschool.utils.constants.MagicNumbers.Companion.DEFAULT_AVATAR
 import com.example.wbtechnoschool.utils.constants.SPACER
 
-const val DEFAULT_AVATAR = "https://banner2.cleanpng.com/20180901/prt/kisspng-luket-dner-consumer-production-logo-quality-a-verb-with-the-letter-k-my-pinterest-site-sym-5b8ae977b23648.94143731153583039173.jpg"
 
 @Composable
 fun CardCommunity(

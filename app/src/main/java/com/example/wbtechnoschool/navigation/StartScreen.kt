@@ -1,6 +1,5 @@
 package com.example.wbtechnoschool.navigation
 
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
@@ -29,11 +28,7 @@ fun StartScreen(navController: NavHostController) {
             else -> true
         }
 
-    Scaffold(bottomBar = {
-        if (bottomBarIsShow.value) {
-            BottomNavBar(navController = navController, modifier = Modifier.navigationBarsPadding())
-        }
-    }) { padding ->
+    Scaffold { padding ->
         NavHostContainer(
             navController = navController,
             modifier = Modifier.padding(padding),

@@ -198,6 +198,11 @@ class MagicNumbers {
         const val FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_FONT_SIZE = 14
         const val FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_FONT_SIZE_NUMBER = 18
         const val FIX_TEXT_FIELD_DECORATION_BOX_LETTER_SPACING = 2
+
+        //        DefaultAvatar
+        const val DEFAULT_AVATAR =
+            "https://banner2.cleanpng.com/20180901/prt/kisspng-luket-dner-consumer-production-logo-quality-a-verb-with-the-letter-k-my-pinterest-site-sym-5b8ae977b23648.94143731153583039173.jpg"
+
     }
 }
 

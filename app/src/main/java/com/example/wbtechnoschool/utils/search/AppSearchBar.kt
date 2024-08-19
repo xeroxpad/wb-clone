@@ -22,6 +22,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.VisualTransformation
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
@@ -86,4 +87,10 @@ fun AppSearchBar(modifier: Modifier = Modifier) {
             )
         }
     )
+}
+
+@Preview
+@Composable
+fun PrevSearch() {
+    AppSearchBar()
 }

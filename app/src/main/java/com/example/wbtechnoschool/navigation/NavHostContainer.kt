@@ -12,6 +12,7 @@ import com.example.wbtechnoschool.screens.auth.ScreenAuthorizationProfile
 import com.example.wbtechnoschool.screens.auth.ScreenEntryCode
 import com.example.wbtechnoschool.screens.community.ScreenCommunity
 import com.example.wbtechnoschool.screens.community.ScreenDetailsCommunity
+import com.example.wbtechnoschool.screens.events.ScreenEvents
 import com.example.wbtechnoschool.screens.meetings.ScreenDescriptionMeeting
 import com.example.wbtechnoschool.screens.meetings.ScreenMeeting
 import com.example.wbtechnoschool.screens.more.ScreenInfo
@@ -35,9 +36,18 @@ fun NavHostContainer(
         navController = navController,
         startDestination = Graph.Splash.route
     ) {
+//        composable(Graph.Splash.route) {
+//            SplashScreen {
+//                navController.navigate(Graph.Authorization.route) {
+//                    popUpTo(Graph.Splash.route) {
+//                        inclusive = true
+//                    }
+//                }
+//            }
+//        }
         composable(Graph.Splash.route) {
             SplashScreen {
-                navController.navigate(Graph.Authorization.route) {
+                navController.navigate(Graph.Events.route) {
                     popUpTo(Graph.Splash.route) {
                         inclusive = true
                     }
@@ -73,6 +83,11 @@ fun NavHostContainer(
                 }
             )
         }
+        eventsNavGraph(
+            eventsScreen = { ScreenEvents(navController = navController) },
+            meetingsScreenDescription = { ScreenDescriptionMeeting(navController = navController) },
+            communityDetailsScreen = { ScreenDetailsCommunity(navController = navController) }
+        )
         meetingsNavGraph(
             meetingsScreen = { ScreenMeeting(navController = navController) },
             meetingsScreenDescription = { ScreenDescriptionMeeting(navController = navController) }
