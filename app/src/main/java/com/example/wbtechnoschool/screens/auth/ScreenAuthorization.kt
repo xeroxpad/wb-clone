@@ -260,14 +260,14 @@ fun ScreenAuthorization(
                 )
             }
             Spacer(modifier = Modifier.height(10.dp))
-            FixCardCommunity(
-                onClick = { /*TODO*/ },
-                event = FixEvent(
-                    1,
-                    "https://yandex.ru/images/search?cbir_id=3536093%2Fz2xHZPylwdLhvw1pXq50Fw3905&cbir_page=similar&crop=0.016%3B0.016%3B0.984%3B0.984&img_url=https%3A%2F%2Fucare.timepad.ru%2F2d8cb8b2-a1e4-43f4-a414-1e6dc76c67a9%2Fposter_event_1532412.jpg&lr=10748&pos=0&rpt=imageview&url=https%3A%2F%2Favatars.mds.yandex.net%2Fget-images-cbir%2F3536093%2Fz2xHZPylwdLhvw1pXq50Fw3905%2Forig",
-                    "Python days 2024"
-                )
-            )
+//            FixCardCommunity(
+//                onClick = { /*TODO*/ },
+//                event = FixEvent(
+//                    1,
+//                    "https://yandex.ru/images/search?cbir_id=3536093%2Fz2xHZPylwdLhvw1pXq50Fw3905&cbir_page=similar&crop=0.016%3B0.016%3B0.984%3B0.984&img_url=https%3A%2F%2Fucare.timepad.ru%2F2d8cb8b2-a1e4-43f4-a414-1e6dc76c67a9%2Fposter_event_1532412.jpg&lr=10748&pos=0&rpt=imageview&url=https%3A%2F%2Favatars.mds.yandex.net%2Fget-images-cbir%2F3536093%2Fz2xHZPylwdLhvw1pXq50Fw3905%2Forig",
+//                    "Python days 2024"
+//                )
+//            )
         }
     }
 }

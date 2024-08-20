@@ -12,22 +12,22 @@ import com.example.wbtechnoschool.utils.events.CardCompletedMeetings
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingViewModel
 import org.koin.androidx.compose.koinViewModel
 
-@Composable
-fun AllMeetings(
-    navController: NavController,
-    viewModel: MeetingViewModel = koinViewModel()
-) {
-    val meetings by viewModel.meetings.collectAsState()
-    LazyColumn {
-        items(meetings) { meeting ->
-            CardActiveMeetings(
-                onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
-                meetings = meeting
-            )
-            CardCompletedMeetings(
-                onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
-                meetings = meeting
-            )
-        }
-    }
-}
+//@Composable
+//fun AllMeetings(
+//    navController: NavController,
+//    viewModel: MeetingViewModel = koinViewModel()
+//) {
+//    val meetings by viewModel.meetings.collectAsState()
+//    LazyColumn {
+//        items(meetings) { meeting ->
+//            CardActiveMeetings(
+//                onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
+//                meetings = meeting
+//            )
+//            CardCompletedMeetings(
+//                onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
+//                meetings = meeting
+//            )
+//        }
+//    }
+//}

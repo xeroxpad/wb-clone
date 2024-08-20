@@ -51,7 +51,7 @@ fun MyPreviewAvatar(
 @Composable
 fun FixMyAvatar(
     modifier: Modifier = Modifier,
-    model: Any?,
+    model: String,
     contentDescription: String?,
     contentScale: ContentScale = ContentScale.Crop
 ) {

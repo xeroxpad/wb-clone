@@ -51,6 +51,7 @@ data class ColorThemeWB(
     val fixLavenderBlush: Color,
     val fixLightGray: Color,
     val indigoTwilight: Color,
+    val black: Color,
 )
 
 val LightColorTheme =
@@ -84,7 +85,8 @@ val LightColorTheme =
         fixRoyalIndigo = Color(0xFF6600FF),
         fixLavenderBlush = Color(0xFFF6F6FA),
         fixLightGray = Color(0xFFEFEFEF),
-        indigoTwilight = Color(0xFF76778E)
+        indigoTwilight = Color(0xFF76778E),
+        black = Color(0xFF000000)
         )
 
 val ColorTheme =

@@ -2,6 +2,7 @@ package com.example.wbtechnoschool.viewmodel.meetings_view_model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.domain.entities.FixEvent
 import com.example.domain.entities.Meetings
 import com.example.domain.usecases.GetMeetingsUseCase
 import com.example.wbtechnoschool.R
@@ -12,8 +13,8 @@ import kotlinx.coroutines.launch
 class MeetingViewModel(
     private val getMeetingsUseCase: GetMeetingsUseCase
 ) : ViewModel() {
-    private val _meetings = MutableStateFlow<List<Meetings>>(emptyList())
-    val meetings: StateFlow<List<Meetings>> get() = _meetings
+    private val _meetings = MutableStateFlow<List<FixEvent>>(emptyList())
+    val meetings: StateFlow<List<FixEvent>> get() = _meetings
 
     private val _tabIndex = MutableStateFlow(MeetingsTab.ALL_MEETINGS)
     val tabIndex: StateFlow<MeetingsTab> = _tabIndex

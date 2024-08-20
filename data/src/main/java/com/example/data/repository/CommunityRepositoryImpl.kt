@@ -2,6 +2,7 @@ package com.example.data.repository
 
 import com.example.domain.entities.Community
 import com.example.domain.entities.CommunityDetails
+import com.example.domain.entities.FixEvent
 import com.example.domain.entities.Meetings
 import com.example.domain.repository.ICommunityRepository
 
@@ -82,39 +83,39 @@ class CommunityRepositoryImpl : ICommunityRepository {
 
     val mockMeetingsData =
         listOf(
-            Meetings(
+            FixEvent(
                 id = 31,
-                icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
-                title = "Developer Meetings",
-                date = "13.09.2024",
-                city = "Москва",
+                icon = "https://ya.ru/images/search?cbir_id=1030127%2FXX-XP__jWg71DdsD82BnZA329&cbir_page=similar&crop=0.016%3B0.016%3B0.984%3B0.984&img_url=https%3A%2F%2Fstatic.ngs.ru%2Fnews%2F99%2Fpreview%2F2c81a1e4b696c665e3f6e03d7ea5113d03c8ea71_9999.jpg&lr=21639&pos=0&rpt=imageview&url=https%3A%2F%2Favatars.mds.yandex.net%2Fget-images-cbir%2F1030127%2FXX-XP__jWg71DdsD82BnZA329%2Forig",
+                title = "QA Talks — Global tech forum",
+                date = "Завтра",
+                city = "Невский проспект, 11",
                 tagDevelopmentLanguage = "Kotlin",
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Moscow",
             ),
-            Meetings(
+            FixEvent(
                 id = 33,
-                icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
-                title = "Developer Meetings",
+                icon = "https://ya.ru/images/search?cbir_id=1030127%2FXX-XP__jWg71DdsD82BnZA329&cbir_page=similar&crop=0.016%3B0.016%3B0.984%3B0.984&img_url=https%3A%2F%2Fstatic.ngs.ru%2Fnews%2F99%2Fpreview%2F2c81a1e4b696c665e3f6e03d7ea5113d03c8ea71_9999.jpg&lr=21639&pos=0&rpt=imageview&url=https%3A%2F%2Favatars.mds.yandex.net%2Fget-images-cbir%2F1030127%2FXX-XP__jWg71DdsD82BnZA329%2Forig",
+                title = "QA Talks — Global tech forum",
                 date = "13.09.2024",
-                city = "Санкт-Петербург",
+                city = "Невский проспект, 11",
                 tagDevelopmentLanguage = "Kotlin",
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "SPB",
             ),
-            Meetings(
+            FixEvent(
                 id = 33,
-                icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
+                icon = "https://ya.ru/images/search?cbir_id=1030127%2FXX-XP__jWg71DdsD82BnZA329&cbir_page=similar&crop=0.016%3B0.016%3B0.984%3B0.984&img_url=https%3A%2F%2Fstatic.ngs.ru%2Fnews%2F99%2Fpreview%2F2c81a1e4b696c665e3f6e03d7ea5113d03c8ea71_9999.jpg&lr=21639&pos=0&rpt=imageview&url=https%3A%2F%2Favatars.mds.yandex.net%2Fget-images-cbir%2F1030127%2FXX-XP__jWg71DdsD82BnZA329%2Forig",
                 title = "Developer Meetings",
                 date = "13.09.2024",
-                city = "Москва",
+                city = "Невский проспект, 11",
                 tagDevelopmentLanguage = "Kotlin",
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Moscow",
             ),
-            Meetings(
+            FixEvent(
                 id = 34,
-                icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
+                icon = "https://ya.ru/images/search?cbir_id=1030127%2FXX-XP__jWg71DdsD82BnZA329&cbir_page=similar&crop=0.016%3B0.016%3B0.984%3B0.984&img_url=https%3A%2F%2Fstatic.ngs.ru%2Fnews%2F99%2Fpreview%2F2c81a1e4b696c665e3f6e03d7ea5113d03c8ea71_9999.jpg&lr=21639&pos=0&rpt=imageview&url=https%3A%2F%2Favatars.mds.yandex.net%2Fget-images-cbir%2F1030127%2FXX-XP__jWg71DdsD82BnZA329%2Forig",
                 title = "Developer Meetings",
                 date = "13.09.2024",
                 city = "Казань",
@@ -122,9 +123,9 @@ class CommunityRepositoryImpl : ICommunityRepository {
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Kazan",
             ),
-            Meetings(
+            FixEvent(
                 id = 35,
-                icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
+                icon = "https://ya.ru/images/search?cbir_id=1030127%2FXX-XP__jWg71DdsD82BnZA329&cbir_page=similar&crop=0.016%3B0.016%3B0.984%3B0.984&img_url=https%3A%2F%2Fstatic.ngs.ru%2Fnews%2F99%2Fpreview%2F2c81a1e4b696c665e3f6e03d7ea5113d03c8ea71_9999.jpg&lr=21639&pos=0&rpt=imageview&url=https%3A%2F%2Favatars.mds.yandex.net%2Fget-images-cbir%2F1030127%2FXX-XP__jWg71DdsD82BnZA329%2Forig",
                 title = "Developer Meetings",
                 date = "13.09.2024",
                 city = "Москва",
@@ -132,9 +133,9 @@ class CommunityRepositoryImpl : ICommunityRepository {
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Moscow",
             ),
-            Meetings(
+            FixEvent(
                 id = 36,
-                icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
+                icon = "https://ya.ru/images/search?cbir_id=1030127%2FXX-XP__jWg71DdsD82BnZA329&cbir_page=similar&crop=0.016%3B0.016%3B0.984%3B0.984&img_url=https%3A%2F%2Fstatic.ngs.ru%2Fnews%2F99%2Fpreview%2F2c81a1e4b696c665e3f6e03d7ea5113d03c8ea71_9999.jpg&lr=21639&pos=0&rpt=imageview&url=https%3A%2F%2Favatars.mds.yandex.net%2Fget-images-cbir%2F1030127%2FXX-XP__jWg71DdsD82BnZA329%2Forig",
                 title = "Developer Meetings",
                 date = "13.09.2024",
                 city = "Уфа",
@@ -142,9 +143,9 @@ class CommunityRepositoryImpl : ICommunityRepository {
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Ufa",
             ),
-            Meetings(
+            FixEvent(
                 id = 37,
-                icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
+                icon = "https://ya.ru/images/search?cbir_id=1030127%2FXX-XP__jWg71DdsD82BnZA329&cbir_page=similar&crop=0.016%3B0.016%3B0.984%3B0.984&img_url=https%3A%2F%2Fstatic.ngs.ru%2Fnews%2F99%2Fpreview%2F2c81a1e4b696c665e3f6e03d7ea5113d03c8ea71_9999.jpg&lr=21639&pos=0&rpt=imageview&url=https%3A%2F%2Favatars.mds.yandex.net%2Fget-images-cbir%2F1030127%2FXX-XP__jWg71DdsD82BnZA329%2Forig",
                 title = "Developer Meetings",
                 date = "13.09.2024",
                 city = "Москва",
@@ -152,9 +153,9 @@ class CommunityRepositoryImpl : ICommunityRepository {
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Moscow",
             ),
-            Meetings(
+            FixEvent(
                 id = 38,
-                icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
+                icon = "https://ya.ru/images/search?cbir_id=1030127%2FXX-XP__jWg71DdsD82BnZA329&cbir_page=similar&crop=0.016%3B0.016%3B0.984%3B0.984&img_url=https%3A%2F%2Fstatic.ngs.ru%2Fnews%2F99%2Fpreview%2F2c81a1e4b696c665e3f6e03d7ea5113d03c8ea71_9999.jpg&lr=21639&pos=0&rpt=imageview&url=https%3A%2F%2Favatars.mds.yandex.net%2Fget-images-cbir%2F1030127%2FXX-XP__jWg71DdsD82BnZA329%2Forig",
                 title = "Developer Meetings",
                 date = "13.09.2024",
                 city = "Москва",

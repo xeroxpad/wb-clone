@@ -31,7 +31,7 @@ fun FilterChips(
                 bottom = MagicNumbers.FILTER_CHIPS_BOX_PADDING_BOTTOM.dp
             ).height(MagicNumbers.FILTER_CHIPS_BOX_HEIGHT.dp)
             .clip(RoundedCornerShape(MagicNumbers.FILTER_CHIPS_BOX_CLIP.dp))
-            .background(LightColorTheme.brandColorBG),
+            .background(LightColorTheme.fixLavenderBlush),
         contentAlignment = Alignment.Center
     ) {
         Text(

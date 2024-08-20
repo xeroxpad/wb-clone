@@ -1,90 +1,91 @@
 package com.example.data.repository
 
+import com.example.domain.entities.FixEvent
 import com.example.domain.entities.Meetings
 import com.example.domain.entities.MeetingsDescription
 import com.example.domain.repository.IMeetingsRepository
 
 class MeetingsRepositoryImpl : IMeetingsRepository {
-    override fun getMeetings(): List<Meetings> = mockMeetings
+    override fun getMeetings(): List<FixEvent> = mockMeetings
 
     override fun getDescriptionMeetings(): MeetingsDescription = mockMeetingsDescriptionData
 
     val mockMeetings =
         listOf(
-            Meetings(
+            FixEvent(
                 id = 41,
-                icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
-                title = "Developer Meetings",
-                date = "13.09.2024",
-                city = "Москва",
-                tagDevelopmentLanguage = "Kotlin",
-                tagGradeDeveloper = "Junior",
-                tagCityMeeting = "Moscow",
+                icon = "https://imsts.com/sites/default/files/md-slider-image/sl-7-ims-event-staging-scenic-design.jpg",
+                title = "QA Talks — Global tech forum",
+                date = "Завтра",
+                city = "Невский проспект, 11",
+                tagDevelopmentLanguage = "Тестирование",
+                tagGradeDeveloper = "Разработка",
+                tagCityMeeting = "Backend",
             ),
-            Meetings(
+            FixEvent(
                 id = 42,
-                icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
-                title = "Developer Meetings",
+                icon = "https://imsts.com/sites/default/files/md-slider-image/sl-7-ims-event-staging-scenic-design.jpg",
+                title = "Python days 2024",
                 date = "13.09.2024",
                 city = "Санкт-Петербург",
                 tagDevelopmentLanguage = "Kotlin",
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "SPB",
             ),
-            Meetings(
+            FixEvent(
                 id = 43,
-                icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
-                title = "Developer Meetings",
+                icon = "https://imsts.com/sites/default/files/md-slider-image/sl-7-ims-event-staging-scenic-design.jpg",
+                title = "Турнир разработчиков «Белые Ночи»",
                 date = "13.09.2024",
                 city = "Москва",
                 tagDevelopmentLanguage = "Kotlin",
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Moscow",
             ),
-            Meetings(
+            FixEvent(
                 id = 44,
-                icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
-                title = "Developer Meetings",
+                icon = "https://imsts.com/sites/default/files/md-slider-image/sl-7-ims-event-staging-scenic-design.jpg",
+                title = "Геймдев на нейросетях. Лекция Станислава Макарова",
                 date = "13.09.2024",
                 city = "Казань",
                 tagDevelopmentLanguage = "Kotlin",
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Kazan",
             ),
-            Meetings(
+            FixEvent(
                 id = 45,
-                icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
-                title = "Developer Meetings",
+                icon = "https://imsts.com/sites/default/files/md-slider-image/sl-7-ims-event-staging-scenic-design.jpg",
+                title = "QA Talks — Global tech forum",
                 date = "13.09.2024",
                 city = "Москва",
                 tagDevelopmentLanguage = "Kotlin",
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Moscow",
             ),
-            Meetings(
+            FixEvent(
                 id = 46,
-                icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
-                title = "Developer Meetings",
+                icon = "https://imsts.com/sites/default/files/md-slider-image/sl-7-ims-event-staging-scenic-design.jpg",
+                title = "Feature-Sliced Design 2024",
                 date = "13.09.2024",
                 city = "Уфа",
                 tagDevelopmentLanguage = "Kotlin",
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Ufa",
             ),
-            Meetings(
+            FixEvent(
                 id = 47,
-                icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
-                title = "Developer Meetings",
+                icon = "https://imsts.com/sites/default/files/md-slider-image/sl-7-ims-event-staging-scenic-design.jpg",
+                title = "Front talks",
                 date = "13.09.2024",
                 city = "Москва",
                 tagDevelopmentLanguage = "Kotlin",
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Moscow",
             ),
-            Meetings(
+            FixEvent(
                 id = 48,
-                icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
-                title = "Developer Meetings",
+                icon = "https://imsts.com/sites/default/files/md-slider-image/sl-7-ims-event-staging-scenic-design.jpg",
+                title = "Как повышать грейд. Лекция ПавлаХорикова",
                 date = "13.09.2024",
                 city = "Москва",
                 tagDevelopmentLanguage = "Kotlin",

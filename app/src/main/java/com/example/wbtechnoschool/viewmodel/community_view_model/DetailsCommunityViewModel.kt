@@ -2,6 +2,7 @@ package com.example.wbtechnoschool.viewmodel.community_view_model
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.domain.entities.FixEvent
 import com.example.domain.entities.Meetings
 import com.example.domain.usecases.GetDetailsCommunityUseCase
 import com.thedeanda.lorem.Lorem
@@ -20,8 +21,8 @@ class DetailsCommunityViewModel(
     private val _loremText = MutableStateFlow("")
     val loremText: StateFlow<String> = _loremText
 
-    private val _meetings = MutableStateFlow<List<Meetings>>(emptyList())
-    val meetings: StateFlow<List<Meetings>> = _meetings
+    private val _meetings = MutableStateFlow<List<FixEvent>>(emptyList())
+    val meetings: StateFlow<List<FixEvent>> = _meetings
 
     fun toggleShowMoreText() {
         _showMoreText.value = !_showMoreText.value

@@ -41,58 +41,58 @@ fun ScreenMeeting(
 ) {
     val tabIndex by viewModel.tabIndex.collectAsState()
     val tabs = viewModel.getTabs().map { stringResource(id = it) }
-    Scaffold(
-        modifier =
-        modifier
-            .statusBarsPadding()
-            .fillMaxSize(),
-        topBar = {
-            MainTopAppBar(
-                title = stringResource(id = R.string.top_bar_meetings),
-                actionsIcon = R.drawable.icon_add
-            )
-        },
-        content = { innerPadding ->
-            Column(
-                modifier =
-                Modifier
-                    .padding(innerPadding)
-                    .padding(horizontal = MagicNumbers.SCREEN_MEETING_PADDING_HORIZONTAL.dp)
-                    .padding(top = MagicNumbers.SCREEN_MEETING_PADDING_TOP.dp)
-                    .navigationBarsPadding()
-                    .fillMaxSize(),
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                AppSearchBar(
-                    modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        .height(MagicNumbers.SCREEN_MEETING_APP_SEARCH_BAR_HEIGHT.dp)
-                )
-                Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
-                TabRow(selectedTabIndex = tabIndex.ordinal, modifier = Modifier.fillMaxWidth()) {
-                    tabs.forEachIndexed { index, title ->
-                        Tab(
-                            text = {
-                                Text(
-                                    title,
-                                    fontSize = MagicNumbers.SCREEN_MY_MEETING_TAB_ROW_TEXT_FOT_SIZE.sp,
-                                    fontWeight = FontWeight.W500,
-                                    fontFamily = fontSFPro
-                                )
-                            },
-                            selected = tabIndex.ordinal == index,
-                            onClick = { viewModel.setTabIndex(MeetingsTab.entries[index]) },
-                            selectedContentColor = LightColorTheme.brandColorDefault,
-                            unselectedContentColor = LightColorTheme.accentGrey
-                        )
-                    }
-                }
-                when (tabIndex) {
-                    MeetingsTab.ALL_MEETINGS -> AllMeetings(navController)
-                    MeetingsTab.ACTIVE_MEETINGS -> ActiveMeetings(navController)
-                }
-            }
-        }
-    )
+//    Scaffold(
+//        modifier =
+//        modifier
+//            .statusBarsPadding()
+//            .fillMaxSize(),
+//        topBar = {
+//            MainTopAppBar(
+//                title = stringResource(id = R.string.top_bar_meetings),
+//                actionsIcon = R.drawable.icon_add
+//            )
+//        },
+//        content = { innerPadding ->
+//            Column(
+//                modifier =
+//                Modifier
+//                    .padding(innerPadding)
+//                    .padding(horizontal = MagicNumbers.SCREEN_MEETING_PADDING_HORIZONTAL.dp)
+//                    .padding(top = MagicNumbers.SCREEN_MEETING_PADDING_TOP.dp)
+//                    .navigationBarsPadding()
+//                    .fillMaxSize(),
+//                horizontalAlignment = Alignment.CenterHorizontally
+//            ) {
+//                AppSearchBar(
+//                    modifier =
+//                    Modifier
+//                        .fillMaxWidth()
+//                        .height(MagicNumbers.SCREEN_MEETING_APP_SEARCH_BAR_HEIGHT.dp)
+//                )
+//                Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
+//                TabRow(selectedTabIndex = tabIndex.ordinal, modifier = Modifier.fillMaxWidth()) {
+//                    tabs.forEachIndexed { index, title ->
+//                        Tab(
+//                            text = {
+//                                Text(
+//                                    title,
+//                                    fontSize = MagicNumbers.SCREEN_MY_MEETING_TAB_ROW_TEXT_FOT_SIZE.sp,
+//                                    fontWeight = FontWeight.W500,
+//                                    fontFamily = fontSFPro
+//                                )
+//                            },
+//                            selected = tabIndex.ordinal == index,
+//                            onClick = { viewModel.setTabIndex(MeetingsTab.entries[index]) },
+//                            selectedContentColor = LightColorTheme.brandColorDefault,
+//                            unselectedContentColor = LightColorTheme.accentGrey
+//                        )
+//                    }
+//                }
+//                when (tabIndex) {
+//                    MeetingsTab.ALL_MEETINGS -> AllMeetings(navController)
+//                    MeetingsTab.ACTIVE_MEETINGS -> ActiveMeetings(navController)
+//                }
+//            }
+//        }
+//    )
 }

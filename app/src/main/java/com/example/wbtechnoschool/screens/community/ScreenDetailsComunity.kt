@@ -105,14 +105,14 @@ fun ScreenDetailsCommunity(
                     Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                 }
                 items(meetings) { meeting ->
-                    CardActiveMeetings(
-                        onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
-                        meetings = meeting
-                    )
-                    CardCompletedMeetings(
-                        onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
-                        meetings = meeting
-                    )
+//                    CardActiveMeetings(
+//                        onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
+//                        meetings = meeting
+//                    )
+//                    CardCompletedMeetings(
+//                        onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
+//                        meetings = meeting
+//                    )
                 }
             }
         }
