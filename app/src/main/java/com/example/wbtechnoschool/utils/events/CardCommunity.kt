@@ -33,38 +33,38 @@ fun CardCommunity(
     community: Community,
     onClick: () -> Unit
 ) {
-    Card(
-        onClick = onClick,
-        modifier =
-        modifier
-            .fillMaxWidth(),
-        colors = CardDefaults.cardColors(Color.Transparent)
-    ) {
-        Row {
-            MyPreviewAvatar(
-                contentDescription = null,
-                modifier =
-                Modifier
-                    .size(MagicNumbers.CARD_ACTIVE_MEETINGS_MY_PREV_AVATAR_SIZE.dp),
-                model = community.icon ?: DEFAULT_AVATAR
-            )
-            Spacer(modifier = Modifier.padding(horizontal = SPACER.SPACER_5.value.dp))
-            Column {
-                Text(
-                    text = community.title,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = MagicNumbers.CARD_COMMUNITY_TEXT_TITLE.sp,
-                    color = LightColorTheme.neutralActive
-                )
-                Text(
-                    text = community.countPersons ?: stringResource(id = R.string.no_participants),
-                    fontWeight = FontWeight.Light,
-                    fontSize = MagicNumbers.CARD_COMMUNITY_TEXT_COUNT_PERSONS.sp,
-                    color = LightColorTheme.neutralDisabled
-                )
-            }
-        }
-        Spacer(modifier = Modifier.padding(vertical = SPACER.SPACER_5.value.dp))
-        HorizontalDivider(color = SpaceGreyLight)
-    }
+//    Card(
+//        onClick = onClick,
+//        modifier =
+//        modifier
+//            .fillMaxWidth(),
+//        colors = CardDefaults.cardColors(Color.Transparent)
+//    ) {
+//        Row {
+//            MyPreviewAvatar(
+//                contentDescription = null,
+//                modifier =
+//                Modifier
+//                    .size(MagicNumbers.CARD_ACTIVE_MEETINGS_MY_PREV_AVATAR_SIZE.dp),
+//                model = community.icon ?: DEFAULT_AVATAR
+//            )
+//            Spacer(modifier = Modifier.padding(horizontal = SPACER.SPACER_5.value.dp))
+//            Column {
+//                Text(
+//                    text = community.title,
+//                    fontWeight = FontWeight.Bold,
+//                    fontSize = MagicNumbers.CARD_COMMUNITY_TEXT_TITLE.sp,
+//                    color = LightColorTheme.neutralActive
+//                )
+//                Text(
+//                    text = community.countPersons ?: stringResource(id = R.string.no_participants),
+//                    fontWeight = FontWeight.Light,
+//                    fontSize = MagicNumbers.CARD_COMMUNITY_TEXT_COUNT_PERSONS.sp,
+//                    color = LightColorTheme.neutralDisabled
+//                )
+//            }
+//        }
+//        Spacer(modifier = Modifier.padding(vertical = SPACER.SPACER_5.value.dp))
+//        HorizontalDivider(color = SpaceGreyLight)
+//    }
 }

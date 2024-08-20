@@ -52,6 +52,16 @@ data class ColorThemeWB(
     val fixLightGray: Color,
     val indigoTwilight: Color,
     val black: Color,
+
+    val blushPink: Color,
+    val petalPink: Color,
+    val cottonCandy: Color,
+    val lavenderMist: Color,
+    val softLilac: Color,
+    val paleLavender: Color,
+    val lavenderWhisper: Color,
+    val frostedViolet: Color,
+
 )
 
 val LightColorTheme =
@@ -86,7 +96,15 @@ val LightColorTheme =
         fixLavenderBlush = Color(0xFFF6F6FA),
         fixLightGray = Color(0xFFEFEFEF),
         indigoTwilight = Color(0xFF76778E),
-        black = Color(0xFF000000)
+        black = Color(0xFF000000),
+        blushPink = Color(0xFFFEF1FB),
+        petalPink = Color(0xFFFDF1FC),
+        cottonCandy = Color(0xFFFCF0FC),
+        lavenderMist = Color(0xFFFBF0FD),
+        softLilac = Color(0xFFF9EFFD),
+        paleLavender = Color(0xFFF8EEFE),
+        lavenderWhisper = Color(0xFFF6EEFE),
+        frostedViolet = Color(0xFFF4EDFF)
         )
 
 val ColorTheme =

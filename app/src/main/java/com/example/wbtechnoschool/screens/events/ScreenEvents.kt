@@ -3,13 +3,10 @@ package com.example.wbtechnoschool.screens.events
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.layout.windowInsetsEndWidth
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -24,13 +21,12 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
-import com.example.domain.entities.FixEvent
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.utils.events.FixCardCommunity
-import com.example.wbtechnoschool.utils.events.FixCardCommunityMini
+import com.example.wbtechnoschool.utils.events.FixCardMeeting
+import com.example.wbtechnoschool.utils.events.FixCardMeetingMini
 import com.example.wbtechnoschool.utils.search.FixSearchTextField
 import com.example.wbtechnoschool.viewmodel.community_view_model.CommunityViewModel
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingViewModel
@@ -40,9 +36,11 @@ import org.koin.androidx.compose.koinViewModel
 fun ScreenEvents(
     modifier: Modifier = Modifier,
     navController: NavController,
-    viewModel: MeetingViewModel = koinViewModel()
+    viewModelMeeting: MeetingViewModel = koinViewModel(),
+    viewModelCommunity: CommunityViewModel = koinViewModel()
 ) {
-    val events by viewModel.meetings.collectAsState()
+    val events by viewModelMeeting.meetings.collectAsState()
+    val community by viewModelCommunity.community.collectAsState()
     Scaffold(
         modifier =
         modifier
@@ -68,7 +66,7 @@ fun ScreenEvents(
                 item {
                     LazyRow {
                         items(events) { event ->
-                            FixCardCommunity(
+                            FixCardMeeting(
                                 event = event,
                                 onClick = {},
                             )
@@ -84,7 +82,7 @@ fun ScreenEvents(
                     Spacer(modifier = Modifier.height(15.dp))
                     LazyRow {
                         items(events) { event ->
-                            FixCardCommunityMini(
+                            FixCardMeetingMini(
                                 event = event,
                                 onClick = {},
                             )
@@ -98,6 +96,16 @@ fun ScreenEvents(
                         fontWeight = FontWeight.W600,
                         modifier = Modifier.padding(end = 20.dp)
                     )
+                    Spacer(modifier = Modifier.height(15.dp))
+                    LazyRow {
+                        items(community) { communities ->
+                            FixCardCommunity(
+                                community = communities,
+                                onClick = {},
+                            )
+                            Spacer(modifier = Modifier.width(10.dp))
+                        }
+                    }
                     Spacer(modifier = Modifier.height(15.dp))
                 }
             }

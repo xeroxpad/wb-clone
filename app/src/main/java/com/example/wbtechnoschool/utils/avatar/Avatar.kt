@@ -35,12 +35,12 @@ fun MyPreviewAvatar(
 ) {
     Box(
         modifier =
-        Modifier
+        modifier
             .size(MagicNumbers.ROW_LIST_AVATAR_BOX_SIZE.dp)
             .clip(RoundedCornerShape(MagicNumbers.ROW_LIST_AVATAR_BOX_BORDER_SHAPE))
     ) {
         AsyncImage(
-            modifier = modifier,
+            modifier = Modifier,
             model = model,
             contentDescription = contentDescription,
             contentScale = contentScale

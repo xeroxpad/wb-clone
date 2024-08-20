@@ -1,7 +1,6 @@
 package com.example.wbtechnoschool.screens.auth
 
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -29,23 +28,18 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.domain.entities.Community
-import com.example.domain.entities.FixEvent
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 import com.example.wbtechnoschool.utils.avatar.FixRowAvatars
-import com.example.wbtechnoschool.utils.button.FixButton
 import com.example.wbtechnoschool.utils.button.FixGradientButton
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
-import com.example.wbtechnoschool.utils.events.FixCardCommunity
 import com.example.wbtechnoschool.utils.search.FieldForNumber
 import com.example.wbtechnoschool.utils.search.FixTextField
 import com.example.wbtechnoschool.utils.toggle.FixToggleSwitch
