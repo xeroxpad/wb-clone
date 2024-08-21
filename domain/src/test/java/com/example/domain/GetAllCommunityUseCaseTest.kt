@@ -37,12 +37,6 @@ internal class GetAllCommunityUseCaseTest {
 
             assertNotNull("title не null", community.title)
             assertTrue("title типа String", community.title is String)
-
-            if (community.countPersons != null) {
-                assertTrue("countPersons типа String", community.countPersons is String)
-            } else {
-                assertNull("countPersons null", community.countPersons)
-            }
         }
     }
 }

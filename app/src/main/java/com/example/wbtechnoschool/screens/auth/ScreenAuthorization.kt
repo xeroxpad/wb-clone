@@ -38,7 +38,7 @@ import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 import com.example.wbtechnoschool.utils.avatar.FixRowAvatars
-import com.example.wbtechnoschool.utils.button.FixGradientButton
+import com.example.wbtechnoschool.utils.button.PaymentButton
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.utils.search.FieldForNumber
 import com.example.wbtechnoschool.utils.search.FixTextField
@@ -223,7 +223,7 @@ fun ScreenAuthorization(
                 ),
             )
             Spacer(modifier = Modifier.height(10.dp))
-            FixGradientButton(
+            PaymentButton(
                 background = listOf(
                     LightColorTheme.fixBlushPink,
                     LightColorTheme.fixFuchsiaGlow,

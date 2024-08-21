@@ -2,6 +2,7 @@ package com.example.domain.repository
 
 import com.example.domain.entities.Community
 import com.example.domain.entities.CommunityDetails
+import com.example.domain.entities.FixEvent
 import com.example.domain.entities.Meetings
 
 class CommunityRepositoryTestStub : ICommunityRepository {
@@ -15,73 +16,62 @@ class CommunityRepositoryTestStub : ICommunityRepository {
                 id = 0,
                 icon = null,
                 title = "Яндекс",
-                countPersons = "10 000 человек",
             ),
             Community(
                 id = 1,
                 icon = "https://weldtex.ru/wp-content/uploads/2024/01/ozon.png",
                 title = "Озон",
-                countPersons = "1 000 человек",
             ),
             Community(
                 id = 2,
                 icon = "https://avoshop.ru/upload/iblock/a8a/9gldo5wx1d1xngaj5m71b2c77ybz5tku.png",
                 title = "Wildberries",
-                countPersons = "100 000 человек",
             ),
             Community(
                 id = 3,
                 icon = "https://oscomp.ru/upload/iblock/b53/lmuwr5qb16y6bwiezy24zgty95zaf1ud.png",
                 title = "Huawei",
-                countPersons = "50 000 человек",
             ),
             Community(
                 id = 4,
                 icon = "https://u.9111s.ru/uploads/202206/09/c5e55d54ff5036ff6b09a378bad27c21.png",
                 title = "Apple",
-                countPersons = "5 000 человек",
             ),
             Community(
                 id = 5,
                 icon = "https://tehnomir71.ru/upload/iblock/c11/c113e3db6aa18e7cd34b5433b457deb0.jpg",
                 title = "Samsung",
-                countPersons = "3 000 человек",
             ),
             Community(
                 id = 6,
                 icon = "https://strogino.mos.ru/upload/medialibrary/005/cn52sgfb49fyxdslyf98hqx7lff63fbs/800px_Vk_logo.svg.png",
                 title = "VK",
-                countPersons = "1 000 человек",
             ),
             Community(
                 id = 7,
                 icon = "https://retrobloha.ru/naborspichek20let/images/g0ea0GZ5LXR_h1NrOrBGDWOQ0oQ=/1199x/ff0b8095-4519-49f1-af84-035d53966dea.png",
                 title = "Avito",
-                countPersons = "100 человек",
             ),
             Community(
                 id = 8,
                 icon = "https://pochemu-ne-rabotaet.ru/wp-content/uploads/2022/09/ламода.jpg",
                 title = "Lamoda",
-                countPersons = "20 000 человек",
             ),
             Community(
                 id = 9,
                 icon = "https://geekville.ru/wp-content/uploads/2023/08/1-43.jpg",
                 title = "МТС",
-                countPersons = "2 000 человек",
             ),
             Community(
                 id = 10,
                 icon = "https://rendercar.ru/wp-content/uploads/2023/03/tinkoff-logo.png",
                 title = "Тинькофф",
-                countPersons = "5 000 человек",
             ),
         )
 
     val mockMeetingsData =
         listOf(
-            Meetings(
+            FixEvent(
                 id = 1,
                 icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
                 title = "Developer Meetings",
@@ -91,7 +81,7 @@ class CommunityRepositoryTestStub : ICommunityRepository {
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Moscow",
             ),
-            Meetings(
+            FixEvent(
                 id = 2,
                 icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
                 title = "Developer Meetings",
@@ -101,7 +91,7 @@ class CommunityRepositoryTestStub : ICommunityRepository {
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "SPB",
             ),
-            Meetings(
+            FixEvent(
                 id = 3,
                 icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
                 title = "Developer Meetings",
@@ -111,7 +101,7 @@ class CommunityRepositoryTestStub : ICommunityRepository {
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Moscow",
             ),
-            Meetings(
+            FixEvent(
                 id = 4,
                 icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
                 title = "Developer Meetings",
@@ -121,7 +111,7 @@ class CommunityRepositoryTestStub : ICommunityRepository {
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Kazan",
             ),
-            Meetings(
+            FixEvent(
                 id = 5,
                 icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
                 title = "Developer Meetings",
@@ -131,7 +121,7 @@ class CommunityRepositoryTestStub : ICommunityRepository {
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Moscow",
             ),
-            Meetings(
+            FixEvent(
                 id = 6,
                 icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
                 title = "Developer Meetings",
@@ -141,7 +131,7 @@ class CommunityRepositoryTestStub : ICommunityRepository {
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Ufa",
             ),
-            Meetings(
+            FixEvent(
                 id = 7,
                 icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
                 title = "Developer Meetings",
@@ -151,7 +141,7 @@ class CommunityRepositoryTestStub : ICommunityRepository {
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Moscow",
             ),
-            Meetings(
+            FixEvent(
                 id = 8,
                 icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
                 title = "Developer Meetings",

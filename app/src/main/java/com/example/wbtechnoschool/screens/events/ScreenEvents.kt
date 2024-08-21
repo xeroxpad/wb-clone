@@ -4,6 +4,7 @@ import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -11,6 +12,7 @@ import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -18,6 +20,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
@@ -28,6 +31,8 @@ import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.screens.meetings.SelectOtherMeetings
+import com.example.wbtechnoschool.ui.theme.LightColorTheme
+import com.example.wbtechnoschool.utils.button.PaymentButton
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.utils.events.FixCardCommunity
 import com.example.wbtechnoschool.utils.events.FixCardMeeting
@@ -136,6 +141,27 @@ fun ScreenEvents(
                             "Все категории"
                         )
                     )
+                    Spacer(modifier = Modifier.height(30.dp))
+                    PaymentButton(
+                        background = listOf(
+                            LightColorTheme.fixBlushPink,
+                            LightColorTheme.fixFuchsiaGlow,
+                            LightColorTheme.fixVividViolet,
+                            LightColorTheme.fixElectricViolet,
+                            LightColorTheme.fixRadiantMagenta,
+                            LightColorTheme.fixVioletBlaze,
+                            LightColorTheme.fixNeonLavender,
+                            LightColorTheme.fixRoyalIndigo
+                        ),
+                        enable = true,
+                        onClick = { /*TODO*/ },
+                        contentText = "Оплатить",
+                        modifier = Modifier
+                            .clip(shape = RoundedCornerShape(MagicNumbers.BUTTON_SHAPE))
+                            .padding(end = 20.dp)
+                            .fillMaxWidth(),
+                    )
+                    Spacer(modifier = Modifier.height(30.dp))
                 }
             }
         }

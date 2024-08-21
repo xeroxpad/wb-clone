@@ -1,5 +1,7 @@
 package com.example.wbtechnoschool.utils.button
 
+import android.annotation.SuppressLint
+import android.media.MediaPlayer
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
@@ -17,12 +19,7 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedButton
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
-import androidx.compose.runtime.rememberCoroutineScope
-import androidx.compose.runtime.setValue
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -37,12 +34,21 @@ import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
 import com.airbnb.lottie.compose.rememberLottieComposition
+import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.screens.splash.iterationsSplashScreen
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import android.content.Context
+import android.net.Uri
+import android.os.Build
+import android.os.VibrationEffect
+import android.os.Vibrator
+import android.os.VibratorManager
+import androidx.annotation.RequiresApi
+import androidx.compose.ui.platform.LocalContext
 
 @Composable
 fun StatusButton(
@@ -170,8 +176,9 @@ fun FixButton(
     }
 }
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
-fun FixGradientButton(
+fun PaymentButton(
     modifier: Modifier = Modifier,
     background: List<Color>,
     enable: Boolean,
@@ -189,6 +196,15 @@ fun FixGradientButton(
         isPlaying = success
     )
     val coroutineScope = rememberCoroutineScope()
+    val context = LocalContext.current
+    val mediaPlayer = remember { MediaPlayer.create(context, R.raw.apple_pay_succes) }
+    val vibrationResponse = remember {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.S) {
+            (context.getSystemService(Context.VIBRATOR_MANAGER_SERVICE) as VibratorManager).defaultVibrator
+        } else {
+            context.getSystemService(Context.VIBRATOR_SERVICE) as Vibrator
+        }
+    }
     Button(
         modifier = modifier
             .fillMaxWidth()
@@ -200,6 +216,19 @@ fun FixGradientButton(
                 delay(3000)
                 loading = false
                 success = true
+                mediaPlayer.apply {
+                    if (isPlaying) {
+                        stop()
+                    }
+                    seekTo(0)
+                    start()
+                }
+                vibrationResponse.vibrate(
+                    VibrationEffect.createOneShot(
+                        200,
+                        VibrationEffect.DEFAULT_AMPLITUDE
+                    )
+                )
                 delay(3000)
                 success = false
             }
@@ -229,6 +258,7 @@ fun FixGradientButton(
                         strokeWidth = 2.dp
                     )
                 }
+
                 success -> {
                     LottieAnimation(
                         composition = lottiAnimation,
@@ -236,6 +266,7 @@ fun FixGradientButton(
                         modifier = Modifier.fillMaxSize(),
                     )
                 }
+
                 else -> {
                     Text(
                         text = contentText,
