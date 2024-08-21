@@ -5,31 +5,21 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.domain.entities.Community
-import com.example.domain.entities.Meetings
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
-import com.example.wbtechnoschool.ui.theme.LightGrey
 import com.example.wbtechnoschool.utils.avatar.FixMyAvatar
-import com.example.wbtechnoschool.utils.avatar.MyPreviewAvatar
-import com.example.wbtechnoschool.utils.button.FixButton
-import com.example.wbtechnoschool.utils.button.FixGradientButton
 import com.example.wbtechnoschool.utils.button.SubscribeButton
-import com.example.wbtechnoschool.utils.constants.MagicNumbers
 
 @Composable
 fun FixCardCommunity(
@@ -38,6 +28,7 @@ fun FixCardCommunity(
     onClick: () -> Unit
 ) {
     Column(modifier = Modifier
+        .clip(shape = RoundedCornerShape(16.dp))
         .clickable { onClick() }
         .width(104.dp)
     ) {

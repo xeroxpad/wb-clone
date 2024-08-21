@@ -1,5 +1,6 @@
 package com.example.wbtechnoschool.screens.events
 
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,12 +18,15 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
+import com.example.wbtechnoschool.screens.meetings.SelectOtherMeetings
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.utils.events.FixCardCommunity
 import com.example.wbtechnoschool.utils.events.FixCardMeeting
@@ -41,10 +45,14 @@ fun ScreenEvents(
 ) {
     val events by viewModelMeeting.meetings.collectAsState()
     val community by viewModelCommunity.community.collectAsState()
+    val focusManager = LocalFocusManager.current
     Scaffold(
         modifier =
         modifier
             .statusBarsPadding()
+            .pointerInput(Unit) {
+                detectTapGestures(onTap = { focusManager.clearFocus() })
+            }
             .fillMaxSize(),
         content = { innerPadding ->
             Row(modifier = Modifier.padding(horizontal = 20.dp)) {
@@ -106,7 +114,27 @@ fun ScreenEvents(
                             Spacer(modifier = Modifier.width(10.dp))
                         }
                     }
-                    Spacer(modifier = Modifier.height(15.dp))
+                    Spacer(modifier = Modifier.height(30.dp))
+                    SelectOtherMeetings(
+                        tags = listOf(
+                            "Дизайн",
+                            "Разработка",
+                            "Продакт менеджмент",
+                            "Проджект менеджмент",
+                            "Backend",
+                            "Frontend",
+                            "Mobile",
+                            "Web",
+                            "Тестирование",
+                            "Продажи",
+                            "Бизнес",
+                            "Маркетинг",
+                            "Безопасность",
+                            "Девопс",
+                            "Аналитика",
+                            "Все категории"
+                        )
+                    )
                 }
             }
         }

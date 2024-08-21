@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Text
@@ -23,6 +24,7 @@ import com.example.wbtechnoschool.utils.avatar.FixMyAvatar
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.utils.constants.MagicNumbers.Companion.DEFAULT_AVATAR
 import com.example.wbtechnoschool.utils.tags.FilterChips
+import com.example.wbtechnoschool.utils.tags.FixTags
 
 @Composable
 fun FixCardMeeting(modifier: Modifier = Modifier, event: FixEvent, onClick: () -> Unit) {
@@ -31,6 +33,7 @@ fun FixCardMeeting(modifier: Modifier = Modifier, event: FixEvent, onClick: () -
     val allTextMeeting = ("$dateMeeting · $locationMeeting")
     Column(
         modifier = modifier
+            .clip(shape = RoundedCornerShape(16.dp))
             .clickable { onClick() }
             .width(320.dp)
     ) {
@@ -67,10 +70,10 @@ fun FixCardMeeting(modifier: Modifier = Modifier, event: FixEvent, onClick: () -
             )
         }
         Spacer(modifier = Modifier.height(5.dp))
-        Row() {
-            FilterChips(labelText = event.tagDevelopmentLanguage)
-            FilterChips(labelText = event.tagGradeDeveloper)
-            FilterChips(labelText = event.tagCityMeeting)
+        Row {
+            FixTags(labelText = event.tagDevelopmentLanguage, modifier = Modifier.padding(end = 5.dp))
+            FixTags(labelText = event.tagGradeDeveloper, modifier = Modifier.padding(end = 5.dp))
+            FixTags(labelText = event.tagCityMeeting, modifier = Modifier.padding(end = 5.dp))
         }
     }
 }
@@ -82,6 +85,7 @@ fun FixCardMeetingMini(modifier: Modifier = Modifier, event: FixEvent, onClick: 
     val allTextMeeting = ("$dateMeeting · $locationMeeting")
     Column(
         modifier = modifier
+            .clip(shape = RoundedCornerShape(16.dp))
             .clickable { onClick() }
             .width(212.dp)
     ) {
@@ -118,9 +122,9 @@ fun FixCardMeetingMini(modifier: Modifier = Modifier, event: FixEvent, onClick: 
             )
         }
         Spacer(modifier = Modifier.height(5.dp))
-        Row() {
-            FilterChips(labelText = event.tagDevelopmentLanguage)
-            FilterChips(labelText = event.tagGradeDeveloper)
+        Row {
+            FixTags(labelText = event.tagDevelopmentLanguage, modifier = Modifier.padding(end = 5.dp))
+            FixTags(labelText = event.tagGradeDeveloper, modifier = Modifier.padding(end = 5.dp))
         }
     }
 }
