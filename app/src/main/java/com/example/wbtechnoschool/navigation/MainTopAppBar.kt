@@ -1,20 +1,26 @@
 package com.example.wbtechnoschool.navigation
 
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.wbtechnoschool.R
@@ -26,10 +32,7 @@ import com.example.wbtechnoschool.utils.constants.SPACER
 fun MainTopAppBar(
     modifier: Modifier = Modifier,
     title: String? = null,
-    actionsIcon: Int? = null,
-    actionsTint: Color = LightColorTheme.neutralActive,
     iconBack: (() -> Unit)? = null,
-    actions: (() -> Unit)? = null
 ) {
     Row(
         modifier =
@@ -39,13 +42,19 @@ fun MainTopAppBar(
         verticalAlignment = Alignment.CenterVertically
     ) {
         iconBack?.let {
-            IconButton(onClick = iconBack) {
+            Box(modifier = Modifier
+                .clip(shape = RoundedCornerShape(16.dp))
+                .weight(1F)
+                .size(44.dp)
+                .clickable(onClick = iconBack),
+                contentAlignment = Alignment.Center
+            ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.arrow_back),
+                    painter = painterResource(id = R.drawable.icon_back),
                     contentDescription = null,
-                    modifier =
-                    Modifier
-                        .size(MagicNumbers.MAIN_TOP_BAR_ICON_SIZE.dp)
+                    tint = LightColorTheme.fixVioletBlaze,
+                    modifier = Modifier
+                        .size(24.dp)
                 )
             }
         }
@@ -54,22 +63,28 @@ fun MainTopAppBar(
             Text(
                 text = title,
                 fontSize = MagicNumbers.MAIN_TOP_BAR_TEXT_FONT_SIZE.sp,
-                fontWeight = FontWeight.W600,
-                color = LightColorTheme.neutralActive
+                fontWeight = FontWeight.W500,
+                color = LightColorTheme.neutralActive,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+                modifier = Modifier.weight(5F)
             )
         }
         Spacer(modifier = Modifier.weight(MagicNumbers.MAIN_TOP_BAR_SPACER_WEIGHT))
-        if (actions != null && actionsIcon != null) {
-            IconButton(onClick = actions) {
-                Icon(
-                    painter = painterResource(id = actionsIcon),
-                    contentDescription = null,
-                    tint = actionsTint,
-                    modifier =
-                    Modifier
-                        .size(MagicNumbers.MAIN_TOP_BAR_ICON_SIZE.dp)
-                )
-            }
+        Box(modifier = Modifier
+            .clip(shape = RoundedCornerShape(16.dp))
+            .weight(1F)
+            .size(44.dp)
+            .clickable(onClick = {}),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                painter = painterResource(id = R.drawable.icon_share),
+                contentDescription = null,
+                tint = LightColorTheme.fixVioletBlaze,
+                modifier = Modifier
+                    .size(24.dp)
+            )
         }
     }
 }

@@ -55,8 +55,8 @@ fun ScreenProfile(
             MainTopAppBar(
                 title = stringResource(id = R.string.top_bar_my_profile),
                 iconBack = { navController.popBackStack() },
-                actions = { navController.navigate(Graph.AuthorizationProfile.route) },
-                actionsIcon = R.drawable.edit
+//                actions = { navController.navigate(Graph.AuthorizationProfile.route) },
+//                actionsIcon = R.drawable.edit
             )
         },
         content = { innerPadding ->

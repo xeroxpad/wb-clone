@@ -39,6 +39,116 @@ import com.example.wbtechnoschool.utils.widgets.ToggleButton
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.DescriptionMeetingViewModel
 import org.koin.androidx.compose.koinViewModel
 
+//@Composable
+//fun ScreenDescriptionMeeting(
+//    navController: NavController,
+//    modifier: Modifier = Modifier,
+//    viewModel: DescriptionMeetingViewModel = koinViewModel()
+//) {
+//    val showMoreText by viewModel.showMoreText.collectAsState()
+//    val isGoing by viewModel.isGoing.collectAsState()
+//    val meetingDescription by viewModel.meetingDescription.collectAsState()
+//    Scaffold(
+//        modifier =
+//        modifier
+//            .statusBarsPadding()
+//            .fillMaxSize(),
+//        topBar = {
+//            MainTopAppBar(
+//                title = stringResource(id = R.string.top_bar_description_meeting),
+//                iconBack = { navController.popBackStack() },
+//                actions = {},
+//                actionsIcon = R.drawable.icon_bird.takeIf { !isGoing },
+//                actionsTint = LightColorTheme.brandColorDefault
+//            )
+//        },
+//        content = { innerPadding ->
+//            Column(
+//                modifier =
+//                Modifier
+//                    .fillMaxSize()
+//                    .navigationBarsPadding()
+//                    .padding(innerPadding)
+//                    .padding(
+//                        start = MagicNumbers.SCREEN_DESCRIPTION_MEETING_CONTENT_COLUMN_PADDING_START.dp,
+//                        end = MagicNumbers.SCREEN_DESCRIPTION_MEETING_CONTENT_COLUMN_PADDING_END.dp,
+//                        bottom = MagicNumbers.SCREEN_DESCRIPTION_MEETING_CONTENT_COLUMN_PADDING_BOTTOM.dp
+//                    )
+//            ) {
+//                LazyColumn(
+//                    modifier =
+//                    Modifier
+//                        .weight(1f)
+//                        .clickable(
+//                            interactionSource = remember { MutableInteractionSource() },
+//                            indication = null
+//                        ) { viewModel.toggleShowMoreText() },
+//                    verticalArrangement = Arrangement.Top
+//                ) {
+//                    item {
+//                        meetingDescription?.let { description ->
+//                            Row(
+//                                modifier =
+//                                Modifier
+//                                    .padding(top = MagicNumbers.SCREEN_DESCRIPTION_ROW_PADDING_TOP.dp)
+//                            ) {
+//                                Text(
+//                                    text = description.dateAndLocation,
+//                                    fontFamily = fontSFPro,
+//                                    fontWeight = FontWeight.W600,
+//                                    fontSize = MagicNumbers.SCREEN_DESCRIPTION_ROW_TEXT_FONT_SIZE.sp,
+//                                    color = LightColorTheme.neutralWeak
+//                                )
+//                            }
+//                            Row {
+//                                description.tags.forEach { tag ->
+//                                    FilterChips(labelText = tag)
+//                                }
+//                            }
+//                            Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
+//                            ShowImage(model = R.drawable.map)
+//                            Spacer(modifier = Modifier.height(SPACER.SPACER_15.value.dp))
+//                            when {
+//                                showMoreText -> {
+//                                    Text(
+//                                        text = description.description,
+//                                        fontSize = MagicNumbers.SCREEN_DESCRIPTION_SHOW_MORE_TEXT_FONT_SIZE.sp,
+//                                        fontFamily = fontSFPro,
+//                                        fontWeight = FontWeight.W400,
+//                                        color = LightColorTheme.neutralWeak
+//                                    )
+//                                }
+//                                else -> {
+//                                    Text(
+//                                        text = description.description,
+//                                        fontSize = MagicNumbers.SCREEN_DESCRIPTION_SHOW_MORE_TEXT_FONT_SIZE.sp,
+//                                        fontFamily = fontSFPro,
+//                                        fontWeight = FontWeight.W400,
+//                                        color = LightColorTheme.neutralWeak,
+//                                        maxLines = MagicNumbers.SCREEN_DESCRIPTION_SHOW_MORE_MAX_LINES,
+//                                        overflow = TextOverflow.Ellipsis
+//                                    )
+//                                }
+//                            }
+//                            Spacer(modifier = Modifier.height(SPACER.SPACER_15.value.dp))
+//                            RowAvatars(arrayImage = description.rowAvatars)
+//                        }
+//                    }
+//                }
+//                ToggleButton(
+//                    isSelected = { _ ->
+//                        viewModel.toggleIsGoing()
+//                    },
+//                    modifier =
+//                    Modifier
+//                        .fillMaxWidth()
+//                        .height(MagicNumbers.SCREEN_DESCRIPTION_TOGGLE_BUTTON_HEIGHT.dp)
+//                )
+//            }
+//        }
+//    )
+//}
+
 @Composable
 fun ScreenDescriptionMeeting(
     navController: NavController,
@@ -55,11 +165,8 @@ fun ScreenDescriptionMeeting(
             .fillMaxSize(),
         topBar = {
             MainTopAppBar(
-                title = stringResource(id = R.string.top_bar_description_meeting),
+                title = "Как повышать грейд. Лекция Павла Хорикова",
                 iconBack = { navController.popBackStack() },
-                actions = {},
-                actionsIcon = R.drawable.icon_bird.takeIf { !isGoing },
-                actionsTint = LightColorTheme.brandColorDefault
             )
         },
         content = { innerPadding ->

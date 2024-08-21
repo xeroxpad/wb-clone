@@ -106,7 +106,7 @@ class MagicNumbers {
         //        MainTopBar
         const val MAIN_TOP_BAR_ROW_PADDING_HORIZONTAL = 10
         const val MAIN_TOP_BAR_ROW_HEIGHT = 36
-        const val MAIN_TOP_BAR_ICON_SIZE = 16
+        const val MAIN_TOP_BAR_ICON_SIZE = 24
         const val MAIN_TOP_BAR_TEXT_FONT_SIZE = 24
         const val MAIN_TOP_BAR_SPACER_WEIGHT = 1F
 

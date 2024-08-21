@@ -26,6 +26,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
+import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.screens.meetings.SelectOtherMeetings
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.utils.events.FixCardCommunity
@@ -76,7 +77,7 @@ fun ScreenEvents(
                         items(events) { event ->
                             FixCardMeeting(
                                 event = event,
-                                onClick = {},
+                                onClick = {navController.navigate(Graph.DescriptionMeeting.route)},
                             )
                             Spacer(modifier = Modifier.width(10.dp))
                         }
@@ -92,7 +93,7 @@ fun ScreenEvents(
                         items(events) { event ->
                             FixCardMeetingMini(
                                 event = event,
-                                onClick = {},
+                                onClick = {navController.navigate(Graph.DescriptionMeeting.route)},
                             )
                             Spacer(modifier = Modifier.width(10.dp))
                         }
