@@ -1,5 +1,7 @@
 package com.example.wbtechnoschool.screens.auth
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
@@ -46,6 +48,7 @@ import com.example.wbtechnoschool.utils.toggle.FixToggleSwitch
 import com.example.wbtechnoschool.viewmodel.auth_view_model.AuthorizationViewModel
 import org.koin.androidx.compose.koinViewModel
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ScreenAuthorization(
     modifier: Modifier = Modifier,

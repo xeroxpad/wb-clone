@@ -62,6 +62,7 @@ data class ColorThemeWB(
     val lavenderWhisper: Color,
     val frostedViolet: Color,
 
+    val green: Color
 )
 
 val LightColorTheme =
@@ -104,7 +105,8 @@ val LightColorTheme =
         softLilac = Color(0xFFF9EFFD),
         paleLavender = Color(0xFFF8EEFE),
         lavenderWhisper = Color(0xFFF6EEFE),
-        frostedViolet = Color(0xFFF4EDFF)
+        frostedViolet = Color(0xFFF4EDFF),
+        green = Color(0xFF00BF59)
         )
 
 val ColorTheme =

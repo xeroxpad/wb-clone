@@ -18,6 +18,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import coil.compose.rememberAsyncImagePainter
@@ -28,15 +29,16 @@ fun ShowImage(modifier: Modifier = Modifier, model: Any) {
     var showImage by remember { mutableStateOf(false) }
     Box(
         modifier = modifier
-            .fillMaxSize()
+            .fillMaxWidth()
+            .height(267.dp)
             .clip(RoundedCornerShape(MagicNumbers.SHOW_IMAGE_BOX_CLIP.dp))
     ) {
         Image(
             painter = rememberAsyncImagePainter(model = model),
             contentDescription = null,
+            contentScale = ContentScale.Crop,
             modifier = Modifier
-                .fillMaxWidth()
-                .height(MagicNumbers.SHOW_IMAGE_BOX_IMAGE_HEIGHT.dp)
+                .fillMaxSize()
                 .pointerInput(Unit) { detectTapGestures(onTap = { showImage = true }) }
         )
         when {

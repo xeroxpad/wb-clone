@@ -1,5 +1,7 @@
 package com.example.wbtechnoschool.screens.events
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -42,6 +44,7 @@ import com.example.wbtechnoschool.viewmodel.community_view_model.CommunityViewMo
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingViewModel
 import org.koin.androidx.compose.koinViewModel
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ScreenEvents(
     modifier: Modifier = Modifier,
