@@ -57,8 +57,8 @@ fun FixTags(
 ) {
     Box(
         modifier = modifier
-            .clip(RoundedCornerShape(24.dp))
-            .background(LightColorTheme.fixLavenderBlush),
+            .clip(RoundedCornerShape(10.dp))
+            .background(LightColorTheme.fixLavenderBlushDark),
         contentAlignment = Alignment.Center
     ) {
         Text(
@@ -82,7 +82,7 @@ fun FixFilterTags(
         onClick = { onSelectionChanged(!isSelected) },
         label = { Text(labelText) },
         colors = AssistChipDefaults.assistChipColors(
-            containerColor = if (isSelected) LightColorTheme.fixVioletBlaze else LightColorTheme.fixLavenderBlush,
+            containerColor = if (isSelected) LightColorTheme.fixVioletBlaze else LightColorTheme.fixLavenderBlushDark,
             labelColor = if (isSelected) LightColorTheme.fixLavenderBlush else LightColorTheme.fixVioletBlaze
         ),
         modifier = modifier,

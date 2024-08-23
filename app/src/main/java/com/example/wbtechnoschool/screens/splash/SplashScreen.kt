@@ -6,11 +6,12 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.Icon
-import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -28,6 +29,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.compose.ui.zIndex
 import com.airbnb.lottie.compose.LottieAnimation
 import com.airbnb.lottie.compose.LottieCompositionSpec
 import com.airbnb.lottie.compose.animateLottieCompositionAsState
@@ -56,6 +58,9 @@ fun SplashScreen(
             onTimeout()
         }
         videoView.start()
+        videoView.setOnPreparedListener { mediaPlayer ->
+            mediaPlayer.setVideoScalingMode(android.media.MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT)
+        }
         onDispose {
             videoView.stopPlayback()
         }
@@ -63,7 +68,7 @@ fun SplashScreen(
     Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         AndroidView(
             factory = { videoView },
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier.fillMaxHeight().zIndex(0f)
         )
         Column(
             verticalArrangement = Arrangement.Center,
@@ -72,13 +77,15 @@ fun SplashScreen(
             Icon(
                 painter = painterResource(id = R.drawable.image_wb),
                 contentDescription = null,
-                tint = Color.Unspecified
+                tint = Color.Unspecified,
+                modifier = Modifier.zIndex(2f)
             )
             Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
             Icon(
                 painter = painterResource(id = R.drawable.image_meetings),
                 contentDescription = null,
-                tint = Color.Unspecified
+                tint = Color.Unspecified,
+                modifier = Modifier.zIndex(2f)
             )
         }
     }

@@ -36,6 +36,7 @@ fun FixCardMeeting(modifier: Modifier = Modifier, event: FixEvent, onClick: () -
             .clip(shape = RoundedCornerShape(16.dp))
             .clickable { onClick() }
             .width(320.dp)
+            .padding(5.dp)
     ) {
         Box(
             modifier = Modifier
@@ -88,6 +89,7 @@ fun FixCardMeetingMini(modifier: Modifier = Modifier, event: FixEvent, onClick: 
             .clip(shape = RoundedCornerShape(16.dp))
             .clickable { onClick() }
             .width(212.dp)
+            .padding(5.dp)
     ) {
         Box(
             modifier = Modifier

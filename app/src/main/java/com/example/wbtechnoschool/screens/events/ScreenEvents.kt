@@ -2,6 +2,7 @@ package com.example.wbtechnoschool.screens.events
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -23,6 +24,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.stringResource
@@ -33,6 +35,7 @@ import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.screens.meetings.SelectOtherMeetings
+import com.example.wbtechnoschool.ui.theme.ColorTheme
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.utils.button.PaymentButton
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
@@ -58,6 +61,7 @@ fun ScreenEvents(
     Scaffold(
         modifier =
         modifier
+            .background(Color.White)
             .statusBarsPadding()
             .pointerInput(Unit) {
                 detectTapGestures(onTap = { focusManager.clearFocus() })
