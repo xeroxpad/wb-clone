@@ -1,11 +1,15 @@
 package com.example.domain.usecases
 
 import com.example.domain.entities.FixEvent
-import com.example.domain.entities.Meetings
 import com.example.domain.repository.IMeetingsRepository
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 
 class GetMeetingsUseCase(
     val repository: IMeetingsRepository,
 ) {
-    fun execute(): List<FixEvent> = repository.getMeetings()
+    fun execute(): Flow<List<FixEvent>> = flow {
+        val meetings = repository.getMeetings()
+        emit(meetings)
+    }
 }

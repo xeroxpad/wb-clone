@@ -35,15 +35,19 @@ import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.screens.meetings.SelectOtherMeetings
-import com.example.wbtechnoschool.ui.theme.ColorTheme
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
+import com.example.wbtechnoschool.ui.theme.fontSFPro
 import com.example.wbtechnoschool.utils.button.PaymentButton
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
+import com.example.wbtechnoschool.utils.constants.SPACER
 import com.example.wbtechnoschool.utils.events.FixCardCommunity
 import com.example.wbtechnoschool.utils.events.FixCardMeeting
 import com.example.wbtechnoschool.utils.events.FixCardMeetingMini
 import com.example.wbtechnoschool.utils.search.FixSearchTextField
+import com.example.wbtechnoschool.utils.tags.FixFilterTags
+import com.example.wbtechnoschool.utils.widgets.ShowImage
 import com.example.wbtechnoschool.viewmodel.community_view_model.CommunityViewModel
+import com.example.wbtechnoschool.viewmodel.meetings_view_model.DescriptionMeetingViewModel
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -53,7 +57,7 @@ fun ScreenEvents(
     modifier: Modifier = Modifier,
     navController: NavController,
     viewModelMeeting: MeetingViewModel = koinViewModel(),
-    viewModelCommunity: CommunityViewModel = koinViewModel()
+    viewModelCommunity: CommunityViewModel = koinViewModel(),
 ) {
     val events by viewModelMeeting.meetings.collectAsState()
     val community by viewModelCommunity.community.collectAsState()
@@ -149,24 +153,14 @@ fun ScreenEvents(
                         )
                     )
                     Spacer(modifier = Modifier.height(30.dp))
-                    PaymentButton(
-                        background = listOf(
-                            LightColorTheme.fixBlushPink,
-                            LightColorTheme.fixFuchsiaGlow,
-                            LightColorTheme.fixVividViolet,
-                            LightColorTheme.fixElectricViolet,
-                            LightColorTheme.fixRadiantMagenta,
-                            LightColorTheme.fixVioletBlaze,
-                            LightColorTheme.fixNeonLavender,
-                            LightColorTheme.fixRoyalIndigo
-                        ),
-                        enable = true,
-                        onClick = { /*TODO*/ },
-                        contentText = "Оплатить",
+                }
+                items(events) { event ->
+                    FixCardMeeting(
+                        event = event,
+                        onClick = {navController.navigate(Graph.DescriptionMeeting.route)},
                         modifier = Modifier
-                            .clip(shape = RoundedCornerShape(MagicNumbers.BUTTON_SHAPE))
                             .padding(end = 20.dp)
-                            .fillMaxWidth(),
+                            .fillMaxWidth()
                     )
                     Spacer(modifier = Modifier.height(30.dp))
                 }

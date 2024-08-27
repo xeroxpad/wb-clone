@@ -18,6 +18,7 @@ accompanist = "0.13.0"
 coil = "2.6.0"
 coil-svg = "2.2.2"
 kotlinx-coroutines = "1.8.0"
+kotlinxCoroutines-core = "1.7.3"
 androidx-compose-material = "1.7.0-beta03"
 androidx-compose-foundation = "1.7.0-beta03"
 lorem = "2.1"
@@ -32,6 +33,7 @@ junit-jupiter-engine = "5.9.3"
 testng = "7.9.0"
 accompanist-swiperefresh = "0.34.0"
 lifecycleLivedataCoreKtx = "2.8.4"
+constraintlayout = "2.1.4"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -58,6 +60,8 @@ accompanist-pager-indicators = { group = "com.google.accompanist", name = "accom
 coil-compose = { group = "io.coil-kt", name = "coil-compose", version.ref = "coil" }
 coil-svg = { group = "io.coil-kt", name = "coil-svg", version.ref = "coil-svg" }
 kotlinx-coroutines = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
+kotlinx-coroutines-core = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-core", version.ref = "kotlinxCoroutines-core" }
+#kotlinx-coroutines = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-android", version.ref = "kotlinx-coroutines" }
 androidx-compose-material = { group = "androidx.compose.material", name = "material", version.ref = "androidx-compose-material" }
 androidx-compose-foundation = { group = "androidx.compose.foundation", name = "foundation", version.ref = "androidx-compose-foundation" }
 lorem = { group = "com.thedeanda", name = "lorem", version.ref = "lorem" }
@@ -77,6 +81,7 @@ mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "
 junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.ref = "junit-jupiter-api" }
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter-engine" }
 androidx-lifecycle-livedata-core-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-core-ktx", version.ref = "lifecycleLivedataCoreKtx" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

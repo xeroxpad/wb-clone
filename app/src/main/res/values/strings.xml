@@ -44,8 +44,8 @@
     <string name="bottom_bar_meetings">Встречи</string>
     <string name="bottom_bar_community">Сообщества</string>
     <string name="bottom_bar_more">Еще</string>
-    <string name="go_to_the_meetings">Пойду на встречу!</string>
-    <string name="go_another_time_meetings">Схожу в другой раз</string>
+    <string name="go_to_the_meetings">Записаться на встречу</string>
+    <string name="go_another_time_meetings">Не смогу пойти</string>
     <string name="sent_code_number">Отправили код на номер</string>
     <string name="request_code_again">Запросить код повторно</string>
     <string name="no_participants">сейчас нет участников</string>

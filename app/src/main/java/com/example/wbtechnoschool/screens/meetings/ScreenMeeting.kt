@@ -30,7 +30,6 @@ import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.utils.constants.SPACER
 import com.example.wbtechnoschool.utils.search.AppSearchBar
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingViewModel
-import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingsTab
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -39,8 +38,8 @@ fun ScreenMeeting(
     navController: NavController,
     viewModel: MeetingViewModel = koinViewModel()
 ) {
-    val tabIndex by viewModel.tabIndex.collectAsState()
-    val tabs = viewModel.getTabs().map { stringResource(id = it) }
+//    val tabIndex by viewModel.tabIndex.collectAsState()
+//    val tabs = viewModel.getTabs().map { stringResource(id = it) }
 //    Scaffold(
 //        modifier =
 //        modifier

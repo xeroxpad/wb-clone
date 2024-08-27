@@ -78,16 +78,16 @@ fun ScreenAuthorizationProfile(
                     textChange = { viewModel.surnameChange(it) }
                 )
                 Spacer(modifier = Modifier.height(SPACER.SPACER_40.value.dp))
-                StatusButton(
-                    containerColor = LightColorTheme.brandColorDefault,
-                    enable = name.isNotEmpty(),
-                    onClick = { viewModel.saveDataProfile(navController) }, // пока для показа тут пример перехода
-                    contentText = stringResource(id = R.string.save),
-                    modifier =
-                    Modifier
-                        .fillMaxWidth()
-                        .height(MagicNumbers.SCREEN_AUTH_PROF_STATUS_BUTTON_HEIGHT.dp)
-                )
+//                StatusButton(
+////                    containerColor = LightColorTheme.brandColorDefault,
+////                    enable = name.isNotEmpty(),
+//                    onClick = { viewModel.saveDataProfile(navController) }, // пока для показа тут пример перехода
+//                    contentText = stringResource(id = R.string.save),
+//                    modifier =
+//                    Modifier
+//                        .fillMaxWidth()
+//                        .height(MagicNumbers.SCREEN_AUTH_PROF_STATUS_BUTTON_HEIGHT.dp)
+//                )
             }
         }
     )

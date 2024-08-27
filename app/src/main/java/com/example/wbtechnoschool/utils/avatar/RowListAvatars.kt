@@ -17,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -27,7 +28,7 @@ import com.example.wbtechnoschool.ui.theme.LightGrey
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 
-const val take = 8
+const val take = 3
 const val zIndex = 1F
 
 @Composable
@@ -133,6 +134,7 @@ fun FixRowAvatars(
                 modifier = Modifier
                     .size(MagicNumbers.ROW_LIST_AVATAR_SIZE_PREV_AVATAR.dp)
                     .clip(CircleShape)
+                    .border(width = 3.dp, color = Color.White, shape = CircleShape)
                     .background(LightColorTheme.fixLavenderBlush),
                 contentAlignment = Alignment.Center
             ){

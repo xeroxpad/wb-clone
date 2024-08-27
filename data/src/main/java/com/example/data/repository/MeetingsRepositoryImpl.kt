@@ -24,7 +24,7 @@ class MeetingsRepositoryImpl : IMeetingsRepository {
             ),
             FixEvent(
                 id = 42,
-                icon = "https://imsts.com/sites/default/files/md-slider-image/sl-7-ims-event-staging-scenic-design.jpg",
+                icon = "https://s3-alpha-sig.figma.com/img/6b64/81ed/b055df872dc3eb48d1b88d2fbdc47dd9?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=WlZvqaoJ6Xp2XNdkwSqy7hsLDUMc4UbJRBlUWjwJk6BherKLqCAG5vwDeqsgDoMRCGa3CYdLFKm-YotRRNKwOGAGi2htig1Kd37wzRyNwnuR-2BiMDnSnTJAJZvknPXRQTB2uO5QIKT~vPab853sMmLbTKApSSnoB-XwCF-Z7JeM6a~6FlWUyR~lCrf6dnzyONIVoL06ODVZOJrweU6SbuMZs66-G1ZP6MNN4sknS95Yh5M59A~LiL7oFv9cR2-0UyvDP5j2irREaUwMwOod-Sn09LyvUvS3LPzeTdO8Mdr8-De2mMEyBNfJt6cSPubTNrVWcPJTeOGjsRXX3H6-mw__",
                 title = "Python days 2024",
                 date = "13.09.2024",
                 city = "Санкт-Петербург",
@@ -44,7 +44,7 @@ class MeetingsRepositoryImpl : IMeetingsRepository {
             ),
             FixEvent(
                 id = 44,
-                icon = "https://imsts.com/sites/default/files/md-slider-image/sl-7-ims-event-staging-scenic-design.jpg",
+                icon = "https://s3-alpha-sig.figma.com/img/1e90/ce78/0f37865722ee6b6927715576f9352a79?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=jDgiboUkjPpqlt6vfoV521~IdxncqRb6zW8aCIzlOB~YDI9tN39RfC-0CWoMXsDKMR~7Y2t7xRdhXWUPt1s2KlUAU-J9ySDIwA5vDKTFnCMAeqtfJ3VKWpYgCuNPuKcc1iEyh9lP7NTy7AjpPTcAAix2NOetYXllYEw0lyDRSiJFOJrk06XPw8vUwXtGP4TH0CZyumValK~Z3vkz1dOc~MOffHNhccFOCbqdnPJWDpT-0CKUgaMzQXLQ5kc~kaMk3vzMPoDLILZb7wWn6fYBiB7iz1jv8IdNpXeKm4Z5IJ~SpQDQDgL3AxkGjji-d4-Q~~dTy-W~o1OvPEN8bcZAqA__",
                 title = "Геймдев на нейросетях. Лекция Станислава Макарова",
                 date = "13.09.2024",
                 city = "Казань",
@@ -54,7 +54,7 @@ class MeetingsRepositoryImpl : IMeetingsRepository {
             ),
             FixEvent(
                 id = 45,
-                icon = "https://imsts.com/sites/default/files/md-slider-image/sl-7-ims-event-staging-scenic-design.jpg",
+                icon = "https://s3-alpha-sig.figma.com/img/926a/1f99/7b21b0dc7828119549b597bdd99ebdba?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=X2m94-9epqCYTUxHBMCwIpDK~pypTEVvk8n5bkfacIYxR0tJ5fph-z9n5OYpY5s5TlLqQVZO-Az4jpOuwEfBCegE9Kk0me66VKVspsIVSANKGXYHFAfyg4Wmm3PB8xTyZYNaDNN8JbWsSq4FH72hVuUxBa89HmOnNwRc8Bp6~Fim8ozraDARLmS4TQk4Ewzb34aj6oxyO-Khjut12IlZDsvIpS-vcaABONvAwQIa445Lb-T~-gar8EcnFnuuKAAaRtB5gc6iPklJOG-cyfxUsvmYYmwY1ReQB9vvGPxZrvU4-TXjv3hW9L4uqc~HC~Ry6DSLlZcQlJXmBhY0S77~Kw__",
                 title = "QA Talks — Global tech forum",
                 date = "13.09.2024",
                 city = "Москва",
@@ -74,7 +74,7 @@ class MeetingsRepositoryImpl : IMeetingsRepository {
             ),
             FixEvent(
                 id = 47,
-                icon = "https://imsts.com/sites/default/files/md-slider-image/sl-7-ims-event-staging-scenic-design.jpg",
+                icon = "https://s3-alpha-sig.figma.com/img/3f76/bf34/17607a249f9392e5e42d065853a96234?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Zj-JXLzkoAJ7bHbhJRV2yeM9XJFfqOe0IaiARy54ls3eFpQ2OxRxc4~OPne1OTYUYk7GgsHdAi33HVFP3xuuJ6WAAqJ9hVw2d6Qd9prbhI7pH8whhykntdRLBm6dw9D~c0DMZ~dVo1qMciei0CW4y1WiqWFy~CJk1qpMbG-W1~vt4~dH8b0VPj5viCqcqd-qqfGYRcbZLgeuKki2VG38ZSheozXZfLC5svl0y61ifVdafZeADhhmIkO2qjvjTUpexr87FkSZyAThnww30Jw7gIH5NhmqHaoFM~41cd12BnF3mS0HfmW4-x~vAoyuSJbpkZql-LzV0y7XGgQ33ATldw__",
                 title = "Front talks",
                 date = "13.09.2024",
                 city = "Москва",
@@ -84,7 +84,7 @@ class MeetingsRepositoryImpl : IMeetingsRepository {
             ),
             FixEvent(
                 id = 48,
-                icon = "https://imsts.com/sites/default/files/md-slider-image/sl-7-ims-event-staging-scenic-design.jpg",
+                icon = "https://s3-alpha-sig.figma.com/img/6628/4667/de716b625c9b62f9cfbbe42ebb67e0fd?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=l1l5061aZnM31Vg7PDCmIUNNtlDF~DI94FvQHor0l~zSmqDzu9fX5JsPoN89Y1zFhcKAmi~BfZdiyXK3YYS375qymRGKVrG5vNdc8zNlOpxe8PvAQSINOdCFYl5j27V-iSyD2il7O~XiZtmbmFtrh807f94GATBArj4D-e1-2hD98MjztLDgBQzeBdO5J5YJNlT-c5xc246~2bXtRR~Qx8nlw~zUjH58AniTJdJaWuefMf4sly3XNdE1tC87V-CPUrJj2Dkj0rxQbYhDWNoimqMbP2UB~qrg2BWm3BTuw~XvbTN-ht-uvUCNBqE1uihDQSMbW7zfvNEzVQUp791qqw__",
                 title = "Как повышать грейд. Лекция ПавлаХорикова",
                 date = "13.09.2024",
                 city = "Москва",
