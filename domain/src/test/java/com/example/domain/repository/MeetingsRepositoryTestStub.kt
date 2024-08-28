@@ -1,16 +1,16 @@
 package com.example.domain.repository
 
-import com.example.domain.entities.Meetings
+import com.example.domain.entities.FixEvent
 import com.example.domain.entities.MeetingsDescription
 
 class MeetingsRepositoryTestStub : IMeetingsRepository {
-    override fun getMeetings(): List<Meetings> = mockMeetings
+    override fun getMeetings(): List<FixEvent> = mockMeetings
 
     override fun getDescriptionMeetings(): MeetingsDescription = mockMeetingsDescriptionData
 
     val mockMeetings =
         listOf(
-            Meetings(
+            FixEvent(
                 id = 21,
                 icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
                 title = "Developer Meetings",
@@ -20,7 +20,7 @@ class MeetingsRepositoryTestStub : IMeetingsRepository {
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Moscow",
             ),
-            Meetings(
+            FixEvent(
                 id = 22,
                 icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
                 title = "Developer Meetings",
@@ -30,7 +30,7 @@ class MeetingsRepositoryTestStub : IMeetingsRepository {
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "SPB",
             ),
-            Meetings(
+            FixEvent(
                 id = 23,
                 icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
                 title = "Developer Meetings",
@@ -40,7 +40,7 @@ class MeetingsRepositoryTestStub : IMeetingsRepository {
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Moscow",
             ),
-            Meetings(
+            FixEvent(
                 id = 24,
                 icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
                 title = "Developer Meetings",
@@ -50,7 +50,7 @@ class MeetingsRepositoryTestStub : IMeetingsRepository {
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Kazan",
             ),
-            Meetings(
+            FixEvent(
                 id = 25,
                 icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
                 title = "Developer Meetings",
@@ -60,7 +60,7 @@ class MeetingsRepositoryTestStub : IMeetingsRepository {
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Moscow",
             ),
-            Meetings(
+            FixEvent(
                 id = 26,
                 icon = "https://thumbs.dreamstime.com/b/minimalist-twin-coffee-code-logo-design-template-163374058.jpg",
                 title = "Developer Meetings",
@@ -70,7 +70,7 @@ class MeetingsRepositoryTestStub : IMeetingsRepository {
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Ufa",
             ),
-            Meetings(
+            FixEvent(
                 id = 27,
                 icon = "https://thumbs.dreamstime.com/b/дизайн-логотипа-coffee-code-может-быть-использован-в-качестве-значка-знака-224274224.jpg",
                 title = "Developer Meetings",
@@ -80,7 +80,7 @@ class MeetingsRepositoryTestStub : IMeetingsRepository {
                 tagGradeDeveloper = "Junior",
                 tagCityMeeting = "Moscow",
             ),
-            Meetings(
+            FixEvent(
                 id = 28,
                 icon = "https://avatars.mds.yandex.net/i?id=bf8f0894fce7ad1264fe8fcc7a7f89c545350bb0-4055370-images-thumbs&n=13",
                 title = "Developer Meetings",

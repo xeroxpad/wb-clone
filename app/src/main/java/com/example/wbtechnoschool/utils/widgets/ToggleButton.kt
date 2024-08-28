@@ -24,6 +24,8 @@ import com.example.wbtechnoschool.utils.button.StatusButton
 @Composable
 fun GradientToggleButton(
     modifier: Modifier = Modifier,
+    textButton: Int,
+    textButtonPress: Int,
     isSelected: (Boolean) -> Unit,
 ) {
     var isGoing by remember { mutableStateOf(true) }
@@ -52,7 +54,8 @@ fun GradientToggleButton(
         )
     )
     val gradient = if (isGoing) gradientIsGoing else gradientNotGoing
-    val contentText = if (isGoing) stringResource(id = R.string.go_to_the_meetings) else stringResource(id = R.string.go_another_time_meetings)
+//    val contentText = if (isGoing) stringResource(id = R.string.go_to_the_meetings) else stringResource(id = R.string.go_another_time_meetings)
+    val contentText = if (isGoing) stringResource(id = textButton) else stringResource(id = textButtonPress)
     Box(
         modifier = modifier
             .clip(shape = RoundedCornerShape(16.dp))

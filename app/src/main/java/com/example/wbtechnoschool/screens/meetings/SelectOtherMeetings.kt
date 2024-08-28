@@ -25,16 +25,8 @@ fun SelectOtherMeetings(
     tags: List<String>
 ) {
     var selectedTags by remember { mutableStateOf(setOf<String>()) }
-    Column(modifier = modifier) {
-        Text(
-            text = "Другие встречи",
-            fontSize = 20.sp,
-            fontWeight = FontWeight.Bold,
-            color = LightColorTheme.black,
-            modifier = Modifier.padding(bottom = 16.dp)
-        )
         FlowRow(
-            modifier = Modifier.fillMaxWidth()
+            modifier = modifier.fillMaxWidth()
         ) {
             tags.forEach { tag ->
                 FixFilterTags(
@@ -52,4 +44,3 @@ fun SelectOtherMeetings(
             }
         }
     }
-}

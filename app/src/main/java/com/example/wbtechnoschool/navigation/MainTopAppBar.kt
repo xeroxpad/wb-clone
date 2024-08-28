@@ -1,6 +1,7 @@
 package com.example.wbtechnoschool.navigation
 
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -9,6 +10,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -31,22 +33,24 @@ import com.example.wbtechnoschool.utils.constants.SPACER
 @Composable
 fun MainTopAppBar(
     modifier: Modifier = Modifier,
+    modifierText: Modifier = Modifier,
     title: String? = null,
     iconBack: (() -> Unit)? = null,
 ) {
     Row(
+        horizontalArrangement = Arrangement.SpaceBetween,
+        verticalAlignment = Alignment.CenterVertically,
         modifier =
         modifier
-            .padding(horizontal = MagicNumbers.MAIN_TOP_BAR_ROW_PADDING_HORIZONTAL.dp)
-            .fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
+            .fillMaxWidth()
+            .padding(horizontal = MagicNumbers.MAIN_TOP_BAR_ROW_PADDING_HORIZONTAL.dp),
     ) {
         iconBack?.let {
-            Box(modifier = Modifier
-                .clip(shape = RoundedCornerShape(16.dp))
-                .weight(1F)
-                .size(44.dp)
-                .clickable(onClick = iconBack),
+            Box(
+                modifier = Modifier
+                    .clip(shape = RoundedCornerShape(16.dp))
+                    .size(44.dp)
+                    .clickable(onClick = iconBack),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -58,7 +62,7 @@ fun MainTopAppBar(
                 )
             }
         }
-        Spacer(modifier = Modifier.width(SPACER.SPACER_5.value.dp))
+        Spacer(modifier = Modifier.weight(1f))
         title?.let {
             Text(
                 text = title,
@@ -67,15 +71,17 @@ fun MainTopAppBar(
                 color = LightColorTheme.neutralActive,
                 maxLines = 1,
                 overflow = TextOverflow.Ellipsis,
-                modifier = Modifier.weight(5F)
+                modifier = modifierText
+                    .padding(horizontal = 5.dp)
+                    .widthIn(max = 280.dp)
             )
         }
-        Spacer(modifier = Modifier.weight(MagicNumbers.MAIN_TOP_BAR_SPACER_WEIGHT))
-        Box(modifier = Modifier
-            .clip(shape = RoundedCornerShape(16.dp))
-            .weight(1F)
-            .size(44.dp)
-            .clickable(onClick = {}),
+        Spacer(modifier = Modifier.weight(1f))
+        Box(
+            modifier = Modifier
+                .clip(shape = RoundedCornerShape(16.dp))
+                .size(44.dp)
+                .clickable(onClick = {}),
             contentAlignment = Alignment.Center
         ) {
             Icon(

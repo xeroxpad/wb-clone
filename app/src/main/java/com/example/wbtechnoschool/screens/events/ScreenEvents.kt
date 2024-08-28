@@ -126,12 +126,19 @@ fun ScreenEvents(
                         items(community) { communities ->
                             FixCardCommunity(
                                 community = communities,
-                                onClick = {},
+                                onClick = {navController.navigate(Graph.DetailsCommunity.route)},
                             )
                             Spacer(modifier = Modifier.width(10.dp))
                         }
                     }
                     Spacer(modifier = Modifier.height(30.dp))
+                    Text(
+                        text = "Другие встречи",
+                        fontSize = 24.sp,
+                        fontWeight = FontWeight.W600,
+                        color = LightColorTheme.black,
+                    )
+                    Spacer(modifier = Modifier.height(15.dp))
                     SelectOtherMeetings(
                         tags = listOf(
                             "Дизайн",

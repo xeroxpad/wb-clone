@@ -1,5 +1,8 @@
 package com.example.wbtechnoschool.screens.meetings
 
+import android.os.Build
+import androidx.annotation.RequiresApi
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Arrangement
@@ -10,7 +13,6 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
@@ -31,12 +33,13 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.draw.shadow
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.navigation.Graph
@@ -55,16 +58,18 @@ import com.example.wbtechnoschool.viewmodel.meetings_view_model.DescriptionMeeti
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingViewModel
 import org.koin.androidx.compose.koinViewModel
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ScreenDescriptionMeeting(
     navController: NavController,
     modifier: Modifier = Modifier,
     viewModel: DescriptionMeetingViewModel = koinViewModel(),
-    viewModelMeeting: MeetingViewModel = koinViewModel()
+    viewModelMeeting: MeetingViewModel = koinViewModel(),
 ) {
     val meetingDescription by viewModel.meetingDescription.collectAsState()
     val events by viewModelMeeting.meetings.collectAsState()
     var isButtonPressed by remember { mutableStateOf(false) }
+    val meetingIsOver by remember { mutableStateOf(true) }
 
     Scaffold(
         modifier =
@@ -78,35 +83,50 @@ fun ScreenDescriptionMeeting(
             )
         },
         bottomBar = {
-            Box(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .navigationBarsPadding()
-                    .clip(shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp))
-                    .shadow(
-                        elevation = 1.dp,
-                        shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp),
-                        spotColor = Color.Black,
-                        ambientColor = Color.White
-                    ),
-                contentAlignment = Alignment.Center,
-            ) {
-                Column {
-                    Text(
-                        text = if (isButtonPressed) "✔ Вы пойдёте" else "Всего 30 мест. Если передумаете — отпишитесь",
-                        color = if (isButtonPressed) LightColorTheme.green else LightColorTheme.fixVioletBlaze,
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.W500,
+            if (meetingIsOver) {
+                Box(
+                    modifier = Modifier
+                        .background(Color.Transparent)
+                        .clip(shape = RoundedCornerShape(topStart = 14.dp, topEnd = 14.dp))
+                        .background(
+                            brush = Brush.verticalGradient(
+                                colors = listOf(
+                                    Color.Transparent,
+                                    Color.Black.copy(alpha = 0.5f),
+                                )
+                            )
+                        )
+                        .padding(top = 13.dp)
+                        .zIndex(1f)
+                ) {
+                    Box(
                         modifier = Modifier
-                            .padding(vertical = 10.dp, horizontal = 5.dp)
-                            .align(Alignment.CenterHorizontally)
-                    )
-                    GradientToggleButton(
-                        modifier = Modifier
-                            .padding(bottom = 20.dp)
-                            .padding(horizontal = 20.dp)
+                            .fillMaxWidth()
+                            .clip(shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp))
+                            .background(Color.White)
+                            .zIndex(2f),
+                        contentAlignment = Alignment.Center,
                     ) {
-                        isButtonPressed = !isButtonPressed
+                        Column {
+                            Text(
+                                text = if (isButtonPressed) "✔ Вы пойдёте" else "Всего 30 мест. Если передумаете — отпишитесь",
+                                color = if (isButtonPressed) LightColorTheme.green else LightColorTheme.fixVioletBlaze,
+                                fontSize = 14.sp,
+                                fontWeight = FontWeight.W500,
+                                modifier = Modifier
+                                    .padding(vertical = 7.dp, horizontal = 5.dp)
+                                    .align(Alignment.CenterHorizontally)
+                            )
+                            GradientToggleButton(
+                                modifier = Modifier
+                                    .padding(bottom = 20.dp)
+                                    .padding(horizontal = 20.dp),
+                                textButton = R.string.go_to_the_meetings,
+                                textButtonPress = R.string.go_another_time_meetings,
+                            ) {
+                                isButtonPressed = !isButtonPressed
+                            }
+                        }
                     }
                 }
             }
