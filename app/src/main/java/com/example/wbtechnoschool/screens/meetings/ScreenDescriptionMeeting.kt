@@ -253,7 +253,7 @@ fun ScreenDescriptionMeeting(
                             color = LightColorTheme.black
                         )
                         Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
-                        FixRowAvatars(arrayImage = description.rowAvatars)
+                        FixRowAvatars(arrayImage = description.rowAvatars) {navController.navigate(Graph.PersonGoingMeeting.route)}
                         Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                         Text(
                             text = "Организатор",

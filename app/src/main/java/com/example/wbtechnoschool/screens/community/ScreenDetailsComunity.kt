@@ -28,6 +28,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -57,7 +58,6 @@ import org.koin.androidx.compose.koinViewModel
 fun ScreenDetailsCommunity(
     modifier: Modifier = Modifier,
     navController: NavController,
-    viewModel: DetailsCommunityViewModel = koinViewModel(),
     viewModelDescriptionMeetings: DescriptionMeetingViewModel = koinViewModel(),
     viewModelMeeting: MeetingViewModel = koinViewModel(),
 ) {
@@ -80,11 +80,7 @@ fun ScreenDetailsCommunity(
                 modifier =
                 Modifier
                     .padding(innerPadding)
-                    .padding(horizontal = 20.dp)
-                    .clickable(
-                        interactionSource = remember { MutableInteractionSource() },
-                        indication = null
-                    ) { viewModel.toggleShowMoreText() },
+                    .padding(horizontal = 20.dp),
                 verticalArrangement = Arrangement.Top
             ) {
                 item {
@@ -110,13 +106,14 @@ fun ScreenDetailsCommunity(
                         )
                         Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
                         SelectOtherMeetings(
+                            isSelectable = false,
                             tags = listOf(
                                 "Разработка",
                                 "Карьера",
                                 "Тестирование",
                                 "Дизайн",
                                 "Бизнес",
-                            )
+                            ),
                         )
                         Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                         GradientToggleButton(
@@ -151,7 +148,7 @@ fun ScreenDetailsCommunity(
                             color = LightColorTheme.black
                         )
                         Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
-                        FixRowAvatars(arrayImage = description.rowAvatars)
+                        FixRowAvatars(arrayImage = description.rowAvatars) {navController.navigate(Graph.PersonGoingMeeting.route)}
                         Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                         Text(
                             text = "Встречи",

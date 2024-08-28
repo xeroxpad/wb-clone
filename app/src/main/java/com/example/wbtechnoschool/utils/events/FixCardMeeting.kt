@@ -74,7 +74,10 @@ fun FixCardMeeting(modifier: Modifier = Modifier, event: FixEvent, onClick: () -
         }
         Spacer(modifier = Modifier.height(5.dp))
         Row {
-            FixTags(labelText = event.tagDevelopmentLanguage, modifier = Modifier.padding(end = 5.dp))
+            FixTags(
+                labelText = event.tagDevelopmentLanguage,
+                modifier = Modifier.padding(end = 5.dp)
+            )
             FixTags(labelText = event.tagGradeDeveloper, modifier = Modifier.padding(end = 5.dp))
             FixTags(labelText = event.tagCityMeeting, modifier = Modifier.padding(end = 5.dp))
         }
@@ -127,7 +130,10 @@ fun FixCardMeetingMini(modifier: Modifier = Modifier, event: FixEvent, onClick: 
         }
         Spacer(modifier = Modifier.height(5.dp))
         Row {
-            FixTags(labelText = event.tagDevelopmentLanguage, modifier = Modifier.padding(end = 5.dp))
+            FixTags(
+                labelText = event.tagDevelopmentLanguage,
+                modifier = Modifier.padding(end = 5.dp)
+            )
             FixTags(labelText = event.tagGradeDeveloper, modifier = Modifier.padding(end = 5.dp))
         }
     }

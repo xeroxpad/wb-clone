@@ -28,6 +28,7 @@ sealed class Graph(
 
         const val screenEventsRoot = "screen_events_root"
         const val screenEvents = "screen_events"
+        const val screenPersonGoingMeeting = "screen_person_going_meeting"
     }
 
     data object Meetings : Graph(screenMeeting)
@@ -67,6 +68,8 @@ sealed class Graph(
     data object SplashHelloName : Graph(screenSplashHelloName)
 
     data object Events : Graph(screenEvents)
+
+    data object PersonGoingMeeting : Graph(screenPersonGoingMeeting)
 
     data object MeetingsRoot : Graph(screenMeetingsRoot) {
         data object AllMeetings : Graph(screenMeeting)

@@ -98,7 +98,8 @@ fun RowAvatars(
 @Composable
 fun FixRowAvatars(
     modifier: Modifier = Modifier,
-    arrayImage: List<String>
+    arrayImage: List<String>,
+    onClick: () -> Unit,
 ) {
     Row(
         horizontalArrangement =
@@ -118,16 +119,18 @@ fun FixRowAvatars(
         verticalAlignment = Alignment.CenterVertically
     ) {
         for (i in arrayImage.withIndex().take(take)) {
-            MyPreviewAvatar(
-                modifier =
-                Modifier
+            Box(
+                modifier = modifier
                     .size(MagicNumbers.ROW_LIST_AVATAR_SIZE_PREV_AVATAR.dp)
                     .clip(CircleShape)
-                    .clickable {},
-                contentDescription = null,
-                contentScale = ContentScale.Crop,
-                model = i.value
-            )
+                    .clickable { onClick() }
+            ) {
+                FixMyPreviewAvatar(
+                    contentDescription = null,
+                    contentScale = ContentScale.Crop,
+                    model = i.value
+                )
+            }
         }
         if (arrayImage.size > take) {
             Box(
@@ -137,7 +140,7 @@ fun FixRowAvatars(
                     .border(width = 3.dp, color = Color.White, shape = CircleShape)
                     .background(LightColorTheme.fixLavenderBlush),
                 contentAlignment = Alignment.Center
-            ){
+            ) {
                 Text(
                     text = "+${arrayImage.size - take}",
                     fontSize = MagicNumbers.ROW_LIST_AVATAR_TEXT_FONT_SIZE.sp,

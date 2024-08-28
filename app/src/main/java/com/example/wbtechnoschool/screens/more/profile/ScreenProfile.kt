@@ -43,7 +43,7 @@ fun ScreenProfile(
     viewModel: ProfileViewModule = koinViewModel(),
 ) {
     val name by viewModel.name.collectAsState()
-    val phoneNumber by viewModel.phoneNumber.collectAsState()
+//    val phoneNumber by viewModel.phoneNumber.collectAsState()
     val socialMediaIcons by viewModel.socialMediaIcons.collectAsState()
     val avatarUrl = viewModel.avatar.collectAsState()
     Scaffold(
@@ -86,14 +86,14 @@ fun ScreenProfile(
                     fontWeight = FontWeight.W600,
                     modifier = Modifier.align(Alignment.CenterHorizontally)
                 )
-                Text(
-                    text = phoneNumber,
-                    fontSize = MagicNumbers.SCREEN_PROFILE_TEXT_NUMBER_FONT_SIZE.sp,
-                    fontFamily = fontSFPro,
-                    fontWeight = FontWeight.W400,
-                    color = LightColorTheme.neutralDisabled,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                )
+//                Text(
+//                    text = phoneNumber,
+//                    fontSize = MagicNumbers.SCREEN_PROFILE_TEXT_NUMBER_FONT_SIZE.sp,
+//                    fontFamily = fontSFPro,
+//                    fontWeight = FontWeight.W400,
+//                    color = LightColorTheme.neutralDisabled,
+//                    modifier = Modifier.align(Alignment.CenterHorizontally)
+//                )
                 Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                 Row(
                     horizontalArrangement = Arrangement.SpaceBetween,

@@ -22,25 +22,27 @@ import com.example.wbtechnoschool.utils.tags.FixFilterTags
 @Composable
 fun SelectOtherMeetings(
     modifier: Modifier = Modifier,
-    tags: List<String>
+    tags: List<String>,
+    isSelectable: Boolean = true
 ) {
     var selectedTags by remember { mutableStateOf(setOf<String>()) }
-        FlowRow(
-            modifier = modifier.fillMaxWidth()
-        ) {
-            tags.forEach { tag ->
-                FixFilterTags(
-                    labelText = tag,
-                    isSelected = selectedTags.contains(tag),
-                    onSelectionChanged = { isSelected ->
-                        selectedTags = if (isSelected) {
-                            selectedTags + tag
-                        } else {
-                            selectedTags - tag
-                        }
-                    },
-                    modifier = Modifier.padding(end = 10.dp)
-                )
-            }
+    FlowRow(
+        modifier = modifier.fillMaxWidth()
+    ) {
+        tags.forEach { tag ->
+            FixFilterTags(
+                labelText = tag,
+                isSelected = selectedTags.contains(tag),
+                onSelectionChanged = if (isSelectable) { isSelected ->
+                    selectedTags = if (isSelected) {
+                        selectedTags + tag
+                    } else {
+                        selectedTags - tag
+                    }
+                } else null,
+                isSelectable =  isSelectable,
+                modifier = Modifier.padding(end = 10.dp)
+            )
         }
     }
+}

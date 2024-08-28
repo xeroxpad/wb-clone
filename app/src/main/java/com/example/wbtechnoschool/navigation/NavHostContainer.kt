@@ -1,5 +1,7 @@
 package com.example.wbtechnoschool.navigation
 
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
@@ -24,9 +26,11 @@ import com.example.wbtechnoschool.screens.more.profile.ScreenProfile
 import com.example.wbtechnoschool.screens.more.resources.ScreenResources
 import com.example.wbtechnoschool.screens.more.safety.ScreenSafety
 import com.example.wbtechnoschool.screens.more.theme.ScreenTheme
+import com.example.wbtechnoschool.screens.person.ScreenPersonGoingMeeting
 import com.example.wbtechnoschool.screens.splash.SplashScreen
 import com.example.wbtechnoschool.screens.splash.SplashScreenHelloName
 
+@RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun NavHostContainer(
     navController: NavHostController,
@@ -69,6 +73,11 @@ fun NavHostContainer(
         composable(Graph.AuthorizationProfile.route) {
             ScreenAuthorizationProfile(navController = navController)
         }
+
+        composable(Graph.PersonGoingMeeting.route) {
+            ScreenPersonGoingMeeting(navController = navController)
+        }
+
         composable(
             route = "${Graph.SplashHelloName.route}/{name}",
             arguments = listOf(navArgument("name") { type = NavType.StringType })

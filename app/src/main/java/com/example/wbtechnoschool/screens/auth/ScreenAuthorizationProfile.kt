@@ -50,7 +50,6 @@ fun ScreenAuthorizationProfile(
             MainTopAppBar(
                 title = stringResource(id = R.string.top_bar_profile),
                 iconBack = { navController.popBackStack() },
-//                actions = null
             )
         },
         content = { innerPadding ->
