@@ -78,6 +78,7 @@ fun ScreenDescriptionMeeting(
             .fillMaxSize(),
         topBar = {
             MainTopAppBar(
+                modifier = Modifier.padding(horizontal = 10.dp),
                 title = "Как повышать грейд. Лекция Павла Хорикова",
                 iconBack = { navController.popBackStack() },
             )
@@ -154,7 +155,7 @@ fun ScreenDescriptionMeeting(
                             fontWeight = FontWeight.W700,
                             fontSize = 34.sp,
                             color = LightColorTheme.black,
-                            lineHeight = 30.sp
+                            lineHeight = 34.sp
                         )
                         Row {
                             Text(

@@ -1,19 +1,20 @@
 package com.example.wbtechnoschool.screens.person
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.ExperimentalLayoutApi
-import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -23,7 +24,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -129,18 +130,25 @@ fun ScreenPersonGoingMeeting(
                 iconShare = null
             )
         },
-        content = { innerPadding ->
+        content = { paddingValues ->
+            Spacer(modifier = Modifier.height(20.dp))
             LazyVerticalGrid(
-                modifier = Modifier.padding(innerPadding),
+                modifier = Modifier
+                    .padding(horizontal = 20.dp)
+                    .padding(paddingValues),
                 columns = GridCells.Fixed(3),
-                contentPadding = PaddingValues(20.dp),
                 verticalArrangement = Arrangement.spacedBy(20.dp),
-                horizontalArrangement = Arrangement.spacedBy(20.dp)
+                horizontalArrangement = Arrangement.spacedBy(15.dp)
             ) {
                 items(users.size) { index ->
                     val user = users[index]
                     Column(
                         horizontalAlignment = Alignment.Start,
+                        modifier = Modifier
+                            .clip(shape = RoundedCornerShape(16.dp))
+                            .width(104.dp)
+                            .clickable { }
+                            .padding(5.dp)
                     ) {
                         FixMyAvatar(
                             model = user.avatarUrl
@@ -148,14 +156,15 @@ fun ScreenPersonGoingMeeting(
                             contentDescription = null,
                             modifier = Modifier
                                 .clip(CircleShape)
-                                .size(104.dp)
+                                .fillMaxSize()
                         )
                         Text(
                             text = user.name,
-                            style = MaterialTheme.typography.bodyLarge,
                             fontWeight = FontWeight.W500,
                             fontSize = 18.sp,
-                            color = Color.Black
+                            color = Color.Black,
+                            maxLines = 1,
+                            overflow = TextOverflow.Ellipsis,
                         )
                         FixTags(
                             labelText = user.interests,

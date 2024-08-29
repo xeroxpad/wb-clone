@@ -25,6 +25,7 @@ sealed class Graph(
         const val screenAuthorization = "screen_authorization"
         const val screenEntryCode = "screen_entry_code"
         const val screenSplashHelloName = "screen_splash_hello_name"
+        const val screenSelectedInterests = "screen_selected_interests"
 
         const val screenEventsRoot = "screen_events_root"
         const val screenEvents = "screen_events"
@@ -70,6 +71,9 @@ sealed class Graph(
     data object Events : Graph(screenEvents)
 
     data object PersonGoingMeeting : Graph(screenPersonGoingMeeting)
+
+    data object SelectedInterests : Graph(screenSelectedInterests)
+
 
     data object MeetingsRoot : Graph(screenMeetingsRoot) {
         data object AllMeetings : Graph(screenMeeting)

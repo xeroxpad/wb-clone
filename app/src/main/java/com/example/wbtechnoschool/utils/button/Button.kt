@@ -12,6 +12,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -173,6 +174,57 @@ fun FixButton(
         enabled = enable
     ) {
         Icon(painter = painterResource(id = icon), contentDescription = null)
+    }
+}
+
+@Composable
+fun GradientButton(
+    modifier: Modifier = Modifier,
+    enable: Boolean = false,
+    onClick: () -> Unit,
+) {
+    val background = listOf(
+        LightColorTheme.fixBlushPink,
+        LightColorTheme.fixFuchsiaGlow,
+        LightColorTheme.fixVividViolet,
+        LightColorTheme.fixElectricViolet,
+        LightColorTheme.fixRadiantMagenta,
+        LightColorTheme.fixVioletBlaze,
+        LightColorTheme.fixNeonLavender,
+        LightColorTheme.fixRoyalIndigo
+    )
+    Button(
+        onClick = {
+            onClick()
+        },
+        shape = RoundedCornerShape(MagicNumbers.BUTTON_SHAPE),
+        modifier = modifier.fillMaxWidth(),
+        colors =
+        ButtonDefaults.buttonColors(
+            containerColor = Transparent,
+            contentColor = White,
+            disabledContainerColor = LightColorTheme.fixLavenderBlush
+        ),
+        enabled = enable,
+        contentPadding = PaddingValues()
+    ) {
+        val backgroundModifier = if (enable) {
+            Modifier.background(Brush.linearGradient(colors = background))
+        } else {
+            Modifier.background(LightColorTheme.fixLavenderBlush)
+        }
+        Box(
+            modifier = backgroundModifier
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = "Сохранить",
+                fontWeight = FontWeight.W600,
+                fontSize = 18.sp,
+                color = if (enable) White else LightColorTheme.lightGrey
+            )
+        }
     }
 }
 

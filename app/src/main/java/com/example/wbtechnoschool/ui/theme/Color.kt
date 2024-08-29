@@ -63,6 +63,7 @@ data class ColorThemeWB(
     val lavenderWhisper: Color,
     val frostedViolet: Color,
 
+    val lightGrey: Color,
     val green: Color
 )
 
@@ -108,8 +109,9 @@ val LightColorTheme =
         paleLavender = Color(0xFFF8EEFE),
         lavenderWhisper = Color(0xFFF6EEFE),
         frostedViolet = Color(0xFFF4EDFF),
-        green = Color(0xFF00BF59)
-        )
+        green = Color(0xFF00BF59),
+        lightGrey = Color(0xFF9797AF)
+    )
 
 val ColorTheme =
     staticCompositionLocalOf {

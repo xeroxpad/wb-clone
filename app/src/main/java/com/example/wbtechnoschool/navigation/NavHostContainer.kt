@@ -12,6 +12,7 @@ import androidx.navigation.navArgument
 import com.example.wbtechnoschool.screens.auth.ScreenAuthorization
 import com.example.wbtechnoschool.screens.auth.ScreenAuthorizationProfile
 import com.example.wbtechnoschool.screens.auth.ScreenEntryCode
+import com.example.wbtechnoschool.screens.auth.ScreenSelectInterests
 import com.example.wbtechnoschool.screens.community.ScreenCommunity
 import com.example.wbtechnoschool.screens.community.ScreenDetailsCommunity
 import com.example.wbtechnoschool.screens.events.ScreenEvents
@@ -51,7 +52,8 @@ fun NavHostContainer(
 //        }
         composable(Graph.Splash.route) {
             SplashScreen {
-                navController.navigate(Graph.Events.route) {
+//                navController.navigate(Graph.Events.route) {
+                navController.navigate(Graph.SelectedInterests.route) {
                     popUpTo(Graph.Splash.route) {
                         inclusive = true
                     }
@@ -76,6 +78,10 @@ fun NavHostContainer(
 
         composable(Graph.PersonGoingMeeting.route) {
             ScreenPersonGoingMeeting(navController = navController)
+        }
+
+        composable(Graph.SelectedInterests.route) {
+            ScreenSelectInterests(navController = navController)
         }
 
         composable(

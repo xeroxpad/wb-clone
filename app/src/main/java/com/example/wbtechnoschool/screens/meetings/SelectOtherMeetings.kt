@@ -23,7 +23,8 @@ import com.example.wbtechnoschool.utils.tags.FixFilterTags
 fun SelectOtherMeetings(
     modifier: Modifier = Modifier,
     tags: List<String>,
-    isSelectable: Boolean = true
+    isSelectable: Boolean = true,
+    onTagSelected: ((Set<String>) -> Unit)? = null
 ) {
     var selectedTags by remember { mutableStateOf(setOf<String>()) }
     FlowRow(
@@ -34,14 +35,19 @@ fun SelectOtherMeetings(
                 labelText = tag,
                 isSelected = selectedTags.contains(tag),
                 onSelectionChanged = if (isSelectable) { isSelected ->
-                    selectedTags = if (isSelected) {
+                    selectedTags = if (tag == "Все категории" && isSelected) {
+                        tags.toSet()
+                    } else if (tag == "Все категории" && !isSelected) {
+                        emptySet()
+                    } else if (isSelected) {
                         selectedTags + tag
                     } else {
                         selectedTags - tag
                     }
+                    onTagSelected?.invoke(selectedTags)
                 } else null,
-                isSelectable =  isSelectable,
-                modifier = Modifier.padding(end = 10.dp)
+                isSelectable = isSelectable,
+                modifier = Modifier.padding(end = 7.dp)
             )
         }
     }

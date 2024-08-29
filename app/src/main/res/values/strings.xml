@@ -54,5 +54,6 @@
     <string name="name_and_second_name">Имя и фамилия</string>
     <string name="search_meetings_and_community">Найти встречи и сообщества</string>
     <string name="invitation_to_meetings_and_communities">Будем приглашать на встречи сообщества и рекомендовать похожие</string>
+    <string name="tell_you_later">Расскажу позже</string>
 
 </resources>
