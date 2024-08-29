@@ -3,6 +3,7 @@ package com.example.wbtechnoschool.screens.auth
 import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
@@ -195,7 +196,7 @@ fun ScreenAuthorization(
         items(1) {
             Text(text = "Фикс макета")
             Spacer(modifier = Modifier.height(10.dp))
-            FixTextField(placeholder = R.string.name_and_second_name)
+//            FixTextField(placeholder = R.string.name_and_second_name)
             Spacer(modifier = Modifier.height(10.dp))
             FieldForNumber {}
             Spacer(modifier = Modifier.height(10.dp))
@@ -270,28 +271,30 @@ fun ScreenAuthorization(
 }
 
 @Composable
-fun PrefixNumberTextField(textColor: Color) {
-    Image(
-        painter = painterResource(id = R.drawable.icon_flag_russian),
-        contentDescription = "",
-        modifier =
-        Modifier
-            .size(MagicNumbers.PREF_NUMBER_TF_IMAGE_MODIFIER_SIZE.dp)
-            .clip(RoundedCornerShape(MagicNumbers.PREF_NUMBER_TF_IMAGE_MODIFIER_CLIP.dp))
-    )
-    BasicTextField(
-        value = "+7",
-        onValueChange = {},
-        singleLine = true,
-        readOnly = true,
-        keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
-        modifier = Modifier.padding(start = MagicNumbers.PREF_NUMBER_TF_BASIC_TF_MODIFIER_PADDING_START.dp),
-        textStyle =
-        TextStyle(
-            color = textColor,
-            fontWeight = FontWeight.W600,
-            fontSize = MagicNumbers.PREF_NUMBER_TF_BASIC_TF_TEXT_STYLE_FONT_SIZE.sp,
-            fontFamily = fontSFPro
+fun PrefixNumberTextField(modifier: Modifier = Modifier, textColor: Color) {
+    Row(modifier = modifier.clickable {  }, horizontalArrangement = Arrangement.Center) {
+        Image(
+            painter = painterResource(id = R.drawable.icon_flag_russian),
+            contentDescription = null,
+            modifier =
+            Modifier
+                .size(MagicNumbers.PREF_NUMBER_TF_IMAGE_MODIFIER_SIZE.dp)
+                .clip(RoundedCornerShape(MagicNumbers.PREF_NUMBER_TF_IMAGE_MODIFIER_CLIP.dp))
         )
-    )
+        BasicTextField(
+            value = "+7",
+            onValueChange = {},
+            singleLine = true,
+            readOnly = true,
+            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
+            modifier = Modifier.padding(start = MagicNumbers.PREF_NUMBER_TF_BASIC_TF_MODIFIER_PADDING_START.dp),
+            textStyle =
+            TextStyle(
+                color = textColor,
+                fontWeight = FontWeight.W600,
+                fontSize = MagicNumbers.PREF_NUMBER_TF_BASIC_TF_TEXT_STYLE_FONT_SIZE.sp,
+                fontFamily = fontSFPro
+            )
+        )
+    }
 }

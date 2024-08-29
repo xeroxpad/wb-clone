@@ -98,7 +98,8 @@ fun ScreenSelectInterests(
                 ) {
                     GradientButton(
                         modifier = Modifier.height(49.dp),
-                        enable = selectedTags.isNotEmpty()
+                        enable = selectedTags.isNotEmpty(),
+                        textButton = "Сохранить",
                     ) {}
                     Spacer(modifier = Modifier.height(10.dp))
                     TextButton(onClick = { navController.navigate(Graph.Events.route) }) {

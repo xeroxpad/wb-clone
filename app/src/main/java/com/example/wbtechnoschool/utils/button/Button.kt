@@ -181,6 +181,7 @@ fun FixButton(
 fun GradientButton(
     modifier: Modifier = Modifier,
     enable: Boolean = false,
+    textButton: String,
     onClick: () -> Unit,
 ) {
     val background = listOf(
@@ -219,7 +220,7 @@ fun GradientButton(
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = "Сохранить",
+                text = textButton,
                 fontWeight = FontWeight.W600,
                 fontSize = 18.sp,
                 color = if (enable) White else LightColorTheme.lightGrey

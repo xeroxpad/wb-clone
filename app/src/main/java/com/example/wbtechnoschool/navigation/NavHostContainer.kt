@@ -11,7 +11,9 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.wbtechnoschool.screens.auth.ScreenAuthorization
 import com.example.wbtechnoschool.screens.auth.ScreenAuthorizationProfile
+import com.example.wbtechnoschool.screens.auth.ScreenEnteringNumberForAppointment
 import com.example.wbtechnoschool.screens.auth.ScreenEntryCode
+import com.example.wbtechnoschool.screens.auth.ScreenMakeAnAppointment
 import com.example.wbtechnoschool.screens.auth.ScreenSelectInterests
 import com.example.wbtechnoschool.screens.community.ScreenCommunity
 import com.example.wbtechnoschool.screens.community.ScreenDetailsCommunity
@@ -82,6 +84,14 @@ fun NavHostContainer(
 
         composable(Graph.SelectedInterests.route) {
             ScreenSelectInterests(navController = navController)
+        }
+
+        composable(Graph.MakeAnAppointment.route) {
+            ScreenMakeAnAppointment(navController = navController)
+        }
+
+        composable(Graph.EnteringNumberForAppointment.route) {
+            ScreenEnteringNumberForAppointment(navController = navController)
         }
 
         composable(

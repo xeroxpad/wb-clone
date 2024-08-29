@@ -45,7 +45,7 @@ import com.example.wbtechnoschool.utils.constants.MagicNumbers
 
 
 @Composable
-fun FixTextField(placeholder: Int) {
+fun FixTextField(placeholder: Int, text: String, textChange: (String) -> Unit) {
     var textState by remember { mutableStateOf(("")) }
     var isFocused by remember { mutableStateOf(false) }
     Box(
@@ -67,8 +67,8 @@ fun FixTextField(placeholder: Int) {
                 .fillMaxHeight()
         ) {
             BasicTextField(
-                value = textState,
-                onValueChange = { textState = it },
+                value = text,
+                onValueChange = { textChange(it) },
                 modifier = Modifier
                     .fillMaxWidth()
                     .onFocusChanged { focusState ->
@@ -83,19 +83,22 @@ fun FixTextField(placeholder: Int) {
                     fontSize = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_FONT_SIZE.sp,
                     letterSpacing = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_LETTER_SPACING.sp
                 ),
+                maxLines = 1,
                 cursorBrush = SolidColor(LightColorTheme.fixVioletBlaze),
                 keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
                 decorationBox = { innerTextField ->
-                    if (textState.isEmpty()) {
-                        Text(
-                            text = stringResource(id = placeholder),
-                            color = LightColorTheme.neutralDisabled,
-                            style = TextStyle(lineHeight = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_LINE_HEIGHT.sp),
-                            fontWeight = FontWeight.W500,
-                            fontFamily = fontSFPro,
-                            fontSize = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_FONT_SIZE.sp,
-                            letterSpacing = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_LETTER_SPACING.sp,
-                        )
+                    when {
+                        text.isEmpty() -> {
+                            Text(
+                                text = stringResource(id = placeholder),
+                                color = LightColorTheme.neutralDisabled,
+                                style = TextStyle(lineHeight = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_LINE_HEIGHT.sp),
+                                fontWeight = FontWeight.W500,
+                                fontFamily = fontSFPro,
+                                fontSize = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_FONT_SIZE.sp,
+                                letterSpacing = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_LETTER_SPACING.sp,
+                            )
+                        }
                     }
                     innerTextField()
                 }

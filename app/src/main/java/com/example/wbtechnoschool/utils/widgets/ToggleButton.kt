@@ -17,6 +17,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.utils.button.StatusButton
@@ -24,6 +25,7 @@ import com.example.wbtechnoschool.utils.button.StatusButton
 @Composable
 fun GradientToggleButton(
     modifier: Modifier = Modifier,
+    navController: NavController,
     textButton: Int,
     textButtonPress: Int,
     isSelected: (Boolean) -> Unit,
@@ -54,7 +56,6 @@ fun GradientToggleButton(
         )
     )
     val gradient = if (isGoing) gradientIsGoing else gradientNotGoing
-//    val contentText = if (isGoing) stringResource(id = R.string.go_to_the_meetings) else stringResource(id = R.string.go_another_time_meetings)
     val contentText = if (isGoing) stringResource(id = textButton) else stringResource(id = textButtonPress)
     Box(
         modifier = modifier

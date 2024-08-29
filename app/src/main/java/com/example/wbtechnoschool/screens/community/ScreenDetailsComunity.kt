@@ -112,6 +112,7 @@ fun ScreenDetailsCommunity(
                         GradientToggleButton(
                             textButton = R.string.subscribe,
                             textButtonPress = R.string.you_are_subscribe,
+                            navController = navController,
                         ) {
                             isButtonPressed = !isButtonPressed
                         }

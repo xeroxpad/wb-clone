@@ -61,8 +61,8 @@ import org.koin.androidx.compose.koinViewModel
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable
 fun ScreenDescriptionMeeting(
-    navController: NavController,
     modifier: Modifier = Modifier,
+    navController: NavController,
     viewModel: DescriptionMeetingViewModel = koinViewModel(),
     viewModelMeeting: MeetingViewModel = koinViewModel(),
 ) {
@@ -122,10 +122,12 @@ fun ScreenDescriptionMeeting(
                                 modifier = Modifier
                                     .padding(bottom = 20.dp)
                                     .padding(horizontal = 20.dp),
+                                navController = navController,
                                 textButton = R.string.go_to_the_meetings,
                                 textButtonPress = R.string.go_another_time_meetings,
                             ) {
                                 isButtonPressed = !isButtonPressed
+                                navController.navigate(Graph.MakeAnAppointment.route)
                             }
                         }
                     }
@@ -254,7 +256,11 @@ fun ScreenDescriptionMeeting(
                             color = LightColorTheme.black
                         )
                         Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
-                        FixRowAvatars(arrayImage = description.rowAvatars) {navController.navigate(Graph.PersonGoingMeeting.route)}
+                        FixRowAvatars(arrayImage = description.rowAvatars) {
+                            navController.navigate(
+                                Graph.PersonGoingMeeting.route
+                            )
+                        }
                         Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                         Text(
                             text = "Организатор",
