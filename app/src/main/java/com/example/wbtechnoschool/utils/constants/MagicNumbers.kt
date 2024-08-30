@@ -182,6 +182,7 @@ class MagicNumbers {
         const val FUN_NUMBER_VIEW_TEXT_IN_BOX_FONT_SIZE = 30
         const val FUN_NUMBER_VIEW_BOX_SIZE = 24
         const val PHONE_MAX_LENGTH = 10
+        const val CODE_MAX_LENGTH = 4
 
         //        FunEntryCode
         const val FUN_ENTRY_CODE_ROW_PADDING = 50

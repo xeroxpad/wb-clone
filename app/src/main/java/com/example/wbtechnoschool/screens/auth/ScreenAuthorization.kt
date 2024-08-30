@@ -6,8 +6,10 @@ import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -272,7 +274,12 @@ fun ScreenAuthorization(
 
 @Composable
 fun PrefixNumberTextField(modifier: Modifier = Modifier, textColor: Color) {
-    Row(modifier = modifier.clickable {  }, horizontalArrangement = Arrangement.Center) {
+    Row(
+        horizontalArrangement = Arrangement.Center,
+        verticalAlignment = Alignment.CenterVertically,
+        modifier = modifier
+            .fillMaxSize()
+    ) {
         Image(
             painter = painterResource(id = R.drawable.icon_flag_russian),
             contentDescription = null,
@@ -281,20 +288,14 @@ fun PrefixNumberTextField(modifier: Modifier = Modifier, textColor: Color) {
                 .size(MagicNumbers.PREF_NUMBER_TF_IMAGE_MODIFIER_SIZE.dp)
                 .clip(RoundedCornerShape(MagicNumbers.PREF_NUMBER_TF_IMAGE_MODIFIER_CLIP.dp))
         )
-        BasicTextField(
-            value = "+7",
-            onValueChange = {},
-            singleLine = true,
-            readOnly = true,
-            keyboardOptions = KeyboardOptions.Default.copy(keyboardType = KeyboardType.Number),
-            modifier = Modifier.padding(start = MagicNumbers.PREF_NUMBER_TF_BASIC_TF_MODIFIER_PADDING_START.dp),
-            textStyle =
-            TextStyle(
-                color = textColor,
-                fontWeight = FontWeight.W600,
-                fontSize = MagicNumbers.PREF_NUMBER_TF_BASIC_TF_TEXT_STYLE_FONT_SIZE.sp,
-                fontFamily = fontSFPro
-            )
+        Spacer(modifier = Modifier.width(5.dp))
+        Text(
+            text = "+7",
+            color = textColor,
+            fontWeight = FontWeight.W600,
+            fontSize = MagicNumbers.PREF_NUMBER_TF_BASIC_TF_TEXT_STYLE_FONT_SIZE.sp,
+            fontFamily = fontSFPro
         )
     }
 }
+

@@ -56,5 +56,8 @@
     <string name="invitation_to_meetings_and_communities">Будем приглашать на встречи сообщества и рекомендовать похожие</string>
     <string name="tell_you_later">Расскажу позже</string>
     <string name="log_in_and_make_an_appointment">Вход \nи запись \nна встречу</string>
+    <string name="placeholder_text_field_for_code">0000</string>
+    <string name="get_new__code">Получить новый код</string>
+
 
 </resources>

@@ -1,5 +1,6 @@
 package com.example.wbtechnoschool.screens.auth
 
+import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -23,6 +24,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.input.pointer.pointerInput
+import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -45,6 +48,7 @@ fun ScreenMakeAnAppointment(
     navController: NavController
 ) {
     val name by viewModel.name.collectAsState()
+    val focusManager = LocalFocusManager.current
     LaunchedEffect(name) {
         viewModel.nameChange(name)
     }
@@ -52,7 +56,10 @@ fun ScreenMakeAnAppointment(
         modifier =
         modifier
             .statusBarsPadding()
-            .fillMaxSize(),
+            .fillMaxSize()
+            .pointerInput(Unit) {
+                detectTapGestures(onTap = { focusManager.clearFocus() })
+            },
         topBar = {},
         content = { innerPadding ->
             Box(
@@ -106,7 +113,11 @@ fun ScreenMakeAnAppointment(
                             }
                         }
                         Spacer(modifier = Modifier.height(20.dp))
-                        FixTextField(placeholder = R.string.name_and_second_name, text = name, textChange = { viewModel.nameChange(it) })
+                        FixTextField(
+                            placeholder = R.string.name_and_second_name,
+                            text = name,
+                            textChange = { viewModel.nameChange(it) }
+                        )
                     }
                 }
                 Column(
@@ -120,7 +131,7 @@ fun ScreenMakeAnAppointment(
                         modifier = Modifier.height(56.dp),
                         enable = name.isNotEmpty(),
                         textButton = "Продолжить",
-                    ) {navController.navigate(Graph.EnteringNumberForAppointment.route)}
+                    ) { navController.navigate(Graph.EnteringNumberForAppointment.route) }
                 }
             }
         }
