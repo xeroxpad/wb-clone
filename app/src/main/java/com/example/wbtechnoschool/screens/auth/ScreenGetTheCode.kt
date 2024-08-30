@@ -38,6 +38,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
+import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.utils.button.GradientButton
 import com.example.wbtechnoschool.utils.search.TextFieldForCode
@@ -52,7 +53,7 @@ fun ScreenGetTheCode(
     viewModel: AuthorizationViewModel = koinViewModel(),
 ) {
     val number by viewModel.number.observeAsState("")
-    val currentPhoneNumber by remember { mutableStateOf("") }
+    var currentCode by remember { mutableStateOf("") }
     val focusManager = LocalFocusManager.current
     var time by remember { mutableIntStateOf(10) }
     LaunchedEffect(number, time) {
@@ -127,8 +128,10 @@ fun ScreenGetTheCode(
                         TextFieldForCode(
                             placeholder = R.string.placeholder_text_field_for_code,
                             textChange = {
-                                viewModel.onNumberChange(it)
-                            }) {}
+                                viewModel.onNumberChange(currentCode)
+                            }) { newPhoneNumber ->
+                            currentCode = newPhoneNumber
+                        }
                         Spacer(modifier = Modifier.height(10.dp))
                         Text(
                             text = "Отправили код на +7 999 999-99-99",
@@ -161,8 +164,8 @@ fun ScreenGetTheCode(
                     GradientButton(
                         modifier = Modifier.height(56.dp),
                         textButton = "Отправить и подтвердить запись",
-                        enable = viewModel.numberValid(currentPhoneNumber)
-                    ) {}
+                        enable = viewModel.codeValid(currentCode)
+                    ) { navController.navigate(Graph.MakeAnAppointmentDone.route) }
                 }
             }
         }

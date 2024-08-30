@@ -15,6 +15,7 @@ import com.example.wbtechnoschool.screens.auth.ScreenEnteringNumberForAppointmen
 import com.example.wbtechnoschool.screens.auth.ScreenEntryCode
 import com.example.wbtechnoschool.screens.auth.ScreenGetTheCode
 import com.example.wbtechnoschool.screens.auth.ScreenMakeAnAppointment
+import com.example.wbtechnoschool.screens.auth.ScreenMakeAnAppointmentDone
 import com.example.wbtechnoschool.screens.auth.ScreenSelectInterests
 import com.example.wbtechnoschool.screens.community.ScreenCommunity
 import com.example.wbtechnoschool.screens.community.ScreenDetailsCommunity
@@ -97,6 +98,10 @@ fun NavHostContainer(
 
         composable(Graph.GetTheCode.route) {
             ScreenGetTheCode(navController = navController)
+        }
+
+        composable(Graph.MakeAnAppointmentDone.route) {
+            ScreenMakeAnAppointmentDone(navController = navController)
         }
 
         composable(

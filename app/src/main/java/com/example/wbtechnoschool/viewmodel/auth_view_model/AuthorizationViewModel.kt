@@ -9,6 +9,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 const val lengthNumber = 10
+const val lengthCode = 4
 
 class AuthorizationViewModel() : ViewModel() {
     private val _number = MutableLiveData("")
@@ -26,4 +27,7 @@ class AuthorizationViewModel() : ViewModel() {
 
     fun numberValid(number: String): Boolean =
         number.length == lengthNumber && number.all { it.isDigit() }
+
+    fun codeValid(code: String): Boolean =
+        code.length == lengthCode && code.all { it.isDigit() }
 }

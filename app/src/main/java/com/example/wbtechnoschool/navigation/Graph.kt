@@ -29,6 +29,7 @@ sealed class Graph(
         const val screenMakeAnAppointment = "screen_make_an_appointment"
         const val screenEnteringNumberForAppointment = "screen_entering_number_for_appointment"
         const val screenGetTheCode = "screen_get_the_code"
+        const val screenMakeAnAppointmentDone = "screen_make_an_appointment_done"
 
         const val screenEventsRoot = "screen_events_root"
         const val screenEvents = "screen_events"
@@ -82,6 +83,8 @@ sealed class Graph(
     data object EnteringNumberForAppointment: Graph(screenEnteringNumberForAppointment)
 
     data object GetTheCode: Graph(screenGetTheCode)
+
+    data object MakeAnAppointmentDone: Graph(screenMakeAnAppointmentDone)
 
     data object MeetingsRoot : Graph(screenMeetingsRoot) {
         data object AllMeetings : Graph(screenMeeting)
