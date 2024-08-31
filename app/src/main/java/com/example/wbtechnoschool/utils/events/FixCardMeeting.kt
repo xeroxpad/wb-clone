@@ -10,14 +10,22 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import coil.compose.AsyncImagePainter
+import coil.compose.ImagePainter
+import coil.compose.rememberAsyncImagePainter
+import coil.compose.rememberImagePainter
+import coil.request.ImageRequest
 import com.example.domain.entities.FixEvent
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
@@ -32,6 +40,12 @@ fun FixCardMeeting(modifier: Modifier = Modifier, event: FixEvent, onClick: () -
     val dateMeeting = event.date
     val locationMeeting = event.city
     val allTextMeeting = ("$dateMeeting · $locationMeeting")
+    val painter = rememberAsyncImagePainter(
+        ImageRequest.Builder(LocalContext.current).data(data = event.icon ?: DEFAULT_AVATAR)
+            .apply(block = fun ImageRequest.Builder.() {
+                crossfade(true)
+            }).build()
+    )
     Column(
         modifier = modifier
             .clip(shape = RoundedCornerShape(16.dp))
@@ -39,10 +53,15 @@ fun FixCardMeeting(modifier: Modifier = Modifier, event: FixEvent, onClick: () -
             .width(320.dp)
             .padding(5.dp)
     ) {
+
         Box(
             modifier = Modifier
-                .clip(shape = RoundedCornerShape(16.dp))
+                .clip(shape = RoundedCornerShape(16.dp)),
+            contentAlignment = Alignment.Center
         ) {
+            if (painter.state is AsyncImagePainter.State.Loading) {
+                CircularProgressIndicator()
+            }
             Spacer(modifier = Modifier.height(5.dp))
             FixMyAvatar(
                 contentDescription = null,
@@ -52,6 +71,7 @@ fun FixCardMeeting(modifier: Modifier = Modifier, event: FixEvent, onClick: () -
                     .height(180.dp),
                 model = event.icon ?: DEFAULT_AVATAR
             )
+
         }
         Spacer(modifier = Modifier.height(5.dp))
         Text(
@@ -89,6 +109,12 @@ fun FixCardMeetingMini(modifier: Modifier = Modifier, event: FixEvent, onClick: 
     val dateMeeting = event.date
     val locationMeeting = event.city
     val allTextMeeting = ("$dateMeeting · $locationMeeting")
+    val painter = rememberAsyncImagePainter(
+        ImageRequest.Builder(LocalContext.current).data(data = event.icon ?: DEFAULT_AVATAR)
+            .apply(block = fun ImageRequest.Builder.() {
+                crossfade(true)
+            }).build()
+    )
     Column(
         modifier = modifier
             .clip(shape = RoundedCornerShape(16.dp))
@@ -98,8 +124,12 @@ fun FixCardMeetingMini(modifier: Modifier = Modifier, event: FixEvent, onClick: 
     ) {
         Box(
             modifier = Modifier
-                .clip(shape = RoundedCornerShape(16.dp))
+                .clip(shape = RoundedCornerShape(16.dp)),
+            contentAlignment = Alignment.Center
         ) {
+            if (painter.state is AsyncImagePainter.State.Loading) {
+                CircularProgressIndicator()
+            }
             Spacer(modifier = Modifier.height(5.dp))
             FixMyAvatar(
                 contentDescription = null,

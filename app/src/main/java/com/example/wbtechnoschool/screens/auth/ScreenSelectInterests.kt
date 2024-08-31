@@ -29,6 +29,7 @@ import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.screens.meetings.SelectOtherMeetings
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.utils.button.GradientButton
+import kotlinx.coroutines.GlobalScope
 
 @Composable
 fun ScreenSelectInterests(

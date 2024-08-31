@@ -75,12 +75,6 @@ fun ScreenMakeAnAppointmentDone(
                     .padding(20.dp)
                     .statusBarsPadding()
             ) {
-                Row(
-                    modifier = Modifier
-                        .fillMaxWidth(),
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    verticalAlignment = Alignment.Top
-                ) {
                     Column(
                         modifier = Modifier
                             .weight(5f),
@@ -103,7 +97,6 @@ fun ScreenMakeAnAppointmentDone(
                         )
                     }
                 }
-            }
             Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceBetween,

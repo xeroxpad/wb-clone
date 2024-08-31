@@ -15,6 +15,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -23,14 +24,20 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import coil.compose.AsyncImagePainter
+import coil.compose.rememberAsyncImagePainter
+import coil.request.ImageRequest
 import com.example.domain.entities.FixPerson
+import com.example.domain.entities.Person
 import com.example.wbtechnoschool.navigation.MainTopAppBar
 import com.example.wbtechnoschool.utils.avatar.FixMyAvatar
+import com.example.wbtechnoschool.utils.constants.MagicNumbers.Companion.DEFAULT_AVATAR
 import com.example.wbtechnoschool.utils.tags.FixTags
 
 @Composable
@@ -142,34 +149,38 @@ fun ScreenPersonGoingMeeting(
             ) {
                 items(users.size) { index ->
                     val user = users[index]
-                    Column(
-                        horizontalAlignment = Alignment.Start,
-                        modifier = Modifier
-                            .clip(shape = RoundedCornerShape(16.dp))
-                            .width(104.dp)
-                            .clickable { }
-                            .padding(5.dp)
-                    ) {
-                        FixMyAvatar(
-                            model = user.avatarUrl
-                                ?: "https://sneg.top/uploads/posts/2023-06/thumbs/1688043519_sneg-top-p-avatarka-fotoshop-vkontakte-21.jpg",
-                            contentDescription = null,
-                            modifier = Modifier
-                                .clip(CircleShape)
-                                .fillMaxSize()
-                        )
-                        Text(
-                            text = user.name,
-                            fontWeight = FontWeight.W500,
-                            fontSize = 18.sp,
-                            color = Color.Black,
-                            maxLines = 1,
-                            overflow = TextOverflow.Ellipsis,
-                        )
-                        FixTags(
-                            labelText = user.interests,
-                        )
-                    }
+//                    Column(
+//                        horizontalAlignment = Alignment.Start,
+//                        modifier = Modifier
+//                            .clip(shape = RoundedCornerShape(16.dp))
+//                            .width(104.dp)
+//                            .clickable { }
+//                            .padding(5.dp)
+//                    ) {
+//                        if (painter.state is AsyncImagePainter.State.Loading) {
+//                            CircularProgressIndicator()
+//                        }
+//                        FixMyAvatar(
+//                            model = user.avatarUrl
+//                                ?: "https://sneg.top/uploads/posts/2023-06/thumbs/1688043519_sneg-top-p-avatarka-fotoshop-vkontakte-21.jpg",
+//                            contentDescription = null,
+//                            modifier = Modifier
+//                                .clip(CircleShape)
+//                                .fillMaxSize()
+//                        )
+//                        Text(
+//                            text = user.name,
+//                            fontWeight = FontWeight.W500,
+//                            fontSize = 18.sp,
+//                            color = Color.Black,
+//                            maxLines = 1,
+//                            overflow = TextOverflow.Ellipsis,
+//                        )
+//                        FixTags(
+//                            labelText = user.interests,
+//                        )
+//                    }
+                    CardPerson(user = user)
                 }
             }
         }

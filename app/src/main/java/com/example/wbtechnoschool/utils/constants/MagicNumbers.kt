@@ -3,6 +3,9 @@ package com.example.wbtechnoschool.utils.constants
 import androidx.compose.ui.geometry.Offset
 import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
+import coil.compose.rememberAsyncImagePainter
+import coil.request.ImageRequest
 
 class MagicNumbers {
     companion object {
@@ -207,27 +210,6 @@ class MagicNumbers {
         //        DefaultAvatar
         const val DEFAULT_AVATAR =
             "https://banner2.cleanpng.com/20180901/prt/kisspng-luket-dner-consumer-production-logo-quality-a-verb-with-the-letter-k-my-pinterest-site-sym-5b8ae977b23648.94143731153583039173.jpg"
-
-        val linearGradient = Brush.linearGradient(
-            colors = listOf(
-                Color(0xFFF7F7FA),
-                Color(0xFFF0F4FA),
-                Color(0xFFF7EBF4),
-                Color(0xFFFFFFFF),
-            ),
-            start = Offset(0f, 0f),
-            end = Offset(1000f, 1000f)
-        )
-
-        val radialGradient = Brush.radialGradient(
-            colors = listOf(
-                Color(0xFF6600FF),
-                Color(0xFFF011BF),
-                Color(0xFFFFFFFF),
-            ),
-            center = Offset(x = 400f, y = 400f),
-            radius = 800f
-        )
     }
 }
 
