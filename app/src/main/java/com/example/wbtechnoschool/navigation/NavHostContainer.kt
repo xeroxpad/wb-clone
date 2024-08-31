@@ -104,6 +104,10 @@ fun NavHostContainer(
             ScreenMakeAnAppointmentDone(navController = navController)
         }
 
+        composable(Graph.Events.route) {
+            ScreenEvents(navController = navController)
+        }
+
         composable(
             route = "${Graph.SplashHelloName.route}/{name}",
             arguments = listOf(navArgument("name") { type = NavType.StringType })
@@ -118,11 +122,11 @@ fun NavHostContainer(
                 }
             )
         }
-        eventsNavGraph(
-            eventsScreen = { ScreenEvents(navController = navController) },
-            meetingsScreenDescription = { ScreenDescriptionMeeting(navController = navController) },
-            communityDetailsScreen = { ScreenDetailsCommunity(navController = navController) }
-        )
+//        eventsNavGraph(
+//            eventsScreen = { ScreenEvents(navController = navController) },
+//            meetingsScreenDescription = { ScreenDescriptionMeeting(navController = navController) },
+//            communityDetailsScreen = { ScreenDetailsCommunity(navController = navController) }
+//        )
         meetingsNavGraph(
             meetingsScreen = { ScreenMeeting(navController = navController) },
             meetingsScreenDescription = { ScreenDescriptionMeeting(navController = navController) }

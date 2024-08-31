@@ -32,6 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.viewinterop.AndroidView
+import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
@@ -43,100 +44,89 @@ fun ScreenMakeAnAppointmentDone(
     navController: NavController,
 ) {
     val context = LocalContext.current
+    val videoView = remember { VideoView(context) }
     val videoUri = remember {
         Uri.parse("android.resource://${context.packageName}/" + R.raw.gradient_meetings_done_animation)
     }
-    Scaffold(
-        modifier =
-        modifier
-            .fillMaxWidth()
-            .fillMaxHeight(),
-        topBar = {},
-        bottomBar = {},
-        content = { innerPadding ->
+    DisposableEffect(videoView) {
+        videoView.setVideoURI(videoUri)
+        videoView.setOnCompletionListener {
+            videoView.start()
+        }
+        videoView.setOnPreparedListener { mediaPlayer ->
+            mediaPlayer.isLooping = true
+            mediaPlayer.setVideoScalingMode(android.media.MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT)
+        }
+        videoView.start()
+        onDispose {
+            videoView.stopPlayback()
+        }
+    }
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+        ) {
             AndroidView(
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .clickable { },
-                factory = { context ->
-                    VideoView(context).apply {
-                        setVideoURI(videoUri)
-                        setOnPreparedListener { mediaPlayer ->
-                            mediaPlayer.isLooping = true
-                            mediaPlayer.setVideoScalingMode(android.media.MediaPlayer.VIDEO_SCALING_MODE_SCALE_TO_FIT)
-                        }
-                        start()
-                    }
-                },
-                update = { view ->
-                    if (!view.isPlaying) {
-                        view.start()
-                    }
-                }
+                factory = { videoView },
+                modifier = Modifier.fillMaxHeight().zIndex(0f)
             )
-            Box(
-                modifier = Modifier
-                    .fillMaxSize()
+            Column(
+                modifier = modifier
+                    .padding(20.dp)
+                    .statusBarsPadding()
             ) {
-                Column(
-                    modifier = modifier
-                        .padding(20.dp)
-                ) {
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .padding(innerPadding),
-                        horizontalArrangement = Arrangement.SpaceBetween,
-                        verticalAlignment = Alignment.Top
-                    ) {
-                        Column(
-                            modifier = Modifier
-                                .weight(5f),
-                            verticalArrangement = Arrangement.Top,
-                            horizontalAlignment = Alignment.Start
-                        ) {
-                            Text(
-                                text = stringResource(id = R.string.your_make_an_appointment_done),
-                                fontWeight = FontWeight.W600,
-                                fontSize = 49.sp,
-                                color = LightColorTheme.neutralWhite,
-                                lineHeight = 40.sp
-                            )
-                            Spacer(modifier = Modifier.height(10.dp))
-                            Text(
-                                text = "Супертестировщики · 12 августа · Невский проспект, 11",
-                                fontWeight = FontWeight.W400,
-                                fontSize = 16.sp,
-                                color = LightColorTheme.neutralWhite,
-                            )
-                        }
-                    }
-                }
-                Column(
-                    horizontalAlignment = Alignment.CenterHorizontally,
-                    verticalArrangement = Arrangement.SpaceBetween,
+                Row(
                     modifier = Modifier
-                        .padding(horizontal = 20.dp)
-                        .padding(bottom = 15.dp)
-                        .navigationBarsPadding()
-                        .align(Alignment.BottomCenter)
-
+                        .fillMaxWidth(),
+                    horizontalArrangement = Arrangement.SpaceBetween,
+                    verticalAlignment = Alignment.Top
                 ) {
-                    Text(
-                        text = stringResource(id = R.string.my_meetings),
-                        color = LightColorTheme.fixVioletBlaze,
-                        fontWeight = FontWeight.W500,
-                        fontSize = 18.sp,
-                        modifier = Modifier.clickable { }
-                    )
-                    Spacer(modifier = Modifier.height(20.dp))
-                    GradientButton(
-                        modifier = Modifier.height(56.dp),
-                        textButton = "Найти другие встречи",
-                        enable = true,
-                    ) {}
+                    Column(
+                        modifier = Modifier
+                            .weight(5f),
+                        verticalArrangement = Arrangement.Top,
+                        horizontalAlignment = Alignment.Start
+                    ) {
+                        Text(
+                            text = stringResource(id = R.string.your_make_an_appointment_done),
+                            fontWeight = FontWeight.W600,
+                            fontSize = 49.sp,
+                            color = LightColorTheme.neutralWhite,
+                            lineHeight = 40.sp
+                        )
+                        Spacer(modifier = Modifier.height(10.dp))
+                        Text(
+                            text = "Супертестировщики · 12 августа · Невский проспект, 11",
+                            fontWeight = FontWeight.W400,
+                            fontSize = 16.sp,
+                            color = LightColorTheme.neutralWhite,
+                        )
+                    }
                 }
             }
+            Column(
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier
+                    .padding(horizontal = 20.dp)
+                    .padding(bottom = 15.dp)
+                    .navigationBarsPadding()
+                    .align(Alignment.BottomCenter)
+
+            ) {
+                Text(
+                    text = stringResource(id = R.string.my_meetings),
+                    color = LightColorTheme.fixVioletBlaze,
+                    fontWeight = FontWeight.W500,
+                    fontSize = 18.sp,
+                    modifier = Modifier.clickable { }
+                )
+                Spacer(modifier = Modifier.height(20.dp))
+                GradientButton(
+                    modifier = Modifier.height(56.dp),
+                    textButton = "Найти другие встречи",
+                    enable = true,
+                ) {}
+            }
         }
-    )
-}
+    }
