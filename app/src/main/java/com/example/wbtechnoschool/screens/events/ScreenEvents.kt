@@ -76,7 +76,8 @@ fun ScreenEvents(
                     placeholder = R.string.search_meetings_and_community,
                     modifier = Modifier
                         .weight(1f),
-                    onClick = { navController.navigate(Graph.Profile.route) }
+//                    onClick = { navController.navigate(Graph.Profile.route) }
+                    onClick = { navController.navigate("${Graph.Profile.route}?fromScreen=${Graph.Events.route}") }
                 )
             }
             LazyColumn(

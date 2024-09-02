@@ -100,8 +100,16 @@ fun NavHostContainer(
             ScreenEvents(navController = navController)
         }
 
-        composable(Graph.Profile.route) {
-            ScreenProfile(navController = navController)
+//        composable(Graph.Profile.route) {
+//            ScreenProfile(navController = navController)
+//        }
+
+        composable(
+            route = "${Graph.Profile.route}?fromScreen={fromScreen}",
+            arguments = listOf(navArgument("fromScreen") { defaultValue = "" })
+        ) { backStackEntry ->
+            val fromScreen = backStackEntry.arguments?.getString("fromScreen") ?: ""
+            ScreenProfile(navController = navController, fromScreen = fromScreen)
         }
 
         composable(

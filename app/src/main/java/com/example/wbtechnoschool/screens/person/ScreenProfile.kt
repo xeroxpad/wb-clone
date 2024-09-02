@@ -61,12 +61,17 @@ import org.koin.androidx.compose.koinViewModel
 fun ScreenProfile(
     modifier: Modifier = Modifier,
     navController: NavController,
+    fromScreen: String,
     viewModelMeeting: MeetingViewModel = koinViewModel(),
     viewModelCommunity: CommunityViewModel = koinViewModel(),
 ) {
     val events by viewModelMeeting.meetings.collectAsState()
     val community by viewModelCommunity.community.collectAsState()
     val focusManager = LocalFocusManager.current
+    val iconShareOrEdit = when (fromScreen) {
+        Graph.MakeAnAppointmentDone.route -> R.drawable.icon_share
+        else -> R.drawable.icon_edit
+    }
     Scaffold(
         modifier =
         modifier
@@ -82,6 +87,14 @@ fun ScreenProfile(
                     .background(Color.Transparent),
                 title = "",
                 iconBack = { navController.popBackStack() },
+                iconShare = iconShareOrEdit,
+                onIconShareOrIconEditClick = {
+                    if (fromScreen == (Graph.Events.route)) {
+
+                    } else {
+
+                    }
+                }
             )
         },
         content = { innerPadding ->

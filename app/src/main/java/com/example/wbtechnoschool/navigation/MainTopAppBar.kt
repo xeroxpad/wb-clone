@@ -29,7 +29,8 @@ fun MainTopAppBar(
     modifier: Modifier = Modifier,
     title: String? = null,
     iconBack: (() -> Unit)? = null,
-    iconShare: (() -> Int)? = { R.drawable.icon_share },
+    iconShare: Int? = R.drawable.icon_share,
+    onIconShareOrIconEditClick: (() -> Unit)? = null
 ) {
     Row(
         modifier = modifier,
@@ -74,11 +75,11 @@ fun MainTopAppBar(
                     .clip(shape = RoundedCornerShape(16.dp))
                     .size(44.dp)
                     .weight(0.5f)
-                    .clickable(onClick = {}),
+                    .clickable(onClick = {onIconShareOrIconEditClick?.invoke()}),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.icon_share),
+                    painter = painterResource(iconShare),
                     contentDescription = null,
                     tint = LightColorTheme.fixVioletBlaze,
                     modifier = Modifier

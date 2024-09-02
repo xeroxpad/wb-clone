@@ -35,8 +35,10 @@ import androidx.compose.ui.viewinterop.AndroidView
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
+import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.utils.button.GradientButton
+import com.example.wbtechnoschool.utils.button.StatusTextButton
 
 @Composable
 fun ScreenMakeAnAppointmentDone(
@@ -62,64 +64,67 @@ fun ScreenMakeAnAppointmentDone(
             videoView.stopPlayback()
         }
     }
-        Box(
+    Box(
+        modifier = Modifier
+            .fillMaxSize()
+    ) {
+        AndroidView(
+            factory = { videoView },
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxHeight()
+                .zIndex(0f)
+        )
+        Column(
+            modifier = modifier
+                .padding(20.dp)
+                .statusBarsPadding()
         ) {
-            AndroidView(
-                factory = { videoView },
-                modifier = Modifier.fillMaxHeight().zIndex(0f)
-            )
             Column(
-                modifier = modifier
-                    .padding(20.dp)
-                    .statusBarsPadding()
-            ) {
-                    Column(
-                        modifier = Modifier
-                            .weight(5f),
-                        verticalArrangement = Arrangement.Top,
-                        horizontalAlignment = Alignment.Start
-                    ) {
-                        Text(
-                            text = stringResource(id = R.string.your_make_an_appointment_done),
-                            fontWeight = FontWeight.W600,
-                            fontSize = 49.sp,
-                            color = LightColorTheme.neutralWhite,
-                            lineHeight = 40.sp
-                        )
-                        Spacer(modifier = Modifier.height(10.dp))
-                        Text(
-                            text = "Супертестировщики · 12 августа · Невский проспект, 11",
-                            fontWeight = FontWeight.W400,
-                            fontSize = 16.sp,
-                            color = LightColorTheme.neutralWhite,
-                        )
-                    }
-                }
-            Column(
-                horizontalAlignment = Alignment.CenterHorizontally,
-                verticalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
-                    .padding(horizontal = 20.dp)
-                    .padding(bottom = 15.dp)
-                    .navigationBarsPadding()
-                    .align(Alignment.BottomCenter)
-
+                    .weight(5f),
+                verticalArrangement = Arrangement.Top,
+                horizontalAlignment = Alignment.Start
             ) {
                 Text(
-                    text = stringResource(id = R.string.my_meetings),
-                    color = LightColorTheme.fixVioletBlaze,
-                    fontWeight = FontWeight.W500,
-                    fontSize = 18.sp,
-                    modifier = Modifier.clickable { }
+                    text = stringResource(id = R.string.your_make_an_appointment_done),
+                    fontWeight = FontWeight.W600,
+                    fontSize = 49.sp,
+                    color = LightColorTheme.neutralWhite,
+                    lineHeight = 40.sp
                 )
-                Spacer(modifier = Modifier.height(20.dp))
-                GradientButton(
-                    modifier = Modifier.height(56.dp),
-                    textButton = "Найти другие встречи",
-                    enable = true,
-                ) {}
+                Spacer(modifier = Modifier.height(10.dp))
+                Text(
+                    text = "Супертестировщики · 12 августа · Невский проспект, 11",
+                    fontWeight = FontWeight.W400,
+                    fontSize = 16.sp,
+                    color = LightColorTheme.neutralWhite,
+                )
             }
         }
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceBetween,
+            modifier = Modifier
+                .padding(horizontal = 20.dp)
+                .padding(bottom = 15.dp)
+                .navigationBarsPadding()
+                .align(Alignment.BottomCenter)
+
+        ) {
+            StatusTextButton(
+                contentColor = LightColorTheme.fixVioletBlaze,
+                containerColor = Color.Transparent,
+                enable = true,
+//                onClick = { navController.navigate(Graph.Profile.route) },
+                onClick = { navController.navigate("${Graph.Profile.route}?fromScreen=${Graph.MakeAnAppointmentDone.route}") },
+                contentText = stringResource(id = R.string.my_meetings)
+            )
+            Spacer(modifier = Modifier.height(20.dp))
+            GradientButton(
+                modifier = Modifier.height(56.dp),
+                textButton = "Найти другие встречи",
+                enable = true,
+            ) { navController.navigate(Graph.DescriptionMeeting.route) }
+        }
     }
+}
