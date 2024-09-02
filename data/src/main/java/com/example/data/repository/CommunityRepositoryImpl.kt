@@ -85,8 +85,8 @@ class CommunityRepositoryImpl : ICommunityRepository {
         listOf<Community>(
             Community(
                 id = 0,
-                icon = "https://s3-alpha-sig.figma.com/img/4444/d138/f8b1f7772ef6d067ca0e48c2eadc47df?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=afvBgFdd-0ppE22SQS02gjuabkdEhJpmOJB3omwBcDfiRX7VxhyQWasVGpr3h5-Qxx35fngtmYJwYrzNsmmagpXL6OqMe9U0vN~~TZTAMSiNCCWZDIjoafMB6g8G1Sm2lEYBJ1Lzdf1Bd6uD4BY0qyBrMYcteLYB0B9MT3azMGAqUNbR7feAgvPfm5ywn0BtBhD10BHsnZBhLswXm2IpM0H0ra~V0~DXXu7AXwwPZ2jp5eHRwzk1gFNCS4s3ZQnECOSjtmdVaZ-9gxKKM0Mg96Eou3Nyz0T8-w1aVRcCPFH5t5qAy2ziV-DGUEEy6b42dGjyfsNWDp3SfKmd9-p9xg__",
-                title = "Супер тестировщики",
+                icon = "https://s3-alpha-sig.figma.com/img/517e/1a88/6f9d0e680e2832ebf4ee55c7d292b7ab?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bDjaqt9B4SwXwM6RE-jlQKMcpcAyN8lHZEjGc0Fhkz14ol38KgVwxzqJBDd4H88kfKfB8IojDeH5ijbWhx6WG5EAs7kyA0DsqfQ4-o82JIFBgXYKclFxD~-B4h4Ou0UnnGh9iXVDLqssmxPvSUYelAWWDqf~yhV8sdgQRzF5nDSB1Gd1ffs4BONIOgl-biJKbl0ybFV7qEbBxcY64WZTvobbSGYTnwombnb2fYsy3xO3c0voNzj8BcQ5a5uWi7olfjFrUBbhnTtLpTzuut-Ssc8QXSXU~eBMc~vL2RbfG0MLFL2YeMjwyRnq-BRt2iy8XSVA6qchSZkpNL5g0o0B4A__",
+                title = "WBTECH",
             ),
             Community(
                 id = 1,

@@ -98,25 +98,25 @@ sealed class Graph(
         data object DetailsCommunity : Graph(screenDetailsCommunity)
     }
 
-    data object InfoRoot : Graph(screenInfoRoot) {
-        data object AllInfo : Graph(screenInfo)
-
-        data object MyProfile : Graph(screenProfile)
-
-        data object MyMeetings : Graph(screenMyMeetings)
-
-        data object MyTheme : Graph(screenTheme)
-
-        data object MyNotifications : Graph(screenNotifications)
-
-        data object MySafety : Graph(screenSafety)
-
-        data object MyResources : Graph(screenResources)
-
-        data object MyHelp : Graph(screenHelp)
-
-        data object MyInviteFriend : Graph(inviteFriend)
-    }
+//    data object InfoRoot : Graph(screenInfoRoot) {
+//        data object AllInfo : Graph(screenInfo)
+//
+//        data object MyProfile : Graph(screenProfile)
+//
+//        data object MyMeetings : Graph(screenMyMeetings)
+//
+//        data object MyTheme : Graph(screenTheme)
+//
+//        data object MyNotifications : Graph(screenNotifications)
+//
+//        data object MySafety : Graph(screenSafety)
+//
+//        data object MyResources : Graph(screenResources)
+//
+//        data object MyHelp : Graph(screenHelp)
+//
+//        data object MyInviteFriend : Graph(inviteFriend)
+//    }
 
     data object EventsRoot: Graph(screenEventsRoot) {
         data object AllEvents: Graph(screenEvents)

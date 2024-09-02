@@ -188,7 +188,7 @@ fun TextFieldForCode(
 }
 
 @Composable
-fun FixSearchTextField(modifier: Modifier = Modifier, placeholder: Int) {
+fun FixSearchTextField(modifier: Modifier = Modifier, placeholder: Int, onClick: () -> Unit) {
     var textState by remember { mutableStateOf(("")) }
     var isFocused by remember { mutableStateOf(false) }
     Row(verticalAlignment = Alignment.CenterVertically) {
@@ -262,7 +262,9 @@ fun FixSearchTextField(modifier: Modifier = Modifier, placeholder: Int) {
         Box(modifier = Modifier
             .size(44.dp)
             .clip(shape = RoundedCornerShape(16.dp))
-            .clickable { }) {
+            .clickable { onClick() },
+            contentAlignment = Alignment.Center
+        ) {
             Icon(
                 painter = painterResource(id = R.drawable.icon_user),
                 contentDescription = null,
@@ -281,11 +283,6 @@ fun FieldForNumber(onValueChange: (String) -> Unit) {
             .fillMaxWidth()
             .clip(shape = RoundedCornerShape(MagicNumbers.FIX_TEXT_FIELD_SHAPE_RADIUS.dp))
             .background(LightColorTheme.fixLavenderBlush)
-//            .border(
-//                width = MagicNumbers.FIX_TEXT_FIELD_BOX_BORDER_WIDTH.dp,
-//                color = if (isFocused) LightColorTheme.brandColorDefault else Color.Transparent,
-//                shape = RoundedCornerShape(MagicNumbers.FIX_TEXT_FIELD_SHAPE_RADIUS.dp)
-//            )
             .padding(horizontal = MagicNumbers.FIX_TEXT_FIELD_BOX_PADDING_HORIZONTAL.dp)
             .height(MagicNumbers.FIX_TEXT_FIELD_BOX_HEIGHT.dp),
     ) {

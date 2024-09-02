@@ -36,78 +36,78 @@ import com.example.wbtechnoschool.utils.constants.SPACER
 import com.example.wbtechnoschool.viewmodel.more_view_model.profile_view_model.ProfileViewModule
 import org.koin.androidx.compose.koinViewModel
 
-@Composable
-fun ScreenProfile(
-    modifier: Modifier = Modifier,
-    navController: NavController,
-    viewModel: ProfileViewModule = koinViewModel(),
-) {
-    val name by viewModel.name.collectAsState()
-//    val phoneNumber by viewModel.phoneNumber.collectAsState()
-    val socialMediaIcons by viewModel.socialMediaIcons.collectAsState()
-    val avatarUrl = viewModel.avatar.collectAsState()
-    Scaffold(
-        modifier =
-        modifier
-            .statusBarsPadding()
-            .fillMaxSize(),
-        topBar = {
-            MainTopAppBar(
-                title = stringResource(id = R.string.top_bar_my_profile),
-                iconBack = { navController.popBackStack() },
-//                actions = { navController.navigate(Graph.AuthorizationProfile.route) },
-//                actionsIcon = R.drawable.edit
-            )
-        },
-        content = { innerPadding ->
-            Column(
-                modifier =
-                Modifier
-                    .padding(MagicNumbers.SCREEN_PROFILE_PADDING_HORIZONTAL.dp)
-                    .padding(innerPadding)
-                    .fillMaxSize(),
-                verticalArrangement = Arrangement.Top
-            ) {
-                Spacer(modifier = Modifier.height(SPACER.SPACER_80.value.dp))
-                MyMainAvatar(
-                    model = avatarUrl.value,
-                    contentDescription = null,
-                    modifier =
-                    Modifier
-                        .size(MagicNumbers.SCREEN_PROFILE_MY_MAIN_AVATAR_SIZE.dp)
-                        .align(Alignment.CenterHorizontally)
-                        .clip((CircleShape))
-                )
-                Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
-                Text(
-                    text = name,
-                    fontSize = MagicNumbers.SCREEN_PROFILE_TEXT_NAME_FONT_SIZE.sp,
-                    fontFamily = fontSFPro,
-                    fontWeight = FontWeight.W600,
-                    modifier = Modifier.align(Alignment.CenterHorizontally)
-                )
+//@Composable
+//fun ScreenProfile(
+//    modifier: Modifier = Modifier,
+//    navController: NavController,
+//    viewModel: ProfileViewModule = koinViewModel(),
+//) {
+//    val name by viewModel.name.collectAsState()
+////    val phoneNumber by viewModel.phoneNumber.collectAsState()
+//    val socialMediaIcons by viewModel.socialMediaIcons.collectAsState()
+//    val avatarUrl = viewModel.avatar.collectAsState()
+//    Scaffold(
+//        modifier =
+//        modifier
+//            .statusBarsPadding()
+//            .fillMaxSize(),
+//        topBar = {
+//            MainTopAppBar(
+//                title = stringResource(id = R.string.top_bar_my_profile),
+//                iconBack = { navController.popBackStack() },
+////                actions = { navController.navigate(Graph.AuthorizationProfile.route) },
+////                actionsIcon = R.drawable.edit
+//            )
+//        },
+//        content = { innerPadding ->
+//            Column(
+//                modifier =
+//                Modifier
+//                    .padding(MagicNumbers.SCREEN_PROFILE_PADDING_HORIZONTAL.dp)
+//                    .padding(innerPadding)
+//                    .fillMaxSize(),
+//                verticalArrangement = Arrangement.Top
+//            ) {
+//                Spacer(modifier = Modifier.height(SPACER.SPACER_80.value.dp))
+//                MyMainAvatar(
+//                    model = avatarUrl.value,
+//                    contentDescription = null,
+//                    modifier =
+//                    Modifier
+//                        .size(MagicNumbers.SCREEN_PROFILE_MY_MAIN_AVATAR_SIZE.dp)
+//                        .align(Alignment.CenterHorizontally)
+//                        .clip((CircleShape))
+//                )
+//                Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
 //                Text(
-//                    text = phoneNumber,
-//                    fontSize = MagicNumbers.SCREEN_PROFILE_TEXT_NUMBER_FONT_SIZE.sp,
+//                    text = name,
+//                    fontSize = MagicNumbers.SCREEN_PROFILE_TEXT_NAME_FONT_SIZE.sp,
 //                    fontFamily = fontSFPro,
-//                    fontWeight = FontWeight.W400,
-//                    color = LightColorTheme.neutralDisabled,
+//                    fontWeight = FontWeight.W600,
 //                    modifier = Modifier.align(Alignment.CenterHorizontally)
 //                )
-                Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
-                Row(
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    modifier = Modifier.fillMaxWidth()
-                ) {
-                    socialMediaIcons.forEach { icon ->
-                        IconOutlinedButton(
-                            contentColor = LightColorTheme.brandColorDefault,
-                            onClick = { },
-                            icon = icon
-                        )
-                    }
-                }
-            }
-        }
-    )
-}
+////                Text(
+////                    text = phoneNumber,
+////                    fontSize = MagicNumbers.SCREEN_PROFILE_TEXT_NUMBER_FONT_SIZE.sp,
+////                    fontFamily = fontSFPro,
+////                    fontWeight = FontWeight.W400,
+////                    color = LightColorTheme.neutralDisabled,
+////                    modifier = Modifier.align(Alignment.CenterHorizontally)
+////                )
+//                Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
+//                Row(
+//                    horizontalArrangement = Arrangement.SpaceBetween,
+//                    modifier = Modifier.fillMaxWidth()
+//                ) {
+//                    socialMediaIcons.forEach { icon ->
+//                        IconOutlinedButton(
+//                            contentColor = LightColorTheme.brandColorDefault,
+//                            onClick = { },
+//                            icon = icon
+//                        )
+//                    }
+//                }
+//            }
+//        }
+//    )
+//}

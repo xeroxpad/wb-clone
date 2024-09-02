@@ -65,7 +65,6 @@ fun ScreenEvents(
     Scaffold(
         modifier =
         modifier
-            .background(Color.White)
             .statusBarsPadding()
             .pointerInput(Unit) {
                 detectTapGestures(onTap = { focusManager.clearFocus() })
@@ -77,6 +76,7 @@ fun ScreenEvents(
                     placeholder = R.string.search_meetings_and_community,
                     modifier = Modifier
                         .weight(1f),
+                    onClick = { navController.navigate(Graph.Profile.route) }
                 )
             }
             LazyColumn(
@@ -93,7 +93,7 @@ fun ScreenEvents(
                         items(events) { event ->
                             FixCardMeeting(
                                 event = event,
-                                onClick = {navController.navigate(Graph.DescriptionMeeting.route)},
+                                onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                             )
                             Spacer(modifier = Modifier.width(10.dp))
                         }
@@ -109,7 +109,7 @@ fun ScreenEvents(
                         items(events) { event ->
                             FixCardMeetingMini(
                                 event = event,
-                                onClick = {navController.navigate(Graph.DescriptionMeeting.route)},
+                                onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                             )
                             Spacer(modifier = Modifier.width(10.dp))
                         }
@@ -126,7 +126,7 @@ fun ScreenEvents(
                         items(community) { communities ->
                             FixCardCommunity(
                                 community = communities,
-                                onClick = {navController.navigate(Graph.DetailsCommunity.route)},
+                                onClick = { navController.navigate(Graph.DetailsCommunity.route) },
                             )
                             Spacer(modifier = Modifier.width(10.dp))
                         }
@@ -164,7 +164,7 @@ fun ScreenEvents(
                 items(events) { event ->
                     FixCardMeeting(
                         event = event,
-                        onClick = {navController.navigate(Graph.DescriptionMeeting.route)},
+                        onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                         modifier = Modifier
                             .padding(end = 20.dp)
                             .fillMaxWidth()

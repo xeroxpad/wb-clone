@@ -18,6 +18,7 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
@@ -29,6 +30,7 @@ import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.screens.meetings.SelectOtherMeetings
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.utils.button.GradientButton
+import com.example.wbtechnoschool.utils.button.StatusTextButton
 import kotlinx.coroutines.GlobalScope
 
 @Composable
@@ -103,14 +105,13 @@ fun ScreenSelectInterests(
                         textButton = "Сохранить",
                     ) {}
                     Spacer(modifier = Modifier.height(10.dp))
-                    TextButton(onClick = { navController.navigate(Graph.Events.route) }) {
-                        Text(
-                            text = stringResource(id = R.string.tell_you_later),
-                            color = LightColorTheme.indigoTwilight,
-                            fontWeight = FontWeight.W500,
-                            fontSize = 18.sp,
-                        )
-                    }
+                    StatusTextButton(
+                        contentColor = LightColorTheme.indigoTwilight,
+                        containerColor = Color.Transparent,
+                        enable = true,
+                        onClick = { navController.navigate(Graph.Events.route) },
+                        contentText = stringResource(id = R.string.tell_you_later)
+                    )
                 }
             }
         }

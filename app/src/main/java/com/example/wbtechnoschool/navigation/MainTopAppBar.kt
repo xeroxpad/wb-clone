@@ -33,7 +33,6 @@ fun MainTopAppBar(
 ) {
     Row(
         modifier = modifier,
-//        horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically,
     ) {
         iconBack?.let {

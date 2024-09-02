@@ -60,6 +60,7 @@
     <string name="placeholder_text_field_for_code">0000</string>
     <string name="get_new__code">Получить новый код</string>
     <string name="my_meetings">Мои встречи</string>
+    <string name="log_out">Выйти</string>
 
 
 </resources>
