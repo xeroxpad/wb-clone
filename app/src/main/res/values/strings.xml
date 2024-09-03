@@ -52,6 +52,8 @@
     <string name="request_code_again">Запросить код повторно</string>
     <string name="no_participants">сейчас нет участников</string>
     <string name="name_and_second_name">Имя и фамилия</string>
+    <string name="city">Город</string>
+    <string name="tell_about_yourself">Расскажите о себе</string>
     <string name="search_meetings_and_community">Найти встречи и сообщества</string>
     <string name="invitation_to_meetings_and_communities">Будем приглашать на встречи сообщества и рекомендовать похожие</string>
     <string name="tell_you_later">Расскажу позже</string>
@@ -61,6 +63,9 @@
     <string name="get_new__code">Получить новый код</string>
     <string name="my_meetings">Мои встречи</string>
     <string name="log_out">Выйти</string>
+    <string name="habr">Хабр</string>
+    <string name="telegram">Телеграм</string>
+    <string name="delete_profile">Удалить профиль</string>
 
 
 </resources>

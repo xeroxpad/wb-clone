@@ -159,7 +159,6 @@ fun FixButton(
     containerColor: Color,
     enable: Boolean,
     onClick: () -> Unit,
-    icon: Int,
 ) {
     Button(
         onClick = onClick,
@@ -173,7 +172,7 @@ fun FixButton(
         ),
         enabled = enable
     ) {
-        Icon(painter = painterResource(id = icon), contentDescription = null)
+        Text(text = "Изменить фото")
     }
 }
 

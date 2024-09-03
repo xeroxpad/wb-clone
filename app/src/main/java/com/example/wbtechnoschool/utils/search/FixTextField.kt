@@ -46,11 +46,11 @@ import com.example.wbtechnoschool.utils.constants.MagicNumbers
 
 
 @Composable
-fun FixTextField(placeholder: Int, text: String, textChange: (String) -> Unit) {
+fun FixTextField(modifier: Modifier = Modifier,  placeholder: Int, text: String, textChange: (String) -> Unit) {
     var textState by remember { mutableStateOf(("")) }
     var isFocused by remember { mutableStateOf(false) }
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clip(shape = RoundedCornerShape(MagicNumbers.FIX_TEXT_FIELD_SHAPE_RADIUS.dp))
             .background(LightColorTheme.fixLavenderBlush)
@@ -188,12 +188,12 @@ fun TextFieldForCode(
 }
 
 @Composable
-fun FixSearchTextField(modifier: Modifier = Modifier, placeholder: Int, onClick: () -> Unit) {
+fun FixSearchTextField(modifier: Modifier = Modifier, placeholder: Int, leadingIcon: Int) {
     var textState by remember { mutableStateOf(("")) }
     var isFocused by remember { mutableStateOf(false) }
-    Row(verticalAlignment = Alignment.CenterVertically) {
+    Row(verticalAlignment = Alignment.CenterVertically, modifier = modifier) {
         Box(
-            modifier = modifier
+            modifier = Modifier
                 .clip(shape = RoundedCornerShape(MagicNumbers.FIX_TEXT_FIELD_SHAPE_RADIUS.dp))
                 .background(LightColorTheme.fixLavenderBlush)
                 .border(
@@ -210,13 +210,13 @@ fun FixSearchTextField(modifier: Modifier = Modifier, placeholder: Int, onClick:
                     .fillMaxHeight()
             ) {
                 Icon(
-                    painter = painterResource(id = R.drawable.search),
+                    painter = painterResource(leadingIcon),
                     contentDescription = null,
-                    tint = LightColorTheme.indigoTwilight,
+                    tint = LightColorTheme.neutralDisabled,
                     modifier = Modifier
                         .size(25.dp)
                 )
-                Spacer(modifier = Modifier.width(5.dp))
+                Spacer(modifier = Modifier.width(7.dp))
                 BasicTextField(
                     value = textState,
                     onValueChange = { textState = it },
@@ -255,22 +255,22 @@ fun FixSearchTextField(modifier: Modifier = Modifier, placeholder: Int, onClick:
                 )
             }
         }
-        Spacer(
-            modifier = Modifier
-                .width(10.dp)
-        )
-        Box(modifier = Modifier
-            .size(44.dp)
-            .clip(shape = RoundedCornerShape(16.dp))
-            .clickable { onClick() },
-            contentAlignment = Alignment.Center
-        ) {
-            Icon(
-                painter = painterResource(id = R.drawable.icon_user),
-                contentDescription = null,
-                tint = LightColorTheme.fixVioletBlaze,
-            )
-        }
+//        Spacer(
+//            modifier = Modifier
+//                .width(10.dp)
+//        )
+//        Box(modifier = Modifier
+//            .size(44.dp)
+//            .clip(shape = RoundedCornerShape(16.dp))
+//            .clickable { onClick() },
+//            contentAlignment = Alignment.Center
+//        ) {
+//            Icon(
+//                painter = painterResource(id = R.drawable.icon_user),
+//                contentDescription = null,
+//                tint = LightColorTheme.fixVioletBlaze,
+//            )
+//        }
     }
 }
 
