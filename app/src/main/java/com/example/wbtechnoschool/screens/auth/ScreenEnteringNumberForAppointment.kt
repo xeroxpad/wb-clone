@@ -150,7 +150,7 @@ fun ScreenEnteringNumberForAppointment(
                                 )
                             }
                             Spacer(modifier = Modifier.width(MagicNumbers.SCREEN_AUTH_SPACER_WIDTH_TF.dp))
-                            FieldForNumber { newPhoneNumber ->
+                            FieldForNumber(placeholder = R.string.placeholder_number) { newPhoneNumber ->
                                 currentPhoneNumber = newPhoneNumber
                             }
                         }

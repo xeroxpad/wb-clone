@@ -52,8 +52,10 @@ import com.example.wbtechnoschool.utils.button.StatusTextButton
 import com.example.wbtechnoschool.utils.events.FixCardCommunity
 import com.example.wbtechnoschool.utils.events.FixCardMeetingMini
 import com.example.wbtechnoschool.utils.search.FieldForNumber
+import com.example.wbtechnoschool.utils.search.FieldForNumberCountryCode
 import com.example.wbtechnoschool.utils.search.FixSearchTextField
 import com.example.wbtechnoschool.utils.search.FixTextField
+import com.example.wbtechnoschool.utils.search.FixTextFieldWide
 import com.example.wbtechnoschool.utils.tags.FixTags
 import com.example.wbtechnoschool.utils.toggle.FixToggleSwitch
 import com.example.wbtechnoschool.viewmodel.auth_view_model.AuthorizationProfileViewModel
@@ -273,8 +275,8 @@ fun ProfileEditContent(
     viewModel: AuthorizationProfileViewModel = koinViewModel(),
 ) {
     val name by viewModel.name.collectAsState()
-    val city by viewModel.name.collectAsState()
-    val aboutYourself by viewModel.name.collectAsState()
+    val city by viewModel.city.collectAsState()
+    val infoAboutYourself by viewModel.infoAboutYourself.collectAsState()
     var currentPhoneNumber by remember { mutableStateOf("") }
     Column(modifier = modifier.padding(horizontal = 20.dp)) {
         Spacer(modifier = Modifier.height(20.dp))
@@ -284,21 +286,20 @@ fun ProfileEditContent(
             textChange = { viewModel.nameChange(it) }
         )
         Spacer(modifier = Modifier.height(7.dp))
-        FieldForNumber { newPhoneNumber ->
+        FieldForNumberCountryCode(placeholder = R.string.placeholder_number) { newPhoneNumber ->
             currentPhoneNumber = newPhoneNumber
         }
         Spacer(modifier = Modifier.height(7.dp))
         FixTextField(
             placeholder = R.string.city,
             text = city,
-            textChange = { viewModel.nameChange(it) }
+            textChange = { viewModel.cityChange(it) }
         )
         Spacer(modifier = Modifier.height(7.dp))
-        FixTextField(
+        FixTextFieldWide(
             placeholder = R.string.tell_about_yourself,
-            text = aboutYourself,
-            textChange = { viewModel.nameChange(it) },
-            modifier = Modifier.height(102.dp),
+            text = infoAboutYourself,
+            textChange = { viewModel.infoAboutNameChange(it) },
         )
         Spacer(modifier = Modifier.height(30.dp))
         Text(

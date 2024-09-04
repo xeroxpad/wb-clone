@@ -200,7 +200,7 @@ fun ScreenAuthorization(
             Spacer(modifier = Modifier.height(10.dp))
 //            FixTextField(placeholder = R.string.name_and_second_name)
             Spacer(modifier = Modifier.height(10.dp))
-            FieldForNumber {}
+//            FieldForNumber {}
             Spacer(modifier = Modifier.height(10.dp))
             FixToggleSwitch()
             Spacer(modifier = Modifier.height(10.dp))

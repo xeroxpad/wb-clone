@@ -9,6 +9,7 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.heightIn
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
@@ -37,16 +38,23 @@ import androidx.compose.ui.text.input.KeyboardCapitalization
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
+import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
+import com.example.wbtechnoschool.ui.theme.inter
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 
 
 @Composable
-fun FixTextField(modifier: Modifier = Modifier,  placeholder: Int, text: String, textChange: (String) -> Unit) {
+fun FixTextField(
+    modifier: Modifier = Modifier,
+    placeholder: Int,
+    text: String,
+    textChange: (String) -> Unit
+) {
     var textState by remember { mutableStateOf(("")) }
     var isFocused by remember { mutableStateOf(false) }
     Box(
@@ -85,6 +93,7 @@ fun FixTextField(modifier: Modifier = Modifier,  placeholder: Int, text: String,
                     letterSpacing = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_LETTER_SPACING.sp
                 ),
                 maxLines = 1,
+                singleLine = true,
                 cursorBrush = SolidColor(LightColorTheme.fixVioletBlaze),
                 keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
                 decorationBox = { innerTextField ->
@@ -95,7 +104,7 @@ fun FixTextField(modifier: Modifier = Modifier,  placeholder: Int, text: String,
                                 color = LightColorTheme.neutralDisabled,
                                 style = TextStyle(lineHeight = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_LINE_HEIGHT.sp),
                                 fontWeight = FontWeight.W500,
-                                fontFamily = fontSFPro,
+                                fontFamily = inter,
                                 fontSize = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_FONT_SIZE.sp,
                                 letterSpacing = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_LETTER_SPACING.sp,
                             )
@@ -108,6 +117,77 @@ fun FixTextField(modifier: Modifier = Modifier,  placeholder: Int, text: String,
 
     }
 }
+
+@Composable
+fun FixTextFieldWide(
+    modifier: Modifier = Modifier,
+    placeholder: Int,
+    text: String,
+    textChange: (String) -> Unit
+) {
+    var isFocused by remember { mutableStateOf(false) }
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .clip(shape = RoundedCornerShape(MagicNumbers.FIX_TEXT_FIELD_SHAPE_RADIUS.dp))
+            .background(LightColorTheme.fixLavenderBlush)
+            .border(
+                width = MagicNumbers.FIX_TEXT_FIELD_BOX_BORDER_WIDTH.dp,
+                color = if (isFocused) LightColorTheme.brandColorDefault else Color.Transparent,
+                shape = RoundedCornerShape(MagicNumbers.FIX_TEXT_FIELD_SHAPE_RADIUS.dp)
+            )
+            .padding(horizontal = MagicNumbers.FIX_TEXT_FIELD_BOX_PADDING_HORIZONTAL.dp)
+            .padding(bottom = 20.dp)
+            .heightIn(min = 102.dp),
+    ) {
+        Row(
+            verticalAlignment = Alignment.Top,
+            modifier = Modifier
+                .padding(top = 20.dp)
+                .fillMaxHeight()
+        ) {
+            BasicTextField(
+                value = text,
+                onValueChange = {
+                    textChange(it)
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .onFocusChanged { focusState ->
+                        isFocused = focusState.isFocused
+                    },
+                textStyle = TextStyle(
+                    textAlign = TextAlign.Start,
+                    color = Color.Black,
+                    fontWeight = FontWeight.W500,
+                    fontFamily = fontSFPro,
+                    fontSize = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_FONT_SIZE.sp,
+                    letterSpacing = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_LETTER_SPACING.sp
+                ),
+                cursorBrush = SolidColor(LightColorTheme.fixVioletBlaze),
+                keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
+                decorationBox = { innerTextField ->
+                    when {
+                        text.isEmpty() -> {
+                            Text(
+                                text = stringResource(id = placeholder),
+                                color = LightColorTheme.neutralDisabled,
+                                style = TextStyle(lineHeight = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_LINE_HEIGHT.sp),
+                                fontWeight = FontWeight.W500,
+                                fontFamily = inter,
+                                fontSize = 14.sp,
+                                letterSpacing = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_LETTER_SPACING.sp,
+                            )
+                        }
+                    }
+                    innerTextField()
+                }
+            )
+        }
+
+    }
+}
+
 
 @Composable
 fun TextFieldForCode(
@@ -137,7 +217,6 @@ fun TextFieldForCode(
         ) {
             BasicTextField(
                 value = textState,
-//                onValueChange = { textState = it },
                 onValueChange = {
                     val digitsOnly = it.filter { it.isDigit() }
                     if (digitsOnly.length <= MagicNumbers.CODE_MAX_LENGTH) {
@@ -173,7 +252,7 @@ fun TextFieldForCode(
                                 color = LightColorTheme.neutralDisabled,
                                 style = TextStyle(lineHeight = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_LINE_HEIGHT.sp),
                                 fontWeight = FontWeight.W500,
-                                fontFamily = fontSFPro,
+                                fontFamily = inter,
                                 fontSize = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_FONT_SIZE.sp,
                                 letterSpacing = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_LETTER_SPACING.sp,
                             )
@@ -243,7 +322,7 @@ fun FixSearchTextField(modifier: Modifier = Modifier, placeholder: Int, leadingI
                                 color = LightColorTheme.indigoTwilight,
                                 style = TextStyle(lineHeight = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_LINE_HEIGHT.sp),
                                 fontWeight = FontWeight.W500,
-                                fontFamily = fontSFPro,
+                                fontFamily = inter,
                                 fontSize = 16.sp,
                                 letterSpacing = 1.sp,
                                 maxLines = 1,
@@ -255,31 +334,19 @@ fun FixSearchTextField(modifier: Modifier = Modifier, placeholder: Int, leadingI
                 )
             }
         }
-//        Spacer(
-//            modifier = Modifier
-//                .width(10.dp)
-//        )
-//        Box(modifier = Modifier
-//            .size(44.dp)
-//            .clip(shape = RoundedCornerShape(16.dp))
-//            .clickable { onClick() },
-//            contentAlignment = Alignment.Center
-//        ) {
-//            Icon(
-//                painter = painterResource(id = R.drawable.icon_user),
-//                contentDescription = null,
-//                tint = LightColorTheme.fixVioletBlaze,
-//            )
-//        }
     }
 }
 
 @Composable
-fun FieldForNumber(onValueChange: (String) -> Unit) {
+fun FieldForNumber(
+    modifier: Modifier = Modifier,
+    placeholder: Int,
+    onValueChange: (String) -> Unit
+) {
     var phoneNumber by remember { mutableStateOf("") }
     var isFocused by remember { mutableStateOf(false) }
     Box(
-        modifier = Modifier
+        modifier = modifier
             .fillMaxWidth()
             .clip(shape = RoundedCornerShape(MagicNumbers.FIX_TEXT_FIELD_SHAPE_RADIUS.dp))
             .background(LightColorTheme.fixLavenderBlush)
@@ -323,12 +390,93 @@ fun FieldForNumber(onValueChange: (String) -> Unit) {
                 decorationBox = { innerTextField ->
                     if (phoneNumber.isEmpty()) {
                         Text(
-                            text = stringResource(id = R.string.placeholder_number),
+                            text = stringResource(placeholder),
                             color = LightColorTheme.neutralDisabled,
                             style = TextStyle(
                                 lineHeight = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_LINE_HEIGHT.sp,
                                 fontWeight = FontWeight.W500,
-                                fontFamily = fontSFPro,
+                                fontFamily = inter,
+                                fontSize = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_FONT_SIZE.sp,
+                                letterSpacing = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_LETTER_SPACING.sp
+                            )
+                        )
+                    }
+                    innerTextField()
+                }
+            )
+        }
+    }
+}
+
+
+@Composable
+fun FieldForNumberCountryCode(
+    modifier: Modifier = Modifier,
+    placeholder: Int,
+    onValueChange: (String) -> Unit
+) {
+    var phoneNumber by remember { mutableStateOf("") }
+    var isFocused by remember { mutableStateOf(false) }
+    Box(
+        modifier = modifier
+            .fillMaxWidth()
+            .clip(shape = RoundedCornerShape(MagicNumbers.FIX_TEXT_FIELD_SHAPE_RADIUS.dp))
+            .background(LightColorTheme.fixLavenderBlush)
+            .padding(horizontal = MagicNumbers.FIX_TEXT_FIELD_BOX_PADDING_HORIZONTAL.dp)
+            .height(MagicNumbers.FIX_TEXT_FIELD_BOX_HEIGHT.dp),
+    ) {
+        Row(
+            verticalAlignment = Alignment.CenterVertically,
+            modifier = Modifier
+                .fillMaxHeight()
+        ) {
+            Text(
+                text = "+7",
+                color = if (phoneNumber.isEmpty()) LightColorTheme.neutralDisabled else Color.Black,
+                style = TextStyle(
+                    lineHeight = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_LINE_HEIGHT.sp,
+                    fontFamily = inter
+                ),
+                fontSize = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_FONT_SIZE.sp,
+                letterSpacing = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_LETTER_SPACING.sp
+            )
+            Spacer(modifier = Modifier.width(7.dp))
+            BasicTextField(
+                value = phoneNumber,
+                onValueChange = {
+                    val digitsOnly = it.filter { it.isDigit() }
+                    if (digitsOnly.length <= MagicNumbers.PHONE_MAX_LENGTH) {
+                        phoneNumber = digitsOnly
+                        onValueChange(digitsOnly)
+                    }
+                },
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .onFocusChanged { focusState ->
+                        isFocused = focusState.isFocused
+                    },
+                textStyle = TextStyle(
+                    textAlign = TextAlign.Start,
+                    color = Color.Black,
+                    lineHeight = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_LINE_HEIGHT.sp,
+                    fontFamily = inter,
+                    fontSize = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_FONT_SIZE.sp,
+                    letterSpacing = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_LETTER_SPACING.sp
+                ),
+                cursorBrush = SolidColor(LightColorTheme.fixVioletBlaze),
+                keyboardOptions = KeyboardOptions.Default.copy(
+                    capitalization = KeyboardCapitalization.None,
+                    keyboardType = KeyboardType.Phone
+                ),
+                visualTransformation = FormatPhoneNumber(),
+                decorationBox = { innerTextField ->
+                    if (phoneNumber.isEmpty()) {
+                        Text(
+                            text = stringResource(placeholder),
+                            color = LightColorTheme.neutralDisabled,
+                            style = TextStyle(
+                                lineHeight = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_LINE_HEIGHT.sp,
+                                fontFamily = inter,
                                 fontSize = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_TEXT_STYLE_FONT_SIZE.sp,
                                 letterSpacing = MagicNumbers.FIX_TEXT_FIELD_DECORATION_BOX_LETTER_SPACING.sp
                             )

@@ -14,6 +14,12 @@ class AuthorizationProfileViewModel : ViewModel() {
     private val _name = MutableStateFlow("")
     val name: StateFlow<String> = _name
 
+    private val _city = MutableStateFlow("")
+    val city: StateFlow<String> = _city
+
+    private val _infoAboutYourself = MutableStateFlow("")
+    val infoAboutYourself: StateFlow<String> = _infoAboutYourself
+
     private val _surname = MutableStateFlow("")
     val surname: StateFlow<String> = _surname
 
@@ -27,6 +33,22 @@ class AuthorizationProfileViewModel : ViewModel() {
 
     fun surnameChange(newSurname: String) {
         _surname.value = newSurname
+    }
+
+    fun cityChange(newCity: String) {
+        viewModelScope.launch {
+            withContext(Dispatchers.Default) {
+                _city.value = newCity
+            }
+        }
+    }
+
+    fun infoAboutNameChange(newInfo: String) {
+        viewModelScope.launch {
+            withContext(Dispatchers.Default) {
+                _infoAboutYourself.value = newInfo
+            }
+        }
     }
 
     fun saveDataProfile(navController: NavController) {

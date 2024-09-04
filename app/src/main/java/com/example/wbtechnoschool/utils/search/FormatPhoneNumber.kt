@@ -45,5 +45,4 @@ class FormatPhoneNumber: VisualTransformation {
             offsetMapping
         )
     }
-
 }

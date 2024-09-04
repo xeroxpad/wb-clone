@@ -46,6 +46,13 @@ val fontSFPro =
         Font(R.font.sf_pro_display_ultralight, FontWeight.ExtraLight)
     )
 
+val inter =
+    FontFamily(
+        Font(R.font.inter_18pt_black,  FontWeight.Black),
+        Font(R.font.inter_18pt_extralight,  FontWeight.ExtraLight),
+        Font(R.font.inter_18pt_regular, FontWeight.Normal),
+    )
+
 @Immutable
 data class TypographyThemeWB(
     val heading1: TextStyle,
