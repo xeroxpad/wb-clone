@@ -1,15 +1,13 @@
 package com.example.wbtechnoschool.navigation
 
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.widthIn
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -57,7 +55,7 @@ fun MainTopAppBar(
         title?.let {
             Box(
                 contentAlignment = Alignment.Center,
-                modifier = Modifier.clickable { }.weight(3f)
+                modifier = Modifier.weight(3f)
             ) {
                 Text(
                     text = title,
@@ -75,7 +73,7 @@ fun MainTopAppBar(
                     .clip(shape = RoundedCornerShape(16.dp))
                     .size(44.dp)
                     .weight(0.5f)
-                    .clickable(onClick = {onIconShareOrIconEditClick?.invoke()}),
+                    .clickable(onClick = { onIconShareOrIconEditClick?.invoke() }),
                 contentAlignment = Alignment.Center
             ) {
                 Icon(
@@ -89,3 +87,75 @@ fun MainTopAppBar(
         }
     }
 }
+
+@Composable
+fun ProfileTopAppBar(
+    modifier: Modifier = Modifier,
+    isEditing: Boolean,
+    onBackClick: () -> Unit,
+    onEditClick: () -> Unit,
+    iconShareOrEdit: Int,
+    onIconShareOrIconEditClick: () -> Unit,
+) {
+    Row(
+        modifier = modifier,
+        verticalAlignment = Alignment.CenterVertically,
+    ) {
+        Box(
+            modifier = Modifier
+                .clip(shape = RoundedCornerShape(16.dp))
+                .size(44.dp)
+                .weight(0.5f)
+                .clickable(onClick = { onBackClick() }),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                painter = if (!isEditing) painterResource(id = R.drawable.icon_back) else painterResource(
+                    id = R.drawable.ic_close
+                ),
+                contentDescription = null,
+                tint = LightColorTheme.fixVioletBlaze,
+                modifier = Modifier
+                    .size(24.dp)
+            )
+        }
+        Box(
+            contentAlignment = Alignment.Center,
+            modifier = Modifier.weight(3f)
+        ) {
+            Text(
+                text = "",
+                fontSize = MagicNumbers.MAIN_TOP_BAR_TEXT_FONT_SIZE.sp,
+                fontWeight = FontWeight.W500,
+                color = LightColorTheme.neutralActive,
+                maxLines = 1,
+                overflow = TextOverflow.Ellipsis,
+            )
+        }
+        Box(
+            modifier = Modifier
+                .clip(shape = RoundedCornerShape(16.dp))
+                .size(44.dp)
+                .weight(0.5f)
+                .clickable(onClick = {
+                    if (iconShareOrEdit == R.drawable.icon_share) {
+                        onIconShareOrIconEditClick()
+                    } else {
+                        onEditClick()
+                    }
+                }),
+            contentAlignment = Alignment.Center
+        ) {
+            Icon(
+                painter = if (isEditing) painterResource(id = R.drawable.icon_bird) else painterResource(
+                    id = iconShareOrEdit
+                ),
+                contentDescription = null,
+                tint = LightColorTheme.fixVioletBlaze,
+                modifier = Modifier
+                    .size(24.dp)
+            )
+        }
+    }
+}
+

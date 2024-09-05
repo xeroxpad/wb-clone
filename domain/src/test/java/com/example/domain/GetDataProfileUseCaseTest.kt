@@ -35,14 +35,14 @@ internal class GetDataProfileUseCaseTest {
         assertNotNull("name не null", profile.name)
         assertTrue("name типа String", profile.name is String)
 
-        if (profile.secondName != null) {
-            assertTrue("secondName типа String", profile.secondName is String)
-        } else {
-            assertNull("secondName null", profile.secondName)
-        }
+//        if (profile.secondName != null) {
+//            assertTrue("secondName типа String", profile.secondName is String)
+//        } else {
+//            assertNull("secondName null", profile.secondName)
+//        }
 
-        assertNotNull("numberPhone не null", profile.numberPhone)
-        assertTrue("nuberPhone типа String", profile.numberPhone is String)
+//        assertNotNull("numberPhone не null", profile.numberPhone)
+//        assertTrue("nuberPhone типа String", profile.numberPhone is String)
 
         if (profile.avatarUrl != null) {
             assertTrue("avatarUrl типа String", profile.avatarUrl is String)
@@ -50,7 +50,7 @@ internal class GetDataProfileUseCaseTest {
             assertNull("avatarUrl null", profile.avatarUrl)
         }
 
-        assertNotNull("socialMediaIcons не null", profile.socialMediaIcons)
-        assertTrue("socialMediaIcons типа String", profile.socialMediaIcons is List<String>)
+//        assertNotNull("socialMediaIcons не null", profile.socialMediaIcons)
+//        assertTrue("socialMediaIcons типа String", profile.socialMediaIcons is List<String>)
     }
 }

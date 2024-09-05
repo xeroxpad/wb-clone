@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.heightIn
@@ -152,7 +153,7 @@ fun FixTextFieldWide(
                     textChange(it)
                 },
                 modifier = Modifier
-                    .fillMaxWidth()
+                    .fillMaxSize()
                     .onFocusChanged { focusState ->
                         isFocused = focusState.isFocused
                     },
@@ -165,7 +166,7 @@ fun FixTextFieldWide(
                     letterSpacing = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_LETTER_SPACING.sp
                 ),
                 cursorBrush = SolidColor(LightColorTheme.fixVioletBlaze),
-                keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Words),
+                keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
                 decorationBox = { innerTextField ->
                     when {
                         text.isEmpty() -> {
@@ -313,6 +314,8 @@ fun FixSearchTextField(modifier: Modifier = Modifier, placeholder: Int, leadingI
                         fontSize = 16.sp,
                         letterSpacing = 1.sp,
                     ),
+                    maxLines = 1,
+                    singleLine = true,
                     cursorBrush = SolidColor(LightColorTheme.fixVioletBlaze),
                     keyboardOptions = KeyboardOptions(capitalization = KeyboardCapitalization.Sentences),
                     decorationBox = { innerTextField ->
