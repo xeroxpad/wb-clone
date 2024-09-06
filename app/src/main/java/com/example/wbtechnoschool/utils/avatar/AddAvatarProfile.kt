@@ -8,6 +8,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
@@ -24,10 +25,12 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
+import com.example.wbtechnoschool.utils.button.FixButton
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.utils.widgets.ShowAvatar
 
@@ -68,7 +71,11 @@ fun AddAvatarProfile(
         Box(
             modifier = Modifier
                 .align(Alignment.BottomEnd)
-                .shadow(MagicNumbers.ADD_AVATAR_ICON_SHADOW_ELEVATION.dp, CircleShape, spotColor = Color.Transparent)
+                .shadow(
+                    MagicNumbers.ADD_AVATAR_ICON_SHADOW_ELEVATION.dp,
+                    CircleShape,
+                    spotColor = Color.Transparent
+                )
         ) {
             Icon(
                 Icons.Filled.AddCircle,
@@ -76,6 +83,58 @@ fun AddAvatarProfile(
                 modifier =
                 Modifier
                     .clickable { launcher.launch("image/*") }
+            )
+        }
+    }
+    if (showAvatar) {
+        Dialog(onDismissRequest = { showAvatar = false }) {
+            ShowAvatar(
+                model = imageUri.toString(),
+                onClose = { showAvatar = false }
+            )
+        }
+    }
+}
+
+
+@Composable
+fun FixAddAvatarProfile(
+    modifier: Modifier = Modifier,
+    isEditing: Boolean,
+) {
+    var showAvatar by remember { mutableStateOf(false) }
+    var imageUri by remember { mutableStateOf<Uri?>(null) }
+    val launcher =
+        rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()) { uri: Uri? ->
+            imageUri = uri
+        }
+    Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        if (imageUri == null) {
+            Image(
+                painter = painterResource(id = R.drawable.default_icon),
+                contentDescription = null,
+                modifier = Modifier
+                    .align(Alignment.Center)
+                    .size(100.dp)
+            )
+        } else {
+            MyMainAvatar(
+                model = imageUri,
+                contentDescription = null,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .clickable { showAvatar = true }
+                    .align(Alignment.Center)
+            )
+        }
+        if (isEditing) {
+            FixButton(
+                containerColor = LightColorTheme.fixBrandColorDark.copy(alpha = 0.5f),
+                enable = true,
+                onClick = { launcher.launch("image/*") },
+                modifier = Modifier
+                    .align(Alignment.BottomCenter)
+                    .padding(bottom = 15.dp)
             )
         }
     }

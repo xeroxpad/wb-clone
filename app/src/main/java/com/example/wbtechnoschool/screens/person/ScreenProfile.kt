@@ -52,6 +52,8 @@ import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.navigation.ProfileTopAppBar
 import com.example.wbtechnoschool.screens.meetings.SelectOtherMeetings
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
+import com.example.wbtechnoschool.ui.theme.inter
+import com.example.wbtechnoschool.utils.avatar.FixAddAvatarProfile
 import com.example.wbtechnoschool.utils.avatar.FixMyAvatar
 import com.example.wbtechnoschool.utils.box.Network
 import com.example.wbtechnoschool.utils.button.FixButton
@@ -117,26 +119,14 @@ fun ScreenProfile(
                 horizontalAlignment = Alignment.Start,
             ) {
                 item {
-                    Box(modifier = Modifier
-                        .offset(y = (-innerPadding.calculateTopPadding()).coerceAtLeast(0.dp))
-                        .fillMaxWidth()
-                        .clickable { }
-                        .height(375.dp)) {
-                        FixMyAvatar(
-                            model = R.drawable.avatars,
-                            contentDescription = null,
-                            modifier = Modifier.fillMaxSize(),
-                        )
-                        if (isEditing) {
-                            FixButton(
-                                containerColor = LightColorTheme.fixBrandColorDark.copy(alpha = 0.5f),
-                                enable = true,
-                                onClick = { /*TODO*/ },
-                                modifier = Modifier
-                                    .align(Alignment.BottomCenter)
-                                    .padding(bottom = 15.dp)
-                            )
-                        }
+                    Box(
+                        modifier = Modifier
+                            .offset(y = (-innerPadding.calculateTopPadding()).coerceAtLeast(0.dp))
+                            .fillMaxWidth()
+                            .clickable { }
+                            .height(375.dp),
+                    ) {
+                        FixAddAvatarProfile(isEditing = isEditing)
                     }
                     if (isEditing) {
                         ProfileEditContent(
@@ -171,19 +161,19 @@ fun ProfileViewContent(
         Text(
             text = "Михаил",
             fontSize = 49.sp,
-            fontWeight = FontWeight.W600,
+            fontFamily = inter,
         )
         Text(
             text = "Москва",
             fontSize = 14.sp,
-            fontWeight = FontWeight.W600,
+            fontFamily = inter,
         )
         Row(modifier = Modifier.padding(end = 20.dp)) {
             Text(
                 text = "Занимаюсь разрабокой мобильных приложений. Учусь в техношколе Wildberries. Изучаю язык Kotlin",
                 fontSize = 14.sp,
-                fontWeight = FontWeight.W600,
                 lineHeight = 18.sp,
+                fontFamily = inter,
             )
         }
         Spacer(modifier = Modifier.height(15.dp))

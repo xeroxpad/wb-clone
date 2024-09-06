@@ -88,8 +88,8 @@ fun FixTextField(
                     textAlign = TextAlign.Start,
                     color = Color.Black,
                     lineHeight = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_LINE_HEIGHT.sp,
-                    fontWeight = FontWeight.W500,
-                    fontFamily = fontSFPro,
+//                    fontWeight = FontWeight.W500,
+                    fontFamily = inter,
                     fontSize = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_FONT_SIZE.sp,
                     letterSpacing = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_LETTER_SPACING.sp
                 ),
@@ -145,7 +145,7 @@ fun FixTextFieldWide(
             verticalAlignment = Alignment.Top,
             modifier = Modifier
                 .padding(top = 20.dp)
-                .fillMaxHeight()
+                .fillMaxSize()
         ) {
             BasicTextField(
                 value = text,
@@ -160,8 +160,7 @@ fun FixTextFieldWide(
                 textStyle = TextStyle(
                     textAlign = TextAlign.Start,
                     color = Color.Black,
-                    fontWeight = FontWeight.W500,
-                    fontFamily = fontSFPro,
+                    fontFamily = inter,
                     fontSize = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_FONT_SIZE.sp,
                     letterSpacing = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_LETTER_SPACING.sp
                 ),
@@ -234,8 +233,8 @@ fun TextFieldForCode(
                     textAlign = TextAlign.Start,
                     color = Color.Black,
                     lineHeight = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_LINE_HEIGHT.sp,
-                    fontWeight = FontWeight.W500,
-                    fontFamily = fontSFPro,
+//                    fontWeight = FontWeight.W500,
+                    fontFamily = inter,
                     fontSize = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_FONT_SIZE.sp,
                     letterSpacing = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_LETTER_SPACING.sp
                 ),
@@ -309,8 +308,8 @@ fun FixSearchTextField(modifier: Modifier = Modifier, placeholder: Int, leadingI
                         textAlign = TextAlign.Start,
                         color = Color.Black,
                         lineHeight = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_LINE_HEIGHT.sp,
-                        fontWeight = FontWeight.W500,
-                        fontFamily = fontSFPro,
+//                        fontWeight = FontWeight.W500,
+                        fontFamily = inter,
                         fontSize = 16.sp,
                         letterSpacing = 1.sp,
                     ),
@@ -379,14 +378,14 @@ fun FieldForNumber(
                     textAlign = TextAlign.Start,
                     color = Color.Black,
                     lineHeight = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_LINE_HEIGHT.sp,
-                    fontWeight = FontWeight.W500,
-                    fontFamily = fontSFPro,
+//                    fontWeight = FontWeight.W500,
+                    fontFamily = inter,
                     fontSize = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_FONT_SIZE.sp,
                     letterSpacing = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_LETTER_SPACING.sp
                 ),
                 cursorBrush = SolidColor(LightColorTheme.fixVioletBlaze),
                 keyboardOptions = KeyboardOptions.Default.copy(
-                    capitalization = KeyboardCapitalization.None,
+                    capitalization = KeyboardCapitalization.Sentences,
                     keyboardType = KeyboardType.Phone
                 ),
                 visualTransformation = FormatPhoneNumber(),
@@ -468,7 +467,7 @@ fun FieldForNumberCountryCode(
                 ),
                 cursorBrush = SolidColor(LightColorTheme.fixVioletBlaze),
                 keyboardOptions = KeyboardOptions.Default.copy(
-                    capitalization = KeyboardCapitalization.None,
+                    capitalization = KeyboardCapitalization.Sentences,
                     keyboardType = KeyboardType.Phone
                 ),
                 visualTransformation = FormatPhoneNumber(),

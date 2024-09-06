@@ -114,7 +114,7 @@ fun ProfileTopAppBar(
                     id = R.drawable.ic_close
                 ),
                 contentDescription = null,
-                tint = LightColorTheme.fixVioletBlaze,
+                tint = if (!isEditing) LightColorTheme.fixBrandColorDark else LightColorTheme.indigoTwilight,
                 modifier = Modifier
                     .size(24.dp)
             )
