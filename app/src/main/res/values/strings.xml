@@ -69,6 +69,7 @@
     <string name="sure_you_want_delete_profile">Точно удалить профиль?</string>
     <string name="dont_were_cool">Не надо... Мы крутые</string>
     <string name="we_will_delete_profile_30_days">Мы удалим профиль, но не сразу. У вас будет 30 дней чтобы зайти и обратно всё вернуть</string>
+    <string name="choose_another_photo">Выбрать другое фото</string>
 
 
 </resources>

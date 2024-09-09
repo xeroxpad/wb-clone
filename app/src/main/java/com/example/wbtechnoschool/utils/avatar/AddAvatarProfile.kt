@@ -104,9 +104,15 @@ fun FixAddAvatarProfile(
 ) {
     var showAvatar by remember { mutableStateOf(false) }
     var imageUri by remember { mutableStateOf<Uri?>(null) }
+    var selectedImageUri by remember { mutableStateOf<Uri?>(null) }
+//    val launcher =
+//        rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()) { uri: Uri? ->
+//            imageUri = uri
+//        }
     val launcher =
         rememberLauncherForActivityResult(contract = ActivityResultContracts.GetContent()) { uri: Uri? ->
-            imageUri = uri
+            selectedImageUri = uri
+            showAvatar = true
         }
     Box(modifier = modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
         if (imageUri == null) {
@@ -138,12 +144,20 @@ fun FixAddAvatarProfile(
             )
         }
     }
-    if (showAvatar) {
-        Dialog(onDismissRequest = { showAvatar = false }) {
-            ShowAvatar(
-                model = imageUri.toString(),
-                onClose = { showAvatar = false }
-            )
-        }
+    if (showAvatar && selectedImageUri != null) {
+//        Dialog(onDismissRequest = { showAvatar = false }) {
+//            ShowAvatar(
+//                model = imageUri.toString(),
+//                onClose = { showAvatar = false }
+//            )
+//        }
+        AvatarMask(
+            imageUri = selectedImageUri,
+            onImageChange = { launcher.launch("image/*") },
+            onConfirm = {
+                imageUri = selectedImageUri
+                showAvatar = false
+            },
+        )
     }
 }
