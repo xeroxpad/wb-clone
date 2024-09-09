@@ -2,23 +2,16 @@ package com.example.wbtechnoschool.screens.auth
 
 import android.net.Uri
 import android.widget.VideoView
-import androidx.compose.foundation.background
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.paddingFrom
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.DisposableEffect
@@ -37,7 +30,7 @@ import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
-import com.example.wbtechnoschool.utils.button.GradientButton
+import com.example.wbtechnoschool.utils.button.GradientButtonDark
 import com.example.wbtechnoschool.utils.button.StatusTextButton
 
 @Composable
@@ -120,7 +113,7 @@ fun ScreenMakeAnAppointmentDone(
                 contentText = stringResource(id = R.string.my_meetings)
             )
             Spacer(modifier = Modifier.height(20.dp))
-            GradientButton(
+            GradientButtonDark(
                 modifier = Modifier.height(56.dp),
                 textButton = "Найти другие встречи",
                 enable = true,

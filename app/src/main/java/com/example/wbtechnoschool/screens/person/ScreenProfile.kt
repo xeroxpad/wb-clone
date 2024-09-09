@@ -56,6 +56,7 @@ import com.example.wbtechnoschool.ui.theme.inter
 import com.example.wbtechnoschool.utils.avatar.FixAddAvatarProfile
 import com.example.wbtechnoschool.utils.avatar.FixMyAvatar
 import com.example.wbtechnoschool.utils.box.Network
+import com.example.wbtechnoschool.utils.button.ButtonAdd
 import com.example.wbtechnoschool.utils.button.FixButton
 import com.example.wbtechnoschool.utils.button.StatusTextButton
 import com.example.wbtechnoschool.utils.events.FixCardCommunity
@@ -64,6 +65,7 @@ import com.example.wbtechnoschool.utils.search.FieldForNumberCountryCode
 import com.example.wbtechnoschool.utils.search.FixSearchTextField
 import com.example.wbtechnoschool.utils.search.FixTextField
 import com.example.wbtechnoschool.utils.search.FixTextFieldWide
+import com.example.wbtechnoschool.utils.tags.FixFilterTags
 import com.example.wbtechnoschool.utils.tags.FixTags
 import com.example.wbtechnoschool.utils.toggle.FixToggleSwitch
 import com.example.wbtechnoschool.viewmodel.auth_view_model.AuthorizationProfileViewModel
@@ -131,7 +133,9 @@ fun ScreenProfile(
                     if (isEditing) {
                         ProfileEditContent(
                             events = events,
-                            community = community
+                            community = community,
+                            onClickInterests = { navController.navigate(Graph.EditInterests.route) },
+                            onClickDelete = { navController.navigate(Graph.DeleteProfile.route) },
                         )
                     } else {
                         ProfileViewContent(
@@ -266,12 +270,15 @@ fun ProfileViewContent(
     }
 }
 
+@OptIn(ExperimentalLayoutApi::class)
 @Composable
 fun ProfileEditContent(
     modifier: Modifier = Modifier,
     events: List<FixEvent>,
     community: List<Community>,
     viewModel: AuthorizationProfileViewModel = koinViewModel(),
+    onClickInterests: () -> Unit,
+    onClickDelete: () -> Unit,
 ) {
     val name by viewModel.name.collectAsState()
     val city by viewModel.city.collectAsState()
@@ -307,16 +314,43 @@ fun ProfileEditContent(
             fontWeight = FontWeight.W600,
         )
         Spacer(modifier = Modifier.height(10.dp))
-        SelectOtherMeetings(
-            tags = listOf(
-                "Разработка",
-                "Безопасность",
-                "Девопс",
-                "Backend",
-                "Frontend",
-                "+ Добавить",
+        FlowRow(
+            modifier = modifier.fillMaxWidth(),
+        ) {
+            FixFilterTags(
+                labelText = "Разработка",
+                isSelected = false,
+                onSelectionChanged = {},
+                isSelectable = false,
+                isDefaultSelected = true,
+                modifier = Modifier.padding(end = 10.dp)
             )
-        )
+            FixFilterTags(
+                labelText = "Безопасность",
+                isSelected = false,
+                onSelectionChanged = {},
+                isSelectable = false,
+                isDefaultSelected = true,
+                modifier = Modifier.padding(end = 10.dp)
+            )
+            FixFilterTags(
+                labelText = "Девопс",
+                isSelected = false,
+                onSelectionChanged = {},
+                isSelectable = false,
+                isDefaultSelected = true,
+                modifier = Modifier.padding(end = 10.dp)
+            )
+            FixFilterTags(
+                labelText = "Backend",
+                isSelected = false,
+                onSelectionChanged = {},
+                isSelectable = false,
+                isDefaultSelected = true,
+                modifier = Modifier.padding(end = 10.dp)
+            )
+            ButtonAdd(containerColor = LightColorTheme.fixLavenderBlush) { onClickInterests() }
+        }
         Spacer(modifier = Modifier.height(30.dp))
         Text(
             text = "Социальные сети",
@@ -380,7 +414,7 @@ fun ProfileEditContent(
                 contentColor = LightColorTheme.red,
                 containerColor = Color.Transparent,
                 enable = true,
-                onClick = { /*TODO*/ },
+                onClick = { onClickDelete() },
                 contentText = stringResource(id = R.string.delete_profile)
             )
         }

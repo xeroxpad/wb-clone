@@ -11,6 +11,8 @@ import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
 import com.example.wbtechnoschool.screens.auth.ScreenAuthorization
 import com.example.wbtechnoschool.screens.auth.ScreenAuthorizationProfile
+import com.example.wbtechnoschool.screens.auth.ScreenDeleteProfile
+import com.example.wbtechnoschool.screens.auth.ScreenEditInterests
 import com.example.wbtechnoschool.screens.auth.ScreenEnteringNumberForAppointment
 import com.example.wbtechnoschool.screens.auth.ScreenEntryCode
 import com.example.wbtechnoschool.screens.auth.ScreenGetTheCode
@@ -98,6 +100,14 @@ fun NavHostContainer(
 
         composable(Graph.Events.route) {
             ScreenEvents(navController = navController)
+        }
+
+        composable(Graph.EditInterests.route) {
+            ScreenEditInterests(navController = navController)
+        }
+
+        composable(Graph.DeleteProfile.route) {
+            ScreenDeleteProfile(navController = navController)
         }
 
 //        composable(Graph.Profile.route) {

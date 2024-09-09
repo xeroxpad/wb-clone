@@ -49,7 +49,7 @@
     <string name="subscribe">Подписаться</string>
     <string name="you_are_subscribe">Вы подписаны</string>
     <string name="sent_code_number">Отправили код на номер</string>
-    <string name="request_code_again">Запросить код повторно</string>
+    <string name="request_code_again">Получить новый код</string>
     <string name="no_participants">сейчас нет участников</string>
     <string name="name_and_second_name">Имя и фамилия</string>
     <string name="city">Город</string>
@@ -66,6 +66,9 @@
     <string name="habr">Хабр</string>
     <string name="telegram">Телеграм</string>
     <string name="delete_profile">Удалить профиль</string>
+    <string name="sure_you_want_delete_profile">Точно удалить профиль?</string>
+    <string name="dont_were_cool">Не надо... Мы крутые</string>
+    <string name="we_will_delete_profile_30_days">Мы удалим профиль, но не сразу. У вас будет 30 дней чтобы зайти и обратно всё вернуть</string>
 
 
 </resources>

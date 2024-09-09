@@ -11,6 +11,10 @@ import androidx.compose.material3.AssistChip
 import androidx.compose.material3.AssistChipDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -77,18 +81,21 @@ fun FixFilterTags(
     labelText: String,
     isSelected: Boolean,
     onSelectionChanged: ((Boolean) -> Unit)? = null,
-    isSelectable: Boolean = true
+    isSelectable: Boolean = true,
+    isDefaultSelected: Boolean = false,
 ) {
+    var selectedState by remember { mutableStateOf(isDefaultSelected) }
     AssistChip(
         onClick = {
             if (isSelectable) {
+                selectedState = !selectedState
                 onSelectionChanged?.invoke(!isSelected)
             }
         },
         label = { Text(labelText) },
         colors = AssistChipDefaults.assistChipColors(
-            containerColor = if (isSelected) LightColorTheme.fixVioletBlaze else LightColorTheme.fixLavenderBlushDark,
-            labelColor = if (isSelected) LightColorTheme.fixLavenderBlush else LightColorTheme.fixVioletBlaze
+            containerColor = if (selectedState) LightColorTheme.fixVioletBlaze else LightColorTheme.fixLavenderBlushDark,
+            labelColor = if (selectedState) LightColorTheme.fixLavenderBlush else LightColorTheme.fixVioletBlaze
         ),
         modifier = modifier,
         border = null

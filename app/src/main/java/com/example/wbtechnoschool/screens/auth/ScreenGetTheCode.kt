@@ -40,7 +40,7 @@ import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
-import com.example.wbtechnoschool.utils.button.GradientButton
+import com.example.wbtechnoschool.utils.button.GradientButtonDark
 import com.example.wbtechnoschool.utils.search.TextFieldForCode
 import com.example.wbtechnoschool.viewmodel.auth_view_model.AuthorizationViewModel
 import kotlinx.coroutines.delay
@@ -112,7 +112,7 @@ fun ScreenGetTheCode(
                                 )
                             }
                             IconButton(
-                                onClick = { },
+                                onClick = { navController.popBackStack() },
                                 modifier = Modifier
                                     .size(28.dp)
                                     .align(Alignment.Top)
@@ -161,7 +161,7 @@ fun ScreenGetTheCode(
                         )
                     }
                     Spacer(modifier = Modifier.height(20.dp))
-                    GradientButton(
+                    GradientButtonDark(
                         modifier = Modifier.height(56.dp),
                         textButton = "Отправить и подтвердить запись",
                         enable = viewModel.codeValid(currentCode)

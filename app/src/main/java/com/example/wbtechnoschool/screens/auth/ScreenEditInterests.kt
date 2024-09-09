@@ -17,21 +17,17 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.screens.meetings.SelectOtherMeetings
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.utils.button.GradientButtonDark
-import com.example.wbtechnoschool.utils.button.StatusTextButton
 
 @Composable
-fun ScreenSelectInterests(
+fun ScreenEditInterests(
     modifier: Modifier = Modifier,
     navController: NavController,
 ) {
@@ -83,7 +79,6 @@ fun ScreenSelectInterests(
                                 "Безопасность",
                                 "Девопс",
                                 "Аналитика",
-                                "Все категории"
                             ).shuffled(),
                             onTagSelected = { selectedTags = it }
                         )
@@ -98,17 +93,9 @@ fun ScreenSelectInterests(
                 ) {
                     GradientButtonDark(
                         modifier = Modifier.height(49.dp),
-                        enable = selectedTags.isNotEmpty(),
-                        textButton = "Сохранить",
-                    ) {}
-                    Spacer(modifier = Modifier.height(10.dp))
-                    StatusTextButton(
-                        contentColor = LightColorTheme.indigoTwilight,
-                        containerColor = Color.Transparent,
                         enable = true,
-                        onClick = { navController.navigate(Graph.Events.route) },
-                        contentText = stringResource(id = R.string.tell_you_later)
-                    )
+                        textButton = "Сохранить",
+                    ) { navController.navigate(Graph.Profile.route) }
                 }
             }
         }

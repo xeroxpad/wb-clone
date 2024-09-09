@@ -12,7 +12,6 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.interaction.MutableInteractionSource
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -177,13 +176,31 @@ fun FixButton(
 }
 
 @Composable
-fun GradientButton(
+fun ButtonAdd(
+    modifier: Modifier = Modifier,
+    containerColor: Color,
+    onClick: () -> Unit
+) {
+    Button(
+        onClick = { onClick() },
+        shape = RoundedCornerShape(MagicNumbers.BUTTON_SHAPE),
+        modifier = modifier,
+        colors =
+        ButtonDefaults.buttonColors(
+            containerColor = containerColor,
+            contentColor = LightColorTheme.fixVioletBlaze,
+        ),
+    ) {
+        Text(text = "+ Добавить")
+    }
+}
+
+@Composable
+fun GradientButtonDark(
     modifier: Modifier = Modifier,
     enable: Boolean = false,
     textButton: String,
-    onClick: () -> Unit,
-) {
-    val background = listOf(
+    background: List<Color> = listOf(
         LightColorTheme.fixBlushPink,
         LightColorTheme.fixFuchsiaGlow,
         LightColorTheme.fixVividViolet,
@@ -192,7 +209,9 @@ fun GradientButton(
         LightColorTheme.fixVioletBlaze,
         LightColorTheme.fixNeonLavender,
         LightColorTheme.fixRoyalIndigo
-    )
+    ),
+    onClick: () -> Unit,
+) {
     Button(
         onClick = {
             onClick()
@@ -228,6 +247,58 @@ fun GradientButton(
     }
 }
 
+
+@Composable
+fun GradientButtonLight(
+    modifier: Modifier = Modifier,
+    enable: Boolean = false,
+    textButton: String,
+    background: List<Color> = listOf(
+        LightColorTheme.blushPink,
+        LightColorTheme.petalPink,
+        LightColorTheme.cottonCandy,
+        LightColorTheme.lavenderMist,
+        LightColorTheme.softLilac,
+        LightColorTheme.paleLavender,
+        LightColorTheme.lavenderWhisper,
+        LightColorTheme.frostedViolet,
+    ),
+    onClick: () -> Unit,
+) {
+    Button(
+        onClick = {
+            onClick()
+        },
+        shape = RoundedCornerShape(MagicNumbers.BUTTON_SHAPE),
+        modifier = modifier.fillMaxWidth(),
+        colors =
+        ButtonDefaults.buttonColors(
+            containerColor = Transparent,
+            contentColor = White,
+            disabledContainerColor = LightColorTheme.fixLavenderBlush
+        ),
+        enabled = enable,
+        contentPadding = PaddingValues()
+    ) {
+        val backgroundModifier = if (enable) {
+            Modifier.background(Brush.linearGradient(colors = background))
+        } else {
+            Modifier.background(LightColorTheme.fixLavenderBlush)
+        }
+        Box(
+            modifier = backgroundModifier
+                .fillMaxSize(),
+            contentAlignment = Alignment.Center
+        ) {
+            Text(
+                text = textButton,
+                fontWeight = FontWeight.W600,
+                fontSize = 18.sp,
+                color = LightColorTheme.fixBrandColorDark,
+            )
+        }
+    }
+}
 
 @RequiresApi(Build.VERSION_CODES.O)
 @Composable

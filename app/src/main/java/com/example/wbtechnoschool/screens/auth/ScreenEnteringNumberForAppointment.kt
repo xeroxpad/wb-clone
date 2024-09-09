@@ -43,7 +43,7 @@ import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
-import com.example.wbtechnoschool.utils.button.GradientButton
+import com.example.wbtechnoschool.utils.button.GradientButtonDark
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 import com.example.wbtechnoschool.utils.search.FieldForNumber
 import com.example.wbtechnoschool.viewmodel.auth_view_model.AuthorizationViewModel
@@ -112,7 +112,7 @@ fun ScreenEnteringNumberForAppointment(
                                 )
                             }
                             IconButton(
-                                onClick = { },
+                                onClick = { navController.popBackStack() },
                                 modifier = Modifier
                                     .size(28.dp)
                                     .align(Alignment.Top)
@@ -163,7 +163,7 @@ fun ScreenEnteringNumberForAppointment(
                         .padding(horizontal = 20.dp)
                         .padding(bottom = 15.dp)
                 ) {
-                    GradientButton(
+                    GradientButtonDark(
                         modifier = Modifier.height(56.dp),
                         textButton = "Получить код",
                         enable = viewModel.numberValid(currentPhoneNumber)
