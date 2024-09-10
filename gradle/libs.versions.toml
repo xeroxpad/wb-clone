@@ -1,5 +1,7 @@
 [versions]
 agp = "8.5.0"
+androidMapsUtils = "2.2.3"
+googleMapsVersion = "3.1.0"
 kotlin = "1.9.0"
 coreKtx = "1.10.1"
 junit = "4.13.2"
@@ -8,6 +10,9 @@ espressoCore = "3.5.1"
 lifecycleRuntimeKtx = "2.6.1"
 activityCompose = "1.8.0"
 composeBom = "2024.04.01"
+mapsMobile = "4.7.0-lite"
+mapsVersion = "5.2.0.301"
+playServicesMaps = "18.1.0"
 runtimeLivedata = "1.6.8"
 appcompat = "1.6.1"
 material = "1.10.0"
@@ -35,8 +40,11 @@ accompanist-swiperefresh = "0.34.0"
 lifecycleLivedataCoreKtx = "2.8.4"
 constraintlayout = "2.1.4"
 
+
 [libraries]
+android-maps-utils = { module = "com.google.maps.android:android-maps-utils", version.ref = "androidMapsUtils" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+hms-maps = { module = "com.huawei.hms:maps", version.ref = "mapsVersion" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -52,6 +60,8 @@ androidx-ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit
 androidx-material3 = { group = "androidx.compose.material3", name = "material3" }
 androidx-runtime-livedata = { group = "androidx.compose.runtime", name = "runtime-livedata", version.ref = "runtimeLivedata" }
 androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+maps-mobile = { module = "com.yandex.android:maps.mobile", version.ref = "mapsMobile" }
+maps-v310 = { module = "com.google.android.libraries.maps:maps", version.ref = "googleMapsVersion" }
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-navigation = { group = "androidx.navigation", name = "navigation-compose", version.ref = "androidx-navigation" }
 androidx-compose-ui = { group = "androidx.compose.ui", name = "ui-text-google-fonts", version.ref = "androidx-compose-ui" }
@@ -75,6 +85,7 @@ koin-core = { module = "io.insert-koin:koin-core" }
 koin-bom = { module = "io.insert-koin:koin-bom", version.ref = "koin" }
 libphonenumber = { group = "com.googlecode.libphonenumber", name = "libphonenumber", version.ref = "libphonenumber" }
 accompanist-swiperefresh = {group = 'com.google.accompanist', name = 'accompanist-swiperefresh', version.ref = "accompanist-swiperefresh"}
+play-services-maps-v1810 = { module = "com.google.android.gms:play-services-maps", version.ref = "playServicesMaps" }
 testng = {group = "org.testng", name = "testng", version.ref = "testng"}
 mockito-core = { module = "org.mockito:mockito-core", version.ref = "mockito-core" }
 mockito-kotlin = { module = "org.mockito.kotlin:mockito-kotlin", version.ref = "mockito-kotlin" }
@@ -82,6 +93,7 @@ junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.re
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter-engine" }
 androidx-lifecycle-livedata-core-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-core-ktx", version.ref = "lifecycleLivedataCoreKtx" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

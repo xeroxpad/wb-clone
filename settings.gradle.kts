@@ -20,7 +20,6 @@ dependencyResolutionManagement {
     }
 }
 
-
 rootProject.name = "WB Technoschool"
 include(":app")
 include(":data")

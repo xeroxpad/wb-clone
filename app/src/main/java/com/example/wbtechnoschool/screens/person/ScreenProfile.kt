@@ -8,31 +8,20 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.ExperimentalLayoutApi
 import androidx.compose.foundation.layout.FlowRow
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.WindowInsets
-import androidx.compose.foundation.layout.asPaddingValues
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.navigationBars
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.statusBars
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
-import androidx.compose.material3.TopAppBar
-import androidx.compose.material3.TopAppBarColors
-import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
@@ -44,7 +33,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
-import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
@@ -55,14 +43,11 @@ import com.example.domain.entities.FixEvent
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.navigation.ProfileTopAppBar
-import com.example.wbtechnoschool.screens.meetings.SelectOtherMeetings
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.inter
 import com.example.wbtechnoschool.utils.avatar.FixAddAvatarProfile
-import com.example.wbtechnoschool.utils.avatar.FixMyAvatar
 import com.example.wbtechnoschool.utils.box.Network
 import com.example.wbtechnoschool.utils.button.ButtonAdd
-import com.example.wbtechnoschool.utils.button.FixButton
 import com.example.wbtechnoschool.utils.button.StatusTextButton
 import com.example.wbtechnoschool.utils.events.FixCardCommunity
 import com.example.wbtechnoschool.utils.events.FixCardMeetingMini
@@ -97,7 +82,6 @@ fun ScreenProfile(
     Scaffold(
         modifier =
         modifier
-//            .statusBarsPadding()
             .pointerInput(Unit) {
                 detectTapGestures(onTap = { focusManager.clearFocus() })
             }

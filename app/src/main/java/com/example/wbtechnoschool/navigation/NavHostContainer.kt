@@ -22,6 +22,7 @@ import com.example.wbtechnoschool.screens.auth.ScreenSelectInterests
 import com.example.wbtechnoschool.screens.community.ScreenCommunity
 import com.example.wbtechnoschool.screens.community.ScreenDetailsCommunity
 import com.example.wbtechnoschool.screens.events.ScreenEvents
+import com.example.wbtechnoschool.screens.geodata.ScreenGeoData
 import com.example.wbtechnoschool.screens.meetings.ScreenDescriptionMeeting
 import com.example.wbtechnoschool.screens.meetings.ScreenMeeting
 import com.example.wbtechnoschool.screens.person.ScreenPersonGoingMeeting
@@ -110,9 +111,9 @@ fun NavHostContainer(
             ScreenDeleteProfile(navController = navController)
         }
 
-//        composable(Graph.Profile.route) {
-//            ScreenProfile(navController = navController)
-//        }
+        composable(Graph.GeoData.route) {
+            ScreenGeoData(navController = navController)
+        }
 
         composable(
             route = "${Graph.Profile.route}?fromScreen={fromScreen}",
@@ -136,29 +137,6 @@ fun NavHostContainer(
                 }
             )
         }
-//        eventsNavGraph(
-//            eventsScreen = { ScreenEvents(navController = navController) },
-//            meetingsScreenDescription = { ScreenDescriptionMeeting(navController = navController) },
-//            communityDetailsScreen = { ScreenDetailsCommunity(navController = navController) }
-//        )
-        meetingsNavGraph(
-            meetingsScreen = { ScreenMeeting(navController = navController) },
-            meetingsScreenDescription = { ScreenDescriptionMeeting(navController = navController) }
-        )
-        communityNavGraph(
-            communityScreen = { ScreenCommunity(navController = navController) },
-            communityDetailsScreen = { ScreenDetailsCommunity(navController = navController) }
-        )
-//        infoNavGraph(
-//            myMoreScreen = {ScreenInfo(navController = navController) },
-//            myProfileScreen = {ScreenProfile(navController = navController) },
-//            myMeetingsScreen = { ScreenMyMeetings(navController = navController) },
-//            myThemeScreen = { ScreenTheme() },
-//            myNotificationsScreen = { ScreenNotifications() },
-//            mySafetyScreen = { ScreenSafety(navController = navController) },
-//            myResourcesScreen = { ScreenResources(navController = navController) },
-//            myHelpScreen = { ScreenHelp(navController = navController) },
-//            myInviteFriendScreen = { ScreenInviteFriend() }
-//        )
+
     }
 }

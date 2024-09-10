@@ -32,10 +32,9 @@ sealed class Graph(
         const val screenMakeAnAppointmentDone = "screen_make_an_appointment_done"
         const val screenEditInterests = "screen_edit_interests"
         const val screenDeleteProfile = "screen_delete_profile"
-
-        const val screenEventsRoot = "screen_events_root"
         const val screenEvents = "screen_events"
         const val screenPersonGoingMeeting = "screen_person_going_meeting"
+        const val screenGeoData = "screen_geo_data"
     }
 
     data object Meetings : Graph(screenMeeting)
@@ -82,51 +81,18 @@ sealed class Graph(
 
     data object EditInterests : Graph(screenEditInterests)
 
-    data object MakeAnAppointment: Graph(screenMakeAnAppointment)
+    data object MakeAnAppointment : Graph(screenMakeAnAppointment)
 
-    data object EnteringNumberForAppointment: Graph(screenEnteringNumberForAppointment)
+    data object EnteringNumberForAppointment : Graph(screenEnteringNumberForAppointment)
 
-    data object GetTheCode: Graph(screenGetTheCode)
+    data object GetTheCode : Graph(screenGetTheCode)
 
-    data object MakeAnAppointmentDone: Graph(screenMakeAnAppointmentDone)
+    data object MakeAnAppointmentDone : Graph(screenMakeAnAppointmentDone)
 
-    data object DeleteProfile: Graph(screenDeleteProfile)
+    data object DeleteProfile : Graph(screenDeleteProfile)
 
-    data object MeetingsRoot : Graph(screenMeetingsRoot) {
-        data object AllMeetings : Graph(screenMeeting)
+    data object DescriptionMeetings : Graph(screenDescriptionMeeting)
 
-        data object DescriptionMeetings : Graph(screenDescriptionMeeting)
-    }
+    data object GeoData : Graph(screenGeoData)
 
-    data object CommunityRoot : Graph(screenCommunityRoot) {
-        data object AllCommunity : Graph(screenCommunity)
-
-        data object DetailsCommunity : Graph(screenDetailsCommunity)
-    }
-
-//    data object InfoRoot : Graph(screenInfoRoot) {
-//        data object AllInfo : Graph(screenInfo)
-//
-//        data object MyProfile : Graph(screenProfile)
-//
-//        data object MyMeetings : Graph(screenMyMeetings)
-//
-//        data object MyTheme : Graph(screenTheme)
-//
-//        data object MyNotifications : Graph(screenNotifications)
-//
-//        data object MySafety : Graph(screenSafety)
-//
-//        data object MyResources : Graph(screenResources)
-//
-//        data object MyHelp : Graph(screenHelp)
-//
-//        data object MyInviteFriend : Graph(inviteFriend)
-//    }
-
-    data object EventsRoot: Graph(screenEventsRoot) {
-        data object AllEvents: Graph(screenEvents)
-        data object DescriptionMeetings : Graph(screenDescriptionMeeting)
-        data object DetailsCommunity : Graph(screenDetailsCommunity)
-    }
 }
