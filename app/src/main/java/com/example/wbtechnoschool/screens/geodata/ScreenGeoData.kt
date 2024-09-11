@@ -1,5 +1,11 @@
 package com.example.wbtechnoschool.screens.geodata
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateContentSize
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
+import androidx.compose.animation.scaleIn
+import androidx.compose.animation.scaleOut
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -12,11 +18,13 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.LocationOn
+import androidx.compose.material.icons.outlined.LocationOn
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
@@ -34,6 +42,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
@@ -103,6 +112,7 @@ fun ScreenGeoData(
                 modifier = Modifier
                     .align(Alignment.BottomCenter)
                     .padding(horizontal = 15.dp)
+                    .padding(bottom = 15.dp)
                     .navigationBarsPadding()
             ) {
                 showDialog = !showDialog
@@ -110,6 +120,7 @@ fun ScreenGeoData(
         }
     }
 }
+
 
 @Composable
 fun LocationPermissionDialog(
@@ -126,8 +137,18 @@ fun LocationPermissionDialog(
         Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(vertical = 10.dp)
+                .padding(vertical = 10.dp),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
         ) {
+            Icon(
+                imageVector = Icons.Outlined.LocationOn,
+                contentDescription = null,
+                modifier = Modifier
+                    .padding(vertical = 15.dp)
+                    .size(36.dp)
+            )
+            Spacer(modifier = Modifier.height(10.dp))
             Text(
                 "Разрешить приложению WB Встречи доступ к геоданным?",
                 modifier = Modifier
@@ -151,29 +172,53 @@ fun LocationPermissionDialog(
                     modifier = Modifier
                         .fillMaxWidth()
                         .align(Alignment.TopCenter)
-                        .padding(horizontal = 15.dp, vertical = 3.dp)
+                        .padding(horizontal = 15.dp, vertical = 7.dp)
                 ) {
-                    Text(
-                        "ТОЧНЫЕ ГЕОДАННЫЕ: ВКЛЮЧЕНО",
-                        color = Color.Blue,
-                    )
+                    Box(
+                        modifier = Modifier
+                            .clip(shape = RoundedCornerShape(24.dp))
+                            .background(Color.White)
+                            .padding(horizontal = 10.dp)
+                    ) {
+                        Text(
+                            "ТОЧНЫЕ ГЕОДАННЫЕ: ВКЛЮЧЕНО",
+                            color = Color.Blue,
+                            fontSize = 12.sp,
+                        )
+                    }
                 }
             }
             Spacer(modifier = Modifier.height(15.dp))
-            Column {
+            Column(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(vertical = 10.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center
+            ) {
                 TextButton(
                     onClick = { onAllow() }, modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 10.dp)
                 ) {
-                    Text("РАЗРЕШИТЬ ВО ВРЕМЯ ИСПОЛЬЗОВАНИЯ", color = Color.Blue, fontSize = 16.sp)
+                    Text(
+                        "РАЗРЕШИТЬ ВО ВРЕМЯ ИСПОЛЬЗОВАНИЯ",
+                        color = Color.Blue,
+                        fontSize = 14.sp,
+                        fontWeight = FontWeight.W400
+                    )
                 }
                 TextButton(
                     onClick = { onAllow() }, modifier = Modifier
                         .fillMaxWidth()
                         .padding(horizontal = 10.dp)
                 ) {
-                    Text("РАЗРЕШИТЬ ТОЛЬКО СЕЙЧАС", color = Color.Blue, fontSize = 20.sp)
+                    Text(
+                        "РАЗРЕШИТЬ ТОЛЬКО СЕЙЧАС",
+                        color = Color.Blue,
+                        fontSize = 20.sp,
+                        fontWeight = FontWeight.W400
+                    )
                 }
             }
             TextButton(
@@ -181,8 +226,14 @@ fun LocationPermissionDialog(
                     .fillMaxWidth()
                     .padding(horizontal = 10.dp)
             ) {
-                Text("ЗАПРЕТИТЬ", color = Color.Blue, fontSize = 20.sp)
+                Text(
+                    "ЗАПРЕТИТЬ",
+                    color = Color.Blue,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.W400
+                )
             }
         }
     }
 }
+
