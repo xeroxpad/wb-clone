@@ -39,6 +39,7 @@ testng = "7.9.0"
 accompanist-swiperefresh = "0.34.0"
 lifecycleLivedataCoreKtx = "2.8.4"
 constraintlayout = "2.1.4"
+playServicesMapsVersion = "19.0.0"
 
 
 [libraries]
@@ -93,6 +94,7 @@ junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.re
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter-engine" }
 androidx-lifecycle-livedata-core-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-core-ktx", version.ref = "lifecycleLivedataCoreKtx" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+play-services-maps = { group = "com.google.android.gms", name = "play-services-maps", version.ref = "playServicesMapsVersion" }
 
 
 [plugins]

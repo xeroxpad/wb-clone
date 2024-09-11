@@ -100,7 +100,8 @@ fun ScreenSelectInterests(
                         modifier = Modifier.height(49.dp),
                         enable = selectedTags.isNotEmpty(),
                         textButton = "Сохранить",
-                    ) {}
+                        onClick = {navController.navigate(Graph.GeoData.route)}
+                    )
                     Spacer(modifier = Modifier.height(10.dp))
                     StatusTextButton(
                         contentColor = LightColorTheme.indigoTwilight,
