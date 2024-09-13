@@ -57,7 +57,7 @@ fun CardPerson(user: FixPerson) {
             }
             FixMyAvatar(
                 model = user.avatarUrl
-                    ?: "https://sneg.top/uploads/posts/2023-06/thumbs/1688043519_sneg-top-p-avatarka-fotoshop-vkontakte-21.jpg",
+                    ?: "",
                 contentDescription = null,
                 modifier = Modifier
                     .clip(CircleShape)

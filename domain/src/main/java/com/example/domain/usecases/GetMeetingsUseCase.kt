@@ -8,7 +8,7 @@ import kotlinx.coroutines.flow.flow
 class GetMeetingsUseCase(
     val repository: IMeetingsRepository,
 ) {
-    fun execute(): Flow<List<FixEvent>> = flow {
+    fun execute(): Flow<FixEvent> = flow {
         val meetings = repository.getMeetings()
         emit(meetings)
     }

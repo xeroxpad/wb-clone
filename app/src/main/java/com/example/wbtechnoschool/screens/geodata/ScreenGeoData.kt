@@ -216,7 +216,7 @@ fun LocationPermissionDialog(
                     Text(
                         "РАЗРЕШИТЬ ТОЛЬКО СЕЙЧАС",
                         color = Color.Blue,
-                        fontSize = 20.sp,
+                        fontSize = 16.sp,
                         fontWeight = FontWeight.W400
                     )
                 }
@@ -229,7 +229,7 @@ fun LocationPermissionDialog(
                 Text(
                     "ЗАПРЕТИТЬ",
                     color = Color.Blue,
-                    fontSize = 20.sp,
+                    fontSize = 16.sp,
                     fontWeight = FontWeight.W400
                 )
             }

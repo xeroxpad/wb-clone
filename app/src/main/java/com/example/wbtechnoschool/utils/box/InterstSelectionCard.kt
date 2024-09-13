@@ -2,6 +2,7 @@ package com.example.wbtechnoschool.utils.box
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -28,7 +29,7 @@ import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.inter
 
 @Composable
-fun InterestSelectionCard(modifier: Modifier = Modifier) {
+fun InterestSelectionCard(modifier: Modifier = Modifier, onClick: () -> Unit) {
     val gradient = Brush.horizontalGradient(
         colors = listOf(
             LightColorTheme.fixBlushPink,
@@ -45,8 +46,8 @@ fun InterestSelectionCard(modifier: Modifier = Modifier) {
         modifier = modifier
             .clip(shape = RoundedCornerShape(16.dp))
             .fillMaxWidth()
-            .height(120.dp)
             .background(gradient)
+            .clickable { onClick() }
     ) {
         Row(modifier = Modifier.fillMaxWidth()) {
             Column(
@@ -93,5 +94,5 @@ fun InterestSelectionCard(modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun InterestPrev() {
-    InterestSelectionCard()
+    InterestSelectionCard(onClick = {})
 }

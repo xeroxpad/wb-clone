@@ -12,8 +12,9 @@ import kotlinx.coroutines.launch
 class CommunityViewModel(
     private val getAllCommunityUseCase: GetAllCommunityUseCase
 ) : ViewModel() {
-    private val _community = MutableStateFlow<List<Community>>(emptyList())
-    val community: StateFlow<List<Community>> = _community
+    private val _community =
+        MutableStateFlow(getAllCommunityUseCase.repository.getAllCommunity())
+    val community: StateFlow<Community> get() = _community
 
     init {
         loadCommunity()
@@ -21,8 +22,9 @@ class CommunityViewModel(
 
     private fun loadCommunity() {
         viewModelScope.launch {
-            val communityList = getAllCommunityUseCase.execute()
-            _community.update { communityList }
+            getAllCommunityUseCase.execute().collect() { result ->
+                _community.value = result
+            }
         }
     }
 }

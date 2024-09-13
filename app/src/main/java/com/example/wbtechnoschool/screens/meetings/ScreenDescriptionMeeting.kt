@@ -41,6 +41,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
 import androidx.navigation.NavController
+import com.example.domain.entities.FixEvent
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.navigation.MainTopAppBar
@@ -56,6 +57,7 @@ import com.example.wbtechnoschool.utils.widgets.GradientToggleButton
 import com.example.wbtechnoschool.utils.widgets.ShowImage
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.DescriptionMeetingViewModel
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingViewModel
+import io.bloco.faker.Faker
 import org.koin.androidx.compose.koinViewModel
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -70,7 +72,6 @@ fun ScreenDescriptionMeeting(
     val events by viewModelMeeting.meetings.collectAsState()
     var isButtonPressed by remember { mutableStateOf(false) }
     val meetingIsOver by remember { mutableStateOf(true) }
-
     Scaffold(
         modifier =
         modifier
@@ -149,7 +150,7 @@ fun ScreenDescriptionMeeting(
                 item {
                     meetingDescription?.let { description ->
                         Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
-                        ShowImage(model = "https://s3-alpha-sig.figma.com/img/5310/9837/d03623c9359404e018318e330b337649?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Ya6vjqtdEqpI~GN310Bcg2yuC-vMqHnW8mS1qc6G2YFsS6TJXUEIPAwTWbnBrTdfUcX9oOs9ybn-THCDN3kLYOJDKumiCwgkUQxqJ09mZv9PxHzgt-uFJa1MPYECRtiY9KaalImG-Lvr~dhDd4rOMmOnH3EpZVthXSvgdPGLxkQqPpvRpgYlSIbT9yAY-k7AGE6oUQc64Ptv~lNdZKjAaEccBMGuf4KMIoioYCaQwSY~4DBrhUYi1lA65JaafpGEmxLQh87PqSKNs9HEAd0hFelefm4QFhiHJ1181~2gutY74RzmSyWC3b42HOWN309d5zj64RBB5CYYKJQtCK1vCQ__")
+                        ShowImage(model = "https://picsum.photos/200/300?random")
                         Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
                         Text(
                             text = "Как повышать грейд. Лекция Павла Хорикова",
@@ -195,7 +196,12 @@ fun ScreenDescriptionMeeting(
                             color = LightColorTheme.black
                         )
                         Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
-                        Row(modifier = Modifier.fillMaxWidth()) {
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .clip(shape = RoundedCornerShape(12.dp))
+                                .clickable {}
+                        ) {
                             Column(modifier = Modifier.weight(2f)) {
                                 Text(
                                     text = "Павел Хориков",
@@ -212,14 +218,18 @@ fun ScreenDescriptionMeeting(
                                 )
                             }
                             Spacer(modifier = Modifier.width(SPACER.SPACER_15.value.dp))
-                            FixMyPreviewAvatar(
-                                model = "https://s3-alpha-sig.figma.com/img/65dc/6045/b7d9e491ec53bfe994a2cc6f920a0d89?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=OxON~FKl~Hb6L2SXdtsyInwWiSF3-B-ROQu2hDi6vc-fps5T275ecGx0mJb1q1oVrWVKcJFaToFij8RBK1QQ54-8Kh9ncgfvsu4omUntRaQGt1qeHUXuRYtv-sm6rvM5yY5E9T~fU8cw3rc-fEIWJXBcNuOpG6K0wAagMlSO0eVYJzEnecuba85K~zwalhS3gkD4j0sm7hvcrwVoHOcYCaW6KVj58TSksGwu91ht6rHj-x0lnxm0tCU0ZajGVoqmwM7~0XpQhOwfRbWguxEkP-4ApmoN5oGTQmkL7l1aA4Mv9OsZZoUI-JEk58qU6MUeeJ13rstJt6S-JfZFGCqHlg__",
-                                contentDescription = null,
+                            Box(
                                 modifier = Modifier
                                     .clip(shape = RoundedCornerShape(16.dp))
-                                    .size(104.dp)
                                     .weight(1f)
-                            )
+                                    .size(104.dp)
+                            ) {
+                                FixMyPreviewAvatar(
+                                    model = "https://picsum.photos/500/500",
+                                    contentDescription = null,
+                                    modifier = Modifier.fillMaxSize()
+                                )
+                            }
                         }
                         Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                         Text(
@@ -245,7 +255,7 @@ fun ScreenDescriptionMeeting(
                         }
                         Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
                         ShowImage(
-                            model = "https://s3-alpha-sig.figma.com/img/2665/267b/66f39a9456702ebd75802f466af83f6c?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=aSI-qobzIrqmkfr2ia8iTMaFuCHJhqjzAPlEGB0eQA3Mtj5qImSdGWNY4vJDQSMQbCXkvdKNYv9OvjDV~3bywdP6KNQDh7KSuyb-f4mDsaIEzgUVONU6vMVrPs~8TrY3i2eRIgLR942NgBMFm0Zf9W5zbllK4ZdO1s7~lWvhj71-ed07s2Rbj-FY~fKivEqd7~y5o2lZCXb2I5d~viteZGBpDCGE3-K1nFIeCM7oRvPymWhOFpoe8a3ACQLdVZPBPk~saz1vFTfDmSgYF2~7v8v5fimo67ZIJDZV-rh8KO-2qlzPAsnd6Bkc0gTzGmggvSCFYwBvo4hClLgOqKNLNA__",
+                            model = "https://picsum.photos/200/300?random",
                             modifier = Modifier.height(180.dp)
                         )
                         Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
@@ -304,9 +314,9 @@ fun ScreenDescriptionMeeting(
                         )
                         Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
                         LazyRow {
-                            items(events) { event ->
+                            items(15) {
                                 FixCardMeetingMini(
-                                    event = event,
+                                    event = events,
                                     onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                                 )
                                 Spacer(modifier = Modifier.width(10.dp))

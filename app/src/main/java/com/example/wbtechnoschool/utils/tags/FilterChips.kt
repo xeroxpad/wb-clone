@@ -20,8 +20,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.max
 import androidx.compose.ui.unit.sp
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
@@ -70,7 +72,9 @@ fun FixTags(
             color = LightColorTheme.brandColorDark,
             fontSize = MagicNumbers.FILTER_CHIPS_BOX_TEXT_FONT_SIZE.sp,
             fontWeight = FontWeight.Bold,
-            modifier = Modifier.padding(horizontal = MagicNumbers.FILTER_CHIPS_BOX_TEXT_PADDING_HORIZONTAL.dp)
+            modifier = Modifier.padding(horizontal = MagicNumbers.FILTER_CHIPS_BOX_TEXT_PADDING_HORIZONTAL.dp),
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
         )
     }
 }
@@ -95,7 +99,7 @@ fun FixFilterTags(
         label = { Text(labelText) },
         colors = AssistChipDefaults.assistChipColors(
             containerColor = if (selectedState) LightColorTheme.fixVioletBlaze else LightColorTheme.fixLavenderBlushDark,
-            labelColor = if (selectedState) LightColorTheme.fixLavenderBlush else LightColorTheme.fixVioletBlaze
+            labelColor = if (selectedState) LightColorTheme.fixLavenderBlushDark else LightColorTheme.fixVioletBlaze
         ),
         modifier = modifier,
         border = null

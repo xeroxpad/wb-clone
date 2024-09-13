@@ -9,5 +9,4 @@ class GetDataProfileUseCase(
 ) {
 //    fun execute(): Person = repository.getDataProfileUseCase()
 fun execute(): FixPerson = repository.getDataProfileUseCase()
-
 }

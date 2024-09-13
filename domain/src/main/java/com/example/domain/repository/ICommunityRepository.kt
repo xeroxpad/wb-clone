@@ -4,7 +4,6 @@ import com.example.domain.entities.Community
 import com.example.domain.entities.CommunityDetails
 
 interface ICommunityRepository {
-    fun getAllCommunity(): List<Community>
-
+    fun getAllCommunity(): Community
     fun getDetailsCommunity(): CommunityDetails
 }

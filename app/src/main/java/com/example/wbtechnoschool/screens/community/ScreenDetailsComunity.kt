@@ -12,12 +12,10 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -29,6 +27,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.navigation.Graph
@@ -53,8 +52,8 @@ fun ScreenDetailsCommunity(
     viewModelDescriptionMeetings: DescriptionMeetingViewModel = koinViewModel(),
     viewModelMeeting: MeetingViewModel = koinViewModel(),
 ) {
-    val events by viewModelMeeting.meetings.collectAsState()
-    val meetingDescription by viewModelDescriptionMeetings.meetingDescription.collectAsState()
+    val meetings by viewModelMeeting.meetings.collectAsStateWithLifecycle()
+    val meetingDescription by viewModelDescriptionMeetings.meetingDescription.collectAsStateWithLifecycle()
     var isButtonPressed by remember { mutableStateOf(false) }
     Scaffold(
         modifier =
@@ -63,7 +62,7 @@ fun ScreenDetailsCommunity(
             .fillMaxSize(),
         topBar = {
             MainTopAppBar(
-                modifier = Modifier.padding(start = 10.dp, end = 10.dp),
+                modifier = Modifier.padding(horizontal = 10.dp),
                 title = "The IT Crowd",
                 iconBack = { navController.popBackStack() },
             )
@@ -81,7 +80,7 @@ fun ScreenDetailsCommunity(
                         Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
                         Row {
                             FixMyPreviewAvatar(
-                                model = "https://s3-alpha-sig.figma.com/img/c9a7/54d7/03ba23f3bfdf6a1d3847f7b696a6eedd?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=Xmy1lqA1OnC7JfQZwNOzex0EIvJcBJFZM8A03zqhn0ggTfxJuPgrlTeeIE2kr5-xw3HUqXeeJ9hPNdjqIG1gVDLIct53h-vkjBKab6utFh5UUCS3X6N1iuoGg1hLKpVB22~2I8f7y4FDjuJsfoWquMKQWIc55Abds3nllbaKsiAvO-uJvoqw1lfws~XkpNEoW3PR-~bvG6tRfbTSvHUIk9zv~6iSD4QWNaYsrKq2-oxAgvw4jMcGFuu6Mz9em-t-p1AuP5qViY6XeENTWb4y33xRgkmVR62qSkliBWjsIwR0g96f1cLrljuJML3~mOoxupDBpYB8-mAGBG-PxNs59A__",
+                                model = "https://picsum.photos/500/500?random",
                                 contentDescription = null,
                                 modifier = Modifier
                                     .clip(shape = RoundedCornerShape(16.dp))
@@ -153,9 +152,9 @@ fun ScreenDetailsCommunity(
                         Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
                     }
                 }
-                items(events) { event ->
+                items(20) {
                     FixCardMeeting(
-                        event = event,
+                        event = meetings,
                         onClick = {navController.navigate(Graph.DescriptionMeeting.route)},
                         modifier = Modifier
                             .fillMaxWidth()
@@ -173,9 +172,9 @@ fun ScreenDetailsCommunity(
                     )
                     Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
                     LazyRow {
-                        items(events) { event ->
+                        items(20) {
                             FixCardMeetingMini(
-                                event = event,
+                                event = meetings,
                                 onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                             )
                             Spacer(modifier = Modifier.width(10.dp))

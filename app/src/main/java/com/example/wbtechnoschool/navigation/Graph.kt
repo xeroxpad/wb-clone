@@ -91,7 +91,6 @@ sealed class Graph(
 
     data object DeleteProfile : Graph(screenDeleteProfile)
 
-    data object DescriptionMeetings : Graph(screenDescriptionMeeting)
 
     data object GeoData : Graph(screenGeoData)
 

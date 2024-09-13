@@ -95,7 +95,7 @@ fun ScreenEditInterests(
                         modifier = Modifier.height(49.dp),
                         enable = true,
                         textButton = "Сохранить",
-                    ) { navController.navigate(Graph.Profile.route) }
+                    ) { navController.popBackStack() }
                 }
             }
         }

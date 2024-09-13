@@ -8,7 +8,7 @@ import com.example.wbtechnoschool.viewmodel.community_view_model.DetailsCommunit
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.DescriptionMeetingViewModel
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingViewModel
 import com.example.wbtechnoschool.viewmodel.more_view_model.my_meetings_view_model.MyMeetingsViewModel
-import com.example.wbtechnoschool.viewmodel.more_view_model.profile_view_model.ProfileViewModule
+import com.example.wbtechnoschool.viewmodel.profile_view_model.ProfileViewModel
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -22,5 +22,5 @@ val presentationModule =
         viewModel { DescriptionMeetingViewModel(get()) }
         viewModel { MeetingViewModel(get()) }
         viewModel { MyMeetingsViewModel() }
-        viewModel { ProfileViewModule(get()) }
+        viewModel { ProfileViewModel() }
     }

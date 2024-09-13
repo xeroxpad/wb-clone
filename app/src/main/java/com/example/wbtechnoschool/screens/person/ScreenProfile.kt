@@ -37,6 +37,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.example.domain.entities.Community
 import com.example.domain.entities.FixEvent
@@ -61,6 +62,8 @@ import com.example.wbtechnoschool.utils.toggle.FixToggleSwitch
 import com.example.wbtechnoschool.viewmodel.auth_view_model.AuthorizationProfileViewModel
 import com.example.wbtechnoschool.viewmodel.community_view_model.CommunityViewModel
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingViewModel
+import com.example.wbtechnoschool.viewmodel.profile_view_model.ProfileViewModel
+import io.bloco.faker.Faker
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -70,11 +73,13 @@ fun ScreenProfile(
     fromScreen: String,
     viewModelMeeting: MeetingViewModel = koinViewModel(),
     viewModelCommunity: CommunityViewModel = koinViewModel(),
+    viewModelProfile: ProfileViewModel = koinViewModel(),
 ) {
-    val events by viewModelMeeting.meetings.collectAsState()
-    val community by viewModelCommunity.community.collectAsState()
+    val events by viewModelMeeting.meetings.collectAsStateWithLifecycle()
+    val community by viewModelCommunity.community.collectAsStateWithLifecycle()
     val focusManager = LocalFocusManager.current
-    var isEditing by remember { mutableStateOf(false) }
+    val isEditing by viewModelProfile.isEditing.collectAsStateWithLifecycle()
+    val faker = Faker()
     val iconShareOrEdit = when (fromScreen) {
         Graph.MakeAnAppointmentDone.route -> R.drawable.icon_share
         else -> R.drawable.icon_edit
@@ -94,11 +99,13 @@ fun ScreenProfile(
                     .background(Color.Transparent),
                 isEditing = isEditing,
                 onBackClick = {
-                    if (isEditing) isEditing = false else {
+                    if (isEditing) {
+                        viewModelProfile.toggleEditing()
+                    } else {
                         navController.popBackStack()
                     }
                 },
-                onEditClick = { isEditing = !isEditing },
+                onEditClick = { viewModelProfile.toggleEditing() },
                 iconShareOrEdit = iconShareOrEdit,
                 onIconShareOrIconEditClick = {}
             )
@@ -118,7 +125,10 @@ fun ScreenProfile(
                             .clickable { }
                             .height(375.dp),
                     ) {
-                        FixAddAvatarProfile(isEditing = isEditing, modifier = Modifier.fillMaxSize())
+                        FixAddAvatarProfile(
+                            isEditing = isEditing,
+                            modifier = Modifier.fillMaxSize()
+                        )
                     }
                     if (isEditing) {
                         ProfileEditContent(
@@ -145,10 +155,11 @@ fun ScreenProfile(
 @Composable
 fun ProfileViewContent(
     modifier: Modifier = Modifier,
-    events: List<FixEvent>,
-    community: List<Community>,
+    events: FixEvent,
+    community: Community,
     navController: NavController
 ) {
+    val faker = Faker()
     Column(modifier = modifier.padding(start = 20.dp)) {
         Spacer(modifier = Modifier.height(10.dp))
         Text(
@@ -216,9 +227,9 @@ fun ProfileViewContent(
         )
         Spacer(modifier = Modifier.height(10.dp))
         LazyRow {
-            items(events) { event ->
+            items(15) {
                 FixCardMeetingMini(
-                    event = event,
+                    event = events,
                     onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                 )
                 Spacer(modifier = Modifier.width(10.dp))
@@ -233,9 +244,9 @@ fun ProfileViewContent(
         )
         Spacer(modifier = Modifier.height(10.dp))
         LazyRow {
-            items(community) { communities ->
+            items(15) {
                 FixCardCommunity(
-                    community = communities,
+                    community = community,
                     onClick = { navController.navigate(Graph.DetailsCommunity.route) },
                 )
                 Spacer(modifier = Modifier.width(10.dp))
@@ -263,8 +274,8 @@ fun ProfileViewContent(
 @Composable
 fun ProfileEditContent(
     modifier: Modifier = Modifier,
-    events: List<FixEvent>,
-    community: List<Community>,
+    events: FixEvent,
+    community: Community,
     viewModel: AuthorizationProfileViewModel = koinViewModel(),
     onClickInterests: () -> Unit,
     onClickDelete: () -> Unit,

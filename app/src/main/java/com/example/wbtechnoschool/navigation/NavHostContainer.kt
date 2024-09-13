@@ -115,6 +115,14 @@ fun NavHostContainer(
             ScreenGeoData(navController = navController)
         }
 
+        composable(Graph.DescriptionMeeting.route) {
+            ScreenDescriptionMeeting(navController = navController)
+        }
+
+        composable(Graph.DetailsCommunity.route) {
+            ScreenDetailsCommunity(navController = navController)
+        }
+
         composable(
             route = "${Graph.Profile.route}?fromScreen={fromScreen}",
             arguments = listOf(navArgument("fromScreen") { defaultValue = "" })

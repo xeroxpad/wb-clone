@@ -68,7 +68,7 @@ fun AvatarMask(
                 Box(
                     modifier = Modifier
                         .clip(CircleOverlayShape())
-                        .background(Color.Black.copy(alpha = 0.2f))
+                        .background(Color.Black.copy(alpha = 0.5f))
                         .height(375.dp)
                         .fillMaxWidth(),
                 )

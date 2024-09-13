@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">WB Technoschool</string>
+    <string name="app_name">WB Встречи</string>
     <string name="name_meeting">Developer meeting</string>
     <string name="date_meeting">13.09.2024</string>
     <string name="location_meeting">Москва</string>

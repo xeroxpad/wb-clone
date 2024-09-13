@@ -2,7 +2,6 @@ package com.example.wbtechnoschool.screens.events
 
 import android.os.Build
 import androidx.annotation.RequiresApi
-import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
@@ -17,18 +16,15 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.pointer.pointerInput
 import androidx.compose.ui.platform.LocalFocusManager
 import androidx.compose.ui.res.painterResource
@@ -36,23 +32,18 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.screens.meetings.SelectOtherMeetings
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
-import com.example.wbtechnoschool.ui.theme.fontSFPro
-import com.example.wbtechnoschool.utils.button.PaymentButton
-import com.example.wbtechnoschool.utils.constants.MagicNumbers
-import com.example.wbtechnoschool.utils.constants.SPACER
+import com.example.wbtechnoschool.utils.box.InterestSelectionCard
 import com.example.wbtechnoschool.utils.events.FixCardCommunity
 import com.example.wbtechnoschool.utils.events.FixCardMeeting
 import com.example.wbtechnoschool.utils.events.FixCardMeetingMini
 import com.example.wbtechnoschool.utils.search.FixSearchTextField
-import com.example.wbtechnoschool.utils.tags.FixFilterTags
-import com.example.wbtechnoschool.utils.widgets.ShowImage
 import com.example.wbtechnoschool.viewmodel.community_view_model.CommunityViewModel
-import com.example.wbtechnoschool.viewmodel.meetings_view_model.DescriptionMeetingViewModel
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -64,8 +55,8 @@ fun ScreenEvents(
     viewModelMeeting: MeetingViewModel = koinViewModel(),
     viewModelCommunity: CommunityViewModel = koinViewModel(),
 ) {
-    val events by viewModelMeeting.meetings.collectAsState()
-    val community by viewModelCommunity.community.collectAsState()
+    val meetings by viewModelMeeting.meetings.collectAsStateWithLifecycle()
+    val community by viewModelCommunity.community.collectAsStateWithLifecycle()
     val focusManager = LocalFocusManager.current
     Scaffold(
         modifier =
@@ -118,9 +109,9 @@ fun ScreenEvents(
             ) {
                 item {
                     LazyRow {
-                        items(events) { event ->
+                        items(20) {
                             FixCardMeeting(
-                                event = event,
+                                event = meetings,
                                 onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                             )
                             Spacer(modifier = Modifier.width(10.dp))
@@ -134,9 +125,9 @@ fun ScreenEvents(
                     )
                     Spacer(modifier = Modifier.height(15.dp))
                     LazyRow {
-                        items(events) { event ->
+                        items(20) {
                             FixCardMeetingMini(
-                                event = event,
+                                event = meetings,
                                 onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                             )
                             Spacer(modifier = Modifier.width(10.dp))
@@ -151,9 +142,9 @@ fun ScreenEvents(
                     )
                     Spacer(modifier = Modifier.height(15.dp))
                     LazyRow {
-                        items(community) { communities ->
+                        items(20) {
                             FixCardCommunity(
-                                community = communities,
+                                community = community,
                                 onClick = { navController.navigate(Graph.DetailsCommunity.route) },
                             )
                             Spacer(modifier = Modifier.width(10.dp))
@@ -189,14 +180,20 @@ fun ScreenEvents(
                     )
                     Spacer(modifier = Modifier.height(30.dp))
                 }
-                items(events) { event ->
+                items(30) {
                     FixCardMeeting(
-                        event = event,
+                        event = meetings,
                         onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                         modifier = Modifier
                             .padding(end = 20.dp)
                             .fillMaxWidth()
                     )
+                    Spacer(modifier = Modifier.height(30.dp))
+                }
+                item {
+                    InterestSelectionCard(
+                        modifier = Modifier.padding(end = 20.dp),
+                        onClick = { navController.navigate(Graph.EditInterests.route) })
                     Spacer(modifier = Modifier.height(30.dp))
                 }
             }

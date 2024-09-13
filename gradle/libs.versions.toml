@@ -1,7 +1,6 @@
 [versions]
-agp = "8.5.0"
-androidMapsUtils = "2.2.3"
-googleMapsVersion = "3.1.0"
+agp = "8.4.0"
+faker = "2.0.4"
 kotlin = "1.9.0"
 coreKtx = "1.10.1"
 junit = "4.13.2"
@@ -10,9 +9,6 @@ espressoCore = "3.5.1"
 lifecycleRuntimeKtx = "2.6.1"
 activityCompose = "1.8.0"
 composeBom = "2024.04.01"
-mapsMobile = "4.7.0-lite"
-mapsVersion = "5.2.0.301"
-playServicesMaps = "18.1.0"
 runtimeLivedata = "1.6.8"
 appcompat = "1.6.1"
 material = "1.10.0"
@@ -43,6 +39,7 @@ constraintlayout = "2.1.4"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+faker = { module = "io.bloco:faker", version.ref = "faker" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitVersion" }
 androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espressoCore" }
@@ -86,6 +83,7 @@ junit-jupiter-api = { module = "org.junit.jupiter:junit-jupiter-api", version.re
 junit-jupiter-engine = { module = "org.junit.jupiter:junit-jupiter-engine", version.ref = "junit-jupiter-engine" }
 androidx-lifecycle-livedata-core-ktx = { group = "androidx.lifecycle", name = "lifecycle-livedata-core-ktx", version.ref = "lifecycleLivedataCoreKtx" }
 androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+
 
 
 [plugins]

@@ -1,56 +1,38 @@
 package com.example.wbtechnoschool.screens.person
 
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.statusBarsPadding
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.CircularProgressIndicator
-import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalContext
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import coil.compose.AsyncImagePainter
-import coil.compose.rememberAsyncImagePainter
-import coil.request.ImageRequest
 import com.example.domain.entities.FixPerson
-import com.example.domain.entities.Person
 import com.example.wbtechnoschool.navigation.MainTopAppBar
-import com.example.wbtechnoschool.utils.avatar.FixMyAvatar
-import com.example.wbtechnoschool.utils.constants.MagicNumbers.Companion.DEFAULT_AVATAR
-import com.example.wbtechnoschool.utils.tags.FixTags
+import io.bloco.faker.Faker
 
 @Composable
 fun ScreenPersonGoingMeeting(
     modifier: Modifier = Modifier,
     navController: NavController,
 ) {
+    val faker = Faker()
     val users = listOf(
         FixPerson(
-            id = 1,
-            name = "Анастасия",
-            avatarUrl = "https://s3-alpha-sig.figma.com/img/c6dc/9a5b/9cc40897f19e46b907399c8755e1f9ea?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=KXY33iKlvcs2fRDt7z2ymePeIpxUOpvcJRd4xoeeIY6mOlF~dv9u7memTOnKDqPd-YXFo77Wc8~IhmaL1wWdzscyHSOYIpDsvZwxdN5CGZC5zQrjlefxAU6sQ54sFnxsCdpO-rwCCqzn2mNc-nUcksbZpmTKmwPacnwjwZIoXXjGvtI~fmUYSMiyGH7NtTon0KePWgf~Z~yIIQAqPGA5tfqltU7yx4o5aFh5b9PLnUddsnl-JG2Whah9B7~mUcyL3Fcy~q49IzZRNUJT3fq4KI91Ii0LxDrohLeS7quDtjmES-wc0Br2fl5tsY9sdEBiJNY3o7HRx1RQwUPAiRZp6w__",
-            interests = "Дизайн",
+//            id = 1,
+//            name = "Анастасия",
+//            avatarUrl = "https://s3-alpha-sig.figma.com/img/c6dc/9a5b/9cc40897f19e46b907399c8755e1f9ea?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=KXY33iKlvcs2fRDt7z2ymePeIpxUOpvcJRd4xoeeIY6mOlF~dv9u7memTOnKDqPd-YXFo77Wc8~IhmaL1wWdzscyHSOYIpDsvZwxdN5CGZC5zQrjlefxAU6sQ54sFnxsCdpO-rwCCqzn2mNc-nUcksbZpmTKmwPacnwjwZIoXXjGvtI~fmUYSMiyGH7NtTon0KePWgf~Z~yIIQAqPGA5tfqltU7yx4o5aFh5b9PLnUddsnl-JG2Whah9B7~mUcyL3Fcy~q49IzZRNUJT3fq4KI91Ii0LxDrohLeS7quDtjmES-wc0Br2fl5tsY9sdEBiJNY3o7HRx1RQwUPAiRZp6w__",
+//            interests = "Дизайн",
+            id = faker.number.digit().toInt(),
+            name = faker.name.firstName().replaceFirstChar { it.uppercase() },
+            avatarUrl = faker.avatar.image(),
+            interests = faker.lorem.word().uppercase()
         ),
         FixPerson(
             id = 2,
@@ -147,40 +129,19 @@ fun ScreenPersonGoingMeeting(
                 verticalArrangement = Arrangement.spacedBy(20.dp),
                 horizontalArrangement = Arrangement.spacedBy(15.dp)
             ) {
-                items(users.size) { index ->
-                    val user = users[index]
-//                    Column(
-//                        horizontalAlignment = Alignment.Start,
-//                        modifier = Modifier
-//                            .clip(shape = RoundedCornerShape(16.dp))
-//                            .width(104.dp)
-//                            .clickable { }
-//                            .padding(5.dp)
-//                    ) {
-//                        if (painter.state is AsyncImagePainter.State.Loading) {
-//                            CircularProgressIndicator()
-//                        }
-//                        FixMyAvatar(
-//                            model = user.avatarUrl
-//                                ?: "https://sneg.top/uploads/posts/2023-06/thumbs/1688043519_sneg-top-p-avatarka-fotoshop-vkontakte-21.jpg",
-//                            contentDescription = null,
-//                            modifier = Modifier
-//                                .clip(CircleShape)
-//                                .fillMaxSize()
-//                        )
-//                        Text(
-//                            text = user.name,
-//                            fontWeight = FontWeight.W500,
-//                            fontSize = 18.sp,
-//                            color = Color.Black,
-//                            maxLines = 1,
-//                            overflow = TextOverflow.Ellipsis,
-//                        )
-//                        FixTags(
-//                            labelText = user.interests,
-//                        )
-//                    }
-                    CardPerson(user = user)
+//                items(users.size) { index ->
+//                    val user = users[index]
+//                    CardPerson(user = user)
+//                }
+                items(50) {
+                    CardPerson(
+                        user = FixPerson(
+                            id = faker.number.digit().toInt(),
+                            name = faker.name.firstName().replaceFirstChar { it.uppercase() },
+                            avatarUrl = "https://api.multiavatar.com/${faker.number.between(1, 1000)}.png",
+                            interests = faker.lorem.word().uppercase()
+                        )
+                    )
                 }
             }
         }

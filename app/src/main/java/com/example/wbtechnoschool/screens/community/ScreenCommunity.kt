@@ -65,7 +65,7 @@ fun ScreenCommunity(
                     .fillMaxSize(),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
-                items(community) { community ->
+                items(25) {
                     CardCommunity(
                         onClick = { navController.navigate(Graph.DetailsCommunity.route) },
                         community = community,

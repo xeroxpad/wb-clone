@@ -3,142 +3,83 @@ package com.example.data.repository
 import com.example.domain.entities.Community
 import com.example.domain.entities.CommunityDetails
 import com.example.domain.entities.FixEvent
-import com.example.domain.entities.Meetings
 import com.example.domain.repository.ICommunityRepository
+import io.bloco.faker.Faker
 
 class CommunityRepositoryImpl : ICommunityRepository {
-    override fun getAllCommunity(): List<Community> = mockCommunityData
+    //    override fun getAllCommunity(): Community = mockCommunityData
+    override fun getAllCommunity(): Community {
+        return mockCommunityData()
+    }
 
     override fun getDetailsCommunity(): CommunityDetails = mockCommunityDetails
 
+    private val faker = Faker()
+    private fun mockCommunityData(): Community {
+        return Community(
+            id = faker.number.digit().toInt(),
+            icon = "https://picsum.photos/200/300?random",
+            title = faker.name.title(),
+        )
+    }
 //    val mockCommunityData =
-//        listOf<Community>(
+//        listOf(
 //            Community(
 //                id = 0,
-//                icon = null,
-//                title = "Яндекс",
-//                countPersons = null,
+//                icon = "https://s3-alpha-sig.figma.com/img/517e/1a88/6f9d0e680e2832ebf4ee55c7d292b7ab?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bDjaqt9B4SwXwM6RE-jlQKMcpcAyN8lHZEjGc0Fhkz14ol38KgVwxzqJBDd4H88kfKfB8IojDeH5ijbWhx6WG5EAs7kyA0DsqfQ4-o82JIFBgXYKclFxD~-B4h4Ou0UnnGh9iXVDLqssmxPvSUYelAWWDqf~yhV8sdgQRzF5nDSB1Gd1ffs4BONIOgl-biJKbl0ybFV7qEbBxcY64WZTvobbSGYTnwombnb2fYsy3xO3c0voNzj8BcQ5a5uWi7olfjFrUBbhnTtLpTzuut-Ssc8QXSXU~eBMc~vL2RbfG0MLFL2YeMjwyRnq-BRt2iy8XSVA6qchSZkpNL5g0o0B4A__",
+//                title = "WBTECH",
 //            ),
 //            Community(
 //                id = 1,
-//                icon = "https://weldtex.ru/wp-content/uploads/2024/01/ozon.png",
-//                title = "Озон",
-//                countPersons = "1 000 человек",
+//                icon = "https://s3-alpha-sig.figma.com/img/c9a7/54d7/03ba23f3bfdf6a1d3847f7b696a6eedd?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GPklw6vp2sk5cLXDWVnekLI3NCSHfhK9OXi0eINfUoNrzCVDvPpGe~ns8M4OTi2stt-0106ocpNKqa0vuXUPOSSum97k58KX7wsAuuJOhP0eWo3l3xuhr4ZirrvZzOYEzOFQSTWIte0U-lW-pHp7ayuIQqvdnkixUAw4e~TzZ-GpK6~vOnI1vu8KVDoL72FTeZqpuwNtON-w7Cxt80GXrGX7PsQw0zUffFC-WaePD9sOMt4oxmubUmU7Gywh-rwddqhlxzG-7W4nQ6OtMOBGz8TaJIPGQypqkEuLjMzIDYp6Nh~ZV37wr79J4T92nnLCN8XP9t-jFEsevIkWWbdBUA__",
+//                title = "Разраб",
 //            ),
 //            Community(
 //                id = 2,
-//                icon = "https://avoshop.ru/upload/iblock/a8a/9gldo5wx1d1xngaj5m71b2c77ybz5tku.png",
-//                title = "Wildberries",
-//                countPersons = "100 000 человек",
+//                icon = "https://s3-alpha-sig.figma.com/img/773b/0378/e162f6022e3a3c37d762206749a88ee4?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=o5iF5-dRvLn7psVphiMKkpo4Ky4hzF9HNI~0d4adMIrOcoa5EFnbcKbN8svopXgQnkn-7wF5AqnjNRFOVAUb4dM7euTCbgZb6wyhX5-RO1BaNGUyjZ1-w-Uj7Pb5SivVJLEe~cY69SZaKkE-ALnqpH5Jj2eGKGnKWt0iMcRTNxFeyXKhBUTSJeww7vmqTUhHPwNWeP83eOn7dYgNLUQjYL6DH1BnnYnLJLgojW4rjQ3TmfatQ7fHr-j6PSGXj0z3fLeCzRtIilgXB6MsTYnShtPF33iHL6BIxBHjaY5f~hfssBnkT-G8cToZ4FFgaDp~JYAyIKYBfrlmMaLGrjh8iQ__",
+//                title = "Хабр",
 //            ),
 //            Community(
 //                id = 3,
-//                icon = "https://oscomp.ru/upload/iblock/b53/lmuwr5qb16y6bwiezy24zgty95zaf1ud.png",
-//                title = "Huawei",
-//                countPersons = "50 000 человек",
+//                icon = "https://s3-alpha-sig.figma.com/img/f32e/7373/028b1a961e2e3dcde2f9ea3584eab541?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=KOPRBeUslTm7Hclvxtn07TllKccGTFKtIufh2fYMbbrQgYqejLE6MJj6~n8xsKXhf4yd8kFrFudwbjOwt6HWCsrg7nx4zBbfVVQYkylOmiCKzqHF5klW5NcZGSb3PPi4pvYrThnRVajCE07jlFwCRgTf72sVpQzQTrs6fIJqxPrJd2aiK06jKQQQhKHVqmYI~d57xYu1b3K-SfoazxwKw0vHDHS0SpGmoEzRg2A-45RZmkzvmreQwPOSLZRLMoIe51GE208jbTdtr4OqwVMssnOdyt04Xf35VEB-v2fKYKl2G6eKh1WbX27fD43EkQvINXPM4qEsUSQCdtKNOCidjQ__",
+//                title = "Запускаем гуся, работяги",
 //            ),
 //            Community(
 //                id = 4,
-//                icon = "https://u.9111s.ru/uploads/202206/09/c5e55d54ff5036ff6b09a378bad27c21.png",
+//                icon = "https://s3-alpha-sig.figma.com/img/4444/d138/f8b1f7772ef6d067ca0e48c2eadc47df?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=afvBgFdd-0ppE22SQS02gjuabkdEhJpmOJB3omwBcDfiRX7VxhyQWasVGpr3h5-Qxx35fngtmYJwYrzNsmmagpXL6OqMe9U0vN~~TZTAMSiNCCWZDIjoafMB6g8G1Sm2lEYBJ1Lzdf1Bd6uD4BY0qyBrMYcteLYB0B9MT3azMGAqUNbR7feAgvPfm5ywn0BtBhD10BHsnZBhLswXm2IpM0H0ra~V0~DXXu7AXwwPZ2jp5eHRwzk1gFNCS4s3ZQnECOSjtmdVaZ-9gxKKM0Mg96Eou3Nyz0T8-w1aVRcCPFH5t5qAy2ziV-DGUEEy6b42dGjyfsNWDp3SfKmd9-p9xg__",
 //                title = "Apple",
-//                countPersons = "5 000 человек",
 //            ),
 //            Community(
 //                id = 5,
-//                icon = "https://tehnomir71.ru/upload/iblock/c11/c113e3db6aa18e7cd34b5433b457deb0.jpg",
+//                icon = "https://s3-alpha-sig.figma.com/img/773b/0378/e162f6022e3a3c37d762206749a88ee4?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=o5iF5-dRvLn7psVphiMKkpo4Ky4hzF9HNI~0d4adMIrOcoa5EFnbcKbN8svopXgQnkn-7wF5AqnjNRFOVAUb4dM7euTCbgZb6wyhX5-RO1BaNGUyjZ1-w-Uj7Pb5SivVJLEe~cY69SZaKkE-ALnqpH5Jj2eGKGnKWt0iMcRTNxFeyXKhBUTSJeww7vmqTUhHPwNWeP83eOn7dYgNLUQjYL6DH1BnnYnLJLgojW4rjQ3TmfatQ7fHr-j6PSGXj0z3fLeCzRtIilgXB6MsTYnShtPF33iHL6BIxBHjaY5f~hfssBnkT-G8cToZ4FFgaDp~JYAyIKYBfrlmMaLGrjh8iQ__",
 //                title = "Samsung",
-//                countPersons = "3 000 человек",
 //            ),
 //            Community(
 //                id = 6,
-//                icon = "https://strogino.mos.ru/upload/medialibrary/005/cn52sgfb49fyxdslyf98hqx7lff63fbs/800px_Vk_logo.svg.png",
+//                icon = "https://s3-alpha-sig.figma.com/img/773b/0378/e162f6022e3a3c37d762206749a88ee4?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=o5iF5-dRvLn7psVphiMKkpo4Ky4hzF9HNI~0d4adMIrOcoa5EFnbcKbN8svopXgQnkn-7wF5AqnjNRFOVAUb4dM7euTCbgZb6wyhX5-RO1BaNGUyjZ1-w-Uj7Pb5SivVJLEe~cY69SZaKkE-ALnqpH5Jj2eGKGnKWt0iMcRTNxFeyXKhBUTSJeww7vmqTUhHPwNWeP83eOn7dYgNLUQjYL6DH1BnnYnLJLgojW4rjQ3TmfatQ7fHr-j6PSGXj0z3fLeCzRtIilgXB6MsTYnShtPF33iHL6BIxBHjaY5f~hfssBnkT-G8cToZ4FFgaDp~JYAyIKYBfrlmMaLGrjh8iQ__",
 //                title = "VK",
-//                countPersons = "1 000 человек",
 //            ),
 //            Community(
 //                id = 7,
-//                icon = "https://retrobloha.ru/naborspichek20let/images/g0ea0GZ5LXR_h1NrOrBGDWOQ0oQ=/1199x/ff0b8095-4519-49f1-af84-035d53966dea.png",
+//                icon = "https://s3-alpha-sig.figma.com/img/4444/d138/f8b1f7772ef6d067ca0e48c2eadc47df?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=afvBgFdd-0ppE22SQS02gjuabkdEhJpmOJB3omwBcDfiRX7VxhyQWasVGpr3h5-Qxx35fngtmYJwYrzNsmmagpXL6OqMe9U0vN~~TZTAMSiNCCWZDIjoafMB6g8G1Sm2lEYBJ1Lzdf1Bd6uD4BY0qyBrMYcteLYB0B9MT3azMGAqUNbR7feAgvPfm5ywn0BtBhD10BHsnZBhLswXm2IpM0H0ra~V0~DXXu7AXwwPZ2jp5eHRwzk1gFNCS4s3ZQnECOSjtmdVaZ-9gxKKM0Mg96Eou3Nyz0T8-w1aVRcCPFH5t5qAy2ziV-DGUEEy6b42dGjyfsNWDp3SfKmd9-p9xg__",
 //                title = "Avito",
-//                countPersons = "100 человек",
 //            ),
 //            Community(
 //                id = 8,
-//                icon = "https://pochemu-ne-rabotaet.ru/wp-content/uploads/2022/09/ламода.jpg",
+//                icon = "https://s3-alpha-sig.figma.com/img/773b/0378/e162f6022e3a3c37d762206749a88ee4?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=o5iF5-dRvLn7psVphiMKkpo4Ky4hzF9HNI~0d4adMIrOcoa5EFnbcKbN8svopXgQnkn-7wF5AqnjNRFOVAUb4dM7euTCbgZb6wyhX5-RO1BaNGUyjZ1-w-Uj7Pb5SivVJLEe~cY69SZaKkE-ALnqpH5Jj2eGKGnKWt0iMcRTNxFeyXKhBUTSJeww7vmqTUhHPwNWeP83eOn7dYgNLUQjYL6DH1BnnYnLJLgojW4rjQ3TmfatQ7fHr-j6PSGXj0z3fLeCzRtIilgXB6MsTYnShtPF33iHL6BIxBHjaY5f~hfssBnkT-G8cToZ4FFgaDp~JYAyIKYBfrlmMaLGrjh8iQ__",
 //                title = "Lamoda",
-//                countPersons = "20 000 человек",
 //            ),
 //            Community(
 //                id = 9,
-//                icon = "https://geekville.ru/wp-content/uploads/2023/08/1-43.jpg",
+//                icon = "https://s3-alpha-sig.figma.com/img/4444/d138/f8b1f7772ef6d067ca0e48c2eadc47df?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=afvBgFdd-0ppE22SQS02gjuabkdEhJpmOJB3omwBcDfiRX7VxhyQWasVGpr3h5-Qxx35fngtmYJwYrzNsmmagpXL6OqMe9U0vN~~TZTAMSiNCCWZDIjoafMB6g8G1Sm2lEYBJ1Lzdf1Bd6uD4BY0qyBrMYcteLYB0B9MT3azMGAqUNbR7feAgvPfm5ywn0BtBhD10BHsnZBhLswXm2IpM0H0ra~V0~DXXu7AXwwPZ2jp5eHRwzk1gFNCS4s3ZQnECOSjtmdVaZ-9gxKKM0Mg96Eou3Nyz0T8-w1aVRcCPFH5t5qAy2ziV-DGUEEy6b42dGjyfsNWDp3SfKmd9-p9xg__",
 //                title = "МТС",
-//                countPersons = "2 000 человек",
 //            ),
 //            Community(
 //                id = 10,
-//                icon = "https://rendercar.ru/wp-content/uploads/2023/03/tinkoff-logo.png",
+//                icon = "https://s3-alpha-sig.figma.com/img/773b/0378/e162f6022e3a3c37d762206749a88ee4?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=o5iF5-dRvLn7psVphiMKkpo4Ky4hzF9HNI~0d4adMIrOcoa5EFnbcKbN8svopXgQnkn-7wF5AqnjNRFOVAUb4dM7euTCbgZb6wyhX5-RO1BaNGUyjZ1-w-Uj7Pb5SivVJLEe~cY69SZaKkE-ALnqpH5Jj2eGKGnKWt0iMcRTNxFeyXKhBUTSJeww7vmqTUhHPwNWeP83eOn7dYgNLUQjYL6DH1BnnYnLJLgojW4rjQ3TmfatQ7fHr-j6PSGXj0z3fLeCzRtIilgXB6MsTYnShtPF33iHL6BIxBHjaY5f~hfssBnkT-G8cToZ4FFgaDp~JYAyIKYBfrlmMaLGrjh8iQ__",
 //                title = "Тинькофф",
-//                countPersons = "5 000 человек",
 //            ),
 //        )
-
-    val mockCommunityData =
-        listOf<Community>(
-            Community(
-                id = 0,
-                icon = "https://s3-alpha-sig.figma.com/img/517e/1a88/6f9d0e680e2832ebf4ee55c7d292b7ab?Expires=1726444800&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=bDjaqt9B4SwXwM6RE-jlQKMcpcAyN8lHZEjGc0Fhkz14ol38KgVwxzqJBDd4H88kfKfB8IojDeH5ijbWhx6WG5EAs7kyA0DsqfQ4-o82JIFBgXYKclFxD~-B4h4Ou0UnnGh9iXVDLqssmxPvSUYelAWWDqf~yhV8sdgQRzF5nDSB1Gd1ffs4BONIOgl-biJKbl0ybFV7qEbBxcY64WZTvobbSGYTnwombnb2fYsy3xO3c0voNzj8BcQ5a5uWi7olfjFrUBbhnTtLpTzuut-Ssc8QXSXU~eBMc~vL2RbfG0MLFL2YeMjwyRnq-BRt2iy8XSVA6qchSZkpNL5g0o0B4A__",
-                title = "WBTECH",
-            ),
-            Community(
-                id = 1,
-                icon = "https://s3-alpha-sig.figma.com/img/c9a7/54d7/03ba23f3bfdf6a1d3847f7b696a6eedd?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GPklw6vp2sk5cLXDWVnekLI3NCSHfhK9OXi0eINfUoNrzCVDvPpGe~ns8M4OTi2stt-0106ocpNKqa0vuXUPOSSum97k58KX7wsAuuJOhP0eWo3l3xuhr4ZirrvZzOYEzOFQSTWIte0U-lW-pHp7ayuIQqvdnkixUAw4e~TzZ-GpK6~vOnI1vu8KVDoL72FTeZqpuwNtON-w7Cxt80GXrGX7PsQw0zUffFC-WaePD9sOMt4oxmubUmU7Gywh-rwddqhlxzG-7W4nQ6OtMOBGz8TaJIPGQypqkEuLjMzIDYp6Nh~ZV37wr79J4T92nnLCN8XP9t-jFEsevIkWWbdBUA__",
-                title = "Разраб",
-            ),
-            Community(
-                id = 2,
-                icon = "https://s3-alpha-sig.figma.com/img/773b/0378/e162f6022e3a3c37d762206749a88ee4?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=o5iF5-dRvLn7psVphiMKkpo4Ky4hzF9HNI~0d4adMIrOcoa5EFnbcKbN8svopXgQnkn-7wF5AqnjNRFOVAUb4dM7euTCbgZb6wyhX5-RO1BaNGUyjZ1-w-Uj7Pb5SivVJLEe~cY69SZaKkE-ALnqpH5Jj2eGKGnKWt0iMcRTNxFeyXKhBUTSJeww7vmqTUhHPwNWeP83eOn7dYgNLUQjYL6DH1BnnYnLJLgojW4rjQ3TmfatQ7fHr-j6PSGXj0z3fLeCzRtIilgXB6MsTYnShtPF33iHL6BIxBHjaY5f~hfssBnkT-G8cToZ4FFgaDp~JYAyIKYBfrlmMaLGrjh8iQ__",
-                title = "Хабр",
-            ),
-            Community(
-                id = 3,
-                icon = "https://s3-alpha-sig.figma.com/img/f32e/7373/028b1a961e2e3dcde2f9ea3584eab541?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=KOPRBeUslTm7Hclvxtn07TllKccGTFKtIufh2fYMbbrQgYqejLE6MJj6~n8xsKXhf4yd8kFrFudwbjOwt6HWCsrg7nx4zBbfVVQYkylOmiCKzqHF5klW5NcZGSb3PPi4pvYrThnRVajCE07jlFwCRgTf72sVpQzQTrs6fIJqxPrJd2aiK06jKQQQhKHVqmYI~d57xYu1b3K-SfoazxwKw0vHDHS0SpGmoEzRg2A-45RZmkzvmreQwPOSLZRLMoIe51GE208jbTdtr4OqwVMssnOdyt04Xf35VEB-v2fKYKl2G6eKh1WbX27fD43EkQvINXPM4qEsUSQCdtKNOCidjQ__",
-                title = "Запускаем гуся, работяги",
-            ),
-            Community(
-                id = 4,
-                icon = "https://s3-alpha-sig.figma.com/img/4444/d138/f8b1f7772ef6d067ca0e48c2eadc47df?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=afvBgFdd-0ppE22SQS02gjuabkdEhJpmOJB3omwBcDfiRX7VxhyQWasVGpr3h5-Qxx35fngtmYJwYrzNsmmagpXL6OqMe9U0vN~~TZTAMSiNCCWZDIjoafMB6g8G1Sm2lEYBJ1Lzdf1Bd6uD4BY0qyBrMYcteLYB0B9MT3azMGAqUNbR7feAgvPfm5ywn0BtBhD10BHsnZBhLswXm2IpM0H0ra~V0~DXXu7AXwwPZ2jp5eHRwzk1gFNCS4s3ZQnECOSjtmdVaZ-9gxKKM0Mg96Eou3Nyz0T8-w1aVRcCPFH5t5qAy2ziV-DGUEEy6b42dGjyfsNWDp3SfKmd9-p9xg__",
-                title = "Apple",
-            ),
-            Community(
-                id = 5,
-                icon = "https://s3-alpha-sig.figma.com/img/773b/0378/e162f6022e3a3c37d762206749a88ee4?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=o5iF5-dRvLn7psVphiMKkpo4Ky4hzF9HNI~0d4adMIrOcoa5EFnbcKbN8svopXgQnkn-7wF5AqnjNRFOVAUb4dM7euTCbgZb6wyhX5-RO1BaNGUyjZ1-w-Uj7Pb5SivVJLEe~cY69SZaKkE-ALnqpH5Jj2eGKGnKWt0iMcRTNxFeyXKhBUTSJeww7vmqTUhHPwNWeP83eOn7dYgNLUQjYL6DH1BnnYnLJLgojW4rjQ3TmfatQ7fHr-j6PSGXj0z3fLeCzRtIilgXB6MsTYnShtPF33iHL6BIxBHjaY5f~hfssBnkT-G8cToZ4FFgaDp~JYAyIKYBfrlmMaLGrjh8iQ__",
-                title = "Samsung",
-            ),
-            Community(
-                id = 6,
-                icon = "https://s3-alpha-sig.figma.com/img/773b/0378/e162f6022e3a3c37d762206749a88ee4?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=o5iF5-dRvLn7psVphiMKkpo4Ky4hzF9HNI~0d4adMIrOcoa5EFnbcKbN8svopXgQnkn-7wF5AqnjNRFOVAUb4dM7euTCbgZb6wyhX5-RO1BaNGUyjZ1-w-Uj7Pb5SivVJLEe~cY69SZaKkE-ALnqpH5Jj2eGKGnKWt0iMcRTNxFeyXKhBUTSJeww7vmqTUhHPwNWeP83eOn7dYgNLUQjYL6DH1BnnYnLJLgojW4rjQ3TmfatQ7fHr-j6PSGXj0z3fLeCzRtIilgXB6MsTYnShtPF33iHL6BIxBHjaY5f~hfssBnkT-G8cToZ4FFgaDp~JYAyIKYBfrlmMaLGrjh8iQ__",
-                title = "VK",
-            ),
-            Community(
-                id = 7,
-                icon = "https://s3-alpha-sig.figma.com/img/4444/d138/f8b1f7772ef6d067ca0e48c2eadc47df?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=afvBgFdd-0ppE22SQS02gjuabkdEhJpmOJB3omwBcDfiRX7VxhyQWasVGpr3h5-Qxx35fngtmYJwYrzNsmmagpXL6OqMe9U0vN~~TZTAMSiNCCWZDIjoafMB6g8G1Sm2lEYBJ1Lzdf1Bd6uD4BY0qyBrMYcteLYB0B9MT3azMGAqUNbR7feAgvPfm5ywn0BtBhD10BHsnZBhLswXm2IpM0H0ra~V0~DXXu7AXwwPZ2jp5eHRwzk1gFNCS4s3ZQnECOSjtmdVaZ-9gxKKM0Mg96Eou3Nyz0T8-w1aVRcCPFH5t5qAy2ziV-DGUEEy6b42dGjyfsNWDp3SfKmd9-p9xg__",
-                title = "Avito",
-            ),
-            Community(
-                id = 8,
-                icon = "https://s3-alpha-sig.figma.com/img/773b/0378/e162f6022e3a3c37d762206749a88ee4?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=o5iF5-dRvLn7psVphiMKkpo4Ky4hzF9HNI~0d4adMIrOcoa5EFnbcKbN8svopXgQnkn-7wF5AqnjNRFOVAUb4dM7euTCbgZb6wyhX5-RO1BaNGUyjZ1-w-Uj7Pb5SivVJLEe~cY69SZaKkE-ALnqpH5Jj2eGKGnKWt0iMcRTNxFeyXKhBUTSJeww7vmqTUhHPwNWeP83eOn7dYgNLUQjYL6DH1BnnYnLJLgojW4rjQ3TmfatQ7fHr-j6PSGXj0z3fLeCzRtIilgXB6MsTYnShtPF33iHL6BIxBHjaY5f~hfssBnkT-G8cToZ4FFgaDp~JYAyIKYBfrlmMaLGrjh8iQ__",
-                title = "Lamoda",
-            ),
-            Community(
-                id = 9,
-                icon = "https://s3-alpha-sig.figma.com/img/4444/d138/f8b1f7772ef6d067ca0e48c2eadc47df?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=afvBgFdd-0ppE22SQS02gjuabkdEhJpmOJB3omwBcDfiRX7VxhyQWasVGpr3h5-Qxx35fngtmYJwYrzNsmmagpXL6OqMe9U0vN~~TZTAMSiNCCWZDIjoafMB6g8G1Sm2lEYBJ1Lzdf1Bd6uD4BY0qyBrMYcteLYB0B9MT3azMGAqUNbR7feAgvPfm5ywn0BtBhD10BHsnZBhLswXm2IpM0H0ra~V0~DXXu7AXwwPZ2jp5eHRwzk1gFNCS4s3ZQnECOSjtmdVaZ-9gxKKM0Mg96Eou3Nyz0T8-w1aVRcCPFH5t5qAy2ziV-DGUEEy6b42dGjyfsNWDp3SfKmd9-p9xg__",
-                title = "МТС",
-            ),
-            Community(
-                id = 10,
-                icon = "https://s3-alpha-sig.figma.com/img/773b/0378/e162f6022e3a3c37d762206749a88ee4?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=o5iF5-dRvLn7psVphiMKkpo4Ky4hzF9HNI~0d4adMIrOcoa5EFnbcKbN8svopXgQnkn-7wF5AqnjNRFOVAUb4dM7euTCbgZb6wyhX5-RO1BaNGUyjZ1-w-Uj7Pb5SivVJLEe~cY69SZaKkE-ALnqpH5Jj2eGKGnKWt0iMcRTNxFeyXKhBUTSJeww7vmqTUhHPwNWeP83eOn7dYgNLUQjYL6DH1BnnYnLJLgojW4rjQ3TmfatQ7fHr-j6PSGXj0z3fLeCzRtIilgXB6MsTYnShtPF33iHL6BIxBHjaY5f~hfssBnkT-G8cToZ4FFgaDp~JYAyIKYBfrlmMaLGrjh8iQ__",
-                title = "Тинькофф",
-            ),
-        )
 
     val mockMeetingsData =
         listOf(
