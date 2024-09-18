@@ -1,6 +1,7 @@
 package com.example.data.repository
 
 import com.example.domain.entities.FixEvent
+import com.example.domain.entities.FixMeetingsDescription
 import com.example.domain.entities.MeetingsDescription
 import com.example.domain.repository.IMeetingsRepository
 import io.bloco.faker.Faker
@@ -10,13 +11,13 @@ class MeetingsRepositoryImpl : IMeetingsRepository {
         return mockMeetings()
     }
 
-    override fun getDescriptionMeetings(): MeetingsDescription = mockMeetingsDescriptionData
+    override fun getDescriptionMeetings(): FixMeetingsDescription = mockMeetingsDescriptionData
 
     private val faker = Faker()
     private fun mockMeetings(): FixEvent {
         return FixEvent(
-            id = faker.number.digit().toInt(),
-            icon = "https://picsum.photos/200/300?random",
+            id = 1,
+            icon = "https://picsum.photos/500/500?random",
             title = faker.name.title(),
             date = "13.09.2024",
             city = faker.address.streetAddress(),
@@ -110,23 +111,57 @@ class MeetingsRepositoryImpl : IMeetingsRepository {
 //        )
 
     val mockMeetingsDescriptionData =
-        MeetingsDescription(
-            id = 1,
-            title = "Как повышать грейд. Лекция Павла Хорикова",
-            dateAndLocation = "16 августа, 16:00 · Кожевенная линия, 40",
-            tags = listOf("Маркетинг", "Бизнес", "Продажи"),
-            map = "https://yandex.ru/images/search?cbir_id=2182879%2FOCIzHqQdm3jcJPjJsSRIBQ365&cbir_page=similar&cbird=152&img_url=https%3A%2F%2Favatars.dzeninfra.ru%2Fget-zen_doc%2F271828%2Fpub_65c9e1ad34fdc3328d4ac2dd_65c9e1c434fdc3328d4acbb7%2Fscale_1200&lr=21639&pos=3&rpt=imageview&url=https%3A%2F%2Favatars.mds.yandex.net%2Fget-images-cbir%2F2182879%2FOCIzHqQdm3jcJPjJsSRIBQ365%2Forig",
-            description =
-            "Узнайте, как расти в профессии, улучшать навыки и получать повышение. Практические советы и реальные кейсы.\n" +
+//        MeetingsDescription(
+//            id = 1,
+//            title = "Как повышать грейд. Лекция Павла Хорикова",
+//            dateAndLocation = "16 августа, 16:00 · Кожевенная линия, 40",
+//            tags = listOf("Маркетинг", "Бизнес", "Продажи"),
+//            map = "https://yandex.ru/images/search?cbir_id=2182879%2FOCIzHqQdm3jcJPjJsSRIBQ365&cbir_page=similar&cbird=152&img_url=https%3A%2F%2Favatars.dzeninfra.ru%2Fget-zen_doc%2F271828%2Fpub_65c9e1ad34fdc3328d4ac2dd_65c9e1c434fdc3328d4acbb7%2Fscale_1200&lr=21639&pos=3&rpt=imageview&url=https%3A%2F%2Favatars.mds.yandex.net%2Fget-images-cbir%2F2182879%2FOCIzHqQdm3jcJPjJsSRIBQ365%2Forig",
+//            description =
+//            "Узнайте, как расти в профессии, улучшать навыки и получать повышение. Практические советы и реальные кейсы.\n" +
+//                    "Павел поделится эффективными стратегиями карьерного роста и методикой развития профессиональных навыков в IT.",
+//            rowAvatars =
+//            listOf(
+//                "https://picsum.photos/200/300?random",
+//                "https://picsum.photos/200/300?random",
+//                "https://picsum.photos/200/300?random",
+//                "https://picsum.photos/200/300?random",
+//            ),
+//        )
+
+        FixMeetingsDescription(
+            idMeeting = 1,
+            titleMeeting = faker.name.title(),
+            avatarUrlMeeting = "https://picsum.photos/500/500?random",
+            dateMeeting = "16 августа",
+            timeMeeting = "16:00",
+            locationMeeting = "Кожевенная улица",
+            tagsMeeting = "Бизнес",
+            descriptionMeeting = "Узнайте, как расти в профессии, улучшать навыки и получать повышение. Практические советы и реальные кейсы." +
                     "Павел поделится эффективными стратегиями карьерного роста и методикой развития профессиональных навыков в IT.",
-            rowAvatars =
-            listOf(
-                "https://s3-alpha-sig.figma.com/img/c6dc/9a5b/9cc40897f19e46b907399c8755e1f9ea?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=KXY33iKlvcs2fRDt7z2ymePeIpxUOpvcJRd4xoeeIY6mOlF~dv9u7memTOnKDqPd-YXFo77Wc8~IhmaL1wWdzscyHSOYIpDsvZwxdN5CGZC5zQrjlefxAU6sQ54sFnxsCdpO-rwCCqzn2mNc-nUcksbZpmTKmwPacnwjwZIoXXjGvtI~fmUYSMiyGH7NtTon0KePWgf~Z~yIIQAqPGA5tfqltU7yx4o5aFh5b9PLnUddsnl-JG2Whah9B7~mUcyL3Fcy~q49IzZRNUJT3fq4KI91Ii0LxDrohLeS7quDtjmES-wc0Br2fl5tsY9sdEBiJNY3o7HRx1RQwUPAiRZp6w__",
-                "https://s3-alpha-sig.figma.com/img/cd1c/ae55/2d892c53aaf550d83b2065d95fc3e359?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=d3q93Y4qVORFhqvWN4IphuEVpijylqNLQhRPb0gB4P64nq8LFmR8Ll61H6M5fvK5LuELJUfQtq6HJqsb6dvi-O3cw4XG2vumQCvjuXBHg2l4A0a3mjCSJ~Han9DIhfYl0iuuEG2B4gWDIbbZOHZEifih0u2DncADRmuLHnXITAPISzqt6ikD8oaJJh5BR3FBsNS1lOaYbASYf7UN0gLFSakPhxFGAABSTP0N2WKkzZ78481w0hkOVP-QFqvrFsMDGasmu1SJGjh3XLVCXf~VrrB~Ay5W~holk~FhyXlgq5DTyEHsPfi2Y5RMgxpwe9sj-Of2psCtUZRPOSVhV5Zfhg__",
-                "https://s3-alpha-sig.figma.com/img/036a/cce4/1c2c712fd0bb1df50d68ca1ded6e8dfd?Expires=1725840000&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=DW1MvnYNx5RVWnxsSjP9UiYgCcGx2JaKB2MmoC6j6NE4kUa2VxFyMbyw~UAQGQsBFqPndroGyUwuaVTnCQB35~dG-cLjw6MBlofznPQgmDpeH7C6hxcoaPXNXkbY~7cXVY7okdyATPWy3XEuUBSRNV7qe8mKG0UDy7c2oDo4mMNHxwX35d8MXLEpmqv~ndjiEztEonb~QyVX0Lwx-MEpnNP3fcFYwug4jMtW5DgCZL438ij94IXSvEqJPmr8IsJxQyettV5Ik04dOqONaB~npG4qYCC~-yKCK74LvV2~tMRO5BukiIMgIx3viVQ3loShuInG17ZVcpZp7sNsJSQPgQ__",
-                "https://img.freepik.com/free-photo/vertical-landscape-with-mountains-lake_1398-3441.jpg?w=1800&t=st=1721590816~exp=1721591416~hmac=57c4ee8e445680e70baea9e6f29a83a917b0579ad40193b0b18396bac22220f6",
-                "https://img.freepik.com/free-photo/photorealistic-tree-with-branches-and-trunk-outside-in-nature_23-2151478150.jpg?w=1800&t=st=1721590832~exp=1721591432~hmac=0c503568d6e3f627ece66975db2c1c11b2af0daa91c59012c5592c388279c583",
-                "https://img.freepik.com/free-photo/photorealistic-tree-with-branches-and-trunk-outside-in-nature_23-2151478150.jpg?w=1800&t=st=1721590832~exp=1721591432~hmac=0c503568d6e3f627ece66975db2c1c11b2af0daa91c59012c5592c388279c583",
+            leaderMeeting = "Павел Хориков",
+            leaderAvatar = "https://api.multiavatar.com/${faker.number.between(1, 1000)}.png",
+            iconMetroStation = "",
+            titleMetroStation = "Приморская",
+            mapMeeting = "https://picsum.photos/500/500?random",
+            visitorsMeeting = "https://api.multiavatar.com/${faker.number.between(1, 1000)}.png",
+            titleCommunityMeeting = "The IT Crowd",
+            descriptionCommunityMeeting = "Сообщество профессионалов в сфере IT. Объединяем специалистов разных направлений для обмена опытом, знаниями и идеями.",
+            iconCommunityMeeting = "https://api.multiavatar.com/${
+                faker.number.between(
+                    1,
+                    1000
+                )
+            }.png",
+            otherMeetingCommunity = FixEvent(
+                id = 1,
+                icon = "https://picsum.photos/500/500?random",
+                title = faker.name.title(),
+                date = "13.09.2024",
+                city = faker.address.streetAddress(),
+                tagDevelopmentLanguage = faker.lorem.word().uppercase(),
+                tagGradeDeveloper = faker.lorem.word().uppercase(),
+                tagCityMeeting = faker.lorem.word().uppercase(),
             ),
         )
 }

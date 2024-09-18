@@ -79,7 +79,6 @@ fun ScreenProfile(
     val community by viewModelCommunity.community.collectAsStateWithLifecycle()
     val focusManager = LocalFocusManager.current
     val isEditing by viewModelProfile.isEditing.collectAsStateWithLifecycle()
-    val faker = Faker()
     val iconShareOrEdit = when (fromScreen) {
         Graph.MakeAnAppointmentDone.route -> R.drawable.icon_share
         else -> R.drawable.icon_edit

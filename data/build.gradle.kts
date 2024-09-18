@@ -36,7 +36,9 @@ dependencies {
     implementation(project(":domain"))
     implementation(libs.koin.android)
     implementation(libs.androidx.core.ktx)
-    implementation (libs.faker)
+    implementation(libs.faker)
+    implementation(libs.room)
+    implementation("org.jetbrains:annotations:23.0.0")
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
 }

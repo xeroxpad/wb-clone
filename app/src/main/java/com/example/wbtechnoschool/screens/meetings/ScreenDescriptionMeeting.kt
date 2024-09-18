@@ -297,7 +297,7 @@ fun ScreenDescriptionMeeting(
                             }
                             Spacer(modifier = Modifier.width(SPACER.SPACER_15.value.dp))
                             FixMyPreviewAvatar(
-                                model = "https://s3-alpha-sig.figma.com/img/c9a7/54d7/03ba23f3bfdf6a1d3847f7b696a6eedd?Expires=1725235200&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4&Signature=GPklw6vp2sk5cLXDWVnekLI3NCSHfhK9OXi0eINfUoNrzCVDvPpGe~ns8M4OTi2stt-0106ocpNKqa0vuXUPOSSum97k58KX7wsAuuJOhP0eWo3l3xuhr4ZirrvZzOYEzOFQSTWIte0U-lW-pHp7ayuIQqvdnkixUAw4e~TzZ-GpK6~vOnI1vu8KVDoL72FTeZqpuwNtON-w7Cxt80GXrGX7PsQw0zUffFC-WaePD9sOMt4oxmubUmU7Gywh-rwddqhlxzG-7W4nQ6OtMOBGz8TaJIPGQypqkEuLjMzIDYp6Nh~ZV37wr79J4T92nnLCN8XP9t-jFEsevIkWWbdBUA__",
+                                model = "https://picsum.photos/500/500?random",
                                 contentDescription = null,
                                 modifier = Modifier
                                     .clip(shape = RoundedCornerShape(16.dp))

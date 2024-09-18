@@ -80,6 +80,7 @@ dependencies {
     implementation(libs.libphonenumber)
     implementation(libs.libphonenumber)
     implementation(libs.faker)
+    implementation(libs.room)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
