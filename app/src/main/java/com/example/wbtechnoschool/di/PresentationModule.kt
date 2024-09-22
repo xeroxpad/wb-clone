@@ -5,6 +5,7 @@ import com.example.wbtechnoschool.viewmodel.auth_view_model.AuthorizationViewMod
 import com.example.wbtechnoschool.viewmodel.auth_view_model.EntryCodeViewModel
 import com.example.wbtechnoschool.viewmodel.community_view_model.CommunityViewModel
 import com.example.wbtechnoschool.viewmodel.community_view_model.DetailsCommunityViewModel
+import com.example.wbtechnoschool.viewmodel.events_view_model.EventsViewModel
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.DescriptionMeetingViewModel
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingViewModel
 import com.example.wbtechnoschool.viewmodel.more_view_model.my_meetings_view_model.MyMeetingsViewModel
@@ -23,4 +24,5 @@ val presentationModule =
         viewModel { MeetingViewModel(get()) }
         viewModel { MyMeetingsViewModel() }
         viewModel { ProfileViewModel() }
+        viewModel { EventsViewModel(get(), get()) }
     }

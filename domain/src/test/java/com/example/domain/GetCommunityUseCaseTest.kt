@@ -8,7 +8,7 @@ import org.junit.Assert.assertTrue
 import org.junit.Before
 import org.junit.Test
 
-internal class GetAllCommunityUseCaseTest {
+internal class GetCommunityUseCaseTest {
     lateinit var repoCommunity: CommunityRepositoryTestStub
 
     @Before

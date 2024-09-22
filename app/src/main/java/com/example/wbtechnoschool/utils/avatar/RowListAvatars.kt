@@ -104,7 +104,7 @@ fun FixRowAvatars(
 ) {
     if (arrayImage.isEmpty()) {
         Text(
-            text = "Никто не идет на встречу",
+            text = "Участников нет",
             fontSize = 14.sp,
             fontFamily = inter,
             color = LightColorTheme.neutralWeak
@@ -115,8 +115,8 @@ fun FixRowAvatars(
             Arrangement.spacedBy(
                 when (arrayImage.size) {
                     1 -> 0.dp
-                    2 -> (-3).dp
-                    3 -> (-3).dp
+                    2 -> (-8).dp
+                    3 -> (-8).dp
                     else -> (-15).dp
                 }
             ),

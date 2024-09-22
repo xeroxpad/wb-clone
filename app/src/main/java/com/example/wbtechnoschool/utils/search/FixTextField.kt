@@ -47,6 +47,8 @@ import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 import com.example.wbtechnoschool.ui.theme.inter
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
+import com.example.wbtechnoschool.viewmodel.events_view_model.EventsViewModel
+import org.koin.androidx.compose.koinViewModel
 
 
 @Composable
@@ -267,7 +269,13 @@ fun TextFieldForCode(
 }
 
 @Composable
-fun FixSearchTextField(modifier: Modifier = Modifier, placeholder: Int, leadingIcon: Int) {
+fun FixSearchTextField(
+    modifier: Modifier = Modifier,
+    placeholder: Int,
+    leadingIcon: Int,
+    viewModelEvents: EventsViewModel = koinViewModel()
+) {
+    var query by remember { mutableStateOf("") }
     var textState by remember { mutableStateOf(("")) }
     var isFocused by remember { mutableStateOf(false) }
     Row(verticalAlignment = Alignment.CenterVertically, modifier = modifier) {
@@ -297,8 +305,13 @@ fun FixSearchTextField(modifier: Modifier = Modifier, placeholder: Int, leadingI
                 )
                 Spacer(modifier = Modifier.width(7.dp))
                 BasicTextField(
-                    value = textState,
-                    onValueChange = { textState = it },
+//                    value = textState,
+//                    onValueChange = { textState = it },
+                    value = query,
+                    onValueChange = { newText ->
+                        query = newText
+                        viewModelEvents.searchMeetings(query)
+                    },
                     modifier = Modifier
                         .fillMaxWidth()
                         .onFocusChanged { focusState ->

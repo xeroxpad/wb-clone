@@ -5,7 +5,7 @@ import com.example.domain.repository.ICommunityRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
 
-class GetAllCommunityUseCase(
+class GetCommunityUseCase(
     val repository: ICommunityRepository,
 ) {
     fun execute(): Flow<Community> = flow {

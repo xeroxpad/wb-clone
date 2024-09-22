@@ -1,6 +1,6 @@
 package com.example.domain.di
 
-import com.example.domain.usecases.GetAllCommunityUseCase
+import com.example.domain.usecases.GetCommunityUseCase
 import com.example.domain.usecases.GetDataProfileUseCase
 import com.example.domain.usecases.GetDescriptionMeetingsUseCase
 import com.example.domain.usecases.GetDetailsCommunityUseCase
@@ -11,7 +11,7 @@ import org.koin.dsl.module
 
 val domainModule =
     module {
-        factoryOf(::GetAllCommunityUseCase)
+        factoryOf(::GetCommunityUseCase)
         factoryOf(::GetDataProfileUseCase)
         factoryOf(::GetDescriptionMeetingsUseCase)
         factoryOf(::GetDetailsCommunityUseCase)

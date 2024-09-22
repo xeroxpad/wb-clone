@@ -85,8 +85,6 @@ fun ScreenDescriptionMeeting(
             if (meetingIsOver) {
                 Box(
                     modifier = Modifier
-                        .background(Color.Transparent)
-                        .clip(shape = RoundedCornerShape(topStart = 14.dp, topEnd = 14.dp))
                         .background(
                             brush = Brush.verticalGradient(
                                 colors = listOf(
@@ -95,6 +93,7 @@ fun ScreenDescriptionMeeting(
                                 )
                             )
                         )
+                        .clip(shape = RoundedCornerShape(topStart = 14.dp, topEnd = 14.dp))
                         .padding(top = 13.dp)
                         .zIndex(1f)
                 ) {
@@ -308,7 +307,7 @@ fun ScreenDescriptionMeeting(
                                 if (description.isSubscribedCommunity) {
                                     Box(
                                         modifier = Modifier
-                                            .padding(10.dp)
+                                            .padding(7.dp)
                                             .size(37.dp)
                                             .clip(shape = RoundedCornerShape(12.dp))
                                             .background(LightColorTheme.blushPink)
