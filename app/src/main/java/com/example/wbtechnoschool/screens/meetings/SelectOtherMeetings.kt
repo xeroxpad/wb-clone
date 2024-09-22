@@ -32,14 +32,11 @@ fun SelectOtherMeetings(
                 labelText = tag,
                 isSelected = selectedTags.contains(tag),
                 onSelectionChanged = if (isSelectable) { isSelected ->
-                    selectedTags = if (tag == "Все категории" && isSelected) {
-                        tags.toSet()
-                    } else if (tag == "Все категории" && !isSelected) {
-                        emptySet()
-                    } else if (isSelected) {
-                        selectedTags + tag
-                    } else {
-                        selectedTags - tag
+                    selectedTags = when {
+                        tag == "Все категории" && isSelected -> { tags.toSet() }
+                        tag == "Все категории" && !isSelected -> { emptySet() }
+                        isSelected -> { selectedTags + tag }
+                        else -> { selectedTags - tag }
                     }
                     onTagSelected?.invoke(selectedTags)
                 } else null,

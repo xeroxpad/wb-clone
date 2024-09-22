@@ -135,24 +135,30 @@ class MeetingsRepositoryImpl : IMeetingsRepository {
             avatarUrlMeeting = "https://picsum.photos/500/500?random",
             dateMeeting = "16 августа",
             timeMeeting = "16:00",
-            locationMeeting = "Кожевенная улица",
+            locationMeeting = "Кожевенная улица, 40",
             tagsMeeting = "Бизнес",
             descriptionMeeting = "Узнайте, как расти в профессии, улучшать навыки и получать повышение. Практические советы и реальные кейсы." +
                     "Павел поделится эффективными стратегиями карьерного роста и методикой развития профессиональных навыков в IT.",
             leaderMeeting = "Павел Хориков",
-            leaderAvatar = "https://api.multiavatar.com/${faker.number.between(1, 1000)}.png",
+            leaderInfoMeeting = "Ведущий специалист по подбору персонала в одной из крупнейших IT-компаний в ЕС.",
+            leaderAvatar = "https://picsum.photos/500/500?random",
             iconMetroStation = "",
             titleMetroStation = "Приморская",
             mapMeeting = "https://picsum.photos/500/500?random",
-            visitorsMeeting = "https://api.multiavatar.com/${faker.number.between(1, 1000)}.png",
+            visitorsMeeting = listOf(
+                "https://api.multiavatar.com/${
+                    faker.number.between(
+                        1,
+                        1000
+                    )
+                }.png",
+                "https://api.multiavatar.com/${faker.number.between(1, 1000)}.png",
+                "https://api.multiavatar.com/${faker.number.between(1, 1000)}.png"
+            ),
             titleCommunityMeeting = "The IT Crowd",
-            descriptionCommunityMeeting = "Сообщество профессионалов в сфере IT. Объединяем специалистов разных направлений для обмена опытом, знаниями и идеями.",
-            iconCommunityMeeting = "https://api.multiavatar.com/${
-                faker.number.between(
-                    1,
-                    1000
-                )
-            }.png",
+            isSubscribedCommunity = true,
+            descriptionCommunityMeeting = "Сообщество профессионалов в сфере IT. Объединяем специалистов разных направлений для обмена опытом, знаниями и идеями.",
+            iconCommunityMeeting = "https://picsum.photos/500/500?random",
             otherMeetingCommunity = FixEvent(
                 id = 1,
                 icon = "https://picsum.photos/500/500?random",

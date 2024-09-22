@@ -141,7 +141,7 @@ fun ScreenDetailsCommunity(
                             color = LightColorTheme.black
                         )
                         Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
-                        FixRowAvatars(arrayImage = description.rowAvatars) {navController.navigate(Graph.PersonGoingMeeting.route)}
+                        FixRowAvatars(arrayImage = description.visitorsMeeting) {navController.navigate(Graph.PersonGoingMeeting.route)}
                         Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                         Text(
                             text = "Встречи",

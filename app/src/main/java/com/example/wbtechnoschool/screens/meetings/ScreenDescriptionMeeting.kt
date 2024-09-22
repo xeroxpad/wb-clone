@@ -19,13 +19,11 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -40,8 +38,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.zIndex
+import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
-import com.example.domain.entities.FixEvent
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.navigation.MainTopAppBar
@@ -57,7 +55,6 @@ import com.example.wbtechnoschool.utils.widgets.GradientToggleButton
 import com.example.wbtechnoschool.utils.widgets.ShowImage
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.DescriptionMeetingViewModel
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingViewModel
-import io.bloco.faker.Faker
 import org.koin.androidx.compose.koinViewModel
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -68,8 +65,8 @@ fun ScreenDescriptionMeeting(
     viewModel: DescriptionMeetingViewModel = koinViewModel(),
     viewModelMeeting: MeetingViewModel = koinViewModel(),
 ) {
-    val meetingDescription by viewModel.meetingDescription.collectAsState()
-    val events by viewModelMeeting.meetings.collectAsState()
+    val meetingDescription by viewModel.meetingDescription.collectAsStateWithLifecycle()
+    val events by viewModelMeeting.meetings.collectAsStateWithLifecycle()
     var isButtonPressed by remember { mutableStateOf(false) }
     val meetingIsOver by remember { mutableStateOf(true) }
     Scaffold(
@@ -144,7 +141,7 @@ fun ScreenDescriptionMeeting(
                     .clickable(
                         interactionSource = remember { MutableInteractionSource() },
                         indication = null
-                    ) { viewModel.toggleShowMoreText() },
+                    ) { },
                 verticalArrangement = Arrangement.Top
             ) {
                 item {
@@ -162,7 +159,7 @@ fun ScreenDescriptionMeeting(
                         )
                         Row {
                             Text(
-                                text = description.dateAndLocation,
+                                text = "${description.dateMeeting}, ${description.timeMeeting} · ${description.locationMeeting}",
                                 fontFamily = fontSFPro,
                                 fontWeight = FontWeight.W600,
                                 fontSize = MagicNumbers.SCREEN_DESCRIPTION_ROW_TEXT_FONT_SIZE.sp,
@@ -170,7 +167,7 @@ fun ScreenDescriptionMeeting(
                             )
                         }
                         Row {
-                            description.tags.forEach { tag ->
+                            description.tagsMeeting.split(",").forEach { tag ->
                                 FixFilterTags(
                                     labelText = tag,
                                     isSelected = false,
@@ -181,7 +178,7 @@ fun ScreenDescriptionMeeting(
                         }
                         Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                         Text(
-                            text = description.description,
+                            text = description.descriptionMeeting,
                             fontSize = MagicNumbers.SCREEN_DESCRIPTION_SHOW_MORE_TEXT_FONT_SIZE.sp,
                             fontFamily = fontSFPro,
                             fontWeight = FontWeight.W500,
@@ -204,13 +201,13 @@ fun ScreenDescriptionMeeting(
                         ) {
                             Column(modifier = Modifier.weight(2f)) {
                                 Text(
-                                    text = "Павел Хориков",
+                                    text = description.leaderMeeting,
                                     fontWeight = FontWeight.W700,
                                     fontSize = 14.sp,
                                     color = LightColorTheme.black
                                 )
                                 Text(
-                                    text = "Ведущий специалист по подбору персонала в одной из крупнейших IT-компаний в ЕС.",
+                                    text = description.leaderInfoMeeting,
                                     fontWeight = FontWeight.W500,
                                     fontSize = 14.sp,
                                     color = LightColorTheme.black,
@@ -225,7 +222,7 @@ fun ScreenDescriptionMeeting(
                                     .size(104.dp)
                             ) {
                                 FixMyPreviewAvatar(
-                                    model = "https://picsum.photos/500/500",
+                                    model = description.leaderAvatar ?: "",
                                     contentDescription = null,
                                     modifier = Modifier.fillMaxSize()
                                 )
@@ -233,7 +230,7 @@ fun ScreenDescriptionMeeting(
                         }
                         Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                         Text(
-                            text = "Севкабель Порт, Кожевенная линия, 40",
+                            text = description.locationMeeting,
                             fontWeight = FontWeight.W600,
                             fontSize = 24.sp,
                             color = LightColorTheme.black
@@ -247,7 +244,7 @@ fun ScreenDescriptionMeeting(
                             )
                             Spacer(modifier = Modifier.width(SPACER.SPACER_5.value.dp))
                             Text(
-                                text = "Приморская",
+                                text = description.titleMetroStation ?: "",
                                 fontWeight = FontWeight.W500,
                                 fontSize = 14.sp,
                                 color = LightColorTheme.black
@@ -255,7 +252,7 @@ fun ScreenDescriptionMeeting(
                         }
                         Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
                         ShowImage(
-                            model = "https://picsum.photos/200/300?random",
+                            model = description.mapMeeting,
                             modifier = Modifier.height(180.dp)
                         )
                         Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
@@ -266,7 +263,7 @@ fun ScreenDescriptionMeeting(
                             color = LightColorTheme.black
                         )
                         Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
-                        FixRowAvatars(arrayImage = description.rowAvatars) {
+                        FixRowAvatars(arrayImage = description.visitorsMeeting) {
                             navController.navigate(
                                 Graph.PersonGoingMeeting.route
                             )
@@ -282,13 +279,13 @@ fun ScreenDescriptionMeeting(
                         Row(modifier = Modifier.fillMaxWidth()) {
                             Column(modifier = Modifier.weight(2f)) {
                                 Text(
-                                    text = "Разраб",
+                                    text = description.titleCommunityMeeting,
                                     fontWeight = FontWeight.W700,
                                     fontSize = 14.sp,
                                     color = LightColorTheme.black
                                 )
                                 Text(
-                                    text = "Сообщество профессионалов в сфере IT. Объединяем специалистов разных направлений для обмена опытом, знаниями и идеями.",
+                                    text = description.descriptionCommunityMeeting,
                                     fontWeight = FontWeight.W500,
                                     fontSize = 14.sp,
                                     color = LightColorTheme.black,
@@ -296,14 +293,37 @@ fun ScreenDescriptionMeeting(
                                 )
                             }
                             Spacer(modifier = Modifier.width(SPACER.SPACER_15.value.dp))
-                            FixMyPreviewAvatar(
-                                model = "https://picsum.photos/500/500?random",
-                                contentDescription = null,
+                            Box(
                                 modifier = Modifier
-                                    .clip(shape = RoundedCornerShape(16.dp))
-                                    .size(104.dp)
                                     .weight(1f)
-                            )
+                                    .size(104.dp)
+                                    .clip(shape = RoundedCornerShape(16.dp))
+                            ) {
+                                FixMyPreviewAvatar(
+                                    model = description.iconCommunityMeeting ?: "",
+                                    contentDescription = null,
+                                    modifier = Modifier
+                                        .fillMaxSize()
+                                )
+                                if (description.isSubscribedCommunity) {
+                                    Box(
+                                        modifier = Modifier
+                                            .padding(10.dp)
+                                            .size(37.dp)
+                                            .clip(shape = RoundedCornerShape(12.dp))
+                                            .background(LightColorTheme.blushPink)
+                                            .align(Alignment.BottomStart),
+                                        contentAlignment = Alignment.Center
+                                    ) {
+                                        Icon(
+                                            painter = painterResource(id = R.drawable.ic_check),
+                                            contentDescription = null,
+                                            tint = LightColorTheme.fixBrandColorDark
+                                        )
+                                    }
+                                }
+                            }
+
                         }
                         Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                         Text(

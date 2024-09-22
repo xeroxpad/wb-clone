@@ -26,6 +26,7 @@ import androidx.compose.ui.zIndex
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.LightGrey
 import com.example.wbtechnoschool.ui.theme.fontSFPro
+import com.example.wbtechnoschool.ui.theme.inter
 import com.example.wbtechnoschool.utils.constants.MagicNumbers
 
 const val take = 3
@@ -101,53 +102,61 @@ fun FixRowAvatars(
     arrayImage: List<String>,
     onClick: () -> Unit,
 ) {
-    Row(
-        horizontalArrangement =
-        Arrangement.spacedBy(
-            when (arrayImage.size) {
-                1 -> 0.dp
-                2 -> (-3).dp
-                3 -> (-3).dp
-//                4 -> (-3).dp
-                else -> (-15).dp
+    if (arrayImage.isEmpty()) {
+        Text(
+            text = "Никто не идет на встречу",
+            fontSize = 14.sp,
+            fontFamily = inter,
+            color = LightColorTheme.neutralWeak
+        )
+    } else {
+        Row(
+            horizontalArrangement =
+            Arrangement.spacedBy(
+                when (arrayImage.size) {
+                    1 -> 0.dp
+                    2 -> (-3).dp
+                    3 -> (-3).dp
+                    else -> (-15).dp
+                }
+            ),
+            modifier =
+            modifier
+                .fillMaxWidth()
+                .zIndex(-zIndex),
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            for (i in arrayImage.withIndex().take(take)) {
+                Box(
+                    modifier = modifier
+                        .size(MagicNumbers.ROW_LIST_AVATAR_SIZE_PREV_AVATAR.dp)
+                        .clip(CircleShape)
+                        .clickable { onClick() }
+                ) {
+                    FixMyPreviewAvatar(
+                        contentDescription = null,
+                        contentScale = ContentScale.Crop,
+                        model = i.value
+                    )
+                }
             }
-        ),
-        modifier =
-        modifier
-            .fillMaxWidth()
-            .zIndex(-zIndex),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        for (i in arrayImage.withIndex().take(take)) {
-            Box(
-                modifier = modifier
-                    .size(MagicNumbers.ROW_LIST_AVATAR_SIZE_PREV_AVATAR.dp)
-                    .clip(CircleShape)
-                    .clickable { onClick() }
-            ) {
-                FixMyPreviewAvatar(
-                    contentDescription = null,
-                    contentScale = ContentScale.Crop,
-                    model = i.value
-                )
-            }
-        }
-        if (arrayImage.size > take) {
-            Box(
-                modifier = Modifier
-                    .size(MagicNumbers.ROW_LIST_AVATAR_SIZE_PREV_AVATAR.dp)
-                    .clip(CircleShape)
-                    .border(width = 3.dp, color = Color.White, shape = CircleShape)
-                    .background(LightColorTheme.fixLavenderBlush),
-                contentAlignment = Alignment.Center
-            ) {
-                Text(
-                    text = "+${arrayImage.size - take}",
-                    fontSize = MagicNumbers.ROW_LIST_AVATAR_TEXT_FONT_SIZE.sp,
-                    fontFamily = fontSFPro,
-                    fontWeight = FontWeight.Bold,
-                    color = LightColorTheme.fixVioletBlaze,
-                )
+            if (arrayImage.size > take) {
+                Box(
+                    modifier = Modifier
+                        .size(MagicNumbers.ROW_LIST_AVATAR_SIZE_PREV_AVATAR.dp)
+                        .clip(CircleShape)
+                        .border(width = 3.dp, color = Color.White, shape = CircleShape)
+                        .background(LightColorTheme.fixLavenderBlush),
+                    contentAlignment = Alignment.Center
+                ) {
+                    Text(
+                        text = "+${arrayImage.size - take}",
+                        fontSize = MagicNumbers.ROW_LIST_AVATAR_TEXT_FONT_SIZE.sp,
+                        fontFamily = fontSFPro,
+                        fontWeight = FontWeight.Bold,
+                        color = LightColorTheme.fixVioletBlaze,
+                    )
+                }
             }
         }
     }
