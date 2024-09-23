@@ -273,9 +273,7 @@ fun FixSearchTextField(
     modifier: Modifier = Modifier,
     placeholder: Int,
     leadingIcon: Int,
-    viewModelEvents: EventsViewModel = koinViewModel()
 ) {
-    var query by remember { mutableStateOf("") }
     var textState by remember { mutableStateOf(("")) }
     var isFocused by remember { mutableStateOf(false) }
     Row(verticalAlignment = Alignment.CenterVertically, modifier = modifier) {
@@ -305,13 +303,8 @@ fun FixSearchTextField(
                 )
                 Spacer(modifier = Modifier.width(7.dp))
                 BasicTextField(
-//                    value = textState,
-//                    onValueChange = { textState = it },
-                    value = query,
-                    onValueChange = { newText ->
-                        query = newText
-                        viewModelEvents.searchMeetings(query)
-                    },
+                    value = textState,
+                    onValueChange = { textState = it },
                     modifier = Modifier
                         .fillMaxWidth()
                         .onFocusChanged { focusState ->
@@ -321,7 +314,6 @@ fun FixSearchTextField(
                         textAlign = TextAlign.Start,
                         color = Color.Black,
                         lineHeight = MagicNumbers.FIX_TEXT_FIELD_TEXT_STYLE_LINE_HEIGHT.sp,
-//                        fontWeight = FontWeight.W500,
                         fontFamily = inter,
                         fontSize = 16.sp,
                         letterSpacing = 1.sp,

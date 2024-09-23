@@ -54,6 +54,7 @@ fun ScreenEvents(
     navController: NavController,
     viewModelMeeting: MeetingViewModel = koinViewModel(),
     viewModelCommunity: CommunityViewModel = koinViewModel(),
+    viewModelEvents: CommunityViewModel = koinViewModel(),
 ) {
     val meetings by viewModelMeeting.meetings.collectAsStateWithLifecycle()
     val community by viewModelCommunity.community.collectAsStateWithLifecycle()
