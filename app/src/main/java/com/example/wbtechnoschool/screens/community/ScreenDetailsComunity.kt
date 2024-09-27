@@ -152,9 +152,9 @@ fun ScreenDetailsCommunity(
                         Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
                     }
                 }
-                items(20) {
+                items(20) { meeting ->
                     FixCardMeeting(
-                        event = meetings,
+                        event = meetings[meeting],
                         onClick = {navController.navigate(Graph.DescriptionMeeting.route)},
                         modifier = Modifier
                             .fillMaxWidth()
@@ -172,9 +172,9 @@ fun ScreenDetailsCommunity(
                     )
                     Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
                     LazyRow {
-                        items(20) {
+                        items(20) { meeting ->
                             FixCardMeetingMini(
-                                event = meetings,
+                                event = meetings[meeting],
                                 onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                             )
                             Spacer(modifier = Modifier.width(10.dp))

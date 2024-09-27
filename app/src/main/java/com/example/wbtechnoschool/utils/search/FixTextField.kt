@@ -3,6 +3,7 @@ package com.example.wbtechnoschool.utils.search
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
@@ -18,7 +19,11 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.BasicTextField
 import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -273,6 +278,7 @@ fun FixSearchTextField(
     modifier: Modifier = Modifier,
     placeholder: Int,
     leadingIcon: Int,
+    onValueChange: (String) -> Unit,
 ) {
     var textState by remember { mutableStateOf(("")) }
     var isFocused by remember { mutableStateOf(false) }
@@ -291,22 +297,29 @@ fun FixSearchTextField(
         ) {
             Row(
                 verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
                     .fillMaxHeight()
             ) {
-                Icon(
-                    painter = painterResource(leadingIcon),
-                    contentDescription = null,
-                    tint = LightColorTheme.neutralDisabled,
-                    modifier = Modifier
-                        .size(25.dp)
-                )
+                if (textState.isEmpty()) {
+                    Icon(
+                        painter = painterResource(leadingIcon),
+                        contentDescription = null,
+                        tint = LightColorTheme.neutralDisabled,
+                        modifier = Modifier
+                            .size(25.dp)
+                    )
+                }
                 Spacer(modifier = Modifier.width(7.dp))
                 BasicTextField(
                     value = textState,
-                    onValueChange = { textState = it },
+                    onValueChange = {
+                        textState = it
+                        onValueChange(it)
+                    },
                     modifier = Modifier
-                        .fillMaxWidth()
+//                        .fillMaxWidth()
+                        .weight(1f)
                         .onFocusChanged { focusState ->
                             isFocused = focusState.isFocused
                         },
@@ -334,11 +347,25 @@ fun FixSearchTextField(
                                 letterSpacing = 1.sp,
                                 maxLines = 1,
                                 overflow = TextOverflow.Ellipsis,
+                                modifier = Modifier.weight(1f)
                             )
                         }
                         innerTextField()
                     }
                 )
+                if (textState.isNotEmpty()) {
+                    Icon(
+                        imageVector = Icons.Default.Close,
+                        contentDescription = null,
+                        tint = LightColorTheme.indigoTwilight,
+                        modifier = Modifier
+                            .size(25.dp)
+                            .clickable {
+                                textState = ("")
+                                onValueChange(textState)
+                            }
+                    )
+                }
             }
         }
     }

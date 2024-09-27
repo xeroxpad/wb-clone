@@ -154,7 +154,7 @@ fun ScreenProfile(
 @Composable
 fun ProfileViewContent(
     modifier: Modifier = Modifier,
-    events: FixEvent,
+    events: List<FixEvent>,
     community: Community,
     navController: NavController
 ) {
@@ -226,9 +226,9 @@ fun ProfileViewContent(
         )
         Spacer(modifier = Modifier.height(10.dp))
         LazyRow {
-            items(15) {
+            items(15) { event ->
                 FixCardMeetingMini(
-                    event = events,
+                    event = events[event],
                     onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                 )
                 Spacer(modifier = Modifier.width(10.dp))
@@ -273,7 +273,7 @@ fun ProfileViewContent(
 @Composable
 fun ProfileEditContent(
     modifier: Modifier = Modifier,
-    events: FixEvent,
+    events: List<FixEvent>,
     community: Community,
     viewModel: AuthorizationProfileViewModel = koinViewModel(),
     onClickInterests: () -> Unit,
@@ -357,9 +357,9 @@ fun ProfileEditContent(
             fontWeight = FontWeight.W600,
         )
         Spacer(modifier = Modifier.height(10.dp))
-        FixSearchTextField(placeholder = R.string.habr, leadingIcon = R.drawable.icon_habr)
+        FixSearchTextField(placeholder = R.string.habr, leadingIcon = R.drawable.icon_habr, onValueChange = {})
         Spacer(modifier = Modifier.height(7.dp))
-        FixSearchTextField(placeholder = R.string.telegram, leadingIcon = R.drawable.icon_telegram)
+        FixSearchTextField(placeholder = R.string.telegram, leadingIcon = R.drawable.icon_telegram, onValueChange = {})
         Spacer(modifier = Modifier.height(30.dp))
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,

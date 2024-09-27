@@ -7,23 +7,53 @@ import com.example.domain.repository.IMeetingsRepository
 import io.bloco.faker.Faker
 
 class MeetingsRepositoryImpl : IMeetingsRepository {
-    override fun getMeetings(): FixEvent {
+    override fun getMeetings(): List<FixEvent> {
         return mockMeetings()
     }
 
     override fun getDescriptionMeetings(): FixMeetingsDescription = mockMeetingsDescriptionData
 
     private val faker = Faker()
-    private fun mockMeetings(): FixEvent {
-        return FixEvent(
-            id = 1,
-            icon = "https://picsum.photos/500/500?random",
-            title = faker.name.title(),
-            date = "13.09.2024",
-            city = faker.address.streetAddress(),
-            tagDevelopmentLanguage = faker.lorem.word().uppercase(),
-            tagGradeDeveloper = faker.lorem.word().uppercase(),
-            tagCityMeeting = faker.lorem.word().uppercase(),
+    private fun mockMeetings(): List<FixEvent> {
+        return listOf(
+            FixEvent(
+                id = 1,
+                icon = "https://picsum.photos/500/500?random",
+                title = faker.name.title(),
+                date = "13.09.2024",
+                city = faker.address.streetAddress(),
+                tagDevelopmentLanguage = faker.lorem.word().uppercase(),
+                tagGradeDeveloper = faker.lorem.word().uppercase(),
+                tagCityMeeting = faker.lorem.word().uppercase(),
+            ),
+            FixEvent(
+                id = 2,
+                icon = "https://picsum.photos/500/500?random",
+                title = faker.name.title(),
+                date = "13.09.2024",
+                city = faker.address.streetAddress(),
+                tagDevelopmentLanguage = faker.lorem.word().uppercase(),
+                tagGradeDeveloper = faker.lorem.word().uppercase(),
+                tagCityMeeting = faker.lorem.word().uppercase(),
+            ),FixEvent(
+                id = 3,
+                icon = "https://picsum.photos/500/500?random",
+                title = faker.name.title(),
+                date = "13.09.2024",
+                city = faker.address.streetAddress(),
+                tagDevelopmentLanguage = faker.lorem.word().uppercase(),
+                tagGradeDeveloper = faker.lorem.word().uppercase(),
+                tagCityMeeting = faker.lorem.word().uppercase(),
+            ),FixEvent(
+                id = 4,
+                icon = "https://picsum.photos/500/500?random",
+                title = faker.name.title(),
+                date = "13.09.2024",
+                city = faker.address.streetAddress(),
+                tagDevelopmentLanguage = faker.lorem.word().uppercase(),
+                tagGradeDeveloper = faker.lorem.word().uppercase(),
+                tagCityMeeting = faker.lorem.word().uppercase(),
+            )
         )
     }
 

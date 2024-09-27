@@ -2,6 +2,10 @@ package com.example.wbtechnoschool.screens.events
 
 import android.os.Build
 import androidx.annotation.RequiresApi
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.core.tween
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.gestures.detectTapGestures
 import androidx.compose.foundation.layout.Box
@@ -16,12 +20,17 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -34,6 +43,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
+import androidx.room.util.query
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.screens.meetings.SelectOtherMeetings
@@ -44,6 +54,7 @@ import com.example.wbtechnoschool.utils.events.FixCardMeeting
 import com.example.wbtechnoschool.utils.events.FixCardMeetingMini
 import com.example.wbtechnoschool.utils.search.FixSearchTextField
 import com.example.wbtechnoschool.viewmodel.community_view_model.CommunityViewModel
+import com.example.wbtechnoschool.viewmodel.events_view_model.EventsViewModel
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingViewModel
 import org.koin.androidx.compose.koinViewModel
 
@@ -54,11 +65,17 @@ fun ScreenEvents(
     navController: NavController,
     viewModelMeeting: MeetingViewModel = koinViewModel(),
     viewModelCommunity: CommunityViewModel = koinViewModel(),
-    viewModelEvents: CommunityViewModel = koinViewModel(),
+    viewModelEvents: EventsViewModel = koinViewModel(),
 ) {
-    val meetings by viewModelMeeting.meetings.collectAsStateWithLifecycle()
+    val meetings by viewModelEvents.meetings.collectAsStateWithLifecycle()
     val community by viewModelCommunity.community.collectAsStateWithLifecycle()
     val focusManager = LocalFocusManager.current
+    var searchQuery by remember { mutableStateOf("") }
+    val filteredMeetings by viewModelEvents.filteredMeetings.collectAsStateWithLifecycle()
+    LaunchedEffect(searchQuery) {
+        viewModelEvents.searchMeetings(searchQuery)
+    }
+
     Scaffold(
         modifier =
         modifier
@@ -78,7 +95,10 @@ fun ScreenEvents(
                     placeholder = R.string.search_meetings_and_community,
                     modifier = Modifier
                         .weight(3f),
-                    leadingIcon = R.drawable.search
+                    leadingIcon = R.drawable.search,
+                    onValueChange = { query ->
+                        searchQuery = query
+                    }
                 )
                 Spacer(
                     modifier = Modifier
@@ -109,13 +129,19 @@ fun ScreenEvents(
                 horizontalAlignment = Alignment.Start,
             ) {
                 item {
-                    LazyRow {
-                        items(20) {
-                            FixCardMeeting(
-                                event = meetings,
-                                onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
-                            )
-                            Spacer(modifier = Modifier.width(10.dp))
+                    AnimatedVisibility(
+                        visible = filteredMeetings.isNotEmpty(),
+                        enter = fadeIn(animationSpec = tween(1000)),
+                        exit = fadeOut(animationSpec = tween(1000))
+                    ) {
+                        LazyRow {
+                            items(filteredMeetings) { meeting ->
+                                FixCardMeeting(
+                                    event = meeting,
+                                    onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
+                                )
+                                Spacer(modifier = Modifier.width(10.dp))
+                            }
                         }
                     }
                     Spacer(modifier = Modifier.height(30.dp))
@@ -126,9 +152,9 @@ fun ScreenEvents(
                     )
                     Spacer(modifier = Modifier.height(15.dp))
                     LazyRow {
-                        items(20) {
+                        items(filteredMeetings) { meeting ->
                             FixCardMeetingMini(
-                                event = meetings,
+                                event = meeting,
                                 onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                             )
                             Spacer(modifier = Modifier.width(10.dp))
@@ -181,9 +207,9 @@ fun ScreenEvents(
                     )
                     Spacer(modifier = Modifier.height(30.dp))
                 }
-                items(30) {
+                items(filteredMeetings) { meeting ->
                     FixCardMeeting(
-                        event = meetings,
+                        event = meeting,
                         onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                         modifier = Modifier
                             .padding(end = 20.dp)

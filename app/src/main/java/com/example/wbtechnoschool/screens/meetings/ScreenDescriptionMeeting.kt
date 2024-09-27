@@ -333,9 +333,9 @@ fun ScreenDescriptionMeeting(
                         )
                         Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
                         LazyRow {
-                            items(15) {
+                            items(15) { event ->
                                 FixCardMeetingMini(
-                                    event = events,
+                                    event = events[event],
                                     onClick = { navController.navigate(Graph.DescriptionMeeting.route) },
                                 )
                                 Spacer(modifier = Modifier.width(10.dp))

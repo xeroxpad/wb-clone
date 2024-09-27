@@ -6,7 +6,6 @@ import com.example.domain.entities.Community
 import com.example.domain.entities.FixEvent
 import com.example.domain.usecases.GetCommunityUseCase
 import com.example.domain.usecases.GetMeetingsUseCase
-import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -15,14 +14,19 @@ class EventsViewModel(
     private val getMeetingsUseCase: GetMeetingsUseCase,
     private val getCommunitiesUseCase: GetCommunityUseCase
 ) : ViewModel() {
-    private val _meetings = MutableStateFlow<FixEvent?>(null)
-    val meetings: StateFlow<FixEvent?> = _meetings
+    private val _meetings = MutableStateFlow<List<FixEvent>>(emptyList())
+    val meetings: StateFlow<List<FixEvent>> = _meetings
 
     private val _community = MutableStateFlow<Community?>(null)
     val community: StateFlow<Community?> = _community
 
-    private val _filteredMeetings = MutableStateFlow<FixEvent?>(null)
-    val filteredMeetings: StateFlow<FixEvent?> = _filteredMeetings
+    private val _filteredMeetings = MutableStateFlow<List<FixEvent>>(emptyList())
+    val filteredMeetings: StateFlow<List<FixEvent>> = _filteredMeetings
+
+    init {
+        fetchMeetings()
+        fetchCommunity()
+    }
 
     private fun fetchMeetings() {
         viewModelScope.launch {
@@ -45,9 +49,14 @@ class EventsViewModel(
         _filteredMeetings.value = if (query.isEmpty()) {
             _meetings.value
         } else {
-            _meetings.value?.takeIf { meeting ->
-                meeting.title.contains(query, ignoreCase = true) ||
-                        meeting.tagDevelopmentLanguage.contains(query, ignoreCase = true)
+            meetings.value.filter { meeting ->
+                meeting.title.contains(query, ignoreCase = true) || meeting.tagCityMeeting.contains(
+                    query,
+                    ignoreCase = true
+                ) || meeting.tagDevelopmentLanguage.contains(
+                    query,
+                    ignoreCase = true
+                ) || meeting.tagGradeDeveloper.contains(query, ignoreCase = true)
             }
         }
     }

@@ -11,8 +11,8 @@ import kotlinx.coroutines.launch
 class MeetingViewModel(
     private val getMeetingsUseCase: GetMeetingsUseCase
 ) : ViewModel() {
-    private val _meetings = MutableStateFlow(getMeetingsUseCase.repository.getMeetings())
-    val meetings: StateFlow<FixEvent> get() = _meetings
+    private val _meetings = MutableStateFlow<List<FixEvent>>(listOf())
+    val meetings: StateFlow<List<FixEvent>> get() = _meetings
 
     init {
         fetchMeetings()

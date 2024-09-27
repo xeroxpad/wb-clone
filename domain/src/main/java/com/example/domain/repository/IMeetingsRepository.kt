@@ -6,6 +6,6 @@ import com.example.domain.entities.MeetingsDescription
 import kotlinx.coroutines.flow.Flow
 
 interface IMeetingsRepository {
-    fun getMeetings(): FixEvent
+    fun getMeetings(): List<FixEvent>
     fun getDescriptionMeetings(): FixMeetingsDescription
 }
