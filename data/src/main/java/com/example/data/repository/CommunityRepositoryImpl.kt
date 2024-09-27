@@ -18,7 +18,7 @@ class CommunityRepositoryImpl : ICommunityRepository {
     private fun mockCommunityData(): Community {
         return Community(
             id = faker.number.digit().toInt(),
-            icon = "https://picsum.photos/200/300?random",
+            icon = "https://api.multiavatar.com/${faker.number.between(1, 1000)}.png",
             title = faker.name.title(),
         )
     }

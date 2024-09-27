@@ -19,7 +19,6 @@ import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
-import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -63,7 +62,6 @@ import com.example.wbtechnoschool.viewmodel.auth_view_model.AuthorizationProfile
 import com.example.wbtechnoschool.viewmodel.community_view_model.CommunityViewModel
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingViewModel
 import com.example.wbtechnoschool.viewmodel.profile_view_model.ProfileViewModel
-import io.bloco.faker.Faker
 import org.koin.androidx.compose.koinViewModel
 
 @Composable
@@ -156,24 +154,27 @@ fun ProfileViewContent(
     modifier: Modifier = Modifier,
     events: List<FixEvent>,
     community: Community,
-    navController: NavController
+    navController: NavController,
+    authorizationProfileViewModel: AuthorizationProfileViewModel = koinViewModel(),
 ) {
-    val faker = Faker()
+    val name by authorizationProfileViewModel.name.collectAsStateWithLifecycle()
+    val city by authorizationProfileViewModel.city.collectAsStateWithLifecycle()
+    val infoAboutYourself by authorizationProfileViewModel.infoAboutYourself.collectAsStateWithLifecycle()
     Column(modifier = modifier.padding(start = 20.dp)) {
         Spacer(modifier = Modifier.height(10.dp))
         Text(
-            text = "Михаил",
+            text = name,
             fontSize = 49.sp,
             fontFamily = inter,
         )
         Text(
-            text = "Москва",
+            text = city,
             fontSize = 14.sp,
             fontFamily = inter,
         )
         Row(modifier = Modifier.padding(end = 20.dp)) {
             Text(
-                text = "Занимаюсь разрабокой мобильных приложений. Учусь в техношколе Wildberries. Изучаю язык Kotlin",
+                text = infoAboutYourself,
                 fontSize = 14.sp,
                 lineHeight = 18.sp,
                 fontFamily = inter,
@@ -275,20 +276,20 @@ fun ProfileEditContent(
     modifier: Modifier = Modifier,
     events: List<FixEvent>,
     community: Community,
-    viewModel: AuthorizationProfileViewModel = koinViewModel(),
+    authorizationProfileViewModel: AuthorizationProfileViewModel = koinViewModel(),
     onClickInterests: () -> Unit,
     onClickDelete: () -> Unit,
 ) {
-    val name by viewModel.name.collectAsState()
-    val city by viewModel.city.collectAsState()
-    val infoAboutYourself by viewModel.infoAboutYourself.collectAsState()
+    val name by authorizationProfileViewModel.name.collectAsStateWithLifecycle()
+    val city by authorizationProfileViewModel.city.collectAsStateWithLifecycle()
+    val infoAboutYourself by authorizationProfileViewModel.infoAboutYourself.collectAsStateWithLifecycle()
     var currentPhoneNumber by remember { mutableStateOf("") }
     Column(modifier = modifier.padding(horizontal = 20.dp)) {
         Spacer(modifier = Modifier.height(20.dp))
         FixTextField(
             placeholder = R.string.name_and_second_name,
             text = name,
-            textChange = { viewModel.nameChange(it) }
+            textChange = { authorizationProfileViewModel.nameChange(it) }
         )
         Spacer(modifier = Modifier.height(7.dp))
         FieldForNumberCountryCode(placeholder = R.string.placeholder_number) { newPhoneNumber ->
@@ -298,13 +299,13 @@ fun ProfileEditContent(
         FixTextField(
             placeholder = R.string.city,
             text = city,
-            textChange = { viewModel.cityChange(it) }
+            textChange = { authorizationProfileViewModel.cityChange(it) }
         )
         Spacer(modifier = Modifier.height(7.dp))
         FixTextFieldWide(
             placeholder = R.string.tell_about_yourself,
             text = infoAboutYourself,
-            textChange = { viewModel.infoAboutNameChange(it) },
+            textChange = { authorizationProfileViewModel.infoAboutNameChange(it) },
         )
         Spacer(modifier = Modifier.height(30.dp))
         Text(
@@ -357,9 +358,15 @@ fun ProfileEditContent(
             fontWeight = FontWeight.W600,
         )
         Spacer(modifier = Modifier.height(10.dp))
-        FixSearchTextField(placeholder = R.string.habr, leadingIcon = R.drawable.icon_habr, onValueChange = {})
+        FixSearchTextField(
+            placeholder = R.string.habr,
+            leadingIcon = R.drawable.icon_habr,
+            onValueChange = {})
         Spacer(modifier = Modifier.height(7.dp))
-        FixSearchTextField(placeholder = R.string.telegram, leadingIcon = R.drawable.icon_telegram, onValueChange = {})
+        FixSearchTextField(
+            placeholder = R.string.telegram,
+            leadingIcon = R.drawable.icon_telegram,
+            onValueChange = {})
         Spacer(modifier = Modifier.height(30.dp))
         Row(
             horizontalArrangement = Arrangement.SpaceBetween,

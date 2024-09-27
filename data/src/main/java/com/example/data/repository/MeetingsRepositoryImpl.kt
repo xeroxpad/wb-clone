@@ -2,7 +2,6 @@ package com.example.data.repository
 
 import com.example.domain.entities.FixEvent
 import com.example.domain.entities.FixMeetingsDescription
-import com.example.domain.entities.MeetingsDescription
 import com.example.domain.repository.IMeetingsRepository
 import io.bloco.faker.Faker
 
@@ -18,7 +17,7 @@ class MeetingsRepositoryImpl : IMeetingsRepository {
         return listOf(
             FixEvent(
                 id = 1,
-                icon = "https://picsum.photos/500/500?random",
+                icon = "https://api.multiavatar.com/${faker.number.between(1, 1000)}.png",
                 title = faker.name.title(),
                 date = "13.09.2024",
                 city = faker.address.streetAddress(),
@@ -28,7 +27,7 @@ class MeetingsRepositoryImpl : IMeetingsRepository {
             ),
             FixEvent(
                 id = 2,
-                icon = "https://picsum.photos/500/500?random",
+                icon = "https://api.multiavatar.com/${faker.number.between(1, 1000)}.png",
                 title = faker.name.title(),
                 date = "13.09.2024",
                 city = faker.address.streetAddress(),
@@ -37,7 +36,7 @@ class MeetingsRepositoryImpl : IMeetingsRepository {
                 tagCityMeeting = faker.lorem.word().uppercase(),
             ),FixEvent(
                 id = 3,
-                icon = "https://picsum.photos/500/500?random",
+                icon = "https://api.multiavatar.com/${faker.number.between(1, 1000)}.png",
                 title = faker.name.title(),
                 date = "13.09.2024",
                 city = faker.address.streetAddress(),
@@ -46,7 +45,7 @@ class MeetingsRepositoryImpl : IMeetingsRepository {
                 tagCityMeeting = faker.lorem.word().uppercase(),
             ),FixEvent(
                 id = 4,
-                icon = "https://picsum.photos/500/500?random",
+                icon = "https://api.multiavatar.com/${faker.number.between(1, 1000)}.png",
                 title = faker.name.title(),
                 date = "13.09.2024",
                 city = faker.address.streetAddress(),
