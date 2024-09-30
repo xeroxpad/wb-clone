@@ -43,7 +43,6 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.navigation.NavController
-import androidx.room.util.query
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.screens.meetings.SelectOtherMeetings
@@ -55,7 +54,6 @@ import com.example.wbtechnoschool.utils.events.FixCardMeetingMini
 import com.example.wbtechnoschool.utils.search.FixSearchTextField
 import com.example.wbtechnoschool.viewmodel.community_view_model.CommunityViewModel
 import com.example.wbtechnoschool.viewmodel.events_view_model.EventsViewModel
-import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingViewModel
 import org.koin.androidx.compose.koinViewModel
 
 @RequiresApi(Build.VERSION_CODES.O)
@@ -63,11 +61,9 @@ import org.koin.androidx.compose.koinViewModel
 fun ScreenEvents(
     modifier: Modifier = Modifier,
     navController: NavController,
-    viewModelMeeting: MeetingViewModel = koinViewModel(),
     viewModelCommunity: CommunityViewModel = koinViewModel(),
     viewModelEvents: EventsViewModel = koinViewModel(),
 ) {
-    val meetings by viewModelEvents.meetings.collectAsStateWithLifecycle()
     val community by viewModelCommunity.community.collectAsStateWithLifecycle()
     val focusManager = LocalFocusManager.current
     var searchQuery by remember { mutableStateOf("") }
@@ -185,26 +181,7 @@ fun ScreenEvents(
                         color = LightColorTheme.black,
                     )
                     Spacer(modifier = Modifier.height(15.dp))
-                    SelectOtherMeetings(
-                        tags = listOf(
-                            "Дизайн",
-                            "Разработка",
-                            "Продакт менеджмент",
-                            "Проджект менеджмент",
-                            "Backend",
-                            "Frontend",
-                            "Mobile",
-                            "Web",
-                            "Тестирование",
-                            "Продажи",
-                            "Бизнес",
-                            "Маркетинг",
-                            "Безопасность",
-                            "Девопс",
-                            "Аналитика",
-                            "Все категории"
-                        )
-                    )
+                    SelectOtherMeetings()
                     Spacer(modifier = Modifier.height(30.dp))
                 }
                 items(filteredMeetings) { meeting ->

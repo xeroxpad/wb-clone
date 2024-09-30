@@ -23,6 +23,13 @@ class AuthorizationProfileViewModel : ViewModel() {
     private val _surname = MutableStateFlow("")
     val surname: StateFlow<String> = _surname
 
+    private val _selectedTags = MutableStateFlow<Set<String>>(emptySet())
+    val selectedTags: StateFlow<Set<String>> = _selectedTags
+
+    fun updateSelectedTags(tags: Set<String>) {
+        _selectedTags.value = tags
+    }
+
     fun nameChange(newName: String) {
         viewModelScope.launch {
             withContext(Dispatchers.Default) {

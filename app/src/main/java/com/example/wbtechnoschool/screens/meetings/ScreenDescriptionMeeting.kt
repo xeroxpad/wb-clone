@@ -167,12 +167,7 @@ fun ScreenDescriptionMeeting(
                         }
                         Row {
                             description.tagsMeeting.split(",").forEach { tag ->
-                                FixFilterTags(
-                                    labelText = tag,
-                                    isSelected = false,
-                                    onSelectionChanged = {},
-                                    modifier = Modifier.padding(end = 10.dp)
-                                )
+                                FixFilterTags(labelText = tag, isSelected = false) {}
                             }
                         }
                         Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))

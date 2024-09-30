@@ -14,24 +14,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
-import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.screens.meetings.SelectOtherMeetings
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.utils.button.GradientButtonDark
+import com.example.wbtechnoschool.viewmodel.auth_view_model.AuthorizationProfileViewModel
+import org.koin.androidx.compose.koinViewModel
 
 @Composable
 fun ScreenEditInterests(
     modifier: Modifier = Modifier,
     navController: NavController,
+    authorizationProfileViewModel: AuthorizationProfileViewModel = koinViewModel()
 ) {
-    var selectedTags by remember { mutableStateOf(setOf<String>()) }
+    val selectedTags by remember { mutableStateOf(setOf<String>()) }
     Scaffold(
         modifier =
         modifier
@@ -62,26 +63,7 @@ fun ScreenEditInterests(
                             color = LightColorTheme.black,
                         )
                         Spacer(modifier = Modifier.height(20.dp))
-                        SelectOtherMeetings(
-                            tags = listOf(
-                                "Дизайн",
-                                "Разработка",
-                                "Продакт менеджмент",
-                                "Проджект менеджмент",
-                                "Backend",
-                                "Frontend",
-                                "Mobile",
-                                "Web",
-                                "Тестирование",
-                                "Продажи",
-                                "Бизнес",
-                                "Маркетинг",
-                                "Безопасность",
-                                "Девопс",
-                                "Аналитика",
-                            ).shuffled(),
-                            onTagSelected = { selectedTags = it }
-                        )
+                        SelectOtherMeetings()
                     }
                 }
                 Column(
@@ -95,7 +77,10 @@ fun ScreenEditInterests(
                         modifier = Modifier.height(49.dp),
                         enable = true,
                         textButton = "Сохранить",
-                    ) { navController.popBackStack() }
+                    ) {
+                        authorizationProfileViewModel.updateSelectedTags(selectedTags)
+                        navController.popBackStack()
+                    }
                 }
             }
         }

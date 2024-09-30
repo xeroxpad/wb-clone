@@ -22,7 +22,6 @@ import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -160,6 +159,7 @@ fun ProfileViewContent(
     val name by authorizationProfileViewModel.name.collectAsStateWithLifecycle()
     val city by authorizationProfileViewModel.city.collectAsStateWithLifecycle()
     val infoAboutYourself by authorizationProfileViewModel.infoAboutYourself.collectAsStateWithLifecycle()
+    val selectedTags by authorizationProfileViewModel.selectedTags.collectAsStateWithLifecycle()
     Column(modifier = modifier.padding(start = 20.dp)) {
         Spacer(modifier = Modifier.height(10.dp))
         Text(
@@ -185,34 +185,9 @@ fun ProfileViewContent(
             modifier = modifier.fillMaxWidth(),
             verticalArrangement = Arrangement.spacedBy(10.dp)
         ) {
-            FixTags(
-                labelText = "Разработка",
-                modifier = Modifier.padding(end = 5.dp)
-            )
-            FixTags(
-                labelText = "Безопасность",
-                modifier = Modifier.padding(end = 5.dp)
-            )
-            FixTags(
-                labelText = "Девопс",
-                modifier = Modifier.padding(end = 5.dp)
-            )
-            FixTags(
-                labelText = "Backend",
-                modifier = Modifier.padding(end = 5.dp)
-            )
-            FixTags(
-                labelText = "Mobile",
-                modifier = Modifier.padding(end = 5.dp)
-            )
-            FixTags(
-                labelText = "Тестирование",
-                modifier = Modifier.padding(end = 5.dp)
-            )
-            FixTags(
-                labelText = "Аналитика",
-                modifier = Modifier.padding(end = 5.dp)
-            )
+            selectedTags.forEach { tag ->
+                FixTags(labelText = tag, modifier = Modifier.padding(end = 5.dp))
+            }
         }
         Spacer(modifier = Modifier.height(15.dp))
         Row(horizontalArrangement = Arrangement.spacedBy(10.dp)) {
@@ -283,6 +258,7 @@ fun ProfileEditContent(
     val name by authorizationProfileViewModel.name.collectAsStateWithLifecycle()
     val city by authorizationProfileViewModel.city.collectAsStateWithLifecycle()
     val infoAboutYourself by authorizationProfileViewModel.infoAboutYourself.collectAsStateWithLifecycle()
+    val selectedTags by authorizationProfileViewModel.selectedTags.collectAsStateWithLifecycle()
     var currentPhoneNumber by remember { mutableStateOf("") }
     Column(modifier = modifier.padding(horizontal = 20.dp)) {
         Spacer(modifier = Modifier.height(20.dp))
@@ -317,38 +293,9 @@ fun ProfileEditContent(
         FlowRow(
             modifier = modifier.fillMaxWidth(),
         ) {
-            FixFilterTags(
-                labelText = "Разработка",
-                isSelected = false,
-                onSelectionChanged = {},
-                isSelectable = false,
-                isDefaultSelected = true,
-                modifier = Modifier.padding(end = 10.dp)
-            )
-            FixFilterTags(
-                labelText = "Безопасность",
-                isSelected = false,
-                onSelectionChanged = {},
-                isSelectable = false,
-                isDefaultSelected = true,
-                modifier = Modifier.padding(end = 10.dp)
-            )
-            FixFilterTags(
-                labelText = "Девопс",
-                isSelected = false,
-                onSelectionChanged = {},
-                isSelectable = false,
-                isDefaultSelected = true,
-                modifier = Modifier.padding(end = 10.dp)
-            )
-            FixFilterTags(
-                labelText = "Backend",
-                isSelected = false,
-                onSelectionChanged = {},
-                isSelectable = false,
-                isDefaultSelected = true,
-                modifier = Modifier.padding(end = 10.dp)
-            )
+            selectedTags.forEach { tag ->
+                FixFilterTags(labelText = tag, isSelected = false) {}
+            }
             ButtonAdd(containerColor = LightColorTheme.fixLavenderBlush) { onClickInterests() }
         }
         Spacer(modifier = Modifier.height(30.dp))

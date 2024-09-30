@@ -32,7 +32,6 @@ import androidx.navigation.NavController
 import com.example.wbtechnoschool.R
 import com.example.wbtechnoschool.navigation.Graph
 import com.example.wbtechnoschool.navigation.MainTopAppBar
-import com.example.wbtechnoschool.screens.meetings.SelectOtherMeetings
 import com.example.wbtechnoschool.ui.theme.LightColorTheme
 import com.example.wbtechnoschool.ui.theme.fontSFPro
 import com.example.wbtechnoschool.utils.avatar.FixMyPreviewAvatar
@@ -40,6 +39,7 @@ import com.example.wbtechnoschool.utils.avatar.FixRowAvatars
 import com.example.wbtechnoschool.utils.constants.SPACER
 import com.example.wbtechnoschool.utils.events.FixCardMeeting
 import com.example.wbtechnoschool.utils.events.FixCardMeetingMini
+import com.example.wbtechnoschool.utils.tags.FixFilterTags
 import com.example.wbtechnoschool.utils.widgets.GradientToggleButton
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.DescriptionMeetingViewModel
 import com.example.wbtechnoschool.viewmodel.meetings_view_model.MeetingViewModel
@@ -97,16 +97,11 @@ fun ScreenDetailsCommunity(
                             lineHeight = 30.sp
                         )
                         Spacer(modifier = Modifier.height(SPACER.SPACER_10.value.dp))
-                        SelectOtherMeetings(
-                            isSelectable = false,
-                            tags = listOf(
-                                "Разработка",
-                                "Карьера",
-                                "Тестирование",
-                                "Дизайн",
-                                "Бизнес",
-                            ),
-                        )
+                        Row {
+                            description.tagsMeeting.split(",").forEach { tag ->
+                                FixFilterTags(labelText = tag, isSelected = false) {}
+                            }
+                        }
                         Spacer(modifier = Modifier.height(SPACER.SPACER_20.value.dp))
                         GradientToggleButton(
                             textButton = R.string.subscribe,

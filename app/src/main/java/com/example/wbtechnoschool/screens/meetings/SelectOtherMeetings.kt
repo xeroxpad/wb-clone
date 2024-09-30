@@ -6,10 +6,8 @@ import androidx.compose.foundation.layout.FlowRow
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.remember
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.example.wbtechnoschool.utils.tags.FixFilterTags
@@ -18,11 +16,18 @@ import com.example.wbtechnoschool.utils.tags.FixFilterTags
 @Composable
 fun SelectOtherMeetings(
     modifier: Modifier = Modifier,
-    tags: List<String>,
-    isSelectable: Boolean = true,
-    onTagSelected: ((Set<String>) -> Unit)? = null
+    tags: List<String> = listOf(
+        "Дизайн", "Разработка", "Продакт менеджмент", "Проджект менеджмент",
+        "Backend", "Frontend", "Mobile", "Тестирование", "Продажи",
+        "Бизнес", "Безопасность", "Web", "Девопс", "Маркетинг", "Аналитика", "Все категории",
+    ),
 ) {
-    var selectedTags by remember { mutableStateOf(setOf<String>()) }
+    val selectedTags = remember { mutableStateMapOf<String, Boolean>() }
+    tags.forEach { tag ->
+        if (!selectedTags.contains(tag)) {
+            selectedTags[tag] = false
+        }
+    }
     FlowRow(
         modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.spacedBy((-5).dp)
@@ -30,17 +35,18 @@ fun SelectOtherMeetings(
         tags.forEach { tag ->
             FixFilterTags(
                 labelText = tag,
-                isSelected = selectedTags.contains(tag),
-                onSelectionChanged = if (isSelectable) { isSelected ->
-                    selectedTags = when {
-                        tag == "Все категории" && isSelected -> { tags.toSet() }
-                        tag == "Все категории" && !isSelected -> { emptySet() }
-                        isSelected -> { selectedTags + tag }
-                        else -> { selectedTags - tag }
+                isSelected = selectedTags[tag] == true,
+                onTagClick = {
+                    if (tag == "Все категории") {
+                        val newState = !(selectedTags["Все категории"] ?: false)
+                        tags.forEach { t ->
+                            selectedTags[t] = newState
+                        }
+                    } else {
+                        selectedTags[tag] = !(selectedTags[tag] ?: false)
+                        selectedTags["Все категории"] = selectedTags.all { it.value }
                     }
-                    onTagSelected?.invoke(selectedTags)
-                } else null,
-                isSelectable = isSelectable,
+                },
                 modifier = Modifier.padding(end = 7.dp)
             )
         }

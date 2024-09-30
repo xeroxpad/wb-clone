@@ -84,22 +84,19 @@ fun FixFilterTags(
     modifier: Modifier = Modifier,
     labelText: String,
     isSelected: Boolean,
-    onSelectionChanged: ((Boolean) -> Unit)? = null,
     isSelectable: Boolean = true,
-    isDefaultSelected: Boolean = false,
+    onTagClick: () -> Unit
 ) {
-    var selectedState by remember { mutableStateOf(isDefaultSelected) }
     AssistChip(
         onClick = {
             if (isSelectable) {
-                selectedState = !selectedState
-                onSelectionChanged?.invoke(!isSelected)
+                onTagClick()
             }
         },
         label = { Text(labelText) },
         colors = AssistChipDefaults.assistChipColors(
-            containerColor = if (selectedState) LightColorTheme.fixVioletBlaze else LightColorTheme.fixLavenderBlushDark,
-            labelColor = if (selectedState) LightColorTheme.fixLavenderBlushDark else LightColorTheme.fixVioletBlaze
+            containerColor = if (isSelected) LightColorTheme.fixVioletBlaze else LightColorTheme.fixLavenderBlushDark,
+            labelColor = if (isSelected) LightColorTheme.fixLavenderBlushDark else LightColorTheme.fixVioletBlaze
         ),
         modifier = modifier,
         border = null
